@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_ClearCodeInfo" Id="{186f773c-4f89-4906-965e-28c71243c5a3}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ClearCodeInfo
+VAR_INPUT
+END_VAR
+VAR_IN_OUT
+	stCodeInfo						: ST_CodeInfo;
+END_VAR
+VAR
+	sMemoUserField					: STRING;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF stCodeInfo.stGTIN.nListPosition = 0 THEN
+	MEMSET(ADR(stCodeInfo.stGTIN), 16#00, SIZEOF(stCodeInfo.stGTIN));
+	stCodeInfo.stGTIN.sFieldName :='GTIN';
+	stCodeInfo.stGTIN.nGS1_AI := 1;
+END_IF
+IF stCodeInfo.stBatchID.nListPosition  = 0 THEN
+	MEMSET(ADR(stCodeInfo.stBatchID), 16#00, SIZEOF(stCodeInfo.stBatchID));
+	stCodeInfo.stBatchID.sFieldName :='BatchID';
+	stCodeInfo.stBatchID.nGS1_AI := 10;
+END_IF
+IF stCodeInfo.stSerialCode.nListPosition = 0 THEN
+	MEMSET(ADR(stCodeInfo.stSerialCode), 16#00, SIZEOF(stCodeInfo.stSerialCode));
+	stCodeInfo.stSerialCode.sFieldName :='SerialCode';
+	stCodeInfo.stSerialCode.nGS1_AI := 21;
+END_IF
+IF stCodeInfo.stProductionOrder.nListPosition  = 0 THEN
+	MEMSET(ADR(stCodeInfo.stProductionOrder), 16#00, SIZEOF(stCodeInfo.stProductionOrder));
+	stCodeInfo.stProductionOrder.sFieldName :='ProductionOrder';
+	stCodeInfo.stProductionOrder.nGS1_AI := 91;
+END_IF
+IF stCodeInfo.stCryptoCode.nListPosition = 0 THEN
+	MEMSET(ADR(stCodeInfo.stCryptoCode), 16#00, SIZEOF(stCodeInfo.stCryptoCode));
+	stCodeInfo.stCryptoCode.sFieldName :='CryptoCode';
+	stCodeInfo.stCryptoCode.nGS1_AI := 93;
+END_IF
+IF stCodeInfo.stRSKU.nListPosition = 0 THEN
+	MEMSET(ADR(stCodeInfo.stRSKU), 16#00, SIZEOF(stCodeInfo.stRSKU));
+	stCodeInfo.stRSKU.sFieldName :='SKU';
+	stCodeInfo.stRSKU.nGS1_AI := 240;
+END_IF
+IF stCodeInfo.stMRP.nListPosition = 0 THEN
+	MEMSET(ADR(stCodeInfo.stMRP), 16#00, SIZEOF(stCodeInfo.stMRP));
+	stCodeInfo.stMRP.sFieldName :='MRP';
+	stCodeInfo.stMRP.nGS1_AI := 8005;
+END_IF
+IF stCodeInfo.stBrandSpecification.nListPosition = 0 THEN
+	MEMSET(ADR(stCodeInfo.stBrandSpecification), 16#00, SIZEOF(stCodeInfo.stBrandSpecification));
+	stCodeInfo.stBrandSpecification.sFieldName := 'BrandSpec';
+	stCodeInfo.stBrandSpecification.nGS1_AI := 92;
+END_IF
+IF stCodeInfo.stProduceDate.nListPosition = 0 THEN
+	MEMSET(ADR(stCodeInfo.stProduceDate), 16#00, SIZEOF(stCodeInfo.stProduceDate));
+	stCodeInfo.stProduceDate.sFieldName :='ProduceDate';
+	stCodeInfo.stProduceDate.nGS1_AI := 94;
+END_IF
+IF stCodeInfo.stUserField3.nListPosition  = 0THEN
+	sMemoUserField := stCodeInfo.stUserField3.sFieldName;
+	MEMSET(ADR(stCodeInfo.stUserField3), 16#00, SIZEOF(stCodeInfo.stUserField3));
+	stCodeInfo.stUserField3.sFieldName :=sMemoUserField;
+	stCodeInfo.stUserField3.nGS1_AI := 95;
+END_IF
+
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
