@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_ValidateExplicitCode" Id="{b1e711e0-cf3f-4b69-b523-b323efa4daba}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ValidateExplicitCode
+VAR_INPUT
+	sFullCode					: STRING(255);
+	stCodeInfo				: ST_CodeInfo;
+	stProductInstruction			: ST_PCM_Status;
+END_VAR
+VAR_OUTPUT
+	bValidationOK				: BOOL;
+	bEntireCodeLengthOK		: BOOL;
+
+	bGtinOK					: BOOL;
+	bSerialCodeOK				: BOOL;
+	bBatchIDOK				: BOOL;
+	bProductionOrderOK		: BOOL;
+	bCryptoOK				: BOOL;
+	bRskuOK					: BOOL;
+	bMRPOK					: BOOL;
+	bBrandOK				: BOOL;
+	bProduceDateOK		: BOOL;
+
+	sGTIN					: T_CodeGTIN;
+	sSerial					: STRING(255);
+	sBatchID					: T_CodeBATCH;
+	sProductionOrder			: T_CodePO;
+	sCrypto					: STRING(20);
+	sRSKU					: T_CodeRSKU;
+	sMRP					: STRING(8);
+	sBrand					: T_CodeBRAND;
+	sProduceDate			: T_CodePRODUCEDATE;
+
+END_VAR
+VAR
+	eCodeAIType					: E_CodeAIType;
+	sGtinToValidateAgainst		: T_CodeGTIN;
+	sBrandToValidateAgainst		: T_CodeBRAND;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(***********************************************
+	GTIN 			= 1;
+	BatchID 			= 10;
+	SerialCode		= 21;
+	ProductionOrder 	= 91;
+	CryptoCode		= 93;
+	RSKU 			= 240;
+	MRP				= 8005;
+	BrandSpecification = 92
+	ProduceDate		= 94
+	UserField3
+
+***********************************************)
+(*
+WHILE FIND(sFullCode, '$1D') > 0 DO
+	sFullCode := DELETE(sFullCode, LEN('$1D'), FIND(sFullCode, '$1D'));
+END_WHILE*)
+
+sFullCode := F_ReplaceSingleChar(sFullCode, '$1D', '');
+
+bEntireCodeLengthOK := (LEN(sFullCode) = stCodeInfo.nEntireLength) OR NOT(stCodeInfo.bValidateEntireLength);
+
+CASE stCodeInfo.eCodeType OF
+
+	E_PACK:
+		sGtinToValidateAgainst := stProductInstruction.sPackGTIN;
+		sBrandToValidateAgainst := LEFT(stProductInstruction.sPackBrandSpec, stCodeInfo.stBrandSpecification.nCodeLength);
+	E_OUTER:
+		sGtinToValidateAgainst := stProductInstruction.sOuterGTIN;
+		sBrandToValidateAgainst := LEFT(stProductInstruction.sOuterBrandSpec, stCodeInfo.stBrandSpecification.nCodeLength);
+	E_CASE:
+		sGtinToValidateAgainst := stProductInstruction.sCaseGTIN;
+		sBrandToValidateAgainst := LEFT(stProductInstruction.sCaseBrandSpec, stCodeInfo.stBrandSpecification.nCodeLength);
+ELSE
+		sGtinToValidateAgainst := '';
+		sBrandToValidateAgainst := '';
+END_CASE
+
+sGTIN:= '';
+sBatchID := '';
+sSerial := '';
+sProductionOrder := '';
+sCrypto :='';
+sRSKU := '';
+sMRP :='';
+sBrand := '';
+sProduceDate :='';
+
+bGtinOK := TRUE;
+sGTIN := F_CODE_GetItem(sFullCode, eCodeAIType.GTIN, stCodeInfo);
+
+IF stCodeInfo.stGTIN.bValidate THEN
+
+	IF LEN(sGTIN) <> stCodeInfo.stGTIN.nCodeLength 	 OR
+		 sGTIN <> sGtinToValidateAgainst 			THEN
+
+		bGtinOK := FALSE;
+	END_IF
+
+END_IF
+
+bBatchIDOK := TRUE;
+sBatchID := F_CODE_GetItem(sFullCode, eCodeAIType.BatchID, stCodeInfo);
+
+IF stCodeInfo.stBatchID.bValidate THEN
+
+	IF LEN(sBatchID) <> stCodeInfo.stBatchID.nCodeLength 		 OR
+		 sBatchID <> stProductInstruction.sBatchNumber		THEN
+
+		bBatchIDOK := FALSE;
+	END_IF
+
+END_IF
+
+bSerialCodeOK := TRUE;
+sSerial := F_CODE_GetItem(sFullCode, eCodeAIType.SerialCode, stCodeInfo);
+
+IF stCodeInfo.stSerialCode.bValidate AND stCodeInfo.stSerialCode.nCodeLength <> 0 THEN
+
+	IF LEN(sSerial) <> stCodeInfo.stSerialCode.nCodeLength THEN
+		bSerialCodeOK := FALSE;
+	END_IF
+
+END_IF
+
+bProductionOrderOK := TRUE;
+sProductionOrder := F_CODE_GetItem(sFullCode, eCodeAIType.ProductionOrder, stCodeInfo);
+
+IF stCodeInfo.stProductionOrder.bValidate  THEN
+
+	IF LEN(sProductionOrder) <> stCodeInfo.stProductionOrder.nCodeLength OR
+		 sProductionOrder <> stProductInstruction.sProductionOrder	THEN
+
+		bProductionOrderOK := FALSE;
+	END_IF
+
+END_IF
+
+bCryptoOK := TRUE;
+sCrypto := F_CODE_GetItem(sFullCode, eCodeAIType.CryptoCode, stCodeInfo);
+
+IF stCodeInfo.stCryptoCode.bValidate AND stCodeInfo.stCryptoCode.nCodeLength <> 0 THEN
+
+	IF LEN(sCrypto) <> stCodeInfo.stCryptoCode.nCodeLength THEN
+		bCryptoOK := FALSE;
+	END_IF
+
+END_IF
+
+bRskuOK := TRUE;
+sRSKU := F_CODE_GetItem(sFullCode, eCodeAIType.RSKU, stCodeInfo);
+
+IF stCodeInfo.stRSKU.bValidate THEN
+
+	(*IF LEN(sRSKU) <> stCodeInfo.stRSKU.nCodeLength 	 OR
+		 sRSKU <> stProductInstruction.sRetailSKU	THEN*)
+	IF LEN(sRSKU) <> stCodeInfo.stRSKU.nCodeLength 	 OR
+		( LEN(sRSKU) = 7 AND	stProductInstruction.sRetailSKU <> F_CASE_GetSKUFromHex(sRSKU)) 	OR
+		( LEN(sRSKU) > 7 AND stProductInstruction.sRetailSKU <>  sRSKU) 	THEN
+
+		bRskuOK := FALSE;
+	END_IF
+
+END_IF
+
+bMRPOK := TRUE;
+sMRP := F_CODE_GetItem(sFullCode, eCodeAIType.MRP, stCodeInfo);
+
+IF stCodeInfo.stMRP.bValidate AND stCodeInfo.stMRP.nCodeLength <> 0 THEN
+
+	IF LEN(sMRP) <> stCodeInfo.stMRP.nCodeLength THEN
+		bMRPOK := FALSE;
+	END_IF
+
+END_IF
+
+bBrandOK := TRUE;
+sBrand := F_CODE_GetItem(sFullCode, eCodeAIType.BrandSpecification, stCodeInfo);
+
+IF stCodeInfo.stBrandSpecification.bValidate THEN
+
+	IF LEN(sBrand) <> stCodeInfo.stBrandSpecification.nCodeLength 	 OR
+		 sBrand <> sBrandToValidateAgainst 			THEN
+
+		bBrandOK := FALSE;
+	END_IF
+
+END_IF
+
+bProduceDateOK := TRUE;
+sProduceDate := F_CODE_GetItem(sFullCode, eCodeAIType.ProduceDate, stCodeInfo);
+
+IF stCodeInfo.stProduceDate.bValidate AND stCodeInfo.stProduceDate.nCodeLength <> 0 THEN
+
+	IF LEN(sProduceDate) <> stCodeInfo.stProduceDate.nCodeLength THEN
+		bProduceDateOK := FALSE;
+	END_IF
+
+END_IF
+
+bValidationOK := bGtinOK AND bBatchIDOK AND bSerialCodeOK  AND bProductionOrderOK AND bCryptoOK AND bRskuOK AND bMRPOK AND bBrandOK AND bProduceDateOK AND bEntireCodeLengthOK;
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_CodeAI" Id="{389d3e47-547d-45b5-853b-0b6acb4cbbe8}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+TYPE E_CodeAI :
+(
+	GTIN 			:= 1,
+	BATCH 			:= 10,
+	SERIAL			:= 21,
+	PO				:= 91,
+	BRANDSPEC		:= 92,
+	CRYPTO			:= 93,
+	PRODDATE		:= 94,
+	RSKU 			:= 240,
+	MRP				:= 8005,
+	USERFIELD		:= 999
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

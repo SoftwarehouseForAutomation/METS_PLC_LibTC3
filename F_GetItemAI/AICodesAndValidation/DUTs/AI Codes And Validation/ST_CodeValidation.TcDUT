@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CodeValidation" Id="{5fd021fa-9d20-4bb4-8286-644addb08c4d}">
+    <Declaration><![CDATA[TYPE ST_CodeValidation :
+STRUCT
+	bValidate 			:	BOOL;
+
+	sFieldName		:	STRING(15)	:='';
+	bNameEditable	:	BOOL;
+	nListPosition		: 	BYTE;
+
+	sStartAI 			: 	STRING(6)		:= '';
+	sEndAI 			: 	STRING(6) 	:= '';
+	nCodeStartPos		:	INT;
+	nCodeLength		:	INT;
+
+	nGS1_AI			: 	INT;
+
+(* If sStartAI is empty, then use nCodeStartPos, else find sStartAI in code for start position *)
+(* If sEndAI is empty then use nCodeLength, else find sEndAI in code for end position*)
+
+(*General Application Idendifiers (AI) Description:
+	01:		GTIN
+	10: 		Batch ID
+	21: 		Serial Code
+	91:		Production Order
+	93:		Crypto
+	240:		RSKU
+*)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

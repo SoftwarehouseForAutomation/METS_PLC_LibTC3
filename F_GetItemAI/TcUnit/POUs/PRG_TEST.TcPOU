@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="PRG_TEST" Id="{57de771e-4346-4079-9379-3645d39749ca}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_TEST
+VAR
+	fbF_GetItemAITests			: F_GetItemAITests;		
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//===================================================
+//UNIT TEST EXECUTION
+
+TcUnit.RUN();
+
+//===================================================
+//MANUAL TEST EXECUTION
+
+PRG_GetItemAIManual();]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
