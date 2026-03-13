@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_ExtractString" Id="{f6598ed1-0f22-4994-af19-689c2e49114f}" SpecialFunc="None">
+    <Declaration><![CDATA[(* extracts a sub-string defined by prefix and suffix *)
+FUNCTION_BLOCK FB_ExtractString
+VAR_INPUT
+	bExtractData		: BOOL;			(* set TRUE to remove prefix and suffix from strData *)
+	nExtractChars		: UINT;			(* if suffix is blank, number of data chars to extract *)
+	strPrefix			: T_MaxString;	(* prefix string *)
+	strSuffix			: T_MaxString;	(* suffix string *)
+END_VAR
+VAR_IN_OUT
+	strString			: T_MaxString;	(* string to be searched *)
+END_VAR
+VAR_OUTPUT
+	bStringFound		: BOOL;			(* TRUE = sub-string with matching prefix/suffix found *)
+	nStartPos			: UINT;			(* start pos of extracted string in strString *)
+	strData				: T_MaxString;	(* extracted data *)
+END_VAR
+VAR
+	nStringLen			: UINT;
+	nPrefixLen			: UINT;
+	nSuffixLen			: UINT;
+	nEndPos				: UINT;
+	bStartPosFound		: BOOL;
+	bEndPosFound		: BOOL;
+	nChars				: UINT;
+	nMaxIndex			: UINT;
+	nIndex				: UINT;
+END_VAR
+(*
+-------------------------------------------------------------------------------------------------
+DATE		Version	Author	Comments
+-------------------------------------------------------------------------------------------------
+30/01/2015	3.00.00	PB		bExtractData input added to specify whether prefix and suffix should be removed from strData
+							bIgnoreCase input removed
+							Major optimisation to reduce time taken to find a string
+
+-------------------------------------------------------------------------------------------------
+06/09/2012	1.41.00	PB		strData output added which returns strResult without the prefix and suffix
+06/07/2011	1.23.00	PB		Pre-check added to ensure that strString is not empty
+07/06/2011	1.19.00	PB		bIgnoreCase input added, set to TRUE to ignore upper/lower case when matching Prefix and Suffix
+31/01/2011	1.08.03	PB		Bug fix - strings now handled correctly if strSuffix is longer than 1 char
+							Search for suffix changed to start after prefix position
+22/11/2010	1.07.01	PB		Initial release
+
+-------------------------------------------------------------------------------------------------
+*)]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* calc string lengths *)
+nStringLen := INT_TO_UINT(LEN(strString));
+nPrefixLen := INT_TO_UINT(LEN(strPrefix));
+nSuffixLen := INT_TO_UINT(LEN(strSuffix));
+
+(* string to be searched is not empty and prefix or suffix or no or chars to extract is defined *)
+IF nStringLen > 0 AND (nPrefixLen > 0 OR nSuffixLen > 0 OR nExtractChars > 0) THEN
+
+	(* clear outputs *)
+	bStringFound := FALSE;
+	nChars := 0;
+	nStartPos := 0;
+	strData := '';
+
+	(* initialise char index values *)
+	bStartPosFound := FALSE;
+	bEndPosFound := FALSE;
+	nEndPos := 0;
+
+	(* max search index, based on string length - 1 due to starting at 0 and length of prefix *)
+	nMaxIndex := (nStringLen - 1) + (nPrefixLen - 1);
+
+	(* for each character in the string *)
+	FOR nIndex := 0 TO nMaxIndex DO
+
+		(* prefix has not been found *)
+		IF bStartPosFound = FALSE THEN
+
+			(* no prefix defined  *)
+			IF nPrefixLen = 0 THEN
+
+				(* start at beginning if string *)
+				nStartPos := 1;
+				bStartPosFound := TRUE;
+
+			(* prefix defined  *)
+			ELSE
+
+				(* compare partial string with prefix *)
+				IF MEMCMP(ADR(strString) + nIndex, ADR(strPrefix), nPrefixLen) = 0 THEN
+
+					(* prefix position found *)
+					nStartPos := nIndex + 1;
+					bStartPosFound := TRUE;
+
+					(* skip to end of prefix to continue search *)
+					nIndex := nIndex + nPrefixLen - 1;
+				END_IF
+			END_IF
+
+		(* suffix has not been found *)
+		ELSIF bEndPosFound = FALSE THEN
+
+			(* no suffix defined  *)
+			IF nSuffixLen = 0 THEN
+
+				(* start at 1st char of string *)
+				bEndPosFound := TRUE;
+
+				(* calculate end position *)
+				nEndPos := MIN((nStartPos - 1) + nExtractChars + nPrefixLen, nStringLen);
+
+			(* suffix defined  *)
+			ELSE
+
+				(* compare partial string with suffix *)
+				IF MEMCMP(ADR(strString) + nIndex, ADR(strSuffix), nSuffixLen) = 0 THEN
+
+					(* suffix position found, calculate end position *)
+					nEndPos := nIndex + nSuffixLen;
+					bEndPosFound := TRUE;
+
+					(* no prefix defined and number of chars to extract is defined *)
+					IF nPrefixLen = 0 AND nExtractChars > 0 THEN
+
+						(* re-calculate start position *)
+						nStartPos := MAX(nEndPos - nExtractChars - 1, 1);
+					END_IF
+
+					(* search complete, quit FOR loop *)
+					EXIT;
+				END_IF
+			END_IF
+
+		(* prefix and suffix found *)
+		ELSE
+
+			(* quit FOR loop *)
+			EXIT;
+		END_IF
+	END_FOR
+
+	(* start and end positions known *)
+	IF bStartPosFound = TRUE AND bEndPosFound = TRUE THEN
+
+		(* string has been found *)
+		bStringFound := TRUE;
+
+		(* return string without prefix and suffix *)
+		IF bExtractData = TRUE THEN
+
+			(* total chars to be moved to strData *)
+			nChars := (nEndPos - (nStartPos - 1)) - nPrefixLen - nSuffixLen;
+
+			(* 1 or more chars to be moved *)
+			IF nChars > 0 THEN
+
+				(* move data to strData *)
+				MEMMOVE(ADR(strData), ADR(strString) + (nStartPos - 1) + nPrefixLen, nChars);
+			END_IF
+
+		(* return string with prefix and suffix *)
+		ELSE
+
+			(* total chars to be moved to strData *)
+			nChars := nEndPos - (nStartPos - 1);
+
+			(* 1 or more chars to be moved *)
+			IF nChars > 0 THEN
+
+				(* move data to strData *)
+				MEMMOVE(ADR(strData), ADR(strString) + (nStartPos - 1), nChars);
+			END_IF
+		END_IF
+
+		(* terminate strData *)
+		MEMSET(ADR(strData) + nChars, 16#00, 1);
+
+		(* 1 or more chars after strSuffix *)
+		IF nStringLen > (nEndPos - (nStartPos - 1)) THEN
+
+			(* shift post-suffix chars to prefix position *)
+			MEMMOVE(ADR(strString) + (nStartPos - 1), ADR(strString) + nEndPos, nStringLen - (nEndPos - (nStartPos - 1)));
+		END_IF
+
+		(* terminate strString *)
+		MEMSET(ADR(strString) + nStringLen - (nEndPos - (nStartPos - 1)), 16#00, 1);
+	END_IF
+
+(* string to be searched is empty or prefix and suffix and both blank *)
+ELSE
+
+	(* clear outputs *)
+	bStringFound := FALSE;
+	nChars := 0;
+	strData := '';
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

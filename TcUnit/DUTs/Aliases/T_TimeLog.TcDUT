@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_TimeLog" Id="{d6c954a7-3680-449f-a479-b0065ba4844e}">
+    <Declaration><![CDATA[TYPE T_TimeLog : STRING[15];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

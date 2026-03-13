@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_RejectCode" Id="{7805a772-8364-4085-a35d-dce6c88b65b6}">
+    <Declaration><![CDATA[TYPE T_RejectCode : STRING[100];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

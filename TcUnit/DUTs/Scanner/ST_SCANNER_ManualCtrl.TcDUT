@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_ManualCtrl" Id="{575747b4-b041-4540-80c9-0d5883208c41}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_ManualCtrl :
+STRUCT
+	bManualTrigger		: BOOL;		(*zenon*)
+	bConfigure			: BOOL;		(*zenon*)
+	bBrowseLive			: BOOL;		(*zenon*)
+	bBrowseDiag			: BOOL;		(*zenon*)
+	bResetStats			: BOOL;		(*zenon*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_ISO8601Time" Id="{484f3032-af4f-4df9-99a0-ffc3fade2bb1}">
+    <Declaration><![CDATA[TYPE T_ISO8601Time : STRING(30);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

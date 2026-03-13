@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="PRG_TEST" Id="{2540a071-ed05-48a8-b34c-9ecf45f6f3ec}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_TEST
+VAR
+	fbExtractAnyStringTests			: FB_ExtractAnyStringTests;
+	fbExtractStringTests			: FB_ExtratcStringTests;
+	fbReplaceLongStringCharTests	: FB_ReplaceLongStringCharTests;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//===================================================
+//UNIT TEST EXECUTION
+
+TcUnit.RUN();
+
+//===================================================
+//MANUAL TEST EXECUTION
+
+PRG_ExtractAnyStringManual();
+PRG_ExtractStringManual();
+PRG_ReplaceLongSingleCharManual();
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

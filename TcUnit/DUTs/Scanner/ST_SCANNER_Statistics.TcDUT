@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_Statistics" Id="{868d921b-1734-4d62-8874-b031a7e16475}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_Statistics :
+STRUCT
+	nTotalReads			: UDINT;
+	nValidCodes			: UDINT;
+	nInvalidCodes			: UDINT;
+	nDuplicateCodes		: UDINT;
+	nNoCodeFound		: UDINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

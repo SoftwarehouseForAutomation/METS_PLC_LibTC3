@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_ExtratcStringTests" Id="{0eeb4b53-2a6a-4189-8f87-2cbb0bd89f55}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ExtratcStringTests EXTENDS FB_TestSuite
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//==============================================================
+//MAIN TESTS
+//==============================================================
+
+//fbExtracStringTests_bExtractDataSetFalse_ExtractedDSWtihExtraChar();
+//fbExtracStringTests_bExtractDataSetFalse_ExtractedDSAndOGWtihExtraChar();
+
+//fbExtracStringTests_bExtractDataSetTrue_ExtractedDSWtihoutExtraChar();
+//fbExtracStringTests_bExtractDataSetTrue_ExtractedDSAndOGWtihoutExtraChar();
+]]></ST>
+    </Implementation>
+    <Folder Name="01 Main" Id="{41b694d8-ef6b-4acd-9c80-5ff7e9f9de1c}" />
+    <Method Name="fbExtracStringTests_bExtractDataSetFalse_ExtractedDSAndOGWtihExtraChar" Id="{973a4cc8-2707-4869-8684-8a2a46464a53}" FolderPath="01 Main\">
+      <Declaration><![CDATA[METHOD INTERNAL fbExtracStringTests_bExtractDataSetFalse_ExtractedDSAndOGWtihExtraChar
+VAR
+	fbSut		: EXTRACT.FB_ExtractString;
+	
+	sDataString	: T_MaxString	:= '$01ST=53;$02CT=10;DS=]d201062533414058582101485MV125000165300$1D24010120957;OG=3;XP=94;YP=-39;AP=-88;CS=06.2;SC=0070;PN=1;QS=3;$03$04';	(* string to be searched *)
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// At FB_SCANNER_MVxDecodeImageData
+TEST('fbExtracStringTests_bExtractDataSetFalse_ExtractedDSAndOGWtihExtraChar');
+
+fbSut(
+	bExtractData:= FALSE , 
+	nExtractChars:=0 , 
+	strPrefix:= 'DS=', 
+	strSuffix:= ';OG=', 
+	strString:= sDataString , 
+	bStringFound=> , 
+	nStartPos=> , 
+	strData=> );
+	
+	AssertEquals_STRING(	Expected:= 'DS=]d201062533414058582101485MV125000165300$1D24010120957;OG=' , 
+					Actual:= fbSut.strData, 
+					Message:= 'Extracted string is not as expected');
+					
+	fbSut(
+	bExtractData:= FALSE , 
+	nExtractChars:=0 , 
+	strPrefix:= 'OG=', 
+	strSuffix:= ';', 
+	strString:= sDataString , 
+	bStringFound=> , 
+	nStartPos=> , 
+	strData=> );
+
+
+	AssertEquals_STRING(	Expected:= 'OG=3;' , 
+						Actual:= fbSut.strData, 
+						Message:= 'Extracted string is not as expected');
+	
+						
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="fbExtracStringTests_bExtractDataSetFalse_ExtractedDSWtihExtraChar" Id="{22505be0-8d83-4137-b27b-d4a7533ecee5}" FolderPath="01 Main\">
+      <Declaration><![CDATA[METHOD INTERNAL fbExtracStringTests_bExtractDataSetFalse_ExtractedDSWtihExtraChar
+VAR
+	fbSut		: EXTRACT.FB_ExtractString;
+	
+	sDataString	: T_MaxString	:= '$01ST=53;$02CT=10;DS=]d201062533414058582101485MV125000165300$1D24010120957;OG=3;XP=94;YP=-39;AP=-88;CS=06.2;SC=0070;PN=1;QS=3;$03$04';	(* string to be searched *)
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// At FB_SCANNER_MVxDecodeImageData
+TEST('fbExtracStringTests_bExtractDataSetFalse_ExtractedDSWtihExtraChar');
+
+fbSut(
+	bExtractData:= FALSE , 
+	nExtractChars:=0 , 
+	strPrefix:= 'DS=', 
+	strSuffix:= ';OG=', 
+	strString:= sDataString , 
+	bStringFound=> , 
+	nStartPos=> , 
+	strData=> );
+
+
+	AssertEquals_STRING(	Expected:= 'DS=]d201062533414058582101485MV125000165300$1D24010120957;OG=' , 
+						Actual:= fbSut.strData, 
+						Message:= 'Extracted string is not as expected');
+						
+	AssertEquals_STRING(	Expected:= '$01ST=53;$02CT=10;3;XP=94;YP=-39;AP=-88;CS=06.2;SC=0070;PN=1;QS=3;$03$04', 
+						Actual:= sDataString, 
+						Message:= 'Remaining string is not as expected');
+						
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="fbExtracStringTests_bExtractDataSetTrue_ExtractedDSAndOGWtihoutExtraChar" Id="{1f6d5868-1da2-49e1-ba1c-c21c79892070}" FolderPath="01 Main\">
+      <Declaration><![CDATA[METHOD INTERNAL fbExtracStringTests_bExtractDataSetTrue_ExtractedDSAndOGWtihoutExtraChar
+VAR
+	fbSut		: EXTRACT.FB_ExtractString;
+	
+	sDataString	: T_MaxString	:= '$01ST=53;$02CT=10;DS=]d201062533414058582101485MV125000165300$1D24010120957;OG=3;XP=94;YP=-39;AP=-88;CS=06.2;SC=0070;PN=1;QS=3;$03$04';	(* string to be searched *)
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// At FB_SCANNER_MVxDecodeImageData
+//
+//Input string: '$01ST=53;$02CT=10;DS=]d201062533414058582101485MV125000165300$1D24010120957;OG=3;XP=94;YP=-39;AP=-88;CS=06.2;SC=0070;PN=1;QS=3;$03$04'
+//
+//		fbFieldData(
+//			bExtractData	:= TRUE,
+//			strPrefix		:= 'DS=',
+//			strSuffix		:= ';OG=',
+//			strString		:= fbCodeData.strData
+//		);
+//(* Overall Grade field (OG=%Q0;) *)
+//			fbFieldData(
+//				bExtractData	:= TRUE,
+//				strPrefix		:= 'OG=',
+//				strSuffix		:= ';',
+//				strString		:= fbCodeData.strData
+//			);
+
+
+TEST('fbExtracStringTests_bExtractDataSetTrue_ExtractedDSAndOGWtihoutExtraChar');
+
+fbSut(
+	bExtractData:= TRUE , 
+	nExtractChars:=0 , 
+	strPrefix:= 'DS=', 
+	strSuffix:= ';OG=', 
+	strString:= sDataString , 
+	bStringFound=> , 
+	nStartPos=> , 
+	strData=> );
+	
+	AssertEquals_STRING(	Expected:= ']d201062533414058582101485MV125000165300$1D24010120957' , 
+					Actual:= fbSut.strData, 
+					Message:= 'Extracted string is not as expected');
+						
+	fbSut(
+	bExtractData:= TRUE , 
+	nExtractChars:=0 , 
+	strPrefix:= 'OG=', 
+	strSuffix:= ';', 
+	strString:= sDataString , 
+	bStringFound=> , 
+	nStartPos=> , 
+	strData=> );
+
+
+	AssertEquals_STRING(	Expected:= '3' , 
+						Actual:= fbSut.strData, 
+						Message:= 'Extracted string is not as expected');
+						
+						
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="fbExtracStringTests_bExtractDataSetTrue_ExtractedDSWtihoutExtraChar" Id="{07ce3a2e-1de1-4e53-bc91-70c80a2e74fb}" FolderPath="01 Main\">
+      <Declaration><![CDATA[METHOD INTERNAL fbExtracStringTests_bExtractDataSetTrue_ExtractedDSWtihoutExtraChar
+VAR
+	fbSut		: EXTRACT.FB_ExtractString;
+	
+	sDataString	: T_MaxString	:= '$01ST=53;$02CT=10;DS=]d201062533414058582101485MV125000165300$1D24010120957;OG=3;XP=94;YP=-39;AP=-88;CS=06.2;SC=0070;PN=1;QS=3;$03$04';	(* string to be searched *)
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// At FB_SCANNER_MVxDecodeImageData
+//
+//Input string: '$01ST=53;$02CT=10;DS=]d201062533414058582101485MV125000165300$1D24010120957;OG=3;XP=94;YP=-39;AP=-88;CS=06.2;SC=0070;PN=1;QS=3;$03$04'
+//
+//		fbFieldData(
+//			bExtractData	:= TRUE,
+//			strPrefix		:= 'DS=',
+//			strSuffix		:= ';OG=',
+//			strString		:= fbCodeData.strData
+//		);
+
+TEST('fbExtracStringTests_bExtractDataSetTrue_ExtractedDSWtihoutExtraChar');
+
+fbSut(
+	bExtractData:= TRUE , 
+	nExtractChars:=0 , 
+	strPrefix:= 'DS=', 
+	strSuffix:= ';OG=', 
+	strString:= sDataString , 
+	bStringFound=> , 
+	nStartPos=> , 
+	strData=> );
+
+
+	AssertEquals_STRING(	Expected:= ']d201062533414058582101485MV125000165300$1D24010120957' , 
+						Actual:= fbSut.strData, 
+						Message:= 'Extracted string is not as expected');
+						
+	AssertEquals_STRING(	Expected:= '$01ST=53;$02CT=10;3;XP=94;YP=-39;AP=-88;CS=06.2;SC=0070;PN=1;QS=3;$03$04', 
+						Actual:= sDataString, 
+						Message:= 'Remaining string is not as expected');
+						
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

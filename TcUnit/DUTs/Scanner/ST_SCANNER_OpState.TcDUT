@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_OpState" Id="{dd19a220-633f-446e-9801-a0512c506713}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_OpState :
+STRUCT
+	bReady				: BOOL;
+	nActiveProgram		: BYTE;
+	bAcceptTrigger		: BOOL;
+	bCodeChangeActive	: BOOL;
+	nActiveTriggers		: INT;
+	nExpectedResp			: INT;
+	tAcquisitionTime	: TIME;
+	nStatusByte			: BYTE;
+	nErrorCode			: UDINT;
+	nOpState			: BYTE;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

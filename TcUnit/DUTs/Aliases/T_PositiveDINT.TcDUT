@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_PositiveDINT" Id="{3c818d9c-2fd6-430b-988c-7ae45c148db1}">
+    <Declaration><![CDATA[TYPE T_PositiveDINT : DINT(0..2147483647); END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_FSS_RejecCode" Id="{edc672d4-f5fd-4471-958c-1d92fe2bbb81}">
+    <Declaration><![CDATA[TYPE T_FSS_RejecCode : STRING(40);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

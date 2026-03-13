@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_Evaluation" Id="{8fd8e774-cb95-4a4d-a719-3b2fd5f0f2cc}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_Evaluation :
+STRUCT
+	nTotalReads			: UDINT;
+	nReadCodes			: UDINT;
+	nNOKCodes			: UDINT;
+
+	nGoodCodes			: UDINT;
+	nFairCodes			: UDINT;
+	nPoorCodes			: UDINT;
+
+	fReadEfficiency			: LREAL;
+	fNOKEfficiency			: LREAL;
+
+	fGoodEfficiency		: LREAL;
+	fFairEfficiency			: LREAL;
+	fPoorEfficiency			: LREAL;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

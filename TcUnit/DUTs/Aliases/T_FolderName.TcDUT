@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_FolderName" Id="{c4a41328-d043-45d5-94fa-bb780e3b190b}">
+    <Declaration><![CDATA[TYPE T_FolderName : STRING[25];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

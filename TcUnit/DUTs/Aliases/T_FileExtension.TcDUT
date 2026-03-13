@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_FileExtension" Id="{9506d373-93bb-4515-a2f0-36db9be22e12}">
+    <Declaration><![CDATA[TYPE T_FileExtension : STRING[4];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

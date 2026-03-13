@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_ReplaceLongSingleChar" Id="{e976d7ae-22b5-443f-b88e-f8c482584cc3}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_ReplaceLongSingleChar : libT_LongSTRING
+VAR_INPUT
+	sFullCode		: libT_LongSTRING;
+	sCharRemove			: libT_Char := '$1D';
+	sReplacmentChar		: libT_Char := '';
+END_VAR
+VAR
+	sCodeSize		: STRING;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[WHILE FIND2(ADR(sFullCode), ADR(sCharRemove)) > 0 DO
+	REPLACE2(ADR(sFullCode),ADR(sReplacmentChar), ADR(sFullCode), 
+						SIZEOF(sFullCode), LEN2(ADR(sCharRemove)), FIND2(ADR(sFullCode), ADR(sCharRemove)));
+END_WHILE
+
+(*Diagnostic part for long stirng operation *)
+//sCodeSize := TO_STRING(LEN2(ADR(sFullCode)));
+//CONCAT2(ADR(sCodeSize), ADR('_'), ADR(sCodeSize), SIZEOF(sCodeSize));	
+//INSERT2(ADR(sFullCode), ADR(sCodeSize), ADR(sFullCode), SIZEOF(sFullCode), 0);
+	
+F_ReplaceLongSingleChar	:= sFullCode;]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

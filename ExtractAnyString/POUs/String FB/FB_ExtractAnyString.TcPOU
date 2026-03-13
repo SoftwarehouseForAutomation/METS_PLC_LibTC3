@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_ExtractAnyString" Id="{0cdcf61b-3693-432e-819b-83c32c30c1a7}" SpecialFunc="None">
+    <Declaration><![CDATA[// Extracts a sub-string defined by prefix and suffix 
+// Works in one cycle but as FB to not use stack memore due to LongString data defined
+FUNCTION_BLOCK FB_ExtractAnyString
+VAR_INPUT
+	bExtractData			: BOOL;			(* set TRUE to remove prefix and suffix from strData *)
+	nExtractChars			: UDINT;			(* if suffix is blank, number of data chars to extract *)
+	sPrefix					: libT_LongSTRING;	(* prefix string extended from T_MaxString to T_LongSTRING *)
+	sSuffix					: libT_LongSTRING;	(* suffix string extended from T_MaxString to T_LongSTRING *)
+	bIgnoreCase				: BOOL;
+	eExtractMode			: E_ExtrMode	:= E_ExtrMode.WITHOUTIDENT_REMIDENT;
+	//bIncludeIdentifiers	: BOOL;
+END_VAR
+VAR_IN_OUT
+	sDataString				: libT_LongSTRING;	(* string to be searched *)
+END_VAR
+VAR_OUTPUT
+	bStringFound			: BOOL;			(* TRUE = sub-string with matching prefix/suffix found *)
+	sExtractedString		: libT_LongSTRING;	(* extracted data *)
+	nExtractedStringPos		: UDINT;			(* start pos of extracted string in strString *)
+	nExtractedStringLen		: UDINT;
+	nDataStringLen			: UDINT;
+END_VAR
+VAR
+	
+	//_rtExecute			: R_trig;
+	
+	_nExtractChars			: UDINT;
+	_sPrefix				: libT_LongSTRING;	(* prefix string *)
+	_sSuffix				: libT_LongSTRING;	(* suffix string *)
+	_sDataString			: libT_LongSTRING;	(* string to be searched *)
+	
+	_bIncludeIdentifiers	: BOOL;
+	_bPurgeFullString		: BOOL;
+	
+	_nDataStringLen			: UDINT;
+	_nPrefixLen				: UDINT;
+	_nSuffixLen				: UDINT;
+	
+	_bPrefixFound			: BOOL;
+	_bSuffixFound			: BOOL;
+	
+	_bPrefixIndex			: UDINT;
+	_bTempSuffixIndex		: UDINT;
+	_bSuffixIndex			: UDINT;
+	
+	_nStartDataPos			: UDINT;
+	_nAbsolutDataPos		: UDINT;
+	_nEndDataPos			: UDINT;
+	_nExtractedDataLen		: UDINT;
+	
+	_nTerminatePos			: UDINT;
+END_VAR
+
+//	EXTRWITHIDENT						//extract with ident and dont purge left side string
+//	EXTRWITHIDENT_PURGE					//extract with ident and purge left side string
+//	EXTRWITHOUTIDENT					//extract with ident and dont purge left side string, both ident left in origin string 
+//	EXTRWITHOUTIDENT_PURGE				//extract with ident and purge left side string, only sufix ident left in origin string
+//	EXTRWITHOUTIDENT_REMIDENT			//extract with ident and dont purge left side string, no ident left in origin string
+//	EXTRWITHOUTIDENT_REMIDENT_PURGE		//extract with ident and purge left side string, no ident left in origin string]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//====================================================================================	
+IF 	eExtractMode = E_ExtrMode.WITHIDENT 			OR 
+	eExtractMode = E_ExtrMode.WITHIDENT_PURGE 	THEN
+	
+	_bIncludeIdentifiers	:= TRUE;
+ELSE 
+	_bIncludeIdentifiers	:= FALSE;
+END_IF
+
+IF 	eExtractMode = E_ExtrMode.WITHIDENT_PURGE 		OR 
+	eExtractMode = E_ExtrMode.WITHOUTIDENT_PURGE 	OR 
+	eExtractMode = E_ExtrMode.WITHOUTIDENT_REMIDENT_PURGE THEN
+	
+	_bPurgeFullString	:= LEN2(ADR(sDataString)) = SIZEOF(sDataString)-1;
+ELSE 
+	_bPurgeFullString	:= FALSE;
+END_IF
+
+//====================================================================================	
+
+(* rising edge of bExecute *)
+//_rtExecute(CLK := bExtractData);
+
+//IF _rtExecute.Q THEN
+	
+//====================================================================================	
+	bStringFound 		:= FALSE;
+	
+	_sDataString 		:= '';
+	_sPrefix 			:= '';
+	_sSuffix 			:= '';
+	
+	_bPrefixFound		:= FALSE;
+	_bSuffixFound		:= FALSE;
+		
+	_bPrefixIndex		:= 0;
+	_bSuffixIndex		:= 0;
+		
+	_nStartDataPos		:= 0;
+	_nAbsolutDataPos	:= 0;
+	_nEndDataPos		:= 0;
+	//_ExtractedDataLen	:= 0;
+	
+	 (*calc string lengths *)
+	_nDataStringLen 	:= LEN2(ADR(sDataString));
+	_nPrefixLen 		:= LEN2(ADR(sPrefix));
+	_nSuffixLen 		:= LEN2(ADR(sSuffix));
+	
+	_nExtractChars:= LIMIT(0, nExtractChars, _nDataStringLen);
+	
+	(*clear outputs*)
+	nExtractedStringPos	:= 0;
+	nExtractedStringLen	:= 0;
+	nDataStringLen		:= _nDataStringLen;
+
+//====================================================================================	
+	
+	(* matching for Prefix and Suffix is case-sesnsitive - worsk only with T_MaxString *)
+	IF bIgnoreCase AND 
+		_nDataStringLen < 256 	AND 
+		_nPrefixLen < 256 		AND 
+		_nSuffixLen < 256 		THEN
+		
+		(* internal comparators are all converted to lower case *)
+		_sDataString 	:= F_ToLCase(sDataString);
+		_sPrefix 		:= F_ToLCase(sPrefix);
+		_sSuffix 		:= F_ToLCase(sSuffix);
+		
+	ELSE
+		(* internal comparators are not changed *)
+		_sDataString 	:= sDataString;
+		_sPrefix 		:= sPrefix;
+		_sSuffix 		:= sSuffix;
+	END_IF
+
+//====================================================================================	
+
+	IF _nPrefixLen = 0 AND  _nExtractChars > 0 THEN
+		
+		_bPrefixIndex		:= 1;
+		_nStartDataPos		:= 1;
+		nExtractedStringPos := 1;
+		
+	ELSIF _nPrefixLen > 0 THEN		//if _nPrefixLen = 0 then _bPrefixIndex and _StartDataPos remains 0 from init state
+		
+		_bPrefixIndex	:= FIND2(ADR(_sDataString), ADR(_sPrefix));		//find search only if prefix declared on the input
+	
+		IF _bPrefixIndex > 0 THEN		//_bPrefixIndex as result form find can be onlu positive range
+			
+			_bPrefixFound := TRUE;		// _bPrefixFound guarantee _StartDataPos > 0
+			_nStartDataPos 	:= SEL(_bIncludeIdentifiers, _bPrefixIndex + _nPrefixLen, _bPrefixIndex);
+			_nAbsolutDataPos	:= _bPrefixIndex + _nPrefixLen;
+			
+			nExtractedStringPos := _nStartDataPos;
+		END_IF
+	END_IF	
+	
+//====================================================================================		
+
+	IF _nSuffixLen = 0 AND  _nExtractChars > 0 THEN //IF only nExtractChars is declared THEN _EndDataPos pointing on elemnt determinated by nExtractChars or on last elemnt OF DataString
+		
+		_bSuffixIndex := _bPrefixIndex + _nPrefixLen + _nExtractChars;
+		_nEndDataPos := MIN(_bSuffixIndex, _nDataStringLen);
+		
+		IF _nEndDataPos > _nStartDataPos THEN  // check if both pointers not point on last DataString elemnt
+			_bSuffixFound := TRUE;	// _bSuffixFound guarantee _EndDataPos > 0 and found after _StartDataPos
+		END_IF
+		
+	ELSIF _nSuffixLen > 0 THEN // if _nSuffixLen declared, then ignor nExtractChars and search for find sufix position using 
+		
+		// Include Sufix change shift if onle Prfix was found >> SEL(_bPrefixFound, 0, _StartDataPos - 1)
+		_bTempSuffixIndex	:= FIND2(ADR(_sDataString) + SEL(_bPrefixFound, 0, _nAbsolutDataPos - 1), ADR(_sSuffix)); //find search only if sufix declared on the input and on index after prefix
+		IF _bTempSuffixIndex > 0 THEN
+			_bSuffixIndex	:= _bTempSuffixIndex + SEL(_bPrefixFound, 0, _nAbsolutDataPos - 1);	//Recalculate Sufix real position if sufix found or _bSuffixIndex remain 0 form init
+		END_IF
+		
+		(*_bTempSuffixIndex gurantee that sufix was search after prefix position so _EndDataPos always greater than _StartDataPos *) 
+		IF _bSuffixIndex > 0 THEN
+			_bSuffixFound := TRUE;	// _bSuffixFound guarantee _EndDataPos > 0
+			_nEndDataPos := SEL(_bIncludeIdentifiers,_bSuffixIndex, _bSuffixIndex + _nSuffixLen);
+		END_IF
+	END_IF
+	
+//====================================================================================		
+	
+	MEMSET(ADR(sExtractedString), 16#00, SIZEOF(sExtractedString));	//Clean sExtractedString area for new data
+
+	IF _bPrefixFound AND _bSuffixFound THEN
+
+		DELETE2(ADR(sDataString), ADR(sExtractedString), SIZEOF(sExtractedString), 
+											SIZEOF(sExtractedString) - _nEndDataPos , _nEndDataPos);
+		DELETE2(ADR(sExtractedString), ADR(sExtractedString), SIZEOF(sExtractedString), _nStartDataPos -1, 1);
+		
+	ELSIF _nPrefixLen = 0 AND _nSuffixLen = 0 AND _nExtractChars >= _nEndDataPos THEN		
+		
+		sExtractedString := sDataString;
+		
+	ELSIF _nPrefixLen = 0 AND _bSuffixFound THEN		// TO BE CONSIDERED IF WE WANT THIS CONDITION - IT WORKS LIKE LEFT
+		
+		_nStartDataPos := 1;
+		DELETE2(ADR(sDataString), ADR(sExtractedString), SIZEOF(sExtractedString), 
+										SIZEOF(sExtractedString) - _nEndDataPos , _nEndDataPos);
+										
+	ELSIF _bPrefixFound AND _nSuffixLen = 0 AND _nExtractChars = 0 THEN
+		
+		_nEndDataPos		:= _nDataStringLen;
+		DELETE2(ADR(sDataString), ADR(sExtractedString), SIZEOF(sExtractedString), _nStartDataPos -1, 1);
+		
+	END_IF
+		
+	nExtractedStringLen	:= LEN2(ADR(sExtractedString));
+	IF nExtractedStringLen <> 0 THEN  bStringFound := TRUE; END_IF
+	
+//====================================================================================
+	IF NOT bStringFound AND _bPurgeFullString THEN
+		
+		sDataString := '';
+		nDataStringLen := 0;
+		
+	ELSIF sExtractedString = sDataString THEN
+		
+		sDataString := '';
+		nDataStringLen := 0;
+		
+	ELSIF bStringFound THEN //Terminate DataString only if endpositin for sufix is determinated and guratnee _EndDataPos greater then 0
+		
+		CASE eExtractMode OF
+
+			E_ExtrMode.WITHIDENT:
+			
+				DELETE2(ADR(sDataString), ADR(sDataString), SIZEOF(sDataString), nExtractedStringLen, _nStartDataPos);		
+					
+			E_ExtrMode.WITHIDENT_PURGE:	
+			
+				IF _nEndDataPos = _nDataStringLen THEN
+					DELETE2(ADR(sDataString), ADR(sDataString), SIZEOF(sDataString), _nEndDataPos, 1);
+				ELSE
+					DELETE2(ADR(sDataString), ADR(sDataString), SIZEOF(sDataString), _nEndDataPos -1, 1);
+				END_IF
+					
+			E_ExtrMode.WITHOUTIDENT:		
+			
+				 DELETE2(ADR(sDataString), ADR(sDataString), SIZEOF(sDataString), nExtractedStringLen, _nStartDataPos);	
+		
+			E_ExtrMode.WITHOUTIDENT_PURGE:
+						
+				IF _nEndDataPos = _nDataStringLen THEN
+					DELETE2(ADR(sDataString), ADR(sDataString), SIZEOF(sDataString), _nEndDataPos, 1);
+				ELSE
+					DELETE2(ADR(sDataString), ADR(sDataString), SIZEOF(sDataString), _nEndDataPos -1, 1);
+				END_IF
+				
+			E_ExtrMode.WITHOUTIDENT_REMIDENT:
+			
+				DELETE2(ADR(sDataString), ADR(sDataString), SIZEOF(sDataString), 
+										nExtractedStringLen + _nPrefixLen + _nSuffixLen, _bPrefixIndex);	
+		
+			E_ExtrMode.WITHOUTIDENT_REMIDENT_PURGE:		
+						
+				IF _nEndDataPos = _nDataStringLen THEN
+					DELETE2(ADR(sDataString), ADR(sDataString), SIZEOF(sDataString), _nEndDataPos, 1);
+				ELSE
+					DELETE2(ADR(sDataString), ADR(sDataString), SIZEOF(sDataString), _bSuffixIndex + _nSuffixLen -1, 1);
+				END_IF
+				
+		ELSE
+			
+			DELETE2(ADR(sDataString), ADR(sDataString), SIZEOF(sDataString), 
+							nExtractedStringLen + _nPrefixLen + _nSuffixLen, _bPrefixIndex);
+							
+		END_CASE
+	
+		nDataStringLen := LEN2(ADR(sDataString));
+	END_IF
+//END_IF
+
+
+(*
+
+		
+		IF _bSuffixIndex > _nDataStringLen THEN	//_EndDataPos cannot bi greater then _nDataStringLen due to previuse min condition
+			_ExtractedDataLen := _EndDataPos -_StartDataPos + 1; // if _EndDataPos pointing on last element of sDataString, we must include it ofr extratcion
+		ELSE
+			_ExtractedDataLen := _EndDataPos -_StartDataPos;	//if prefix and sufix are found  _ExtractedDataLen always greater than 0
+		END_IF
+		
+		MEMMOVE(ADR(sExtractedString),ADR(sDataString) + _StartDataPos -1 , _ExtractedDataLen);	// _StartDataPos -1 as initial adress has alredy value 1
+		//MEMSET(ADR(sExtractedString) + _ExtractedDataLen, 16#00, _nDataStringLen - _ExtractedDataLen);
+		
+		
+		
+		//MEMMOVE(ADR(sExtractedString),ADR(sDataString), _EndDataPos);
+		//MEMSET(ADR(sExtractedString) + _EndDataPos, 16#00, _nDataStringLen - _EndDataPos);
+		
+		
+		
+	
+		IF _bSuffixIndex > _nDataStringLen THEN	//_EndDataPos cannot bi greater then _nDataStringLen due to previuse min condition
+			_nTerminatePos := _EndDataPos;
+		ELSE
+			_nTerminatePos := SEL(_bIncludeIdentifiers, _EndDataPos + _nSuffixLen, _EndDataPos) -1; //sub 1 from final result as adressing of char start form pos 1
+			//so if Terminate index should be 10 then _nTerminatePos must be 9 to add with initial addres of DataString
+		END_IF
+		
+		IF _nDataStringLen > _nTerminatePos THEN	// guarantee we are not operating beyond DataString area
+			MEMMOVE(ADR(sDataString), ADR(sDataString) + _nTerminatePos, _nDataStringLen - _nTerminatePos);
+			MEMSET(ADR(sDataString) + _nDataStringLen - _nTerminatePos, 16#00, _nTerminatePos);
+		ELSIF _nDataStringLen <= _nTerminatePos THEN
+			sDataString := '';
+		END_IF
+			
+	*)
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

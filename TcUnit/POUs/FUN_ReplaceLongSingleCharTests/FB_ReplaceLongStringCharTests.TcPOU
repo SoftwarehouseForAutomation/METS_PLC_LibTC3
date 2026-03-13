@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_ReplaceLongStringCharTests" Id="{00b259e6-a514-4746-aa88-72541c8bceb6}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ReplaceLongStringCharTests EXTENDS FB_TestSuite
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//==============================================================
+//MAIN TESTS
+//==============================================================
+
+testMain01_ExtractCharFromLongString_AllCahrsExtracted();
+testMain02_RepalceCharFromLongString_AllCahrsRepalced();
+
+//==============================================================
+//NEGATIVE TESTS
+//==============================================================
+
+testNeg01_ReplaceInputs_NoChangeInFullCode();
+testNeg02_TwoCharsOnInputs_OneCharReplaced();
+
+//==============================================================
+//SEQUENCE TESTS
+//==============================================================
+
+//==============================================================
+//OTHERS TESTS
+//==============================================================
+]]></ST>
+    </Implementation>
+    <Folder Name="01 Main" Id="{dbdc8137-5f1f-490d-a13a-c0a265de80dd}" />
+    <Folder Name="02 Negative" Id="{eb53d9df-8a22-4189-8ef1-afad4c49a4ec}" />
+    <Method Name="testMain01_ExtractCharFromLongString_AllCahrsExtracted" Id="{e382b734-fd88-4134-97c3-4a5786464c3f}" FolderPath="01 Main\">
+      <Declaration><![CDATA[METHOD INTERNAL testMain01_ExtractCharFromLongString_AllCahrsExtracted
+VAR
+	
+	sFullCode			: T_LongSTRING;	
+	sExpectedResult		: T_LongSTRING;
+	sActualResult		: T_LongSTRING;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('testMain01_ExtractCharFromLongString_AllCahrsExtracted');
+
+sFullCode := 'ST=53;$02CT=10;DS=GZDNP5JOA3IL$1D;OG=3;XP=-50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=1;$03$04
+											ST=53;$02CT=10;DS=N7E1Y89UNK3O$1D;OG=3;XP=-50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=2;$03$04
+											ST=53;$02CT=10;DS=JHWJXYFNX9DS$1D;OG=3;XP=50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=3;$03$04
+											ST=53;$02CT=10;DS=XGBEZLBV8A9I$1D;OG=3;XP=50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=4;$03$04'; 
+
+sExpectedResult := 'ST=53;$02CT=10;DS=GZDNP5JOA3IL;OG=3;XP=-50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=1;$03$04
+											ST=53;$02CT=10;DS=N7E1Y89UNK3O;OG=3;XP=-50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=2;$03$04
+											ST=53;$02CT=10;DS=JHWJXYFNX9DS;OG=3;XP=50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=3;$03$04
+											ST=53;$02CT=10;DS=XGBEZLBV8A9I;OG=3;XP=50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=4;$03$04'; 
+
+
+sActualResult	:= EXTRACT.F_ReplaceLongSingleChar(sFullCode:= sFullCode, 
+							sCharRemove:= '$1D', 
+							sReplacmentChar:='' );
+							
+AssertEquals_STRING(Expected:= sExpectedResult, 
+						Actual:= sActualResult, 
+						Message:= 'Extracted string is not as expected');
+						
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="testMain02_RepalceCharFromLongString_AllCahrsRepalced" Id="{ea182154-df08-421a-a91f-b685ac40f6a0}" FolderPath="01 Main\">
+      <Declaration><![CDATA[METHOD INTERNAL testMain02_RepalceCharFromLongString_AllCahrsRepalced
+VAR
+	
+	sFullCode			: T_LongSTRING;	
+	sExpectedResult		: T_LongSTRING;
+	sActualResult		: T_LongSTRING;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('testMain02_RepalceCharFromLongString_AllCahrsRepalced');
+
+sFullCode := 'ST=53;$02CT=10;DS=GZDNP5JOA3IL$1D;OG=3;XP=-50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=1;$03$04
+											ST=53;$02CT=10;DS=N7E1Y89UNK3O$1D;OG=3;XP=-50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=2;$03$04
+											ST=53;$02CT=10;DS=JHWJXYFNX9DS$1D;OG=3;XP=50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=3;$03$04
+											ST=53;$02CT=10;DS=XGBEZLBV8A9I$1D;OG=3;XP=50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=4;$03$04'; 
+
+sExpectedResult := 'ST=53;$02CT=10;DS=GZDNP5JAA3IL$1D;AG=3;XP=-50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=1;$03$04
+											ST=53;$02CT=10;DS=N7E1Y89UNK3A$1D;AG=3;XP=-50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=2;$03$04
+											ST=53;$02CT=10;DS=JHWJXYFNX9DS$1D;AG=3;XP=50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=3;$03$04
+											ST=53;$02CT=10;DS=XGBEZLBV8A9I$1D;AG=3;XP=50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=4;$03$04'; 
+
+
+sActualResult	:= EXTRACT.F_ReplaceLongSingleChar(sFullCode:= sFullCode, 
+							sCharRemove:= 'O', 
+							sReplacmentChar:='A' );
+							
+AssertEquals_STRING(Expected:= sExpectedResult, 
+						Actual:= sActualResult, 
+						Message:= 'Extracted string is not as expected');
+						
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="testNeg01_ReplaceInputs_NoChangeInFullCode" Id="{bfa93514-845a-4ba4-af7e-00f05fb60ca7}" FolderPath="02 Negative\">
+      <Declaration><![CDATA[METHOD INTERNAL testNeg01_ReplaceInputs_NoChangeInFullCode
+VAR
+	
+	sFullCode			: T_LongSTRING;	
+	sExpectedResult		: T_LongSTRING;
+	sActualResult		: T_LongSTRING;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('testNeg01_ReplaceInputs_NoChangeInFullCode');
+
+sFullCode := 'ST=53;$02CT=10;DS=GZDNP5JOA3IL$1D;OG=3;XP=-50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=1;$03$04
+											ST=53;$02CT=10;DS=N7E1Y89UNK3O$1D;OG=3;XP=-50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=2;$03$04
+											ST=53;$02CT=10;DS=JHWJXYFNX9DS$1D;OG=3;XP=50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=3;$03$04
+											ST=53;$02CT=10;DS=XGBEZLBV8A9I$1D;OG=3;XP=50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=4;$03$04'; 
+
+sExpectedResult := 'ST=53;$02CT=10;DS=GZDNP5JOA3IL$1D;OG=3;XP=-50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=1;$03$04
+											ST=53;$02CT=10;DS=N7E1Y89UNK3O$1D;OG=3;XP=-50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=2;$03$04
+											ST=53;$02CT=10;DS=JHWJXYFNX9DS$1D;OG=3;XP=50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=3;$03$04
+											ST=53;$02CT=10;DS=XGBEZLBV8A9I$1D;OG=3;XP=50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=4;$03$04'; 
+
+
+sActualResult	:= EXTRACT.F_ReplaceLongSingleChar(sFullCode:= sFullCode, 
+							sCharRemove:= '', 
+							sReplacmentChar:='$1D' );
+							
+AssertEquals_STRING(Expected:= sExpectedResult, 
+						Actual:= sActualResult, 
+						Message:= 'Extracted string is not as expected');
+						
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="testNeg02_TwoCharsOnInputs_OneCharReplaced" Id="{75bec672-d02e-4e8e-8628-880a7c8410e0}" FolderPath="02 Negative\">
+      <Declaration><![CDATA[METHOD INTERNAL testNeg02_TwoCharsOnInputs_OneCharReplaced
+VAR
+	
+	sFullCode			: T_LongSTRING;	
+	sExpectedResult		: T_LongSTRING;
+	sActualResult		: T_LongSTRING;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('testNeg02_TwoCharsOnInputs_OneCharReplaced');
+
+sFullCode := 'ST=53;$02CT=10;DS=GZDNP5JOA3IL$1D;OG=3;XP=-50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=1;$03$04
+											ST=53;$02CT=10;DS=N7E1Y89UNK3O$1D;OG=3;XP=-50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=2;$03$04
+											ST=53;$02CT=10;DS=JHWJXYFNX9DS$1D;OG=3;XP=50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=3;$03$04
+											ST=53;$02CT=10;DS=XGBEZLBV8A9I$1D;OG=3;XP=50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=4;$03$04'; 
+
+sExpectedResult := 'ST=53;$02CT=10;DS=GZDNP5JOA3IL$1D;OG=3;XP=-50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=1;$1D$04
+											ST=53;$02CT=10;DS=N7E1Y89UNK3O$1D;OG=3;XP=-50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=2;$1D$04
+											ST=53;$02CT=10;DS=JHWJXYFNX9DS$1D;OG=3;XP=50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=3;$1D$04
+											ST=53;$02CT=10;DS=XGBEZLBV8A9I$1D;OG=3;XP=50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=4;$1D$04';
+
+
+{warning disable C0198}
+
+sActualResult	:= EXTRACT.F_ReplaceLongSingleChar(sFullCode:= sFullCode, 
+							sCharRemove:= '$03$04', 
+							sReplacmentChar:='$1D' );
+{warning restore C0198}	
+						
+AssertEquals_STRING(Expected:= sExpectedResult, 
+						Actual:= sActualResult, 
+						Message:= 'Extracted string is not as expected');
+						
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>
