@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_CONCAT7" Id="{e6931831-d9e2-4f2b-9999-3fa46184e0d7}" SpecialFunc="None">
+    <Declaration><![CDATA[(* concatenate 7 strings *)
+FUNCTION F_CONCAT7 : T_MaxString
+VAR_INPUT
+	strString1		: T_MaxString;
+	strString2		: T_MaxString;
+	strString3		: T_MaxString;
+	strString4		: T_MaxString;
+	strString5		: T_MaxString;
+	strString6		: T_MaxString;
+	strString7		: T_MaxString;
+END_VAR
+VAR
+END_VAR
+(*
+-------------------------------------------------------------------------------------------------
+Date		Version	Author	Comments
+-------------------------------------------------------------------------------------------------
+30/01/2015	3.00.00	PB		No change
+
+-------------------------------------------------------------------------------------------------
+05/02/2010	1.00.00	PB		Initial release
+
+-------------------------------------------------------------------------------------------------
+*)]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[F_CONCAT7 := CONCAT(strString1, strString2);
+F_CONCAT7 := CONCAT(F_CONCAT7, strString3);
+F_CONCAT7 := CONCAT(F_CONCAT7, strString4);
+F_CONCAT7 := CONCAT(F_CONCAT7, strString5);
+F_CONCAT7 := CONCAT(F_CONCAT7, strString6);
+F_CONCAT7 := CONCAT(F_CONCAT7, strString7);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

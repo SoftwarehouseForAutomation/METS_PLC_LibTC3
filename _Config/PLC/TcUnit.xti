@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.19" ClassName="CNestedPlcProjDef">
+	<Project GUID="{5C00976E-984F-4C05-971B-96295EA027B2}" Name="TcUnit" PrjFilePath="..\..\TcUnit\TcUnit.plcproj" TmcFilePath="..\..\TcUnit\TcUnit.tmc" ReloadTmc="true" AmsPort="853" FileArchiveSettings="#x000e" SymbolicMapping="true">
+		<Instance File="TcUnit Instance.xti"/>
+	</Project>
+</TcSmItem>

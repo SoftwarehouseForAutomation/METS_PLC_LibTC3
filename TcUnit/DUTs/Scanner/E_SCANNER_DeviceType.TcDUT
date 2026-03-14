@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SCANNER_DeviceType" Id="{52f82164-40cf-403d-9ade-6c2fe0cf2fc4}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+//{attribute 'strict'}
+TYPE E_SCANNER_DeviceType :    (*tAcquisitionTime - to be secured*)
+(
+	NONE,
+	MV420_F,			//F -> Full resolution
+	MV420_H,			//H -> Half resolution
+	MV440SR_F,
+	MV440SR_H,
+	MV440HR_F,
+	MV440HR_H,
+	MV440UR_F,
+	MV440UR_H,
+	MV540S_F,
+	MV540S_H,
+	MV540H_F,
+	MV540H_H,
+	MV560U_F,
+	MV560U_H,
+	V430F	(*Omron*)
+
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_CodeMRP" Id="{b8697874-61e4-4e7a-a8c0-f04c4943355c}">
+    <Declaration><![CDATA[TYPE T_CodeMRP : STRING[8];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

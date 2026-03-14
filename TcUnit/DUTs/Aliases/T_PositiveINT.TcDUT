@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_PositiveINT" Id="{b43a706f-755f-49b6-ab99-f15014041a46}">
+    <Declaration><![CDATA[TYPE T_PositiveINT : INT(0..32767); END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

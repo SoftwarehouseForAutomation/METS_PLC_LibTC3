@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SCANNER_Name" Id="{927fd84d-9f3a-40ba-ba31-d174518dd04a}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+//{attribute 'strict'}
+TYPE E_SCANNER_Name :
+(
+	CAM01		:= 1,
+	CAM02		:= 2,
+	CAM03		:= 3,
+	CAM04		:= 4,
+	CAM05		:= 5,
+	CAM06		:= 6,
+	CAM07		:= 7,
+	CAM08		:= 8,
+	CAM09		:= 9,
+	CAM10		:= 10,
+	CAM11		:= 11,
+	CAM12		:= 12
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

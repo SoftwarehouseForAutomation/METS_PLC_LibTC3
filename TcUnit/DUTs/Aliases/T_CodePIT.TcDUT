@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_CodePIT" Id="{0148b596-6c5e-4926-8373-25ccd9a71555}">
+    <Declaration><![CDATA[TYPE T_CodePIT : STRING[7];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

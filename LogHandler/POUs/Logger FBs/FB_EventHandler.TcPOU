@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_EventHandler" Id="{e27b869d-ed7f-47b8-b920-0c00fdc051f4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_EventHandler
+VAR_INPUT
+	_IsUsed					: BOOL;
+	bLogData					: BOOL;
+	sLogMessage				: libT_LongSTRING;
+END_VAR
+VAR_IN_OUT
+	stEventData				: ST_EventData;
+END_VAR
+VAR_OUTPUT
+	bDone						: BOOL;
+	bBufferOverflow			: BOOL;
+END_VAR
+VAR
+	rtExecute					: R_TRIG;
+	sString 					: libT_LongSTRING;
+	nStringLen					: UINT;
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[_IsUsed := TRUE;
+
+rtExecute(CLK:=bLogData);
+
+IF NOT stEventData.bBufferOverflow AND stEventData.bEnable AND sLogMessage <> '' AND rtExecute.Q THEN
+
+	sString := '';
+	(*stEventData.nCounter := stEventData.nCounter + 1;
+	sString := F_CONCAT4(F_AddPaddingUDINT(stEventData.nCounter, 7), ' : ', stEventData.sTimeStamp, ' : ');*)
+	//sString := CONCAT(stEventData.sTimeStamp, ' : ');
+	//sString := F_LongCONCAT(sString,sLogMessage);
+	//sString := F_LongCONCAT(sString,'.$R$N');
+	CONCAT2(ADR(stEventData.sTimeStamp), ADR(' : '), ADR(sString), SIZEOF(sString));
+	CONCAT2(ADR(sString), ADR(sLogMessage), ADR(sString), SIZEOF(sString));
+	CONCAT2(ADR(sString), ADR('.$R$N'), ADR(sString), SIZEOF(sString));
+	nStringLen := TO_UINT(LEN2(ADR(sString)));  //Max size 1024 byte -> LongString
+
+	stEventData.nControlSize := stEventData.nControlSize + nStringLen;
+
+	IF stEventData.nControlSize <  stEventData.nMaxImageArraySize THEN
+		MEMMOVE(ADR(stEventData.aDataLogImage[stEventData.nImageByte]), ADR(sString), nStringLen);
+		stEventData.nImageByte := stEventData.nImageByte + nStringLen;
+	ELSE
+		stEventData.bBufferOverflow	:=TRUE;
+		bBufferOverflow	:= TRUE;
+	END_IF
+
+	bDone	:= TRUE;
+	(*F_LOG_Handler := TRUE;*)
+ELSE
+	bDone	:= FALSE;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_LogHandlerTests" Id="{f77039cd-321d-4c47-963c-91f86ae4e230}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_LogHandlerTests EXTENDS FB_TestSuite
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//==============================================================
+//MAIN TESTS
+//==============================================================
+
+testMain01_ReducedMaxImageSize_BufferOverflow();
+
+//==============================================================
+//NEGATIVE TESTS
+//==============================================================
+
+//==============================================================
+//SEQUENCE TESTS
+//==============================================================
+
+//==============================================================
+//OTHERS TESTS
+//==============================================================
+]]></ST>
+    </Implementation>
+    <Folder Name="01 Main" Id="{28088f49-2207-4f0d-bd8e-933442717bd0}" />
+    <Folder Name="02 Negative" Id="{71d7eb2b-832e-4d20-a52d-53857f5f4550}" />
+    <Method Name="testMain01_ReducedMaxImageSize_BufferOverflow" Id="{1393e1e3-b9c9-4caf-b40d-17cd59dab7b6}" FolderPath="01 Main\">
+      <Declaration><![CDATA[METHOD INTERNAL testMain01_ReducedMaxImageSize_BufferOverflow
+VAR
+	fbLogHandler			: LOGGER.FB_EventHandler;
+	sLogMessage				: T_LongSTRING;
+	
+END_VAR
+VAR_INST
+	stEventDataUT				: LOGGER.ST_EventData;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[TEST('testMain01_ReducedMaxImageSize_BufferOverflow');
+
+stEventDataUT.bEnable := TRUE;
+//stEventDataUT.sTimeStamp :=MID( F_SYSTEM_SystemTimeAsISO8601(gDevice.stMetsStatus.stCTDateTime.sSystemTime, gDevice.stMetsStatus.stCTDateTime.sUTCTimeZoneOffset ), 12, 12);
+stEventDataUT.nMaxImageArraySize	:= 300;
+sLogMessage := '$01ST=53;$02CT=10;DS=GZDNP5JOA3IL;OG=3;XP=-50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=1;$03
+					$01ST=53;$02CT=10;DS=N7E1Y89UNK3O;OG=3;XP=-50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=2;$03
+					$01ST=53;$02CT=10;DS=JHWJXYFNX9DS;OG=3;XP=50;YP=50;AP=-88;CS=06.2;SC=0070;QS=3;PN=3;$03
+					$01ST=53;$02CT=10;DS=XGBEZLBV8A9I;OG=3;XP=50;YP=-50;AP=-88;CS=06.2;SC=0070;QS=3;PN=4;$03';
+
+
+fbLogHandler(
+	_IsUsed:= TRUE, 
+	bLogData:= TRUE , 
+	sLogMessage:= sLogMessage , 
+	stEventData:= stEventDataUT, 
+	bDone=> , 
+	bBufferOverflow=> );
+
+
+AssertEquals_BOOL(Expected := TRUE, 
+						Actual:= fbLogHandler.bBufferOverflow, 
+						Message:= 'Buffer output state not as expected');
+					
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

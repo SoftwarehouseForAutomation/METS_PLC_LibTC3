@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SCANNER_CodeType" Id="{790f7d68-f224-4169-8257-20f82f8c828e}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+//{attribute 'strict'}
+TYPE E_SCANNER_CodeType :
+(
+	NONE 		:= 0,
+	OCR			:= 7,
+	DATAMARTIX	:= 10,
+	QR			:= 11,
+	DOTCODE		:= 14,
+	CODE128		:= 20,
+	ITF14		:= 24,
+	EAN13		:= 27,
+	EAN8		:= 28,
+	UNKNOWN		:= 99
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

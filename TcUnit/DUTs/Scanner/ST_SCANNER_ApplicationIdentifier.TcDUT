@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_ApplicationIdentifier" Id="{45e6850e-299d-4277-ba57-1e2ed04a942b}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_ApplicationIdentifier :
+STRUCT
+	strAI		: STRING(4);
+	bFixed		: BOOL;
+	nLength		: UINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

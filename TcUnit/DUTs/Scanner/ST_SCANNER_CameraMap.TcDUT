@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_CameraMap" Id="{01a09907-4501-4a29-8248-d6afb1c08981}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_CameraMap :
+STRUCT
+	nIndex				: INT;
+	nReqProgram			: BYTE;
+	stOptions				: ST_SCANNER_Options;
+	aPackPos				: ARRAY[1..5, 1..cMAX_CAMERA_PROG_NUMBER] OF BYTE;
+	aTargetBuffer			: ARRAY[1..5] OF BYTE;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

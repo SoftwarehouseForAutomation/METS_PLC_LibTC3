@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_SYSTEM_SystemTimeAsISO8601" Id="{df1b1fb8-764c-4ebe-8228-9e51a839303f}" SpecialFunc="None">
+    <Declaration><![CDATA[(* generate format 2018-08-08T11:46:15.4869506+02:00*)
+FUNCTION F_SYSTEM_SystemTimeAsISO8601 : T_ISO8601Time
+VAR_INPUT
+	sSystemTime			: TIMESTRUCT;
+	strUTCTimeZone		: STRING(6);
+END_VAR
+VAR
+	strYear				: STRING(4);
+	strMonth				: STRING(2);
+	strDay				: STRING(2);
+	strMiliseconds			: STRING(3);
+
+	strHour				: STRING(2);
+	strMinute				: STRING(2);
+	strSecond				: STRING(2);
+
+	strDate				: STRING(10);
+	strTime				: STRING(13);
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*Date*)
+	strYear:=F_StringAddPrefix(WORD_TO_STRING(sSystemTime.wYear), 4, '0');
+	strMonth:=F_StringAddPrefix(WORD_TO_STRING(sSystemTime.wMonth), 2, '0');
+	strDay:=F_StringAddPrefix(WORD_TO_STRING(sSystemTime.wDay), 2, '0');
+
+(*Time*)
+	strHour:=F_StringAddPrefix(WORD_TO_STRING(sSystemTime.wHour), 2, '0');
+	strMinute:=F_StringAddPrefix(WORD_TO_STRING(sSystemTime.wMinute), 2, '0');
+	strSecond:=F_StringAddPrefix(WORD_TO_STRING(sSystemTime.wSecond), 2, '0');
+	strMiliseconds:=F_StringAddPrefix(WORD_TO_STRING(sSystemTime.wMilliseconds), 3, '0');
+(*Print*)
+
+
+	strDate:=F_CONCAT5(strYear, '-', strMonth, '-', strDay);
+	strTime:=F_CONCAT6('T', strHour, ':', strMinute, ':', strSecond);
+	strTime:=F_CONCAT3( strTime,'.', strMiliseconds);
+
+	IF strUTCTimeZone = '+00:00' THEN
+		F_SYSTEM_SystemTimeAsISO8601:=F_CONCAT3(strDate, strTime, 'Z');
+	ELSE
+		F_SYSTEM_SystemTimeAsISO8601:=F_CONCAT3(strDate, strTime, strUTCTimeZone);
+	END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_CodeCRYPTO" Id="{e60027c5-37c7-40a3-b130-a4c12797c47b}">
+    <Declaration><![CDATA[TYPE T_CodeCRYPTO : STRING[20];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

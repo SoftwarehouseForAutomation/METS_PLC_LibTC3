@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_PACK_Barcode" Id="{3fb78c0e-b306-4ef9-a22e-aa7b80fb5f54}">
+    <Declaration><![CDATA[TYPE T_PACK_Barcode : STRING(cMAX_PACKCODE_LENGHT);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

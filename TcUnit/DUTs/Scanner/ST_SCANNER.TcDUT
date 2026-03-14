@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER" Id="{af993b1a-0eb1-416e-b86c-1c60d58af92f}">
+    <Declaration><![CDATA[TYPE ST_SCANNER :
+STRUCT
+	bReady							: BOOL;
+	nState							: BYTE;
+	bLastBarcodeValid					: BOOL;
+(**)	strLastCodeRead					: T_MaxString;
+(**)	strLastBarcode						: STRING(253);	(*zenon*)
+	strCurrentCodeRead					: T_MaxString;
+	aLast10CodesRead					: ARRAY[1..10]  OF T_MaxString;
+	strLastStatus						: T_MaxString;
+	nTriggerCounter					: UDINT;
+	sManualCtrlScanner					: ST_SCANNER_ManualCtrl;
+(**)(*	sSStats							: ST_SCANNER_Statistics;*)
+	sScannerOpState					: ST_SCANNER_OpState;
+	sImageData						: ST_SCANNER_ImageData;
+	bEnableActive						: BOOL;
+	nActiveProgram					: BYTE;
+	bAcceptTrigger						: BOOL;
+	sTriggerID							: ST_SCANNER_TriggerID;
+	eSocketState						: E_SocketConnectionState;
+	sReadPerformance					: ST_SCANNER_Performance;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

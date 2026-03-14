@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_StringAddPrefix" Id="{1d8f46a5-051a-4288-b14e-20876ea66787}" SpecialFunc="None">
+    <Declaration><![CDATA[(* add specified char(s) in front of a string to make up to specified length *)
+FUNCTION F_StringAddPrefix : T_MaxString
+VAR_INPUT
+	sString		: T_MaxString;	(* initial string *)
+	nTargetLen 		: UINT;			(* string length required *)
+	sChar			: STRING(1);	(* char to be appended to string *)
+END_VAR
+VAR
+	nStringLen		: UINT;
+	nCharsReq		: uINT;
+END_VAR
+(*
+-------------------------------------------------------------------------------------------------
+Date		Version	Author	Comments
+-------------------------------------------------------------------------------------------------
+30/01/2015	3.00.00	PB		Initial release
+
+-------------------------------------------------------------------------------------------------
+*)
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* length of input string *)
+nStringLen := TO_UINT(LEN(sString));
+
+(* Chekck target string is longer than processing string *)
+IF nTargetLen >= nStringLen THEN
+	
+	(* total prefix chars required *)
+	nCharsReq := MIN(nTargetLen, SIZEOF(F_StringAddPrefix) - 1) - nStringLen;
+
+	(* string needs additional chars *)
+	IF nCharsReq > 0 THEN
+	
+		(* set prefix chars to specified character *)
+		MEMSET(ADR(F_StringAddPrefix), F_ToASC(sChar), nCharsReq);
+	
+		(* append strString to output string *)
+		MEMMOVE(ADR(F_StringAddPrefix) + nCharsReq, ADR(sString), nStringLen);
+	
+		(* reset last char to 16#00 to terminate the string *)
+		MEMSET(ADR(F_StringAddPrefix) + nCharsReq + nStringLen, 16#00, 1);
+	
+	(* no additional chars required *)
+	ELSE
+	
+		(* copy strString to output *)
+		F_StringAddPrefix := sString;
+	END_IF
+ELSE
+	(* copy shrinced strString to output *)
+	F_StringAddPrefix := LEFT(sString, TO_INT(nTargetLen));
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_CodePO" Id="{64eb1131-8253-43da-9201-d6a3dd972be3}">
+    <Declaration><![CDATA[TYPE T_CodePO : STRING[20];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

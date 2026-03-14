@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="libT_LongSTRING" Id="{845ff768-7d91-4814-8251-e2d4c721c106}">
+    <Declaration><![CDATA[TYPE libT_LongSTRING : STRING(1023);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>
