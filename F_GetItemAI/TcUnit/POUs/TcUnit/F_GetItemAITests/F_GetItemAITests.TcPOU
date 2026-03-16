@@ -29,7 +29,8 @@ Outer_code03_RSKU_extractedWrong();
 
 //==============================================================
 //03.Pack_Code
-//==============================================================]]></ST>
+//==============================================================
+Pack_code01_SERIAL_extractedWrong();]]></ST>
     </Implementation>
     <Folder Name="01.CASE_Code" Id="{eca26ad4-16d4-4352-be9e-83f84f9e1ce9}" />
     <Folder Name="02.Outer_Code" Id="{dd4a5fbd-c64a-4e04-bcc7-ca7e40191a87}" />
@@ -238,40 +239,6 @@ TcUnit.TEST('Outer_code01_GTIN_extractedWrong');
 TEST_FINISHED();]]></ST>
       </Implementation>
     </Method>
-    <Method Name="Outer_code01_GTIN_extractedWrong_1" Id="{1ede5dd4-b54a-4251-9605-56f61db2c510}" FolderPath="03.Pack_Code\">
-      <Declaration><![CDATA[METHOD INTERNAL Outer_code01_GTIN_extractedWrong_1
-VAR
-	sFullCode		: T_MaxString;
-	eCodeType		: CODE.E_CodeAI;
-	stCodeInfo		: CODE.ST_CodeInfo;
-	
-	sF_GetItemAI	: T_MaxString;	
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[// Validation data init
-stCodeInfo.eCodeType	:= CODE.E_CodeType.E_OUTER;
-TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
-
-//Change some data for test scenario below
-sFullCode := '(01)08809670763114(21)27114GK084010887300(240)10174286';
-eCodeType	:= CODE.E_CodeAI.GTIN;
-
-
-	
-TcUnit.TEST('Case_code01_GTIN_extractedWrong');
-
-	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
-									 eCodeType := eCodeType, 
-									 stCodeInfo := stCodeInfo);
-	
-	AssertEquals_STRING(Expected:= '17501031711052', 
-						Actual:= TO_STRING(sF_GetItemAI), 
-						Message:= 'Wrong GTIN extracted');						
-
-TEST_FINISHED();]]></ST>
-      </Implementation>
-    </Method>
     <Method Name="Outer_code02_SERIAL_extractedWrong" Id="{2ae84010-18e7-43ad-9376-625eade8479e}" FolderPath="02.Outer_Code\">
       <Declaration><![CDATA[METHOD INTERNAL Outer_code02_SERIAL_extractedWrong
 VAR
@@ -336,6 +303,40 @@ TcUnit.TEST('Outer_code03_RSKU_extractedWrong');
 	AssertEquals_STRING(Expected:= '10174286', 
 						Actual:= TO_STRING(sF_GetItemAI), 
 						Message:= 'Wrong Outer RSKU extracted');						
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Pack_code01_SERIAL_extractedWrong" Id="{1ede5dd4-b54a-4251-9605-56f61db2c510}" FolderPath="03.Pack_Code\">
+      <Declaration><![CDATA[METHOD INTERNAL Pack_code01_SERIAL_extractedWrong
+VAR
+	sFullCode		: T_MaxString;
+	eCodeType		: CODE.E_CodeAI;
+	stCodeInfo		: CODE.ST_CodeInfo;
+	
+	sF_GetItemAI	: T_MaxString;	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Validation data init
+stCodeInfo.eCodeType	:= CODE.E_CodeType.E_PACK;
+TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
+
+//Change some data for test scenario below
+sFullCode := 'BRK8D60ZRJYD';
+eCodeType	:= CODE.E_CodeAI.SERIAL;
+
+
+	
+TcUnit.TEST('Pack_code01_SERIAL_extractedWrong');
+
+	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
+									 eCodeType := eCodeType, 
+									 stCodeInfo := stCodeInfo);
+	
+	AssertEquals_STRING(Expected:= 'BRK8D60ZRJYD', 
+						Actual:= TO_STRING(sF_GetItemAI), 
+						Message:= 'Wrong Pack SERIAL extracted');						
 
 TEST_FINISHED();]]></ST>
       </Implementation>
@@ -414,7 +415,15 @@ stCodeInfo.nEntireLength	:= 54;
 stCodeInfo.nNumberOfAIs		:= 3;
 
 ELSIF stCodeInfo.eCodeType = CODE.E_CodeType.E_PACK THEN
-	;
+// SERIAL	
+	stCodeInfo.stSerialCode.sStartAI := '';
+	stCodeInfo.stSerialCode.sEndAI := '';
+	stCodeInfo.stSerialCode.nCodeLength := 12;
+	stCodeInfo.stSerialCode.nCodeStartPos := 0;	
+	
+stCodeInfo.nMinLength 		:= 10; // NOT used
+stCodeInfo.nEntireLength	:= 12;
+stCodeInfo.nNumberOfAIs		:= 0;
 
 END_IF
 ]]></ST>

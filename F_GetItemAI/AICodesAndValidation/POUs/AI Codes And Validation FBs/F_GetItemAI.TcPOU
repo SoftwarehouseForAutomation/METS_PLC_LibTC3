@@ -80,10 +80,10 @@ END_VAR]]></Declaration>
 	IF nStart > 0 AND nEnd > 0 THEN
 		sResultString := MID(sFullCode, nEnd - nStart, nStart);
 	ELSE
-		sResultString := '11';
+		sResultString := '';
 	END_IF
 ELSE
-	sResultString := '22';
+	sResultString := '';
 END_IF
 
 F_GetItemAI := sResultString;]]></ST>
