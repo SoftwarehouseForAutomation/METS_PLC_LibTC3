@@ -276,12 +276,12 @@ END_VAR
     <Action Name="InitManual" Id="{82e374ac-3a1c-4ce3-97a1-fb1ecbadc4a3}">
       <Implementation>
         <ST><![CDATA[
-sFullCode	:= '(01)17501031711052(21)86174He081137058500(240)10108245(10)86352024(91)5304012';
+sFullCode	:= '(01)aEs3d%_1!{(21)86174He081137058500(240)10108245(10)86352024(91)5304012';
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
 
 	
-//eCodeType	:= CODE.E_CodeAI.GTIN;
-eCodeType	:= CODE.E_CodeAI.SERIAL;
+eCodeType	:= CODE.E_CodeAI.GTIN;
+//eCodeType	:= CODE.E_CodeAI.SERIAL;
 //eCodeType	:= CODE.E_CodeAI.RSKU;
 //eCodeType	:= CODE.E_CodeAI.BATCH;
 //eCodeType	:= CODE.E_CodeAI.PO;
@@ -289,8 +289,8 @@ eCodeType	:= CODE.E_CodeAI.SERIAL;
 
 // GTIN 
 	stCodeInfo.stGTIN.sStartAI := '(01)';
-	stCodeInfo.stGTIN.sEndAI := '(';
-	stCodeInfo.stGTIN.nCodeLength := 14;
+	stCodeInfo.stGTIN.sEndAI := '';
+	stCodeInfo.stGTIN.nCodeLength := 10;
 	stCodeInfo.stGTIN.nCodeStartPos := 0;	
 	
 // SERIAL	

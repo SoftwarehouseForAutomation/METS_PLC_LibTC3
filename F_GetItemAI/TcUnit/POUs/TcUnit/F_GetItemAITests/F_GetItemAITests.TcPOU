@@ -20,6 +20,9 @@ Case_code03_RSKU_extractedWrong();
 Case_code04_BATCH_extractedWrong();
 Case_code05_PO_extractedWrong();
 
+//Validation method NO 2//
+Case_code06_GTIN_VAL2_extractedWrong();
+
 //==============================================================
 //02.Outer_Code
 //==============================================================
@@ -205,6 +208,74 @@ TcUnit.TEST('Case_code05_PO_extractedWrong');
 TEST_FINISHED();]]></ST>
       </Implementation>
     </Method>
+    <Method Name="Case_code05_PO2_extractedWrong" Id="{8d3d38e8-43f8-4e1e-bc66-fd26388652c4}" FolderPath="01.CASE_Code\">
+      <Declaration><![CDATA[METHOD INTERNAL Case_code05_PO2_extractedWrong
+VAR
+	sFullCode		: T_MaxString;
+	eCodeType		: CODE.E_CodeAI;
+	stCodeInfo		: CODE.ST_CodeInfo;
+	
+	sF_GetItemAI	: T_MaxString;	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Validation data init
+stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
+
+//Change some data for test scenario below
+sFullCode := '(01)17501031711052(21)86174He081137058500(240)10108245(10)86352024(91)5304012';
+eCodeType	:= CODE.E_CodeAI.PO;
+
+
+	
+TcUnit.TEST('Case_code05_PO2_extractedWrong');
+
+	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
+									 eCodeType := eCodeType, 
+									 stCodeInfo := stCodeInfo);
+	
+	AssertEquals_STRING(Expected:= '5304012333', 
+						Actual:= TO_STRING(sF_GetItemAI), 
+						Message:= 'Wrong Case PO extracted');						
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Case_code06_GTIN_VAL2_extractedWrong" Id="{c308c852-facf-4d9f-85ba-5385092d105e}" FolderPath="01.CASE_Code\">
+      <Declaration><![CDATA[METHOD INTERNAL Case_code06_GTIN_VAL2_extractedWrong
+VAR
+	sFullCode		: T_MaxString;
+	eCodeType		: CODE.E_CodeAI;
+	stCodeInfo		: CODE.ST_CodeInfo;
+	
+	sF_GetItemAI	: T_MaxString;	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Validation data init
+stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+TestInitVal_2(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
+
+//Change some data for test scenario below
+sFullCode := '(01)17501031711052(21)86174He081137058500(240)10108245(10)86352024(91)5304012';
+eCodeType	:= CODE.E_CodeAI.GTIN;
+
+
+	
+TcUnit.TEST('Case_code06_GTIN_VAL2_extractedWrong');
+
+	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
+									 eCodeType := eCodeType, 
+									 stCodeInfo := stCodeInfo);
+	
+	AssertEquals_STRING(Expected:= '17501031711052', 
+						Actual:= TO_STRING(sF_GetItemAI), 
+						Message:= 'Wrong Case GTIN extracted');						
+
+TEST_FINISHED();]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="Outer_code01_GTIN_extractedWrong" Id="{6eb1a0f5-54e8-40f8-a5df-8bdbb933b6b0}" FolderPath="02.Outer_Code\">
       <Declaration><![CDATA[METHOD INTERNAL Outer_code01_GTIN_extractedWrong
 VAR
@@ -360,6 +431,94 @@ IF stCodeInfo.eCodeType = CODE.E_CodeType.E_CASE THEN
 	stCodeInfo.stGTIN.sStartAI := '(01)';
 	stCodeInfo.stGTIN.sEndAI := '(';
 	stCodeInfo.stGTIN.nCodeLength := 14;
+	stCodeInfo.stGTIN.nCodeStartPos := 0;	
+	
+// SERIAL	
+	stCodeInfo.stSerialCode.sStartAI := '(21)';
+	stCodeInfo.stSerialCode.sEndAI := '(';
+	stCodeInfo.stSerialCode.nCodeLength := 19;
+	stCodeInfo.stSerialCode.nCodeStartPos := 0;	
+	
+// RSKU
+	stCodeInfo.stRSKU.sStartAI := '(240)';
+	stCodeInfo.stRSKU.sEndAI := '(';
+	stCodeInfo.stRSKU.nCodeLength := 8;
+	stCodeInfo.stRSKU.nCodeStartPos := 0;	
+	
+// BATCH
+	stCodeInfo.stBatchID.sStartAI := '(10)';
+	stCodeInfo.stBatchID.sEndAI := '(';
+	stCodeInfo.stBatchID.nCodeLength := 8;
+	stCodeInfo.stBatchID.nCodeStartPos := 0;	
+	
+// PRODUCTION ORDER
+	stCodeInfo.stProductionOrder.sStartAI := '(91)';
+	stCodeInfo.stProductionOrder.sEndAI := '(';
+	stCodeInfo.stProductionOrder.nCodeLength := 7;
+	stCodeInfo.stProductionOrder.nCodeStartPos := 0;	
+
+stCodeInfo.nMinLength 		:= 10; // NOT used
+stCodeInfo.nEntireLength	:= 77;
+stCodeInfo.nNumberOfAIs		:= 5;
+	
+ELSIF stCodeInfo.eCodeType = CODE.E_CodeType.E_OUTER THEN
+// GTIN 
+	stCodeInfo.stGTIN.sStartAI := '(01)';
+	stCodeInfo.stGTIN.sEndAI := '(';
+	stCodeInfo.stGTIN.nCodeLength := 14;
+	stCodeInfo.stGTIN.nCodeStartPos := 0;	
+	
+// SERIAL	
+	stCodeInfo.stSerialCode.sStartAI := '(21)';
+	stCodeInfo.stSerialCode.sEndAI := '(';
+	stCodeInfo.stSerialCode.nCodeLength := 19;
+	stCodeInfo.stSerialCode.nCodeStartPos := 0;	
+	
+// RSKU
+	stCodeInfo.stRSKU.sStartAI := '(240)';
+	stCodeInfo.stRSKU.sEndAI := '';
+	stCodeInfo.stRSKU.nCodeLength := 8;
+	stCodeInfo.stRSKU.nCodeStartPos := 0;	
+	
+
+stCodeInfo.nMinLength 		:= 10; // NOT used
+stCodeInfo.nEntireLength	:= 54;
+stCodeInfo.nNumberOfAIs		:= 3;
+
+ELSIF stCodeInfo.eCodeType = CODE.E_CodeType.E_PACK THEN
+// SERIAL	
+	stCodeInfo.stSerialCode.sStartAI := '';
+	stCodeInfo.stSerialCode.sEndAI := '';
+	stCodeInfo.stSerialCode.nCodeLength := 12;
+	stCodeInfo.stSerialCode.nCodeStartPos := 0;	
+	
+stCodeInfo.nMinLength 		:= 10; // NOT used
+stCodeInfo.nEntireLength	:= 12;
+stCodeInfo.nNumberOfAIs		:= 0;
+
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="TestInitVal_2" Id="{ad80bf69-6243-48f3-8341-22f24cd95c1a}">
+      <Declaration><![CDATA[METHOD PRIVATE TestInitVal_2
+VAR_IN_OUT
+	eCodeType		: CODE.E_CodeAI;
+	stCodeInfo		: CODE.ST_CodeInfo;
+	sFullCode		: T_MaxString;
+END_VAR
+
+VAR	
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+// Case validation recipe
+IF stCodeInfo.eCodeType = CODE.E_CodeType.E_CASE THEN
+
+// GTIN 
+	stCodeInfo.stGTIN.sStartAI := '(01)';
+	stCodeInfo.stGTIN.sEndAI := '';
+	stCodeInfo.stGTIN.nCodeLength := 10;
 	stCodeInfo.stGTIN.nCodeStartPos := 0;	
 	
 // SERIAL	
