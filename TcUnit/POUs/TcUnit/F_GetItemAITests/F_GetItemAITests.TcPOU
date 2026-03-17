@@ -61,7 +61,7 @@ eCodeType	:= CODE.E_CodeAI.GTIN;
 
 
 	
-TcUnit.TEST('Case_code01_GTIN_extractedWrong');
+TcUnit.TEST_ORDERED('Case_code01_GTIN_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -95,7 +95,7 @@ eCodeType	:= CODE.E_CodeAI.SERIAL;
 
 
 	
-TcUnit.TEST('Case_code02_SERIAL_extractedWrong');
+TcUnit.TEST_ORDERED('Case_code02_SERIAL_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -129,7 +129,7 @@ eCodeType	:= CODE.E_CodeAI.RSKU;
 
 
 	
-TcUnit.TEST('Case_code03_RSKU_extractedWrong');
+TcUnit.TEST_ORDERED('Case_code03_RSKU_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -163,7 +163,7 @@ eCodeType	:= CODE.E_CodeAI.BATCH;
 
 
 	
-TcUnit.TEST('Case_code04_BATCH_extractedWrong');
+TcUnit.TEST_ORDERED('Case_code04_BATCH_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -197,7 +197,7 @@ eCodeType	:= CODE.E_CodeAI.PO;
 
 
 	
-TcUnit.TEST('Case_code05_PO_extractedWrong');
+TcUnit.TEST_ORDERED('Case_code05_PO_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -231,7 +231,7 @@ eCodeType	:= CODE.E_CodeAI.PO;
 
 
 	
-TcUnit.TEST('Case_code05_PO2_extractedWrong');
+TcUnit.TEST_ORDERED('Case_code05_PO2_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -265,7 +265,7 @@ eCodeType	:= CODE.E_CodeAI.GTIN;
 
 
 	
-TcUnit.TEST('Case_code06_GTIN_VAL2_extractedWrong');
+TcUnit.TEST_ORDERED('Case_code06_GTIN_VAL2_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -299,7 +299,7 @@ eCodeType	:= CODE.E_CodeAI.SERIAL;
 
 
 	
-TcUnit.TEST('Case_code07_SERIAL_VAL2_extractedWrong');
+TcUnit.TEST_ORDERED('Case_code07_SERIAL_VAL2_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -333,7 +333,7 @@ eCodeType	:= CODE.E_CodeAI.RSKU;
 
 
 	
-TcUnit.TEST('Case_code08_RSKU_VAL2_extractedWrong');
+TcUnit.TEST_ORDERED('Case_code08_RSKU_VAL2_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -367,7 +367,7 @@ eCodeType	:= CODE.E_CodeAI.GTIN;
 
 
 	
-TcUnit.TEST('Outer_code01_GTIN_extractedWrong');
+TcUnit.TEST_ORDERED('Outer_code01_GTIN_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -401,7 +401,7 @@ eCodeType	:= CODE.E_CodeAI.SERIAL;
 
 
 	
-TcUnit.TEST('Outer_code02_SERIAL_extractedWrong');
+TcUnit.TEST_ORDERED('Outer_code02_SERIAL_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -435,7 +435,7 @@ eCodeType	:= CODE.E_CodeAI.RSKU;
 
 
 	
-TcUnit.TEST('Outer_code03_RSKU_extractedWrong');
+TcUnit.TEST_ORDERED('Outer_code03_RSKU_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -469,7 +469,7 @@ eCodeType	:= CODE.E_CodeAI.SERIAL;
 
 
 	
-TcUnit.TEST('Pack_code01_SERIAL_extractedWrong');
+TcUnit.TEST_ORDERED('Pack_code01_SERIAL_extractedWrong');
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 

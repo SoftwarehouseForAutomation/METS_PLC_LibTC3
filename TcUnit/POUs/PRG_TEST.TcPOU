@@ -10,7 +10,7 @@ END_VAR
       <ST><![CDATA[//===================================================
 //UNIT TEST EXECUTION
 
-TcUnit.RUN();
+TcUnit.RUN_IN_SEQUENCE();
 
 //===================================================
 //MANUAL TEST EXECUTION
