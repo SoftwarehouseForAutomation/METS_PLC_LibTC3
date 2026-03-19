@@ -64,6 +64,9 @@
     <Compile Include="POUs\AI Codes And Validation FBs\F_GetItemAI.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Utilities\F_StringAddPrefix.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Version\Global_Version.TcGVL">
       <SubType>Code</SubType>
     </Compile>
@@ -73,6 +76,7 @@
     <Folder Include="DUTs\AI Codes And Validation" />
     <Folder Include="GVLs" />
     <Folder Include="POUs\AI Codes And Validation FBs" />
+    <Folder Include="POUs\Utilities" />
     <Folder Include="Version" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />

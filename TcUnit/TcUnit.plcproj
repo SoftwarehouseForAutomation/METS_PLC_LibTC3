@@ -21,10 +21,22 @@
     <Compile Include="POUs\PRG_TEST.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\TcUnit\F_AssignValToStringWithPrefix\F_AssignValToStringWithPrefixTests.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\TcUnit\F_AssignValToStringWithPrefix\PRG_AssignValToStringWithPrefixManual.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\TcUnit\F_GetItemAITests\F_GetItemAITests.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\TcUnit\F_GetItemAITests\PRG_GetItemAIManual.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\F_StringAddPrefix.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\ST_RejectReasonsForCase.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TcUnit_Task.TcTTO">
@@ -34,8 +46,10 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\Utilities" />
     <Folder Include="POUs\TcUnit" />
     <Folder Include="POUs\TcUnit\F_GetItemAITests" />
+    <Folder Include="POUs\TcUnit\F_AssignValToStringWithPrefix" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

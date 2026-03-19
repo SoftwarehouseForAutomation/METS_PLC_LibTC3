@@ -1,0 +1,836 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_AssignValToStringWithPrefixTests" Id="{750434a9-9021-4dec-a624-43efc4fc2a12}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK F_AssignValToStringWithPrefixTests EXTENDS TcUnit.FB_TestSuite
+
+VAR
+	
+	asRejectReason		: T_MaxString;
+	anValue				: ARRAY[0..10] OF STRING(10);
+	asPointer          	: ARRAY[0..10] OF STRING(10);
+	nPrefixSize			: UINT;
+	nPrefixValue		: STRING(5);
+	
+	nDuplicateOuter1_Position	: INT;
+	nDuplicateOuter2_Position	: INT;
+	
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+//==============================================================
+//01.
+//==============================================================
+DupError01_PrefixSize2Value0();
+DupError02_PrefixSize3ValueChar();
+
+//==============================================================
+//02.
+//==============================================================
+INVError01_PrefixSize2Value0();
+INVError02_PrefixSize3ValueChar();
+
+//==============================================================
+//03.
+//==============================================================
+VALError01_PrefixSize2Value0();
+VALError02_PrefixSize3ValueChar();
+
+//==============================================================
+//04.
+//==============================================================
+OACError01_PrefixSize2Value0();
+OACError02_PrefixSize3ValueChar();
+
+//==============================================================
+//05.
+//==============================================================
+OuterSerialError01_PrefixSize2Value0();
+OuterSerialError01_PrefixSize3ValueChar();
+
+//==============================================================
+//06.
+//==============================================================
+OuterRSKUError01_PrefixSize2Value0();
+OuterRSKUError02_PrefixSize3ValueChar();
+
+//==============================================================
+//07.
+//==============================================================
+OuterBrandError01_PrefixSize2Value0();
+OuterBrandError02_PrefixSize3ValueChar();
+
+//==============================================================
+//08.
+//==============================================================
+OuterGTINError01_PrefixSize2Valu0();
+OuterGTINError02_PrefixSize3ValuChar();
+
+//==============================================================
+//09.
+//==============================================================
+PackNotLinedError01_PrefixSize2Value0();
+PackNotLinedError02_PrefixSize3ValueChar();
+
+//==============================================================
+//10.
+//==============================================================
+RandomError01();
+RandomError02();]]></ST>
+    </Implementation>
+    <Folder Name="01.DUPError" Id="{812bf754-e3c5-408f-9c73-395d15b4ce6f}" />
+    <Folder Name="02.INVError" Id="{a54975da-a874-4b19-b9e2-8154e6003d34}" />
+    <Folder Name="03.VALError" Id="{318a5d30-3b1d-4d6d-bf47-040e36ce04bf}" />
+    <Folder Name="04.OACEror" Id="{7377143d-d678-47b4-8b3d-8361b0310a43}" />
+    <Folder Name="05.OuterSerialError" Id="{42dc884f-bb7a-40cc-b9ab-e015d0b1373c}" />
+    <Folder Name="06.OuterRSKUError" Id="{57bcd7cd-e209-4244-9ccb-48165941517a}" />
+    <Folder Name="07.OuterBrandError" Id="{1e60b3da-f867-4780-80a8-ea8365c9e5c3}" />
+    <Folder Name="08.OutetrGTINError" Id="{c3f5e6de-65d5-4835-b276-849e1fdbfa73}" />
+    <Folder Name="09.PackNotLinedError" Id="{dac54491-35c8-4351-9fd7-7e94030f96c9}" />
+    <Folder Name="10.Random" Id="{2e292a35-d625-41c1-a76f-55350ef2bda7}" />
+    <Method Name="DupError01_PrefixSize2Value0" Id="{5fb34123-d7cd-4077-b67f-fe12db59e6d2}" FolderPath="01.DUPError\">
+      <Declaration><![CDATA[METHOD INTERNAL DupError01_PrefixSize2Value0
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+//from FB_CASE_DuplicatCheck - outer duplicate
+asRejectReason := 'XXDUPn1-n2XX';
+nPrefixSize	 := 2;
+nPrefixValue := '0' ;
+asPointer[0] := 'n1';
+asPointer[1] := 'n2';
+
+TestInit(nDuplicateOuter1_Position := 2, nDuplicateOuter2_Position := 32);
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('DupError01_PrefixSize2Value0') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXDUP02-32XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="DupError02_PrefixSize3ValueChar" Id="{430ecb1e-c6c5-42be-8827-f4906cc6a53c}" FolderPath="01.DUPError\">
+      <Declaration><![CDATA[METHOD INTERNAL DupError02_PrefixSize3ValueChar
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+//from FB_CASE_DuplicatCheck - outer duplicate
+asRejectReason := 'XXDUPn1-n2XX';
+nPrefixSize	 := 3;
+nPrefixValue := '#' ;
+asPointer[0] := 'n1';
+asPointer[1] := 'n2';
+
+TestInit(nDuplicateOuter1_Position := 1, nDuplicateOuter2_Position := 2);
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('DupError02_PrefixSize3ValueChar') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXDUP#01-#02XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="INVError01_PrefixSize2Value0" Id="{3f32746d-f902-4b99-8185-cefdb63e1fa3}" FolderPath="02.INVError\">
+      <Declaration><![CDATA[METHOD INTERNAL INVError01_PrefixSize2Value0
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+//from FB_CASE_DuplicatCheck - outer duplicate
+asRejectReason := 'XXINVnnXX';
+nPrefixSize	 := 2;
+nPrefixValue := '0' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(2);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('INVError01_PrefixSize2Value0') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXINV02XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="INVError02_PrefixSize3ValueChar" Id="{2f63765e-5307-470d-8e64-4de13985f209}" FolderPath="02.INVError\">
+      <Declaration><![CDATA[METHOD INTERNAL INVError02_PrefixSize3ValueChar
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+//from FB_CASE_DuplicatCheck - outer duplicate
+asRejectReason := 'XXINVnnXX';
+nPrefixSize	 := 3;
+nPrefixValue := '##' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(1);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('INVError01') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXINV##1XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OACError01_PrefixSize2Value0" Id="{575be9c6-6893-4c20-a1ae-6f9fcbc7c194}" FolderPath="04.OACEror\">
+      <Declaration><![CDATA[METHOD INTERNAL OACError01_PrefixSize2Value0
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXOACnnXX';
+nPrefixSize	 := 2;
+nPrefixValue := '0' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(4);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('OACError01_PrefixSize2Value0') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXOAC04XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OACError02_PrefixSize3ValueChar" Id="{9ec99284-01a9-4545-bc7c-34db21778ce8}" FolderPath="04.OACEror\">
+      <Declaration><![CDATA[METHOD INTERNAL OACError02_PrefixSize3ValueChar
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXOACnnXX';
+nPrefixSize	 := 3;
+nPrefixValue := '^' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(19);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('OACError02_PrefixSize3ValueChar') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXOAC^19XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OuterBrandError01_PrefixSize2Value0" Id="{9f1f77eb-fbd5-4225-967e-3eff141c348b}" FolderPath="07.OuterBrandError\">
+      <Declaration><![CDATA[METHOD INTERNAL OuterBrandError01_PrefixSize2Value0
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXOUTERSBRANDnnXX';
+nPrefixSize	 := 2;
+nPrefixValue := '0' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(7);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('METHOD INTERNAL OuterBrandError01_PrefixSize2Value0
+') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXOUTERSBRAND07XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OuterBrandError02_PrefixSize3ValueChar" Id="{3bd27dc9-bad5-41a7-9e3b-74ec673f69f8}" FolderPath="07.OuterBrandError\">
+      <Declaration><![CDATA[METHOD INTERNAL OuterBrandError02_PrefixSize3ValueChar
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXOUTERSBRANDnnXX';
+nPrefixSize	 := 3;
+nPrefixValue := '+' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(12);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('OuterBrandError02_PrefixSize3ValueChar') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXOUTERSBRAND+12XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OuterGTINError01_PrefixSize2Valu0" Id="{7c6fce96-c2de-4b03-839a-e9fe33717071}" FolderPath="08.OutetrGTINError\">
+      <Declaration><![CDATA[METHOD INTERNAL OuterGTINError01_PrefixSize2Valu0
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXOUTERGTINnnXX';
+nPrefixSize	 := 2;
+nPrefixValue := '0' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(8);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('OuterGTINError01_PrefixSize2Valu0') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXOUTERGTIN08XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OuterGTINError02_PrefixSize3ValuChar" Id="{9376278e-53e1-4273-b503-d0460f48a3dc}" FolderPath="08.OutetrGTINError\">
+      <Declaration><![CDATA[METHOD INTERNAL OuterGTINError02_PrefixSize3ValuChar
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXOUTERGTINnnXX';
+nPrefixSize	 := 3;
+nPrefixValue := '|' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(0);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('OuterGTINError02_PrefixSize3ValuChar') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXOUTERGTIN||0XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OuterRSKUError01_PrefixSize2Value0" Id="{3007f559-87ab-4e23-b21d-6cf960c1c76b}" FolderPath="06.OuterRSKUError\">
+      <Declaration><![CDATA[METHOD INTERNAL OuterRSKUError01_PrefixSize2Value0
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXOUTERSKUnnXX';
+nPrefixSize	 := 2;
+nPrefixValue := '0' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(6);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('OuterRSKUError01_PrefixSize2Value0') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXOUTERSKU06XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OuterRSKUError02_PrefixSize3ValueChar" Id="{12ed85d0-8707-4a23-abe1-84a77ad30707}" FolderPath="06.OuterRSKUError\">
+      <Declaration><![CDATA[METHOD INTERNAL OuterRSKUError02_PrefixSize3ValueChar
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXOUTERSKUnnXX';
+nPrefixSize	 := 3;
+nPrefixValue := '(' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(34);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('OuterRSKUError01_PrefixSize3ValueChar') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXOUTERSKU(34XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OuterSerialError01_PrefixSize2Value0" Id="{4b40b0f8-44e9-4a87-8e15-91e055b52e38}" FolderPath="05.OuterSerialError\">
+      <Declaration><![CDATA[METHOD INTERNAL OuterSerialError01_PrefixSize2Value0
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXOUTERSERnnXX';
+nPrefixSize	 := 2;
+nPrefixValue := '0' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(5);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('OuterSerialError01_PrefixSize2Value0') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXOUTERSER05XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="OuterSerialError01_PrefixSize3ValueChar" Id="{1696a4bc-cb99-4150-8995-013f4029432c}" FolderPath="05.OuterSerialError\">
+      <Declaration><![CDATA[METHOD INTERNAL OuterSerialError01_PrefixSize3ValueChar
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXOUTERSERnnXX';
+nPrefixSize	 := 3;
+nPrefixValue := '*' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(15);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('OuterSerialError01_PrefixSize3ValueChar') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXOUTERSER*15XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="PackNotLinedError01_PrefixSize2Value0" Id="{6219727f-d989-4f9f-b9a5-00667f35797d}" FolderPath="09.PackNotLinedError\">
+      <Declaration><![CDATA[METHOD INTERNAL PackNotLinedError01_PrefixSize2Value0
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXPACKnnXX';
+nPrefixSize	 := 2;
+nPrefixValue := '0' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(9);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('PackNotLinedError01_PrefixSize2Value0') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXPACK09XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="PackNotLinedError02_PrefixSize3ValueChar" Id="{1cd173f6-b35b-48de-8b28-e708b18ac74d}" FolderPath="09.PackNotLinedError\">
+      <Declaration><![CDATA[METHOD INTERNAL PackNotLinedError02_PrefixSize3ValueChar
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXPACKnnXX';
+nPrefixSize	 := 3;
+nPrefixValue := '"' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(11);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('PackNotLinedError01_PrefixSize3ValueChar') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXPACK"11XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="RandomError01" Id="{2d4e4341-dc47-4893-a0a4-bf41cb1586e4}" FolderPath="10.Random\">
+      <Declaration><![CDATA[METHOD INTERNAL RandomError01
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+//from FB_CASE_DuplicatCheck - outer duplicate
+asRejectReason := 'LeFT_X1-Y2_RightY1';
+nPrefixSize	 := 3;
+nPrefixValue := 'C' ;
+asPointer[0] := 'X1';
+asPointer[1] := 'Y2';
+
+TestInit(nDuplicateOuter1_Position := 2, nDuplicateOuter2_Position := 6);
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('RandomError01') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'LeFT_C02-C06_RightY1', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="RandomError02" Id="{6c307e14-c411-4ef1-a89d-598757acfd61}" FolderPath="10.Random\">
+      <Declaration><![CDATA[METHOD INTERNAL RandomError02
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+// Data init
+asRejectReason := 'LfT_CY/YZ_RghT';
+nPrefixSize	 := 4;
+nPrefixValue := 'Cd' ;
+asPointer[0] := 'CY';
+asPointer[1] := 'YZ';
+
+TestInit(nDuplicateOuter1_Position := 12, nDuplicateOuter2_Position := 9);
+
+//Change some data for test scenario below
+
+	
+IF TcUnit.TEST_ORDERED('RandomError02') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'LfT_CC12/CC09_RghT', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="TestInit" Id="{dfd8b0e3-554c-4bb1-accb-7f0188c9e60c}">
+      <Declaration><![CDATA[METHOD PRIVATE TestInit
+VAR_INPUT
+	nDuplicateOuter1_Position	: INT;
+	nDuplicateOuter2_Position	: INT;
+END_VAR
+
+VAR	
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+anValue[0] := 	F_StringAddPrefix(INT_TO_STRING(nDuplicateOuter1_Position),2,'0');
+anValue[1] := 	F_StringAddPrefix(INT_TO_STRING(nDuplicateOuter2_Position),2,'0');]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="VALError01_PrefixSize2Value0" Id="{1efa12e9-bf5e-4562-9ad9-d205d27cbfa3}" FolderPath="03.VALError\">
+      <Declaration><![CDATA[METHOD INTERNAL VALError01_PrefixSize2Value0
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXVALnnXX';
+nPrefixSize	 := 2;
+nPrefixValue := '0' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(3);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('VALError01_PrefixSize2Value0') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXVAL03XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="VALError02_PrefixSize3ValueChar" Id="{f672a9c1-19bf-4194-b3b1-84f8ac3d7150}" FolderPath="03.VALError\">
+      <Declaration><![CDATA[METHOD INTERNAL VALError02_PrefixSize3ValueChar
+VAR
+	
+	sF_AssignValToStringWithPrefix 		: T_MaxString;
+	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init
+asRejectReason := 'XXVALnnXX';
+nPrefixSize	 := 3;
+nPrefixValue := '%' ;
+asPointer[0] := 'nn';
+anValue[0]	 := INT_TO_STRING(49);
+
+
+//Change some data for test scenario below
+
+
+
+	
+IF TcUnit.TEST_ORDERED('VALError02_PrefixSize3ValueChar') THEN
+
+	sF_AssignValToStringWithPrefix := CODE.F_AssignValToStringWithPrefix(asRejectReason, anValue,  asPointer, nPrefixSize, nPrefixValue);
+	
+	AssertEquals_STRING(Expected:= 'XXVAL%49XX', 
+						Actual:= TO_STRING(sF_AssignValToStringWithPrefix), 
+						Message:= 'Wrong String written');						
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

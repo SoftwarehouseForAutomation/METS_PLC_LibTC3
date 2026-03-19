@@ -1,13 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="PRG_GetItemAIManual" Id="{dff04167-7d63-4e54-ae52-95120ff519c5}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_GetItemAIManual
+  <POU Name="PRG_AssignValToStringWithPrefixManual" Id="{40a84d3c-0d1d-46ca-b11a-27e190de3ddf}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_AssignValToStringWithPrefixManual
 VAR
-	sFullCode		: T_MaxString;
-	eCodeType		: CODE.E_CodeAI;
-	stCodeInfo		: CODE.ST_CodeInfo;
+	asRejectReason		: T_MaxString;
+	anValue				: ARRAY[0..10] OF STRING(10);
+	asPointer          	: ARRAY[0..10] OF STRING(10);
+	nPrefixSize			: UINT;
+	nPrefixValue		: STRING(5);
 	
-	sF_GetItemAI	: T_MaxString;
+	F_AssignValToStringWithPrefix	: T_MaxString;
+	
+	//from FFB_CASE_DuplicatCheck - outer duplicate
+	nDuplicateOuter1_Position		: INT;
+	nDuplicateOuter2_Position		: INT;
+	
 
 END_VAR
 ]]></Declaration>
@@ -91,7 +98,7 @@ END_VAR
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
                           <o>
-                            <v n="Operand">"sF_GetItemAI"</v>
+                            <v n="Operand">"F_AssignValToStringWithPrefix"</v>
                             <v n="Type">"T_MaxString"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -104,7 +111,7 @@ END_VAR
                             <v n="LValue">true</v>
                             <v n="Boolean">false</v>
                             <v n="IsInstance">false</v>
-                            <v n="Id">284L</v>
+                            <v n="Id">306L</v>
                           </o>
                         </l2>
                       </o>
@@ -114,7 +121,7 @@ END_VAR
                         <v n="Extensible">false</v>
                       </o>
                       <o n="RValue" t="BoxTreeBox">
-                        <v n="BoxType">"CODE.F_GetItemAI"</v>
+                        <v n="BoxType">"CODE.F_AssignValToStringWithPrefix"</v>
                         <o n="Instance" t="Operand">
                           <n n="Operand" />
                           <v n="Type">""</v>
@@ -129,7 +136,7 @@ END_VAR
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">276L</v>
+                          <v n="Id">294L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems">
@@ -146,7 +153,7 @@ END_VAR
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"sFullCode"</v>
+                              <v n="Operand">"asRejectReason"</v>
                               <v n="Type">"T_MaxString"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -159,14 +166,14 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">279L</v>
+                              <v n="Id">297L</v>
                             </o>
-                            <v n="Id">278L</v>
+                            <v n="Id">296L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"eCodeType"</v>
-                              <v n="Type">"CODE.E_CodeAI"</v>
+                              <v n="Operand">"anValue"</v>
+                              <v n="Type">"ARRAY [0..10] OF STRING(10)"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -178,14 +185,14 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">281L</v>
+                              <v n="Id">299L</v>
                             </o>
-                            <v n="Id">280L</v>
+                            <v n="Id">298L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"stCodeInfo"</v>
-                              <v n="Type">"CODE.ST_CodeInfo"</v>
+                              <v n="Operand">"asPointer"</v>
+                              <v n="Type">"ARRAY [0..10] OF STRING(10)"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -197,26 +204,68 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">283L</v>
+                              <v n="Id">301L</v>
                             </o>
-                            <v n="Id">282L</v>
+                            <v n="Id">300L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"nPrefixSize"</v>
+                              <v n="Type">"UINT"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">303L</v>
+                            </o>
+                            <v n="Id">302L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"nPrefixValue"</v>
+                              <v n="Type">"STRING(5)"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">305L</v>
+                            </o>
+                            <v n="Id">304L</v>
                           </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
                           <l2 n="Names" cet="String">
-                            <v>sFullCode</v>
-                            <v>eCodeType</v>
-                            <v>stCodeInfo</v>
+                            <v>asRejectReason</v>
+                            <v>anValue</v>
+                            <v>asPointer</v>
+                            <v>nPrefixSize</v>
+                            <v>nPrefixValue</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>T_MaxString</v>
-                            <v>E_CodeAI</v>
-                            <v>ST_CodeInfo</v>
+                            <v>ARRAY [0..10] OF STRING(10)</v>
+                            <v>ARRAY [0..10] OF STRING(10)</v>
+                            <v>UINT</v>
+                            <v>STRING(5)</v>
                           </l2>
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
-                            <v>F_GetItemAI</v>
+                            <v>F_AssignValToStringWithPrefix</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>T_MaxString</v>
@@ -228,26 +277,13 @@ END_VAR
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">277L</v>
+                        <v n="Id">295L</v>
                       </o>
-                      <v n="Id">285L</v>
+                      <v n="Id">307L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
-                  <v n="Id">81L</v>
-                </o>
-                <o>
-                  <v n="ILActive">false</v>
-                  <v n="FBDValid">false</v>
-                  <v n="ILValid">false</v>
-                  <l2 n="ILLines" />
-                  <v n="Comment">""</v>
-                  <v n="Title">""</v>
-                  <v n="Label">""</v>
-                  <v n="OutCommented">false</v>
-                  <l2 n="NetworkItems" />
-                  <l2 n="Connectors" />
-                  <v n="Id">242L</v>
+                  <v n="Id">293L</v>
                 </o>
               </l2>
               <v n="BranchCounter">0</v>
@@ -273,57 +309,25 @@ END_VAR
         </XmlArchive>
       </NWL>
     </Implementation>
-    <Action Name="InitManual" Id="{82e374ac-3a1c-4ce3-97a1-fb1ecbadc4a3}">
+    <Action Name="InitManual" Id="{af4fa378-0741-4677-b846-ff59ad3bb584}">
       <Implementation>
         <ST><![CDATA[
-//sFullCode	:= '(01)aEs3d%_1!{(21)86174He081137058500(240)10108245(10)86352024(91)5304012';
-sFullCode 	:= '(01)@_45^da_eU(21)|\174He_)%^P(240)1_#+[=1082(10)12#_%6Rt*(91)1&34*67';
-stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+asRejectReason := 'XXINVnnXX';
 
-	
-//eCodeType	:= CODE.E_CodeAI.GTIN;
-//eCodeType	:= CODE.E_CodeAI.SERIAL;
-//eCodeType	:= CODE.E_CodeAI.RSKU;
-eCodeType	:= CODE.E_CodeAI.BATCH;
-//eCodeType	:= CODE.E_CodeAI.PO;
+nPrefixSize	 := 2;
+nPrefixValue := '0' ;
 
+asPointer[0] := 'nn';
+asPointer[1] := 'n2';
 
-// GTIN 
-	stCodeInfo.stGTIN.sStartAI := '(01)';
-	stCodeInfo.stGTIN.sEndAI := '';
-	stCodeInfo.stGTIN.nCodeLength := 10;
-	stCodeInfo.stGTIN.nCodeStartPos := 0;	
-	
-// SERIAL	
-	stCodeInfo.stSerialCode.sStartAI := '(21)';
-	stCodeInfo.stSerialCode.sEndAI := '(';
-	stCodeInfo.stSerialCode.nCodeLength := 19;
-	stCodeInfo.stSerialCode.nCodeStartPos := 0;	
-	
-// RSKU
-	stCodeInfo.stRSKU.sStartAI := '(240)';
-	stCodeInfo.stRSKU.sEndAI := '(';
-	stCodeInfo.stRSKU.nCodeLength := 8;
-	stCodeInfo.stRSKU.nCodeStartPos := 0;	
-	
-// BATCH
-	stCodeInfo.stBatchID.sStartAI := '(10)';
-	stCodeInfo.stBatchID.sEndAI := '';
-	stCodeInfo.stBatchID.nCodeLength := 7;
-	stCodeInfo.stBatchID.nCodeStartPos := 2;	
-	
-// PRODUCTION ORDER
-	stCodeInfo.stProductionOrder.sStartAI := '(91)';
-	stCodeInfo.stProductionOrder.sEndAI := '(';
-	stCodeInfo.stProductionOrder.nCodeLength := 7;
-	stCodeInfo.stProductionOrder.nCodeStartPos := 0;	
+nDuplicateOuter1_Position := 2;
+nDuplicateOuter2_Position := 4;
 
+//anValue[0] := 	F_StringAddPrefix(INT_TO_STRING(nDuplicateOuter1_Position),2,'0');
+//anValue[1] := 	F_StringAddPrefix(INT_TO_STRING(nDuplicateOuter2_Position),2,'0');
 
-
-stCodeInfo.nMinLength 		:= 10;
-stCodeInfo.nEntireLength	:= 77;
-stCodeInfo.nNumberOfAIs		:= 5;
-]]></ST>
+anValue[0] := TO_STRING(nDuplicateOuter1_Position);
+anValue[1] := TO_STRING(nDuplicateOuter2_Position);]]></ST>
       </Implementation>
     </Action>
   </POU>

@@ -3,7 +3,8 @@
   <POU Name="PRG_TEST" Id="{57de771e-4346-4079-9379-3645d39749ca}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_TEST
 VAR
-	fbF_GetItemAITests			: F_GetItemAITests;		
+	//fbF_GetItemAITests					: F_GetItemAITests;		
+	fbF_AssignValToStringWithPrefix		: F_AssignValToStringWithPrefixTests;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -15,7 +16,8 @@ TcUnit.RUN_IN_SEQUENCE();
 //===================================================
 //MANUAL TEST EXECUTION
 
-PRG_GetItemAIManual();]]></ST>
+PRG_GetItemAIManual();
+PRG_AssignValToStringWithPrefixManual();]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
