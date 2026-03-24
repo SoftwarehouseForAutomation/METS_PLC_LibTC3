@@ -25,7 +25,6 @@ Case_code06_GTIN_VAL2_extractedWrong();
 Case_code07_SERIAL_VAL2_extractedWrong();
 Case_code08_RSKU_VAL2_extractedWrong();
 Case_code09_BATCH_VAL2_extractedWrong();
-Case_code09_BATCH_VAL2_extractedWrong_1();
 
 //==============================================================
 //02.Outer_Code
@@ -44,7 +43,7 @@ Outer_code06_RSKU_VAL2_extractedWrong();
 //==============================================================
 Pack_code01_SERIAL_extractedWrong();
 //Validation method NO 2//
-Pack_code02_SERIAL_VAL2_extractedWrong();]]></ST>
+Pack_code02_SERIAL_VAL2_extractedWrong(); //CODE CAUSING PLC PAGE FAULT]]></ST>
     </Implementation>
     <Folder Name="01.CASE_Code" Id="{eca26ad4-16d4-4352-be9e-83f84f9e1ce9}" />
     <Folder Name="02.Outer_Code" Id="{dd4a5fbd-c64a-4e04-bcc7-ca7e40191a87}" />
@@ -60,13 +59,12 @@ VAR
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[// Validation data init
+        <ST><![CDATA[//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
 sFullCode := '(01)17501031711052(21)86174He081137058500(240)10108245(10)86352024(91)5304012';
-TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
-
-//Change some data for test scenario below
 eCodeType	:= CODE.E_CodeAI.GTIN;
+// Validation data init
+TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
 
 
 	
@@ -97,12 +95,12 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+eCodeType	:= CODE.E_CodeAI.SERIAL;
 sFullCode := '(01)17501031711052(21)86174He081137058500(240)10108245(10)86352024(91)5304012';
 TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.SERIAL;
 
 
 	
@@ -133,12 +131,12 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+eCodeType	:= CODE.E_CodeAI.RSKU;
 sFullCode := '(01)17501031711052(21)86174He081137058500(240)10108245(10)86352024(91)5304012';
 TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.RSKU;
 
 
 	
@@ -169,12 +167,12 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+eCodeType	:= CODE.E_CodeAI.BATCH;
 sFullCode := '(01)17501031711052(21)86174He081137058500(240)10108245(10)86352024(91)5304012';
 TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.BATCH;
 
 
 	
@@ -205,12 +203,12 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+eCodeType	:= CODE.E_CodeAI.PO;
 sFullCode := '(01)17501031711052(21)86174He081137058500(240)10108245(10)86352024(91)5304012';
 TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.PO;
 
 
 	
@@ -241,12 +239,12 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+eCodeType	:= CODE.E_CodeAI.PO;
 sFullCode := '(01)17501031711052(21)86174He081137058500(240)10108245(10)86352024(91)5304012';
 TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.PO;
 
 
 	
@@ -277,12 +275,11 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+eCodeType	:= CODE.E_CodeAI.GTIN;
 sFullCode := '(01)@_45^da_eU(21)|\174He_)%^P(240)1_#+[=1082(10)12#_%6Rt*(91)1&34*67';
 TestInitVal_2(eCodeType := eCodeType, stCodeInfo := stCodeInfo);
-
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.GTIN;
 
 
 	
@@ -313,12 +310,11 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+eCodeType	:= CODE.E_CodeAI.SERIAL;
 sFullCode := '(01)@_45^da_eU(21)|\174He_)%^P(240)1_#+[=1082(10)12#_%6Rt*(91)1&34*67';
 TestInitVal_2(eCodeType := eCodeType, stCodeInfo := stCodeInfo);
-
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.SERIAL;
 
 
 	
@@ -349,12 +345,11 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+eCodeType	:= CODE.E_CodeAI.RSKU;
 sFullCode := '(01)@_45^da_eU(21)|\174He_)%^P(240)1_#+[=1082(10)12#_%6Rt*(91)1&34*67';
 TestInitVal_2(eCodeType := eCodeType, stCodeInfo := stCodeInfo);
-
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.RSKU;
 
 
 	
@@ -364,7 +359,7 @@ IF TcUnit.TEST_ORDERED('Case_code08_RSKU_VAL2_extractedWrong') THEN
 									 eCodeType := eCodeType, 
 									 stCodeInfo := stCodeInfo);
 	
-	AssertEquals_STRING(Expected:= '1_#+[=1082', 
+	AssertEquals_STRING(Expected:= '1_#+[=10', 
 						Actual:= TO_STRING(sF_GetItemAI), 
 						Message:= 'Wrong Case RSKU / VAL2 extracted');						
 
@@ -385,12 +380,11 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
+eCodeType	:= CODE.E_CodeAI.BATCH;
 sFullCode := '(01)@_45^da_eU(21)|\174He_)%^P(240)1_#+[=1082(10)12#_%6Rt*(91)1&34*67';
 TestInitVal_2(eCodeType := eCodeType, stCodeInfo := stCodeInfo);
-
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.RSKU;
 
 	
 IF TcUnit.TEST_ORDERED('Case_code09_BATCH_VAL2_extractedWrong') THEN
@@ -400,50 +394,13 @@ IF TcUnit.TEST_ORDERED('Case_code09_BATCH_VAL2_extractedWrong') THEN
 									 stCodeInfo := stCodeInfo);
 	
 	//'12#_%6Rt*'
-	AssertEquals_STRING(Expected:= '12#_6Rt*', 
+	AssertEquals_STRING(Expected:= '12#_%6R', 
 						Actual:= TO_STRING(sF_GetItemAI), 
 						Message:= 'Wrong Case BATCH / VAL2 extracted');						
 
 TEST_FINISHED();
 
 END_IF;]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="Case_code09_BATCH_VAL2_extractedWrong_1" Id="{9d00ef47-b4b8-4265-91f4-91c5eb91c28f}" FolderPath="01.CASE_Code\">
-      <Declaration><![CDATA[METHOD INTERNAL Case_code09_BATCH_VAL2_extractedWrong_1
-VAR
-	sFullCode		: T_MaxString;
-	eCodeType		: CODE.E_CodeAI;
-	stCodeInfo		: CODE.ST_CodeInfo;
-	
-	sF_GetItemAI	: T_MaxString;	
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[// Validation data init
-stCodeInfo.eCodeType	:= CODE.E_CodeType.E_CASE;
-sFullCode := '(01)@_45^da_eU(21)|\174He_)%^P(240)1_#+[=1082(10)12#_%6Rt*(91)1&34*67';
-TestInitVal_2(eCodeType := eCodeType, stCodeInfo := stCodeInfo);
-
-//Change some data for test scenario below
-
-eCodeType	:= CODE.E_CodeAI.RSKU;
-
-
-	
-TcUnit.TEST_ORDERED('Case_code09_BATCH_VAL2_extractedWrong_1') ;
-
-	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
-									 eCodeType := eCodeType, 
-									 stCodeInfo := stCodeInfo);
-	
-	AssertEquals_STRING(Expected:= '1_#+[=1082', 
-						Actual:= TO_STRING(sF_GetItemAI), 
-						Message:= 'Wrong Case RSKU / VAL2 extracted');						
-
-TEST_FINISHED();
-
-]]></ST>
       </Implementation>
     </Method>
     <Method Name="Outer_code01_GTIN_extractedWrong" Id="{6eb1a0f5-54e8-40f8-a5df-8bdbb933b6b0}" FolderPath="02.Outer_Code\">
@@ -458,12 +415,12 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_OUTER;
+eCodeType	:= CODE.E_CodeAI.GTIN;
 sFullCode := '(01)08809670763114(21)27114GK084010887300(240)10174286';
 TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.GTIN;
 
 
 	
@@ -494,16 +451,16 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_OUTER;
+eCodeType	:= CODE.E_CodeAI.SERIAL;
 sFullCode := '(01)08809670763114(21)27114GK084010887300(240)10174286';
 TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.SERIAL;
 
 
 	
-IF TEST_ORDERED('Outer_code02_SERIAL_extractedWrong') THEN
+IF TcUnit.TEST_ORDERED('Outer_code02_SERIAL_extractedWrong') THEN
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -530,16 +487,16 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_OUTER;
+eCodeType	:= CODE.E_CodeAI.RSKU;
 sFullCode := '(01)08809670763114(21)27114GK084010887300(240)10174286';
 TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.RSKU;
 
 
 	
-IF TEST_ORDERED('Outer_code03_RSKU_extractedWrong') THEN
+IF TcUnit.TEST_ORDERED('Outer_code03_RSKU_extractedWrong') THEN
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -566,12 +523,12 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_OUTER;
+eCodeType	:= CODE.E_CodeAI.GTIN;
 sFullCode := '(01)@_45^da_eU(21)|\174He_)%^P(240)1_#+[=1082(34)12#_%6Rt*';
 TestInitVal_2(eCodeType := eCodeType, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.GTIN;
 
 
 	
@@ -602,16 +559,16 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_OUTER;
+eCodeType	:= CODE.E_CodeAI.SERIAL;
 sFullCode := '(01)@_45^da_eU(21)|\174He_)%^P(240)1_#+[=1082(34)12#_%6Rt*';
 TestInitVal_2(eCodeType := eCodeType, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.SERIAL;
 
 
 	
-IF TEST_ORDERED('Outer_code05_SERIAL_VAL2_extractedWrong') THEN
+IF TcUnit.TEST_ORDERED('Outer_code05_SERIAL_VAL2_extractedWrong') THEN
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -638,16 +595,16 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_OUTER;
+eCodeType	:= CODE.E_CodeAI.RSKU;
 sFullCode := '(01)@_45^da_eU(21)|\174He_)%^P(240)1_#+[=1082(34)12#_%6Rt*';
 TestInitVal_2(eCodeType := eCodeType, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-eCodeType	:= CODE.E_CodeAI.RSKU;
 
 
 	
-IF TEST_ORDERED('Outer_code06_RSKU_VAL2_extractedWrong') THEN
+IF TcUnit.TEST_ORDERED('Outer_code06_RSKU_VAL2_extractedWrong') THEN
 
 	sF_GetItemAI := CODE.F_GetItemAI(sFullCode := sFullCode, 
 									 eCodeType := eCodeType, 
@@ -674,13 +631,11 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
-stCodeInfo.eCodeType	:= CODE.E_CodeType.E_PACK;
-TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
-
 //Change some data for test scenario below
-sFullCode := 'BRK8D60ZRJYD';
+stCodeInfo.eCodeType	:= CODE.E_CodeType.E_PACK;
 eCodeType	:= CODE.E_CodeAI.SERIAL;
-
+sFullCode := 'BRK8D60ZRJYD';
+TestInit(eCodeType := eCodeType, sFullCode := sFullcode, stCodeInfo := stCodeInfo);
 
 	
 IF TcUnit.TEST_ORDERED('Pack_code01_SERIAL_extractedWrong') THEN
@@ -689,7 +644,7 @@ IF TcUnit.TEST_ORDERED('Pack_code01_SERIAL_extractedWrong') THEN
 									 eCodeType := eCodeType, 
 									 stCodeInfo := stCodeInfo);
 	
-	AssertEquals_STRING(Expected:= 'BRK8D60ZRJYDe44d', 
+	AssertEquals_STRING(Expected:= 'BRK8D60ZRJYD', 
 						Actual:= TO_STRING(sF_GetItemAI), 
 						Message:= 'Wrong Pack SERIAL extracted');						
 
@@ -710,12 +665,13 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[// Validation data init
+//Change some data for test scenario below
 stCodeInfo.eCodeType	:= CODE.E_CodeType.E_PACK;
+eCodeType	:= CODE.E_CodeAI.SERIAL;
+sFullCode := 'ABCDEFGHIJKL';
+//sFullCode := '%$32@e#*(Yt2';
 TestInitVal_2(eCodeType := eCodeType, stCodeInfo := stCodeInfo);
 
-//Change some data for test scenario below
-sFullCode := '%$32@e#*(Yt2';
-eCodeType	:= CODE.E_CodeAI.SERIAL;
 
 
 	
@@ -725,9 +681,9 @@ IF TcUnit.TEST_ORDERED('Pack_code02_SERIAL_VAL2_extractedWrong') THEN
 									 eCodeType := eCodeType, 
 									 stCodeInfo := stCodeInfo);
 	
-	AssertEquals_STRING(Expected:= '%$32@e#*(Yt2', 
+	AssertEquals_STRING(Expected:= 'ABCDEFGHIJ', 
 						Actual:= TO_STRING(sF_GetItemAI), 
-						Message:= 'Wrong Pack SERIAL extracted');						
+						Message:= 'Wrong Pack SERIAL / VAL2 extracted');						
 
 TEST_FINISHED();
 
@@ -812,7 +768,7 @@ ELSIF stCodeInfo.eCodeType = CODE.E_CodeType.E_PACK THEN
 	stCodeInfo.stSerialCode.sStartAI := '';
 	stCodeInfo.stSerialCode.sEndAI := '';
 	stCodeInfo.stSerialCode.nCodeLength := 12;
-	stCodeInfo.stSerialCode.nCodeStartPos := 0;	
+	stCodeInfo.stSerialCode.nCodeStartPos := 1;	
 	
 stCodeInfo.nMinLength 		:= 10; // NOT used
 stCodeInfo.nEntireLength	:= 12;
@@ -867,7 +823,7 @@ IF stCodeInfo.eCodeType = CODE.E_CodeType.E_CASE THEN
 	stCodeInfo.stProductionOrder.nCodeStartPos := 1;	
 
 stCodeInfo.nMinLength 		:= 10; // NOT used
-stCodeInfo.nEntireLength	:= 77;
+stCodeInfo.nEntireLength	:= 69;
 stCodeInfo.nNumberOfAIs		:= 5;
 	
 ELSIF stCodeInfo.eCodeType = CODE.E_CodeType.E_OUTER THEN
@@ -898,8 +854,8 @@ ELSIF stCodeInfo.eCodeType = CODE.E_CodeType.E_PACK THEN
 // SERIAL	
 	stCodeInfo.stSerialCode.sStartAI := '';
 	stCodeInfo.stSerialCode.sEndAI := '';
-	stCodeInfo.stSerialCode.nCodeLength := 12;
-	stCodeInfo.stSerialCode.nCodeStartPos := 0;	
+	stCodeInfo.stSerialCode.nCodeLength := 10;
+	stCodeInfo.stSerialCode.nCodeStartPos := 1;	
 	
 stCodeInfo.nMinLength 		:= 10; // NOT used
 stCodeInfo.nEntireLength	:= 12;
