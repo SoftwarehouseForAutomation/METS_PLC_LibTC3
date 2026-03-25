@@ -115,17 +115,4 @@ aLogMessages = "Alarm No. 32"[^7]
 
 ```
 
-Kopiuj do **README.md** – gotowe do GitHub/Wiki![^8]
-
-
-<div align="center">⁂</div>
-
-[^1]: https://www.gov.pl/web/kolumbia/apostille
-[^2]: https://bip.warszawa.so.gov.pl/artykul/222/69/uwierzytelnienie-dokumentow
-[^3]: https://parenting.pl/skrocony-odpis-aktu-urodzenia-przepisy-zupelny-odpis-aktu-urodzenia-wniosek
-[^4]: https://gotwincat.blogspot.com/2017/
-[^5]: https://notariusz-duszkiewicz.pl/klauzula-apostille-legalizacja-uwierzytelnienie/
-[^6]: https://www.youtube.com/watch?v=_IwzqUg6c9w
-[^7]: https://prawodlakazdego.pl/content/pe%C5%82nomocnictwo-od-osoby-przebywaj%C4%85cej-za-granic%C4%85
-[^8]: FB_ALARM_LogTableTests.TcPOU```
 
