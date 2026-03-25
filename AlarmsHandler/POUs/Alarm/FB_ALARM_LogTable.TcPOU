@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_ALARM_LogTable" Id="{ae5830fa-f075-4e25-b4cc-a5b7c7b46f13}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ALARM_LogTable
+VAR_INPUT
+	bResetActive			: 	BOOL;
+END_VAR
+VAR_IN_OUT
+	stAlarmTable			:	ST_AlarmsTable;
+	aAlarms 				: 	ARRAY [0..cMAX_ALARM_GROUP] OF ST_Alarms;
+	aAlarmsSettings 		: 	ARRAY [0..cMAX_ALARM_GROUP] OF ST_AlarmSettings;
+	stCTDateTime			: 	ST_SYSTEM_DateTime;
+END_VAR
+VAR
+	ni										:		INT;
+	nk										: 		INT;
+	nj										: 		INT;
+	index									:		INT;
+	PriorityValue								: 		DWORD;
+	bUpdateAlarmLogTable						: 		BOOL;
+
+
+	aAlarmIDBuffer							: 		ARRAY [0..cMAX_MESSAGE_NUMBER] OF BOOL;
+	aIntermediateAlarmTable					:		ARRAY[1..15] OF STRING(200);
+	aIntermediateAlarmTableVB6				:		ARRAY[1..15] OF INT;
+	aAlarmsLogBuffer 						: 		ARRAY [0..cMAX_ALARM_GROUP] OF ST_Alarms;
+
+	nGroupIndex							:		INT;
+	nActualAlarmPosition					:		INT;
+
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(**********************************************************************************)
+(*********************************Master Alarms************************************
+
+**********************************************************************************)
+	MEMSET(ADR(stAlarmTable.aActiveID), 16#00, SIZEOF(stAlarmTable.aActiveID));
+
+	FOR index:= 0 TO 31 DO
+
+		PriorityValue:=lREAL_TO_DWORD(EXPT(2, index));
+		IF (aAlarms[0].nMessage AND PriorityValue) <>0  THEN stAlarmTable.aActiveID[index]:=TRUE; END_IF
+		IF (aAlarms[1].nMessage AND PriorityValue) <>0  THEN stAlarmTable.aActiveID[32+index]:=TRUE; END_IF
+		IF (aAlarms[2].nMessage AND PriorityValue) <>0  THEN stAlarmTable.aActiveID[64+index]:=TRUE; END_IF
+		IF (aAlarms[3].nMessage AND PriorityValue) <>0  THEN stAlarmTable.aActiveID[96+index]:=TRUE; END_IF
+		IF (aAlarms[4].nMessage AND PriorityValue) <>0  THEN stAlarmTable.aActiveID[128+index]:=TRUE; END_IF
+		IF (aAlarms[5].nMessage AND PriorityValue) <>0  THEN stAlarmTable.aActiveID[160+index]:=TRUE; END_IF
+		IF (aAlarms[6].nMessage AND PriorityValue) <>0  THEN stAlarmTable.aActiveID[192+index]:=TRUE; END_IF
+		IF (aAlarms[7].nMessage AND PriorityValue) <>0  THEN stAlarmTable.aActiveID[224+index]:=TRUE; END_IF
+
+	END_FOR
+
+(**********************************************************************************)
+(* Disable some alarms from logging - logging alarm 255 is disable just for presentation*)
+(* Disable master messages from logging *)
+//stAlarmTable.aDisableAlarmLog[255]:=TRUE;
+
+(**********************************************************************************)
+(*Reset Alarm ID Buffer on Alarm Resets*)
+FOR ni :=0 TO 255 DO
+	IF NOT  stAlarmTable.aActiveID[ni] THEN
+			aAlarmIDBuffer[ni]:= FALSE;
+	END_IF;
+END_FOR
+
+(* Check if there is a new Fault *) (*Update Alarm Buffers for next Alarm Detection*)
+IF MEMCMP(ADR(aAlarms), ADR(aAlarmsLogBuffer), SIZEOF(aAlarmsLogBuffer)) <>0 AND stCTDateTime.strHMIDateTime <> '' AND NOT  bResetActive THEN
+	MEMMOVE(ADR(aAlarmsLogBuffer), ADR(aAlarms), SIZEOF(aAlarms)) ;
+	bUpdateAlarmLogTable		:= 	TRUE;
+END_IF
+
+IF	bUpdateAlarmLogTable THEN	(*(bUpdateAlarmLogTable OR stButtonsLamps.bResetButtonRisingEdge) AND PRG_MasterSystemTime.bReadyToRead
+THEN*)	nk:=0;
+(* Check for Active Alarms in the aAlarmID tag*)
+	WHILE (nk<=255) DO (* IF aAlarmID is active AND AlarmID Buffer is NOT, Shift the AlarmLogTable down by 1 row*)
+		IF stAlarmTable.aActiveID[nk] AND NOT aAlarmIDBuffer[nk] (*AND NOT stAlarmTable.aDisableAlarmLog[nk]*)  THEN(*and IF logging is not disabling*)
+		(*//Shift All Rows down by 1*)
+				MEMMOVE(ADR(stAlarmTable.aLogMessages[2]), ADR(stAlarmTable.aLogMessages[1]), SIZEOF(stAlarmTable.aLogMessages)-SIZEOF(stAlarmTable.aLogMessages[1]));
+				stAlarmTable.aLogMessages[1] :=  F_CONCAT3(stCTDateTime.strHMIDateTime, ' ', stAlarmTable.aMsgAux[nk].sTextMessage);
+				
+				nGroupIndex:= nk/32;
+				nActualAlarmPosition:= nk MOD 32;
+
+				IF NOT aAlarmsSettings[nGroupIndex].aAutoResetTable[nActualAlarmPosition] THEN
+					MEMMOVE(ADR(stAlarmTable.aLogAlarmsHMI[2]), ADR(stAlarmTable.aLogAlarmsHMI[1]), SIZEOF(stAlarmTable.aLogAlarmsHMI)-SIZEOF(stAlarmTable.aLogAlarmsHMI[1]));
+					stAlarmTable.aLogAlarmsHMI[1] := nk;
+					MEMMOVE(ADR(stAlarmTable.aLogDateAlarmsHMI[2]), ADR(stAlarmTable.aLogDateAlarmsHMI[1]), SIZEOF(stAlarmTable.aLogDateAlarmsHMI)-SIZEOF(stAlarmTable.aLogDateAlarmsHMI[1]));
+					stAlarmTable.aLogDateAlarmsHMI[1] := stCTDateTime.strHMIDateTime;
+				ELSE
+					MEMMOVE(ADR(stAlarmTable.aLogWarningsHMI[2]), ADR(stAlarmTable.aLogWarningsHMI[1]), SIZEOF(stAlarmTable.aLogWarningsHMI)-SIZEOF(stAlarmTable.aLogWarningsHMI[1]));
+					stAlarmTable.aLogWarningsHMI[1] := nk;
+					MEMMOVE(ADR(stAlarmTable.aLogDateWarningsHMI[2]), ADR(stAlarmTable.aLogDateWarningsHMI[1]), SIZEOF(stAlarmTable.aLogDateWarningsHMI)-SIZEOF(stAlarmTable.aLogDateWarningsHMI[1]));
+					stAlarmTable.aLogDateWarningsHMI[1] := stCTDateTime.strHMIDateTime;
+				END_IF
+		END_IF;
+		nk:=nk+1;
+	END_WHILE;
+(*Move the current aAlarmID into the AlarmID_Buffer for the next comparision*)
+		aAlarmIDBuffer 				:= 	stAlarmTable.aActiveID;
+		MEMMOVE(ADR(aAlarmsLogBuffer), ADR(aAlarms), SIZEOF(aAlarms)) ;
+(* Reset UpdateAlarm Log Table*)
+	bUpdateAlarmLogTable		:= FALSE;
+END_IF;
+
+(***************************************************************************)
+(*Banner Table
+ Empty IntermediateAlarmTable, used to store Active Alarms while scanning through the AlarmID array *)
+
+	MEMSET(ADR(aIntermediateAlarmTable), 16#00, SIZEOF(aIntermediateAlarmTable));
+	MEMSET(ADR(aIntermediateAlarmTableVB6), 16#FF, SIZEOF(aIntermediateAlarmTableVB6));
+
+	ni:=0;
+	nj:=1;
+	(* Check for Active Alarms in the AlarmID tag *)
+	WHILE (ni<=255) AND (nj <= 15) DO
+		(* IF Alarm is active *)
+		IF stAlarmTable.aActiveID[ni] THEN	(* If Alarm is active, move the corresponding Alarm Message into the IntermediateAlarmTable *)
+			aIntermediateAlarmTable[nj]:=  stAlarmTable.aMsgAux[ni].sTextMessage;
+			aIntermediateAlarmTableVB6[nj]:=  ni;
+			nj:=nj+1;
+		END_IF
+	ni:=ni+1;
+	END_WHILE;
+
+	(* Move the IntermediateAlarmTable into the ActiveAlarmTable *)
+	stAlarmTable.aActiveMessages := aIntermediateAlarmTable;
+	stAlarmTable.aActiveMessagesHMI := aIntermediateAlarmTableVB6;
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

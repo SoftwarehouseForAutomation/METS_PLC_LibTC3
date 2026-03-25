@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_CaseRejectCode" Id="{b7fab726-fb4e-4333-a74d-c12e11056d7f}">
+    <Declaration><![CDATA[TYPE ST_HMI_CaseRejectCode :
+STRUCT
+	sCaseIDCode				: STRING(10);
+	sCaseRejectCode			: T_MaxString;		(* blank and not included in CAC files for valid cases *)
+	sProductionDate			: STRING(10);
+	sProductionTime			: STRING(8);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

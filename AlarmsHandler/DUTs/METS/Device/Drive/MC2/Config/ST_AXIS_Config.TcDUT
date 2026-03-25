@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AXIS_Config" Id="{468d5608-ebaa-45ab-a683-5c6b43b39893}">
+    <Declaration><![CDATA[TYPE ST_AXIS_Config :
+STRUCT
+
+	sDeviceName				: STRING(30) := 'Axis';
+	bCalibrationSensorExist	: BOOL;
+	nTorqueLimitation			: UINT	:=	32767;
+	stRamps					: ST_AxisCtrlRamps;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

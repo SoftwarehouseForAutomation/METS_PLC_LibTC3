@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_DeviceState" Id="{f41ef1df-3362-4430-8549-9d75ce4006e2}">
+    <Declaration><![CDATA[TYPE ST_SYSTEM_DeviceState :
+STRUCT
+	aCameraIPSettingsValid	: ARRAY[1..cMAX_CAMERA_NUMBER] OF BOOL;
+	aCameraStatus			: ARRAY[1..cMAX_CAMERA_NUMBER] OF ST_SCANNER;	(**)
+
+	aHandScannersValid		: ARRAY[1..cMAX_HAND_SCANNERS] OF BOOL;
+	aHandScanners			: ARRAY[0..cMAX_HAND_SCANNERS] OF ST_SCANNER_HoneywellStatus;		(* index 0 used for DigitalTwin input*)
+	aHandScannerHostAck	: ARRAY[1..cMAX_HAND_SCANNERS] OF ST_SCANNER_HostAck;			(**)
+
+	aPrinterIPSettingsValid	: ARRAY[1..cMAX_PRINTER_NUMBER] OF BOOL;
+	aPrinterStatus			: ARRAY[1..cMAX_PRINTER_NUMBER] OF ST_PRINTER_Status;	(**)
+
+	aDriverStatus			: ARRAY[1..cMAX_ANALOG_DRIVERS] OF ST_DriveCtrl;
+	aPNetMasterStatus		: ARRAY [1..cMAX_PROFINET_MASTERS]  OF  ST_PNetMasterStatus;
+	aDriveInterfaces		: ARRAY[1..cMAX_PROFINET_DRIVES] OF ST_G120_Status;
+	aMC2AxisStatus		: ARRAY[1..cMAX_MC2_DRIVES] OF ST_AXIS_Status;
+
+	(*aAFS50CamStatus		: ARRAY [1..cMAX_CAMS] OF ST_AFS60_Status;*)
+	aEncoderStatus		: ARRAY[1..cMAX_ENCODER] OF ST_ENCODER_Status;
+
+	aCylinderStatus		: ARRAY[1..cMAX_CYLINDERS] OF ST_CYLINDER_Status;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

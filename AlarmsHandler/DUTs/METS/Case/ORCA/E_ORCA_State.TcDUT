@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_ORCA_State" Id="{513e5f9b-62aa-404b-9b61-f6dc89ffb603}">
+    <Declaration><![CDATA[TYPE E_ORCA_State :
+(
+	E_ORCA_IDLE,
+	E_ORCA_OPENFILE,
+
+	E_ORCA_CLOSEFILE,
+	E_ORCA_FINDFOLDER,
+	E_ORCA_FINDFILE,
+	E_ORCA_READDATA,
+
+	E_ORCA_DELETEFILE,
+	E_ORCA_COPYFILE,
+	E_ORCA_MOVEFILE,
+	E_ORCA_RENAMEFILE,
+
+	E_ORCA_VALIDATEOUTER,
+	E_ORCA_VALIDATEOAC,
+
+	E_ORCA_DONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

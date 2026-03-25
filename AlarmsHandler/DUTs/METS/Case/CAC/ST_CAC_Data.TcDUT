@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CAC_Data" Id="{99e4f2f2-241e-4de2-8e29-fcc3a703e956}">
+    <Declaration><![CDATA[TYPE ST_CAC_Data :
+STRUCT
+	Barcode 					: T_CASE_Barcode;
+	ProductionDate			: STRING(10);
+	ProductionTime			: STRING(8);
+	ProductionTimeOffset		: STRING(6);		(* time offset between system and UTC, '+1:00' means SystemTime = UTC + 1hr *)
+	RetailSKU					: T_CodeRSKU;
+	CasePacker				: ST_SYSTEM_MachineID;
+	CodingAndTrackingMode		: INT;
+	NumberOfOuters			: INT;
+	CaseRejectCode			: T_RejectCode; (* blank and not included in CAC files for valid cases *)
+	CaseRejectID				: UINT	; (* blank and not included in CAC files for valid cases *)
+	Outer					: ARRAY[1..cMAX_OUTERS_PER_CASE] OF ST_OAC_Data;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

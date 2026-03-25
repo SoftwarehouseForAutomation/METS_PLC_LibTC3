@@ -1,0 +1,1607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FileVersion>1.0.0.0</FileVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{12abad3b-c525-412c-8d96-c6ba7b86a1ce}</ProjectGuid>
+    <SubObjectsSortedByName>true</SubObjectsSortedByName>
+    <DownloadApplicationInfo>true</DownloadApplicationInfo>
+    <WriteProductVersion>false</WriteProductVersion>
+    <GenerateTpy>false</GenerateTpy>
+    <Name>AlarmsHandler</Name>
+    <ProgramVersion>3.1.4026.19</ProgramVersion>
+    <Application>{6d664785-aac4-4a94-8b9a-62891bc05a38}</Application>
+    <TypeSystem>{4634c099-7556-4e46-a9f5-7564dfd434e1}</TypeSystem>
+    <Implicit_Task_Info>{5e4c36ca-48e2-4b70-8692-654a9920e393}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{c868cd89-c85b-4075-8d56-ed54865ccd10}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{82eaa85a-b488-4dd3-8699-9db9d0c8f329}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{550465cd-5977-456f-87eb-8fe203b49b1b}</LibraryReferences>
+    <Company>Marden Edwards</Company>
+    <Released>false</Released>
+    <Title>AlarmsHandler</Title>
+    <ProjectVersion>1.0.0.0</ProjectVersion>
+    <Author>Wiktor Pytka</Author>
+    <LibraryCategories>
+      <LibraryCategory>
+        <Id>{b3c62188-e489-427a-822d-a32b7d9b4c0c}</Id>
+        <Version>1.0.0.0</Version>
+        <DefaultName>CSEG | ALARMS</DefaultName>
+      </LibraryCategory>
+    </LibraryCategories>
+    <SelectedLibraryCategories>
+      <Id>{b3c62188-e489-427a-822d-a32b7d9b4c0c}</Id>
+    </SelectedLibraryCategories>
+    <DefaultNamespace>ALARMS</DefaultNamespace>
+    <Placeholder>ALARMS</Placeholder>
+    <LanguageModelAttributeForLibrary>
+    </LanguageModelAttributeForLibrary>
+    <DocFormat>
+    </DocFormat>
+    <GlobalVersionStructureIncluded>true</GlobalVersionStructureIncluded>
+    <VirtualLibrary>true</VirtualLibrary>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="DUTs\METS\ADS Symobol\E_SYMBOL_AccessState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\ADS Symobol\E_SYMBOL_AdsStates.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\ADS Symobol\ST_SYMBOL_AddressInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\E_CodeAI.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\E_CodeType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\GS1_Standard\E_GS1_CodeAIType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\GS1_Standard\E_GS1_CodeLvl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\GS1_Standard\ST_GS1_AI_Attributs.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\GS1_Standard\ST_GS1_AI_Definition.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\GS1_Standard\ST_GS1_CodeInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\GS1_Standard\ST_GS1_CodeValidation.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\GS1_Standard\ST_GS1_Decode_AI.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\ST_CodeInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\ST_CodeValidation.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\ST_RejectItems.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\ST_RejectReasonsForCase.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\ST_RejectReasonsForOuter.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\AI Codes And Validation\ST_RejectReasonsForPack.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Alarms\E_MessageID.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Alarms\E_MessageType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Alarms\ST_AlarmDB.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Alarms\ST_Alarms.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Alarms\ST_AlarmSettings.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Alarms\ST_AlarmsTable.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Alarms\ST_AlarmStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Alarms\ST_ALARM_Aux.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CAC_Filename_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CASE_Barcode_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_Char_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CHM_Filename_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CodeBATCH_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CodeBRAND_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CodeCRYPTO_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CodeGTIN_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CodeMRP_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CodePIT_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CodePO_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CodePRODUCEDATE_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CodeRSKU_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_CodeURL_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_DB_LongSTRING_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_FileExtension_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_FolderName_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_FolderPath_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_FSS_RejecCode_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_HMI_PACK_Barcode_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_ISO8601Time_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_LongSTRING_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_OAC_Filename_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_OCV_Filename_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_OHM_Filename_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_OUTER_Barcode_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_PACK_Barcode_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_PCM_Filename_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_PositiveDINT_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_PositiveINT_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_ProductDescription_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_RejectCode_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Aliases\T_TimeLog_1.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CAC\E_CAC_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CAC\ST_CAC_Data.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\Case Item Structures\ST_CaseContent.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\Case Item Structures\ST_CaseIdentity.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\Case Item Structures\ST_CaseItem.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\Outer Item Structures\ST_OuterContent.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\Outer Item Structures\ST_OuterIdentity.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\Outer Item Structures\ST_OuterItem.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\Pack Item Structures\ST_PackIdentity.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\Pack Item Structures\ST_PackItem.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\ST_DefaultIdentity.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\ST_Attributes.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\ST_CHM_GenericHierarchy.TcDUT">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\ST_GenericHierarchy.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\CHM Data Structure\ST_MessageHeader.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\E_CHM_GeneratorState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\E_CHM_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\E_CHM_WriteMode.TcDUT">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\CHM\ST_CHM_Data.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\E_CASE_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\ORCA\E_ORCA_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\ORCA\ST_ORCA_BrandInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\ORCA\ST_ORCA_Data.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\ORCA\ST_ORCA_Outers.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\ORCA\ST_ORCA_ProductInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\ORCA\ST_ORCA_SiteInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\ST_CasePackerInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\ST_CASE_CaseQueue.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\ST_CASE_DefferOuter.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\ST_CASE_InfeedQueue.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Case\ST_CASE_OperationData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\Device\E_CX_DeviceState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\E_CX_EtherCATState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\ST_CX_EtherCATDeviceState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\ST_CX_EtherCATMasterPNetState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\ST_CX_EtherCATMasterState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\EBUS\ST_EBUS_AnalogueDataIn.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\EBUS\ST_EBUS_EtherCATState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\KBUS\E_KBUS_RegisterAccessState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\KBUS\ST_KBUS_AnalogueDataIn.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\KBUS\ST_KBUS_AnalogueDataOut.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\KBUS\ST_KBUS_KL1501DataIn.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\KBUS\ST_KBUS_KL1501DataOut.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\KBUS\ST_KBUS_KL5001Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\ST_EtherCATSlaveInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\ST_EtherCATStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\Network\E_CX_NetworkInfoState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\Network\E_CX_SetAMSNetIDState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\Network\ST_CX_AdapterInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\Network\ST_CX_NetworkInfo.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\NOVRAM\E_CX_NVDataCtrlState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\NOVRAM\E_CX_NVDataOpMode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\NOVRAM\E_CX_NVXMLState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\NOVRAM\ST_CX_AMSAddress.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\NOVRAM\ST_CX_EL6080DataIn.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\NOVRAM\ST_CX_EL6080DataOut.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\NOVRAM\ST_CX_NVDataBlock.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\System\E_CX_HWType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\CX Unit\System\E_CX_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Cylinders\E_CYLINDER_Name.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Cylinders\E_CYLINDER_Position.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Cylinders\ST_CYLINDER_Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Cylinders\ST_CYLINDER_Control.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Cylinders\ST_CYLINDER_IN.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Cylinders\ST_CYLINDER_OUT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Cylinders\ST_CYLINDER_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Cylinders\ST_CYLINDER_TagID.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\E_DB_ScanState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\OLD\ST_DBResult.TcDUT">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\OLD\ST_DB_CACCheckCtrl.TcDUT">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\OLD\ST_DB_Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\OLD\ST_DB_OACCheckCtrl.TcDUT">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\OLD\ST_DB_OCVCheckCtrl.TcDUT">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\OLD\ST_DB_PcvCheckCtrl.TcDUT">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\OLD\ST_DB_ReportDBCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\OLD\ST_DB_ReportResult.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\ST_DB_CACDataCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\ST_DB_OACDataCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\DB\ST_DB_OCVDataCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Analog\Config\ST_AnalogDrive.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Analog\ST_DriveCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Analog\ST_PhtcCtrl.TcDUT">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\Axis Control\E_AXIS_MotionType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\Axis Control\ST_AXIS_Control.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\Axis Control\ST_AXIS_IN.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\Axis Control\ST_AXIS_OUT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\Axis Control\ST_AXIS_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\Config\ST_AXIS_Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\EtherCAT\AX5000 FBs\ST_AX5000_TouchProbe.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\EtherCAT\Encoder FBs\ST_DeviceAddress.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\E_MC_Name.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\NC Axis\Cam\E_CAM_Update.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\NC Axis\E_AXIS_CtrlState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\NC Axis\E_TORQUE_Scaling.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\NC Axis\ST_AxisCtrlRamps.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\NC Axis\ST_DriveStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\NC Axis\ST_LatchPosBuffer.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\NC Axis\ST_NC_EncDataIn.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\NC Axis\ST_NC_EncDataOut.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\TempAxis\ST_AxisHomeStruct.TcDUT">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\MC2\TempAxis\ST_AxisMotionStruct.TcDUT">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\Config\ST_ProfinetDrive.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\Config\ST_ProfinetMasterConfig.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\E_DRIVE_Name.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\Parameters\ST_DataPntAdr.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\Parameters\ST_KeyPadDisplay.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\Parameters\ST_Parameter.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\Parameters\ST_ParameterControl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\Parameters\ST_Parameters.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\Parameters\ST_Value.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\ST_PNetMasterStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\_G120\Drives\E_DRIVE_DataType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\_G120\Drives\ST_DRIVE_INPUT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\_G120\Drives\ST_DRIVE_OUTPUT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\_G120\Drives\ST_DRIVE_STATUS.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\_G120\Drives\ST_G120_ExtendedIn.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\_G120\Drives\ST_G120_ExtendedOut.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\_G120\Drives\ST_G120_IN.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\_G120\Drives\ST_G120_OUT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\_G120\Drives\ST_G120_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Drive\Profinet\_G120\ST_G120_Control.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Encoders\CAMS\ST_AFS60_Cam.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Encoders\CAMS\ST_AFS60_CamHMi.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Encoders\CAMS\ST_AFS60_Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Encoders\CAMS\ST_AFS60_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Encoders\E_ENOCDER_Name.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Encoders\ST_ENCODER_IN.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Encoders\ST_ENCODER_OUT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Encoders\ST_ENCODER_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\IO2 Controls\E_IO2_InputSource.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\IO2 Controls\E_IO2_Type.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\IO2 Controls\Input Ctrl\ST_IO2_DoubleInputCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\IO2 Controls\Input Ctrl\ST_IO2_DoubleInputLockedCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\IO2 Controls\Input Ctrl\ST_IO2_SingleInputCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\IO2 Controls\Input Ctrl\ST_IO2_SingleInputLockedCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\IO2 Controls\Outpout Ctrl\ST_IO2_OutputCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\IO2 Controls\ST_IO2_Diagnostic.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\IO2 Controls\ST_IO2_InputPLC.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\IO2 Controls\ST_IO2_OutputPLC.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Printers\E_PRINTER_Name.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Printers\E_PRINTER_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Printers\ST_PRINTER_Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Printers\ST_PRINTER_IN.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Printers\ST_PRINTER_OUT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Printers\ST_PRINTER_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\E_ClientSteps.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\E_DataExchaSteps.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\E_SCANNER_CodeType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\E_SCANNER_DeviceType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\E_SCANNER_Name.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\E_SCANNER_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\E_SCANNER_Vendor.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\Hand Scanner\E_ConnectSteps.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\Hand Scanner\E_DataSequence.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\Hand Scanner\E_SCANNER_Baudrate.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\Hand Scanner\ST_SCANNER_HoneywellConfig.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\Hand Scanner\ST_SCANNER_HoneywellCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\Hand Scanner\ST_SCANNER_HoneywellStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\Hand Scanner\ST_SCANNER_HostAck.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\Hand Scanner\ST_SCANNER_USBConfig.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\NewModel\ST_SCANNER_Configuration.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\NewModel\ST_SCANNER_Ctrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\NewModel\ST_SCANNER_CtrlMapping.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\NewModel\ST_SCANNER_CtrlOptions.TcDUT">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\NewModel\ST_SCANNER_IN.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\NewModel\ST_SCANNER_ManualStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\NewModel\ST_SCANNER_OUT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\NewModel\ST_SCANNER_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_ApplicationIdentifier.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_CameraMap.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_CodeData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_Evaluation.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_ImageData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_ManualCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_OpState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_Options.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_Performance.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_Statistics.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Device\Scanner\ST_SCANNER_TriggerID.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Files\E_FILE_CtrlState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Files\E_FILE_DeleteOldFilesState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Files\E_FILE_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Files\ST_FILE_WriteFileStatistic.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\Device Manual Control\ST_HMI_AxisCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\Device Manual Control\ST_HMI_CylinderCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\Device Manual Control\ST_HMI_G120Ctrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\Device Manual Control\ST_HMI_PrinterCtrl.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\Device Status\E_HMI_DriveStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\Device Status\ST_HMI_AxisStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\Device Status\ST_HMI_CylinderStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\Device Status\ST_HMI_G120Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\Device Status\ST_HMI_HoneywellStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\Device Status\ST_HMI_PrinterStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\HMIQueue\ST_HMI_CAC_Data.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\HMIQueue\ST_HMI_CaseRejectCode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\HMIQueue\ST_HMI_CaseVerifiedCode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\HMIQueue\ST_HMI_CASE_CaseQueue.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\HMIQueue\ST_HMI_InfeedQueue.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\HMIQueue\ST_HMI_OAC_Data.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\HMIQueue\ST_HMI_OCV_Data.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\HMIQueue\ST_HMI_OuterStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\HMIQueue\ST_HMI_PACK_BufferStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\HMIQueue\ST_HMI_PLAS_Queue.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\ST_HMI_BarGraph.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\ST_HMI_Buttons.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\ST_HMI_CSVStoreTable.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\ST_HMI_StationStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\HMI\ST_HMI_Visualisation.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\KPI\ST_KPI_CasePackerSignals.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\KPI\ST_KPI_CodePos.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\KPI\ST_KPI_InspectionEfficency.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\KPI\ST_KPI_ItemsProduced.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\KPI\ST_KPI_OCVFile.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\KPI\ST_KPI_OutersProcessing.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\KPI\ST_KPI_OutersProduced.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\LogData\E_LOG_Handler.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\LogData\ST_LOG_Alarms.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\LogData\ST_LOG_EventData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\LogData\ST_LOG_FileWriteError.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\LogData\ST_LOG_MachineState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\LogData\ST_LOG_RejectReasons.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\LogData\ST_LOG_WriteImageData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\NV Data\ST_NOVRAM_METS_Cameras.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\NV Data\ST_NOVRAM_METS_CaseInspactionLog.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\NV Data\ST_NOVRAM_METS_DualInputs.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\NV Data\ST_NOVRAM_METS_EventCounters.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\NV Data\ST_NOVRAM_METS_Inspection.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Outers\E_OUTER_AgrregationState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Outers\E_OUTER_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Outers\OAC\E_OAC_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Outers\OAC\ST_OAC_Data.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Outers\SFLX\E_SIDEFLEX_UnitType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Outers\SFLX\ST_SIDEFLEX_Offset.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Outers\SFLX\ST_SIDEFLEX_ProcessData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Outers\ST_OUTER_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\E_OCV_CheckMode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\E_OCV_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\E_PACK_FilledInStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\E_PACK_ReadStep.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\E_PACK_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\ST_PACK_CodeBuffer.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\ST_PACK_CodeStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\ST_PACK_ConfirmationQueue.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\ST_PACK_Data.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\ST_PACK_DuplicatesCheck.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\ST_PACK_InfeedQueue.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\ST_PACK_InTransferQueue.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\ST_PACK_LastFilledCodes.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\ST_PACK_TriggerOffset.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\_Lab\ST_LAB_OuterData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\Packs\_Lab\ST_LAB_PackData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\E_PCM_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\PCM_Hierarchy\ProductInformation\Product\ST_HierarchyData.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\PCM_Hierarchy\ProductInformation\Product\ST_HierarchyDataList.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\PCM_Hierarchy\ProductInformation\Settings\ST_ToleranceThresholdCS.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\PCM_Hierarchy\ProductInformation\Settings\ST_ToleranceThresholdOUT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\PCM_Hierarchy\ProductInformation\Settings\ST_ToleranceThresholdPK.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\PCM_Hierarchy\ProductInformation\ST_PCMProduct.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\PCM_Hierarchy\ProductInformation\ST_PCMSettings.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\PCM_Hierarchy\ST_PCMMessageHeader.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\PCM_Hierarchy\ST_ProductInformation.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\ST_PCM_Data.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\PCM\ST_PCM_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\String Processing\E_STRING_ExtrMode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\E_SYSTEM_CTState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\E_SYSTEM_HandScannerBaudrate.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\E_SYSTEM_ItemType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\E_SYSTEM_MachineState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\E_SYSTEM_MaintainFolders.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\E_SYSTEM_OSType.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\Status\ST_SYSTEM_ArchiveDBStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\Status\ST_SYSTEM_BridgeStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\Status\ST_SYSTEM_LoggerStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\Status\ST_SYSTEM_MachineStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\Status\ST_SYSTEM_ReportingDBStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\ST_SYSTEM_Config.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\ST_SYSTEM_DateTime.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\ST_SYSTEM_DeviceState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\ST_SYSTEM_Door.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\ST_SYSTEM_MachineID.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\ST_SYSTEM_MachineMode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\ST_SYSTEM_MachineState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\ST_SYSTEM_ProductionLine.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\ST_SYSTEM_SafetyStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\ST_SYSTEM_SoftwareVersion.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\System Modes\E_SYSTEM_AutomationMode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\System Modes\E_SYSTEM_OuterAggregationMode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\System\System Modes\E_SYSTEM_PackAggregationMode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\TCPIP Address\E_TCPIP_State.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\TCPIP Address\ST_TCPIP_AddressPort.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\XML Processing\E_XML_CtrlState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\XML Processing\E_XML_GeneratorState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\XML Processing\E_XML_WritingMode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\C715 Tempalate Example\E_04_ElevatorState_C715.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\C715 Tempalate Example\E_Axis_C715.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\C715 Tempalate Example\E_Cylinder_C715.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\C715 Tempalate Example\ST_04_ElevatorSeq_C715.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\C715 Tempalate Example\ST_BundleTrackingRegister_C715.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\C715 Tempalate Example\ST_CommonStationConfig_C715.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\E_00_StationStateTemplate.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\Manual Machine\E_OuterPrintStationState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\Manual Machine\ST_OuterPrintStationStruct.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\SeqCtrl\ST_STATION_Requests.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\SeqCtrl\ST_STATION_Status.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\METS\_StationOperational\ST_00_StationStructTemplate.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CAC_Filename.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CASE_Barcode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_Char.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CHM_Filename.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CodeBATCH.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CodeBRAND.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CodeCRYPTO.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CodeGTIN.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CodeMRP.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CodePIT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CodePO.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CodePRODUCEDATE.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CodeRSKU.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_CodeURL.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_DB_LongSTRING.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_FileExtension.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_FolderName.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_FolderPath.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_FSS_RejecCode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_HMI_PACK_Barcode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_ISO8601Time.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_LongSTRING.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_OAC_Filename.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_OCV_Filename.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_OHM_Filename.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_OUTER_Barcode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_PACK_Barcode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_PCM_Filename.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_PositiveDINT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_PositiveINT.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_ProductDescription.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_RejectCode.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\Aliases\T_TimeLog.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\gConstants.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\gHMI.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\gIOFiltered.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\gMessage.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\gNovRAM.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\gPersistent.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputsDT\gCamDevice.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputsDT\IOVarDT_H.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputsDT\IOVarDT_S.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputsDT\_Labs.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_CML\IOVariablesCX_CML.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_CML\IOVariablesEUCA_CML.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_CML\IOVariablesPACAN_CML.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_CML\IOVariablesPAOL_CML.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_CML\IOVariablesPLAS_CML.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_OC\IOVariablesCX_OC.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_OC\IOVariablesEUCA_OC.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_OC\IOVariablesPAOL_OC.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_OC\IOVariablesPLAS_OC.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_SFLX\IOVariablesCX_SFLX.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_SFLX\IOVariablesEUCA_SFLX.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_SFLX\IOVariablesPAOL_SFLX.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\InputsOutputs_SFLX\IOVariablesPLAS_SFLX.TcGVL">
+      <SubType>Code</SubType>
+      <ExcludeFromBuild>true</ExcludeFromBuild>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\METS\gDevice.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\METS\gProcess.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Global Variables\_VERSION\_VERSION_CONTROL.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Alarm\FB_ALARM_GroupManagment.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Alarm\FB_ALARM_Handler.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Alarm\FB_ALARM_LogTable.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Alarm\F_ALARM_SetDefinition.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\Concat Function\F_CONCAT3.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\Concat Function\F_CONCAT4.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\Concat Function\F_CONCAT5.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\Concat Function\F_CONCAT6.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\Concat Function\F_CONCAT7.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\Concat Function\F_CONCAT8.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Utilities\Concat Function\F_CONCAT9.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Version\Global_Version.TcGVL">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DUTs" />
+    <Folder Include="DUTs\METS" />
+    <Folder Include="DUTs\METS\ADS Symobol" />
+    <Folder Include="DUTs\METS\AI Codes And Validation" />
+    <Folder Include="DUTs\METS\AI Codes And Validation\GS1_Standard" />
+    <Folder Include="DUTs\METS\Alarms" />
+    <Folder Include="DUTs\METS\Aliases" />
+    <Folder Include="DUTs\METS\Case" />
+    <Folder Include="DUTs\METS\Case\CAC" />
+    <Folder Include="DUTs\METS\Case\CHM" />
+    <Folder Include="DUTs\METS\Case\CHM\CHM Data Structure" />
+    <Folder Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy" />
+    <Folder Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\Case Item Structures" />
+    <Folder Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\Outer Item Structures" />
+    <Folder Include="DUTs\METS\Case\CHM\CHM Data Structure\GenericHierarchy\Pack Item Structures" />
+    <Folder Include="DUTs\METS\Case\ORCA" />
+    <Folder Include="DUTs\METS\Device" />
+    <Folder Include="DUTs\METS\Device\CX Unit" />
+    <Folder Include="DUTs\METS\Device\CX Unit\Device" />
+    <Folder Include="DUTs\METS\Device\CX Unit\EtherCAT" />
+    <Folder Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs" />
+    <Folder Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\EBUS" />
+    <Folder Include="DUTs\METS\Device\CX Unit\EtherCAT\Terminal FBs\KBUS" />
+    <Folder Include="DUTs\METS\Device\CX Unit\Network" />
+    <Folder Include="DUTs\METS\Device\CX Unit\NOVRAM" />
+    <Folder Include="DUTs\METS\Device\CX Unit\System" />
+    <Folder Include="DUTs\METS\Device\Cylinders" />
+    <Folder Include="DUTs\METS\Device\DB" />
+    <Folder Include="DUTs\METS\Device\DB\OLD" />
+    <Folder Include="DUTs\METS\Device\Drive" />
+    <Folder Include="DUTs\METS\Device\Drive\Analog" />
+    <Folder Include="DUTs\METS\Device\Drive\Analog\Config" />
+    <Folder Include="DUTs\METS\Device\Drive\MC2" />
+    <Folder Include="DUTs\METS\Device\Drive\MC2\Axis Control" />
+    <Folder Include="DUTs\METS\Device\Drive\MC2\Config" />
+    <Folder Include="DUTs\METS\Device\Drive\MC2\EtherCAT" />
+    <Folder Include="DUTs\METS\Device\Drive\MC2\EtherCAT\AX5000 FBs" />
+    <Folder Include="DUTs\METS\Device\Drive\MC2\EtherCAT\Encoder FBs" />
+    <Folder Include="DUTs\METS\Device\Drive\MC2\NC Axis" />
+    <Folder Include="DUTs\METS\Device\Drive\MC2\NC Axis\Cam" />
+    <Folder Include="DUTs\METS\Device\Drive\MC2\TempAxis" />
+    <Folder Include="DUTs\METS\Device\Drive\Profinet" />
+    <Folder Include="DUTs\METS\Device\Drive\Profinet\Config" />
+    <Folder Include="DUTs\METS\Device\Drive\Profinet\Parameters" />
+    <Folder Include="DUTs\METS\Device\Drive\Profinet\_G120" />
+    <Folder Include="DUTs\METS\Device\Drive\Profinet\_G120\Drives" />
+    <Folder Include="DUTs\METS\Device\Encoders" />
+    <Folder Include="DUTs\METS\Device\Encoders\CAMS" />
+    <Folder Include="DUTs\METS\Device\IO2 Controls" />
+    <Folder Include="DUTs\METS\Device\IO2 Controls\Input Ctrl" />
+    <Folder Include="DUTs\METS\Device\IO2 Controls\Outpout Ctrl" />
+    <Folder Include="DUTs\METS\Device\Printers" />
+    <Folder Include="DUTs\METS\Device\Scanner" />
+    <Folder Include="DUTs\METS\Device\Scanner\Hand Scanner" />
+    <Folder Include="DUTs\METS\Device\Scanner\NewModel" />
+    <Folder Include="DUTs\METS\Files" />
+    <Folder Include="DUTs\METS\HMI" />
+    <Folder Include="DUTs\METS\HMI\Device Manual Control" />
+    <Folder Include="DUTs\METS\HMI\Device Status" />
+    <Folder Include="DUTs\METS\HMI\HMIQueue" />
+    <Folder Include="DUTs\METS\KPI" />
+    <Folder Include="DUTs\METS\LogData" />
+    <Folder Include="DUTs\METS\NV Data" />
+    <Folder Include="DUTs\METS\Outers" />
+    <Folder Include="DUTs\METS\Outers\OAC" />
+    <Folder Include="DUTs\METS\Outers\SFLX" />
+    <Folder Include="DUTs\METS\Packs" />
+    <Folder Include="DUTs\METS\Packs\_Lab" />
+    <Folder Include="DUTs\METS\PCM" />
+    <Folder Include="DUTs\METS\PCM\PCM_Hierarchy" />
+    <Folder Include="DUTs\METS\PCM\PCM_Hierarchy\ProductInformation" />
+    <Folder Include="DUTs\METS\PCM\PCM_Hierarchy\ProductInformation\Product" />
+    <Folder Include="DUTs\METS\PCM\PCM_Hierarchy\ProductInformation\Settings" />
+    <Folder Include="DUTs\METS\String Processing" />
+    <Folder Include="DUTs\METS\System" />
+    <Folder Include="DUTs\METS\System\Status" />
+    <Folder Include="DUTs\METS\System\System Modes" />
+    <Folder Include="DUTs\METS\TCPIP Address" />
+    <Folder Include="DUTs\METS\XML Processing" />
+    <Folder Include="DUTs\METS\_StationOperational" />
+    <Folder Include="DUTs\METS\_StationOperational\C715 Tempalate Example" />
+    <Folder Include="DUTs\METS\_StationOperational\Manual Machine" />
+    <Folder Include="DUTs\METS\_StationOperational\SeqCtrl" />
+    <Folder Include="GVLs" />
+    <Folder Include="GVLs\Global Variables" />
+    <Folder Include="GVLs\Global Variables\Aliases" />
+    <Folder Include="GVLs\Global Variables\InputsOutputsDT" />
+    <Folder Include="GVLs\Global Variables\InputsOutputs_CML" />
+    <Folder Include="GVLs\Global Variables\InputsOutputs_OC" />
+    <Folder Include="GVLs\Global Variables\InputsOutputs_SFLX" />
+    <Folder Include="GVLs\Global Variables\METS" />
+    <Folder Include="GVLs\Global Variables\_VERSION" />
+    <Folder Include="POUs\Alarm" />
+    <Folder Include="POUs\Utilities" />
+    <Folder Include="POUs\Utilities\Concat Function" />
+    <Folder Include="Version" />
+    <Folder Include="VISUs" />
+    <Folder Include="POUs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderReference Include="Tc2_MC2">
+      <DefaultResolution>Tc2_MC2, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_MC2</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_SerialCom">
+      <DefaultResolution>Tc2_SerialCom, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_SerialCom</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Standard">
+      <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_System">
+      <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_System</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_TcpIp">
+      <DefaultResolution>Tc2_TcpIp, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_TcpIp</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Utilities">
+      <DefaultResolution>Tc2_Utilities, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Utilities</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_Module">
+      <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Module</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+    </PlaceholderReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AICodesAndValidation.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AlarmsHandler.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
+  <ProjectExtensions>
+    <PlcProjectOptions>
+      <XmlArchive>
+  <Data>
+    <o xml:space="preserve" t="OptionKey">
+      <v n="Name">"&lt;ProjectRoot&gt;"</v>
+      <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+        <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
+        <o>
+          <v n="Name">"{192FAD59-8248-4824-A8DE-9177C94C195A}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{246001F4-279D-43AC-B241-948EB31120E1}</v>
+        <o>
+          <v n="Name">"{246001F4-279D-43AC-B241-948EB31120E1}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{29BD8D0C-3586-4548-BB48-497B9A01693F}</v>
+        <o>
+          <v n="Name">"{29BD8D0C-3586-4548-BB48-497B9A01693F}"</v>
+          <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+            <v>NamingConventions</v>
+            <o>
+              <v n="Name">"NamingConventions"</v>
+              <d n="SubKeys" t="Hashtable" />
+              <d n="Values" t="Hashtable" />
+            </o>
+            <v>Rules</v>
+            <o>
+              <v n="Name">"Rules"</v>
+              <d n="SubKeys" t="Hashtable" />
+              <d n="Values" t="Hashtable" />
+            </o>
+          </d>
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{40450F57-0AA3-4216-96F3-5444ECB29763}</v>
+        <o>
+          <v n="Name">"{40450F57-0AA3-4216-96F3-5444ECB29763}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{8A0FB252-96EB-4DCC-A5B4-B4804D05E2D6}</v>
+        <o>
+          <v n="Name">"{8A0FB252-96EB-4DCC-A5B4-B4804D05E2D6}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" ckt="String" cvt="Boolean">
+            <v>WriteLineIDs</v>
+            <v>False</v>
+          </d>
+        </o>
+        <v>{8F99A816-E488-41E4-9FA3-846536012284}</v>
+        <o>
+          <v n="Name">"{8F99A816-E488-41E4-9FA3-846536012284}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" ckt="String" cvt="String">
+            <v>DisabledWarningIds</v>
+            <v>410,5410</v>
+          </d>
+        </o>
+        <v>{F66C7017-BDD8-4114-926C-81D6D687E35F}</v>
+        <o>
+          <v n="Name">"{F66C7017-BDD8-4114-926C-81D6D687E35F}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" ckt="String" cvt="Boolean">
+            <v>CalcActiveTransOnly</v>
+            <v>True</v>
+          </d>
+        </o>
+      </d>
+      <d n="Values" t="Hashtable" />
+    </o>
+  </Data>
+  <TypeList>
+    <Type n="Boolean">System.Boolean</Type>
+    <Type n="Hashtable">System.Collections.Hashtable</Type>
+    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+    <Type n="String">System.String</Type>
+  </TypeList>
+</XmlArchive>
+    </PlcProjectOptions>
+  </ProjectExtensions>
+</Project>

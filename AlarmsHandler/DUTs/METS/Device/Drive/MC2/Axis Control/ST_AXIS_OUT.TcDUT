@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AXIS_OUT" Id="{351eadf3-7daf-435f-88ff-5537562a2689}">
+    <Declaration><![CDATA[TYPE ST_AXIS_OUT :
+STRUCT
+
+	bInitOK				: BOOL;		(* TRUE = parameter set read at least once *)
+	bEnabled			: BOOL;		(* TRUE = axis is enabled *)
+	bActive				: BOOL;		(* TRUE = axis is moving *)
+	bHomeActive			: BOOL;
+	bVeloActive			: BOOL;
+	bAbsActive			: BOOL;
+	bRelActive			: BOOL;
+	bJogActive			: BOOL;		(* TRUE = axis is moving in JOG mode *)
+	bRunningFwd			: BOOL;		(* TRUE = axis is running forwards *)
+	bRunningRev			: BOOL;		(* TRUE = axis is running backwards *)
+	bCalibrated			: BOOL;		(*TRUE = axis has benn calibrated*)
+	(*bHomed				: BOOL;*)		(* TRUE = axis has been homed *)
+	bAxisError			: BOOL;		(* TRUE = axis is in error state *)
+	nAxisErrorID		: UDINT;	(* NC axis error code *)
+	fActPos				: LREAL;	(* axis absolute position *)
+	fModuloPos			: LREAL;	(* axis modulo position *)
+	fActVelo			: LREAL;	(* axis act ual velocity *)
+	bDriveError			: BOOL;		(* TRUE = drive is in error state *)
+	nStatusDWord		: DWORD;	(* drive status code *)
+	fAmplifierTemp		: LREAL;	(* Amplifier temperature (degrees) *)
+	fDCLinkVolts		: LREAL;	(* DC link voltage (volts) *)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

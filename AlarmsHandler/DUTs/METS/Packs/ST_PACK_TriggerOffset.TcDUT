@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PACK_TriggerOffset" Id="{8ff9db51-b280-4774-be72-bbb082073d88}">
+    <Declaration><![CDATA[TYPE ST_PACK_TriggerOffset :
+STRUCT
+	nArmPositionOffset			: DINT;	(*position in mm*)
+	nCameraPositionOffset		: DINT;	(*position in mm*)
+	nTrigger1PositionOffset		: DINT;	(*position in mm*)
+	nTrigger2PositionOffset		: DINT;	(*position in mm*)
+	nTrigger3PositionOffset		: DINT;	(*position in mm*)
+	nTrigger4PositionOffset		: DINT;	(*position in mm*)
+	nTrigger5PositionOffset		: DINT;	(*position in mm*)
+	nTrigger6PositionOffset		: DINT;	(*position in mm*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

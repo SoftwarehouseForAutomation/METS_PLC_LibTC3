@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AxisMotionStruct" Id="{f3c7bef4-b84d-47be-bbba-4bdfce10653f}">
+    <Declaration><![CDATA[TYPE ST_AxisMotionStruct :
+STRUCT
+
+	n_State 								: 	DINT;		(* Current Sequence State *)
+	n_StateBuffer							: 	DINT;		(* Next Sequence State *)
+	b_FunctionRequest						: 	BOOL;		(* Sequence Function Request from Home *)
+	b_FunctionInProgress					: 	BOOL;		(* Sequence Function In Progress Handshaking *)
+	b_FunctionComplete					: 	BOOL;		(* Sequence Function Complete Handshaking *)
+	b_FunctionAbort						: 	BOOL;		(* Sequence Function Abort *)
+	b_FunctionHomed						: 	BOOL;		(* Sequence Function Homed *)
+	b_CycleStopped						: 	BOOL;		(* Sequence Function Cycle Stopped *)
+	n_Handshaking							: 	DINT;		(* Generic Handshaking Tag *)
+	b_AxisMoveVelocity						:	BOOL;
+	b_AxisMoveRelative						: 	BOOL;
+	b_AxisMoveModulo				  		: 	BOOL;
+	b_MoveToP0							:	BOOL;
+	b_MoveToP02							:	BOOL;
+	b_MoveP0_P1							:	BOOL;
+	b_MoveP1_P0							:	BOOL;
+	b_MoveP1_P2							:	BOOL;
+	b_MoveP2_P3							:	BOOL;
+	b_MoveP2_P0							:	BOOL;
+	b_MoveP3_P0							:	BOOL;
+	b_MoveP3_P4							:	BOOL;
+	b_Move_IDPos							:	BOOL;
+	b_AxisEnable							:	BOOL;
+	b_AxisReset							:	BOOL;
+	b_AtP1								:	BOOL;
+	b_AtP2								:	BOOL;
+	b_AtP3								:	BOOL;
+	b_AtP4								:	BOOL;
+	b_AtP1TimerComplete					:	BOOL;
+	b_AtVelocity1							:	BOOL;
+	b_ExtendEject							:	BOOL;
+	b_HomeRequired						:	BOOL;
+	b_OKToIndex							:	BOOL;
+	b_Referenced							:	BOOL;
+	b_AxisHome							:	BOOL;
+	b_AxisStop							:	BOOL;
+	b_MoveToEndStop						:	BOOL;
+	b_MandrelID_OK						:	BOOL;
+	b_IDRequest							:	BOOL;
+	b_IDInProgress							:	BOOL;
+	b_IDComplete							:	BOOL;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

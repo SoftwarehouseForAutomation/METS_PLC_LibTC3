@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_RejectReasonsForPack" Id="{3f7e290d-d678-4d5b-856d-64c89ffa7f8d}">
+    <Declaration><![CDATA[TYPE ST_RejectReasonsForPack :
+STRUCT
+	stPackCodesNotLinked:		ST_RejectItems :=(	nRejectID := 101,
+														sMetsDisplayCode:='Pack code(s) not linked',
+														sMetsSearchCode:='Pack code(s) not linked',
+														sFssSendCode:='NoPackData');
+
+	stPackCodesOverwritten:		ST_RejectItems :=(	nRejectID := 102,
+														sMetsDisplayCode:='Pack code(s) over-written',
+														sMetsSearchCode:='Pack code(s) over-written',
+														sFssSendCode:='WrongReadPackCode');
+
+	stPackCodesGtinError:		ST_RejectItems :=(	nRejectID := 103,
+														sMetsDisplayCode:='Pack code(s) invalid GTIN',
+														sMetsSearchCode:='Pack code(s) invalid GTIN',
+														sFssSendCode:='WrongMasterData');
+
+	stPackCodesSerialError:		ST_RejectItems :=(	nRejectID := 104,
+														sMetsDisplayCode:='Pack code(s) invalid Serial Code',
+														sMetsSearchCode:='Pack code(s) invalid Serial Code',
+														sFssSendCode:='Validation_BadCode');
+
+	stPackCodeInvalidLength	:	ST_RejectItems :=(	nRejectID := 105,
+														sMetsDisplayCode:='Pack code(s) invalid Length',
+														sMetsSearchCode:='Pack code(s) invalid Length',
+														sFssSendCode:='Validation_BadCode');
+
+	stPackCodesNotRead:		ST_RejectItems :=(	nRejectID := 106,
+														sMetsDisplayCode:='Pack code(s) no read',
+														sMetsSearchCode:='Pack code(s) no read',
+														sFssSendCode:='NoReadPackCode');
+
+	stPackCodesDuplicated:		ST_RejectItems :=(	nRejectID := 107,
+														sMetsDisplayCode:='Pack code(s) duplicate',
+														sMetsSearchCode:='Pack code(s) duplicate',
+														sFssSendCode:='Validation_BadCode');
+
+	stPackCodesTypeError:		ST_RejectItems :=(	nRejectID := 108,
+														sMetsDisplayCode:='Pack code(s) invalid type',
+														sMetsSearchCode:='Pack code(s) invalid type',
+														sFssSendCode:='Validation_BadType');
+
+	stPackCodesSUPIError:		ST_RejectItems :=(	nRejectID := 109,
+														sMetsDisplayCode:='Pack code(s) SUPI failed validation',
+														sMetsSearchCode:='Pack code(s) SUPI failed validation',
+														sFssSendCode:='Validation_BadSUPI');
+
+
+	stPackCodesDBError:		ST_RejectItems :=(	nRejectID := 110,
+														sMetsDisplayCode:='Pack code DB failed validation',
+														sMetsSearchCode:='Pack code DB failed validation',
+														sFssSendCode:='Validation_BadDB');
+
+	stPackCodesBrandSpec:		ST_RejectItems :=(	nRejectID := 111,
+														sMetsDisplayCode:='Pack code(s) invalid Brand',
+														sMetsSearchCode:='Pack code(s) invalid Brand',
+														sFssSendCode:='Validation_BadCode');
+
+
+	stUnknownPackReject:		ST_RejectItems :=(	nRejectID := 100,
+														sMetsDisplayCode:='UnknownReason',
+														sMetsSearchCode:='UnknownReason',
+														sFssSendCode:='UnknownReason');
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

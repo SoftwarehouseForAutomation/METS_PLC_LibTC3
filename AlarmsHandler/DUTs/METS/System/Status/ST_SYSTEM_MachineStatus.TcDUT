@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_MachineStatus" Id="{03584b52-f497-4fdc-ac22-73cbbd8d0a5f}">
+    <Declaration><![CDATA[TYPE ST_SYSTEM_MachineStatus :
+STRUCT
+
+	eHWType						: E_CX_HWType;
+	eOSType						: E_SYSTEM_OSType;		(* OS type *)
+	stHardware					: ST_CxDeviceIdentificationEx;	(* hardware info *)
+
+
+	bMETSAppOK				: BOOL;
+	bMETSLogsOK				: BOOL;	
+	bMETSProcessOK			: BOOL;
+	bMETSPathsOK			: BOOL;
+
+	
+	sMETSAppPath				: T_FolderPath;
+	sMETSLogsPath				: T_FolderPath;	
+	sMETSProcessPath			: T_FolderPath;
+	
+	sTCInstalationPath			: T_FolderPath;
+	bSystemFoldersOK			: BOOL;
+	sFolderStatus				: STRING(25);
+	
+	sArchiveDBPath			: T_FolderPath;	(*local ArchiveDB path*)
+	sBridgeAppPath 			: T_FolderPath;	(* local Bridge path *)
+	sLoggerAppPath			: T_FolderPath;	(*  *)
+	sWebHMIPath				: T_FolderPath;	(*  *)
+	sDeleteArchivePath		: T_FolderPath;	(*  *)
+	
+	sPCMPath 			: T_FolderPath;	(* local PCM path *)
+	sPCMIncomingPath 	: T_FolderPath;	(* local PCM/Incoming path *)
+	sCHMPath 			: T_FolderPath;	(* local CHM path *)
+	sSettingsPath		 	: T_FolderPath;	(* local Setting*)
+	sBackupsPath			: T_FolderPath; (*local Setting/Backup path*)
+	sRecipePath				: T_FolderPath; (*local Setting/Recipe path*)
+	sCamerasPath				: T_FolderPath;	(* local Camera path *)
+	sPrintersPath			: T_FolderPath;	(* local Camera path *)
+	
+	sOCVPath 			: T_FolderPath;	(* local OCV path *)
+	sOACPath 			: T_FolderPath;	(* local OAC path *)
+	sCACPath 			: T_FolderPath;	(* local CAC path *)
+	sSystemLogPath			: T_FolderPath;	(* local Log path *)
+	
+	bClearProcessFolders		: BOOL;
+	
+///////////////////////////////////////////////////////////	
+	//bBasePathOK					: BOOL;
+	//sBasePath					: T_FolderPath;		(*TO BE REMOVED*)
+	//sLocalArchiveDBPath				: T_FolderPath;
+	//sLocalBridgePath				: T_FolderPath;
+	//sLocalPCMPath 					: T_FolderPath;	(* local PCM path *)
+	//sLocalPCMFSSPath 				: T_FolderPath;	(* local PCM/FSS path *)
+	//sLocalOCVPath 					: T_FolderPath;	(* local OCV path *)
+	//sLocalOACPath 					: T_FolderPath;	(* local OAC path *)
+	//sLocalOHMPath 					: T_FolderPath;	(* local OHM path *)
+	//sLocalCACPath 					: T_FolderPath;	(* local CAC path *)
+	//sLocalCHMPath 					: T_FolderPath;	(* local CHM path *)
+	//sLocalKPIPath 					: T_FolderPath;	(* local KPI path *)
+	//sLocalHMIPath 					: T_FolderPath;	(* local HMI path *)
+	//sLocalSettingsPath 				: T_FolderPath;	(* local Setting path*)
+	//sLocalBackupsPath 				: T_FolderPath;	(* local Setting/Backups *)
+	//sLocalOrcaPath					: T_FolderPath;	(* local ORCA path *)
+	//sLocalSystemLogPath				: T_FolderPath;	(* local SystemLog path *)
+////////////////////////////////////////////////////////////////
+	bNVDataInitOK				: BOOL;
+	bNVDataExport				: BOOL;
+	bNVDataImport				: BOOL;
+
+	bMachineConfigReadOK		: BOOL;
+	bSettingsValid				: BOOL;
+	bSettingsChanged			: BOOL;
+
+	sSettingsErrorField			: STRING(20);
+	sSettingsErrorData			: STRING(20);
+	nShiftOffsetTime			: DINT;
+
+	bSystemTimeValid			: BOOL;
+	stCTDateTime				: ST_SYSTEM_DateTime;
+	bNetworkInfoValid			: BOOL;
+	stNetworkInfo				: ST_CX_NetworkInfo;
+
+	bTCPServerInitOK			: BOOL;
+	bFileDB_OK					: BOOL;		//File mode for ArchiveDB if DB reamin offline
+	
+	aHMIRunning					: ARRAY[1..2] OF BOOL;
+	bArchiveDBRunning			: BOOL;
+	bBridgeRunning				: BOOL;
+	bLoggerRunning				: BOOL;
+	bReportingDBRunning			: BOOL;
+	
+	bStartUpComplete			: BOOL;			(* All ready! *)
+
+(* *********************************************************** *)
+(* ***************        Genreal PLC section	 ************************)
+(* *********************************************************** *)
+
+	bReset						: BOOL;		(* must be linked to machine RESET signal *)
+	bShortReset					: BOOL;
+	bLongReset					: BOOL;
+	bHardReset					: BOOL;
+
+	bStartRequest					: BOOL;
+	bStopRequest					: BOOL;
+
+
+	bPowerUpComplete				: BOOL;
+	bSystemPowerOK				: BOOL := TRUE;		(* link to external power signal if available *)
+
+	bAllCamerasReadyOK			: BOOL;
+	bAllPrintersReadyOK			: BOOL;
+	bAllMotorsReadyToRunOK		: BOOL;
+	(*bAllCylindersEnableOK			: BOOL;*)
+	bAllExternalDeviceOK			: BOOL;
+	bAllSeqStationHomed			: BOOL;
+	bAllStationNotMoving			: BOOL;
+	bPCMReceiverRunning			: BOOL;
+	bMETSConnectedToFSS			: BOOL;
+	bMETSConectedToDB			: BOOL;
+	bMachineReadyToStart			: BOOL;
+
+	stMachineMode				: ST_SYSTEM_MachineMode;
+	bMachineEnabled				: BOOL;
+	bTPDConditionalEnabled		: BOOL;
+	bExternalConditionalEnabled	: BOOL;
+	bEUCAConditionalEnabled		: BOOL;
+
+	bMachineRunning				: BOOL;
+	bMachineConditionalRunning		: BOOL;
+	bMachineWaitingOnProduct		: BOOL;
+	bMachineStopped				: BOOL;
+	bInternalStopRequest			: BOOL;
+	bMachineConveyorMode			: BOOL;
+
+	bUseOverlayPanel					: BOOL;
+	bUseLinearPackCodeScreen		: BOOL;
+	bUseInterimCodeForValidation	: BOOL;
+
+	nClearQueuesDone				: BYTE;
+
+	bEndOfShift					: BOOL;
+	stLastShift						: TIMESTRUCT;
+
+	bEndOfProdOrder				: BOOL;
+	stLastProdOrder				: TIMESTRUCT;
+
+	stPCMData					: ST_PCM_Data;
+	stPCMStatus					: ST_PCM_Status;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

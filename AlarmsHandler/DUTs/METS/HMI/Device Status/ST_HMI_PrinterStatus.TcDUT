@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_PrinterStatus" Id="{9d0a28d8-bdec-4b81-afcd-dc3b50bf8822}">
+    <Declaration><![CDATA[TYPE ST_HMI_PrinterStatus :
+STRUCT
+	sPrinterName					: STRING(30);
+(* read only *)
+	bPrinterReady					: BOOL;
+	bActivePrinter					: BOOL;
+	bPrinterInService				: BOOL;		(*printer Avalable*)
+	bPrinterSelected				: BOOL;
+	bDataReady					: BOOL;
+	bHomePosition				: BOOL;
+	bLabelPrinted					: BOOL;
+	bReadyToApply				: BOOL;
+	bApplyDone					: BOOL;
+	bSummaryWarning				: BOOL;
+	bPrinterError					: BOOL;
+
+	Q								: ST_PRINTER_OUT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

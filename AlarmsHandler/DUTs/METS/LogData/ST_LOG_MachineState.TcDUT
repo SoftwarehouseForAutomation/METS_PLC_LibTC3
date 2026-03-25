@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_LOG_MachineState" Id="{3fa55a6f-6897-4398-9faf-d8f302666398}">
+    <Declaration><![CDATA[TYPE ST_LOG_MachineState :
+STRUCT
+
+	sPowerUp					: T_TimeLog;
+	sImmediateStopped			: T_TimeLog;
+	sMachineInError				: T_TimeLog;
+	sSystemInitialising			: T_TimeLog;
+	sSystemManual				: T_TimeLog;
+	sSystemReadytoStart			: T_TimeLog;
+	sStopping					: T_TimeLog;
+	sSystemRunning				: T_TimeLog;
+	sMachineWaitingForProduct	: T_TimeLog;
+	sConveyorModeActive			: T_TimeLog;
+	sSystemConditionalRunning	: T_TimeLog;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

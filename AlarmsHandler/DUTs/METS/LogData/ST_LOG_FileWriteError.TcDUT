@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_LOG_FileWriteError" Id="{a9f7be1d-a276-4b43-a378-ba5c56682261}">
+    <Declaration><![CDATA[TYPE ST_LOG_FileWriteError :
+STRUCT
+	nWriteErrorID			: UDINT;
+	sTimeStamp				: STRING;
+	strFileName				: T_MaxString;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SYMBOL_AccessState" Id="{bae45d2a-6024-46d7-9a40-86016ae6c2bb}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+TYPE E_SYMBOL_AccessState :
+(
+	E_SYMBOL_IDLE,
+	E_SYMBOL_GETSYMBOLINFO,
+	E_SYMBOL_READDATA,
+	E_SYMBOL_WRITEDATA,
+	E_SYMBOL_DONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

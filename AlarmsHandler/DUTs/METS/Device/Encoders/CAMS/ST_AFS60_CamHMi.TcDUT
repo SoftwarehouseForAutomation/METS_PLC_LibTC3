@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AFS60_CamHMi" Id="{e1a00ab6-cecb-4652-9e84-d0b1451fb876}">
+    <Declaration><![CDATA[TYPE ST_AFS60_CamHMi :
+STRUCT
+	bEnable				: BOOL;
+	fLowerLimit1		: LREAL; (* channel 1 *)
+	fLowerLimit2		: LREAL; (* channel 2 *)
+	fUpperLimit1		: LREAL;
+	fUpperLimit2		: LREAL;
+	fRange				: LREAL := 360.0;
+	sDesciption			: STRING := 'Cam';
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

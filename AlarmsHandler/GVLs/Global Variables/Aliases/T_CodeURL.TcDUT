@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_CodeURL" Id="{58fadf61-c751-407d-8f83-7ca26b4200c5}">
+    <Declaration><![CDATA[TYPE T_CodeURL : STRING[20];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

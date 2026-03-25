@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DefaultIdentity" Id="{b781508d-3f33-4ed1-9caa-3954a528ec4c}">
+    <Declaration><![CDATA[TYPE ST_DefaultIdentity :
+STRUCT
+
+		SKU						: T_CodeRSKU;
+		GTIN						: T_CodeGTIN;
+		ProductionOrder			: T_CodePO;
+		LocalProductionOrder		: T_CodePO;
+		PITCode					:T_CodePIT;
+		BatchID					:T_CodeBATCH;
+		ProductionLine				:STRING(4);
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

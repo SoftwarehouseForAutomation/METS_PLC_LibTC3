@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_NOVRAM_METS_Cameras" Id="{10de9380-1d0a-4c6d-a573-cf7c96837601}">
+    <Declaration><![CDATA[TYPE ST_NOVRAM_METS_Cameras :
+STRUCT
+	MachineID					: ST_SYSTEM_MachineID;
+	StartDateTime					: T_ISO8601Time;
+	CodingAndTrackingMode			: INT;
+
+	aCameraEvaluation				: ARRAY[1..cMAX_CAMERA_NUMBER] OF ST_SCANNER_Evaluation;
+
+	(*CameraPackEval				: ARRAY[1..6] OF ST_SCANNER_Evaluation;
+	CameraConfirmEval				: ARRAY[1..2] OF ST_SCANNER_Evaluation;
+	CameraOuterValidEval			: ST_SCANNER_Evaluation;
+	CameraOuterAggregEval			: ST_SCANNER_Evaluation;
+	CameraCaseContentEval			: ST_SCANNER_Evaluation;
+	CameraCaseLableEval			: ST_SCANNER_Evaluation;*)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_ALARM_GroupManagment" Id="{62e6675d-62a5-4536-ad73-384ad1cef481}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ALARM_GroupManagment
+VAR_IN_OUT
+	stAlarms 					: ST_Alarms;
+	stAlarmsSettings			: ST_AlarmSettings;
+END_VAR
+VAR
+	aAlarmHandler			: ARRAY [0..31] OF FB_ALARM_Handler;
+	
+	nIndex					: INT;
+	nBitIndexMask			: DWORD;
+	
+	nMessageType			: WORD;
+	nMessageActive			: DWORD;
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[nMessageActive	:= 0;
+nMessageType	:= 0;
+
+(*****************************************************************************)
+
+FOR nIndex:= 0 TO 31 DO
+
+	IF nIndex = 0 THEN
+		nBitIndexMask := 1;
+	ELSE
+		nBitIndexMask :=SHL(nBitIndexMask,1);
+	END_IF
+	
+	//nBitIndexMask:=LREAL_TO_DWORD(EXPT(2, nIndex));
+
+	IF (stAlarms.nMessage AND nBitIndexMask) <> 0  THEN
+		
+		 aAlarmHandler[nIndex].bCurrentStatus :=TRUE;
+	ELSE
+		 aAlarmHandler[nIndex].bCurrentStatus :=FALSE;
+	END_IF
+			
+	aAlarmHandler[nIndex](
+					bAlarmTrigger					:= stAlarmsSettings.aAlarmTriggerTable[nIndex],
+					tAlarmTimout					:= stAlarmsSettings.aAlarmTimoutTable[nIndex],
+					bAlarmEnable					:= stAlarmsSettings.aBlockEnableTable[nIndex],
+					bInhibitReset					:= stAlarmsSettings.aInhibitResetTable[nIndex],
+					bAutoReset						:= stAlarmsSettings.aAutoResetTable[nIndex],
+					bAlarmActive					=>
+				);
+
+	IF  aAlarmHandler[nIndex].bAlarmActive THEN
+
+		IF  	stAlarmsSettings.aMessageTypeStatusTable[nIndex].0 THEN 	nMessageType.0 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].1 THEN		nMessageType.1 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].2 THEN		nMessageType.2 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].3 THEN		nMessageType.3 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].4 THEN		nMessageType.4 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].5 THEN		nMessageType.5 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].6 THEN		nMessageType.6 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].7 THEN		nMessageType.7 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].8 THEN		nMessageType.8 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].9 THEN		nMessageType.9 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].10 THEN	nMessageType.10 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].11 THEN	nMessageType.11 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].12 THEN	nMessageType.12 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].13 THEN	nMessageType.13 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].14 THEN	nMessageType.14 := TRUE;
+		ELSIF	stAlarmsSettings.aMessageTypeStatusTable[nIndex].15 THEN	nMessageType.15 := TRUE;
+		END_IF
+			
+		nMessageActive:= nMessageActive  + nBitIndexMask;
+	END_IF
+END_FOR
+
+(*****************************************************************************)
+
+stAlarms.nMessage 		:= nMessageActive;
+stAlarms.nMessageType 	:= nMessageType;]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

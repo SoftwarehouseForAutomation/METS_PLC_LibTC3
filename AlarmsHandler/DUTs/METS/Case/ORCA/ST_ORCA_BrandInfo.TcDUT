@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_ORCA_BrandInfo" Id="{637935ce-dde4-47e6-acf3-4e98c57fd274}">
+    <Declaration><![CDATA[TYPE ST_ORCA_BrandInfo :
+STRUCT
+
+	BatchID 			: STRING(255);
+	GTIN 			: STRING(255);
+	SKU 				: STRING(255);
+	ProductionOrder 	: STRING(255);
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

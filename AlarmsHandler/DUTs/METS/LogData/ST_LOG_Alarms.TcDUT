@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_LOG_Alarms" Id="{c6ee3c42-7caa-4d94-ae62-d8f452e07943}">
+    <Declaration><![CDATA[TYPE ST_LOG_Alarms :
+STRUCT
+
+	nAlarmCounter				: UINT;
+	sTotalAlarmTime				: T_TimeLog;
+	sMaxAlarmTime				: T_TimeLog;
+	stMaxAlarmTimeStamp			: TIMESTRUCT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

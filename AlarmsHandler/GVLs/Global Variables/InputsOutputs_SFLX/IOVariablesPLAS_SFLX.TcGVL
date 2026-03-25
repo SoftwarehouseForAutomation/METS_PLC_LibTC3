@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="IOVariablesPLAS_SFLX" Id="{f694be08-fe85-4ef0-a6ae-9ae1ee655725}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+(*TERMINAL XXXKF1 - EK1100 ******************************************************)
+
+(*TERMINAL 649KF1 - EL4002 ******************************************************)
+	qn649KF1_1_PackAggregationLightingIntensity				AT %Q* : INT;
+	qn649KF1_2_LightingIntensity								AT %Q* : INT;
+
+(*TERMINAL 663KF1 - EL1008 ******************************************************)
+	ib663KF1_1_MasterListCameraTrigSensor					AT %I* : BOOL;
+	ib663KF1_5_SpareMasterListCameraTrigSensor			AT %I* : BOOL;		(* Option *)
+	ib663KF1_2_AggregationCameraTrigSensor				AT %I* : BOOL;
+	ib663KF1_6_SpareAggregationCamera1TrigSensor		AT %I* : BOOL;		(* Option *)
+	ib663KF1_3_SpareAggregationCamera2TrigSensor		AT %I* : BOOL;		(* Option *)
+	ib663KF1_7_PackQueueIndex								AT %I* : BOOL; 		(* Option *)
+	ib663KF1_4_StackQueueIndex								AT %I* : BOOL; 		(* Option *)
+	ib663KF1_8_Spare											AT %I* : BOOL;
+
+(*TERMINAL 664KF1 - EL1008 ******************************************************)
+	ib664KF1_1_OuterIndexComplete							AT %I* : BOOL;
+	ib664KF1_5_IntermediateCameraTrigSensor				AT %I* : BOOL;		(* TO DO Intemediat Camera Trigger *)
+	ib664KF1_2_Guard1 										AT %I* : BOOL;
+	ib664KF1_6_Guard2										AT %I* : BOOL;
+	ib664KF1_3_Guard3 										AT %I* : BOOL;
+	ib664KF1_7_Guard4 										AT %I* : BOOL;
+	ib664KF1_4_OuterBrushOpen								AT %I* : BOOL;
+	ib664KF1_8_RejectTowerActive							AT %I* : BOOL;
+
+(*TERMINAL 665KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ib665KF1_1_FilmInPosition 								AT %I*: BOOL;
+	ib665KF1_5_IntermediatePrinterTrigger					AT %I*: BOOL;
+	ib665KF1_2_Spare									AT %I*: BOOL;
+	ib665KF1_6_Spare									AT %I*: BOOL;
+	ib665KF1_3_Spare 								AT %I*: BOOL;
+	ib665KF1_7_Spare									AT %I*: BOOL;
+	ib665KF1_4_Spare									AT %I*: BOOL;
+	ib665KF1_8_Spare 	 							AT %I*: BOOL;
+
+(*TERMINAL 683KF1 - EL2008 ******************************************************)
+	qb683KF1_1_MasterListCameraPower						AT %Q* : BOOL;
+	qb683KF1_5_SpareMasterListCameraPower				AT %Q* : BOOL;	(* Option *)
+	qb683KF1_2_SpareAggregationCameraPower				AT %Q* : BOOL;	(* Option *)
+	qb683KF1_6_AggregationCamera1Power					AT %Q* : BOOL;
+	qb683KF1_3_AggregationCamera2Power					AT %Q* : BOOL;
+	qb683KF1_7_ConfirmationCamera1Power					AT %Q* : BOOL; 	(* Option *)
+	qb683KF1_4_ConfirmationCamera2Power					AT %Q* : BOOL; 	(* Option *)
+	qb683KF1_8_PLCControlledPackAggCamLightning		AT %Q* : BOOL;
+
+(*TERMINAL 684KF1 - EL2008 ******************************************************)
+	qb684KF1_1_MasterListCameraTrigger					AT %Q* : BOOL;
+	qb684KF1_5_SpareMasterListCameraTrigger				AT %Q* : BOOL;	(* Option *)
+	qb684KF1_2_AggregationCameraTrigger					AT %Q* : BOOL;
+	qb684KF1_6_SpareAggregationCamera1Trigger			AT %Q* : BOOL; 	(* Option *)
+	qb684KF1_3_SpareAggregationCamera2Trigger			AT %Q* : BOOL; 	(* Option *)
+	qb684KF1_7_ConfirmationCamera1Trigger				AT %Q* : BOOL; 	(* Option *)
+	qb684KF1_4_ConfirmationCamera2Trigger				AT %Q* : BOOL; 	(* Option *)
+	qb684KF1_8_Spare											AT %Q* : BOOL;
+
+(*TERMINAL 685KF1 (EL2008 8Ch. Dig. Output 24V, 3ms) ******************************************************)
+	qb685KF1_1_IntermediateCameraTrigger								AT %Q*: BOOL;
+	qb685KF1_5_IntermediateCameraPower									AT %Q*: BOOL;
+	qb685KF1_2_Spare									AT %Q*: BOOL;
+	qb685KF1_6_Spare									AT %Q*: BOOL;
+	qb685KF1_3_Spare								AT %Q*: BOOL;
+	qb685KF1_7_Spare								AT %Q*: BOOL;
+	qb685KF1_4_Spare										AT %Q*: BOOL;
+	qb685KF1_8_Spare 							AT %Q*: BOOL;
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

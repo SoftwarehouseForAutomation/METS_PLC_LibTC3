@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_KBUS_AnalogueDataOut" Id="{e0c114e5-87e1-42b6-be7c-0adc44cc9136}">
+    <Declaration><![CDATA[TYPE ST_KBUS_AnalogueDataOut :
+STRUCT
+	nCtrl	: BYTE;
+	nData	: INT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

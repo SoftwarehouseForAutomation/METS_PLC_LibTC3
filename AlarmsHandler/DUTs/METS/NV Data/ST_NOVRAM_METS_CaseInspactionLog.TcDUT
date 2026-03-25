@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_NOVRAM_METS_CaseInspactionLog" Id="{3d81c99a-4bc3-4350-ae7b-3a0f481b3b57}">
+    <Declaration><![CDATA[TYPE ST_NOVRAM_METS_CaseInspactionLog :
+STRUCT
+
+	MachineID						: ST_SYSTEM_MachineID;
+	StartDateTime						: T_ISO8601Time;
+	CodingAndTrackingMode				: INT;
+	nPacksPerCase						: INT;			(* Amount Of  Packs per Case unit for current PCM *)
+	nOutersPerCase					: INT;
+
+	(*infeed conveyer*)
+	nOuterProcessed					: UDINT;
+	nOuterAggregated					: UDINT;
+	nMasterListRestoredSuccessful		: UDINT;
+	nMasterListRemoved				: UDINT;
+	nQualityRejects					: UDINT;
+
+	(*row validation*)
+	nRowValidationIndexUnder			: UDINT;
+	nRowValidationIndexOver			: UDINT;
+	nRowValidationIndexCorrect			: UDINT;
+	nRowValidationIndexNotFound		: UDINT;
+
+	(*outer to case validation*)
+	nOuterToCaseValidationIndexUnder		: UDINT;
+	nOuterToCaseValidationIndexOver		: UDINT;
+	nOuterToCaseValidationIndexCorrect	: UDINT;
+	nOuterToCaseValidationIndexNoData	: UDINT;
+
+	(*case validation*)
+	nCaseValidationScanned				: UDINT;
+	nCaseValidationCorrect				: UDINT;
+	nCaseValidationCasePackerReject		: UDINT;
+	nCaseValidationNoCaseLabel			: UDINT;
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

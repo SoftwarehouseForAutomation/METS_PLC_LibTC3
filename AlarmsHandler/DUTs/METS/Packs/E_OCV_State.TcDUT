@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_OCV_State" Id="{53c7c4a3-fdbf-4a81-b87f-e0e87cd1888c}">
+    <Declaration><![CDATA[TYPE E_OCV_State :
+(
+	E_OCV_IDLE,
+	E_OCV_SCAN,
+
+	E_OCV_DBREQUEST,
+	E_OCV_DBRESPONSE,
+
+	E_OCV_VALIDATENAME,
+	E_OCV_VALIDATECONTENT,
+
+	E_OCV_UPDATEDATA,
+	E_OCV_WRITEDATA,
+	E_OCV_MOVEFILE1,
+	E_OCV_MOVEFILE2,
+
+	E_OCV_FINDFILE,
+	E_OCV_READFILE,
+	E_OCV_READERRORFILE,
+	E_OCV_DELETEFILE,
+
+	E_OCV_UPDATESTATUS,
+	E_OCV_DONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_DB_ScanState" Id="{3aad2a9d-255c-428e-9987-d7162cef2974}">
+    <Declaration><![CDATA[(*
+-------------------------------------------------------------------------------------------------
+DATE		Version	Author	Comments
+-------------------------------------------------------------------------------------------------
+11/06/2020	1.00.00	CD		
+
+-------------------------------------------------------------------------------------------------
+*)
+{attribute 'qualified_only'}
+//{attribute 'strict'}
+TYPE E_DB_ScanState :
+(
+
+	//E_DB_IDLE,
+	//E_DB_SENDREQ,
+	//E_DB_RECIVED,
+	//E_DB_DONE
+	DUMMY
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

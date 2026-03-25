@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_ProfinetDrive" Id="{19e154af-a667-4130-a3ba-8aeea9bb003e}">
+    <Declaration><![CDATA[TYPE ST_ProfinetDrive :
+STRUCT
+	bEnable									: BOOL;
+	sDeviceName								: STRING(30) := 'Drive';
+	cuiProfinetPortofDrive						: UINT:=4125;
+	etDriveReference                      			: INT := 1;
+	cusiDriveID								: USINT:=1;
+	(*ctTimeOut								: TIME:=T#5S;*)
+	bBrakeExist								: BOOL:=TRUE;
+
+	tRumpUpTime								: TIME := t#250ms;
+	nDriverSpeedHz 							: UINT :=50;
+	tDriveDelayStart							: TIME :=t#100ms;
+	tDriverOffDelay							: TIME :=t#3s;
+
+	fSpeedScalefactor							: REAL := 140;
+	fTorqueScaleFactor						: REAL := 120.48;
+	nTorqueLimit								: REAL := 1;
+
+	fReferenceSpeedFrequencyP2000			: REAL := 3000;
+	fReferenceCurrentP2002					: REAL := 5;
+	fReferenceTorqueP2003					: REAL := 5;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DriveCtrl" Id="{a698a894-8b26-4298-9a14-19409de2033b}">
+    <Declaration><![CDATA[TYPE ST_DriveCtrl :
+STRUCT
+	bDriveRun:BOOL;
+	nDriveAnalog:INT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

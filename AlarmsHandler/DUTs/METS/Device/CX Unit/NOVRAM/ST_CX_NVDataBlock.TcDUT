@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CX_NVDataBlock" Id="{52545ff6-35e3-40eb-bc4b-3e33157a43cb}">
+    <Declaration><![CDATA[TYPE ST_CX_NVDataBlock :
+STRUCT
+	DataOffs	: UDINT;
+	Data		: STRING(2048);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

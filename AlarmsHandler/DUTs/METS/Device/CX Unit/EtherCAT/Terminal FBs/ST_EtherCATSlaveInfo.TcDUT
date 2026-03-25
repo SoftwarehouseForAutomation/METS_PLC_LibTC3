@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_EtherCATSlaveInfo" Id="{60ac04a1-ff09-493a-a681-f256502520e9}">
+    <Declaration><![CDATA[TYPE ST_EtherCATSlaveInfo :
+STRUCT
+	nAddr 			: UDINT;
+	nlinkState		: UDINT;
+	edeviceState	: ST_EcSlaveState;
+	sType 			: STRING[16];
+	sName 			: STRING[32];
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

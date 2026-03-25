@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_OCV_CheckMode" Id="{52dc2aee-eb77-45f7-a333-029455e11c18}">
+    <Declaration><![CDATA[TYPE E_OCV_CheckMode :
+(
+	E_OCV_CHECKOFF,
+	E_OCV_PACKLEVEL,
+	E_OCV_OUTERLEVEL
+
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

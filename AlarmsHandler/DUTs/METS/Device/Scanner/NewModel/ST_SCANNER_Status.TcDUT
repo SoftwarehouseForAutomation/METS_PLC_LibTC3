@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_Status" Id="{57af2c47-c610-4640-bc4a-ac973c87570b}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_Status :   //ST_SCANNER
+STRUCT
+	
+	nState	: BYTE;
+	
+	I		: ST_SCANNER_IN;
+	Q		: ST_SCANNER_OUT;
+	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SIDEFLEX_Offset" Id="{d952f752-9253-4c75-8b64-28218903c4ed}">
+    <Declaration><![CDATA[TYPE ST_SIDEFLEX_Offset :
+STRUCT
+	(*aTrigerPos		: ARRAY[0..cMAX_CAMERA_NUMBER] OF UDINT;*)
+
+(*ONLY ONE OUTER AT THE TIME IN THIS RANGE FOR nCurrentPosition OR FOR nLeadingPosition*)
+	nStartOuterAtLabellerPos	: UDINT;
+	nEndOuterAtLabellerPos		: UDINT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CommonStationConfig_C715" Id="{26de149f-043b-4fdb-812a-1d9496dd103f}">
+    <Declaration><![CDATA[TYPE ST_CommonStationConfig_C715 :
+STRUCT
+
+	fWalkingBeamHomeOffset		: LREAL :=55;
+	fWalkingBeamVelo			: LREAL :=250;
+	fWalkingBeamDistance		: LREAL :=360;
+
+	tAlignTimeOut				: TIME  :=T#10S;
+
+	tFormHeadTime				: TIME 	:=T#1500MS;
+
+	fElevatorHomeOffset			: LREAL :=0;
+	fElevatorMoveUpVelo			: LREAL :=400;
+	fElevatorUnloadPosition		: LREAL :=310;
+	fElevatorMoveDownVelo		: LREAL :=600;
+	fElevatorLoadPosition		: LREAL :=0;
+
+	tTransferTimeOut			: TIME 	:=T#10S;
+
+	fTransferHomeOffset			: LREAL :=0;
+	fTransferRejectVelo			: REAL 	:=-400;
+	fTransferValidVelo			: REAL 	:=400;
+
+	fPresentationHomeOffset		: LREAL :=0;
+	fPresentationVelo			: REAL 	:=400;
+	fPresentationDistance		: REAL 	:=115;
+
+	(*bAllStationsHomed			: BOOL;
+	bAllStationsCycledStopped	: BOOL;
+	bCycleStopRequest			: BOOL;
+	bManualModeHMI				: BOOL;
+	bAllStationsOKToIndex		: BOOL;*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

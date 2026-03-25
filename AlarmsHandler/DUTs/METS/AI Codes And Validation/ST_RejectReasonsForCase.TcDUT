@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_RejectReasonsForCase" Id="{7ce16fdf-9de5-4091-982d-b177010122a9}">
+    <Declaration><![CDATA[TYPE ST_RejectReasonsForCase :
+STRUCT
+	stValError:				ST_RejectItems :=(		nRejectID := 301,
+														sMetsDisplayCode:='XXVALnnXX',
+														sMetsSearchCode:='VAL',
+														sFssSendCode:='Validation_DeferredOuter');
+
+	stOACError:				ST_RejectItems :=(	nRejectID := 302,
+														sMetsDisplayCode:='XXOACnnXX',
+														sMetsSearchCode:='OAC',
+														sFssSendCode:='Validation_DeferredPackData');
+
+	stINVError:				ST_RejectItems :=(	nRejectID := 303,
+														sMetsDisplayCode:='XXINVnnXX',
+														sMetsSearchCode:='INV',
+														sFssSendCode:='Validation_BelowAcceptanceLevel');
+
+	stDUPError:				ST_RejectItems :=(	nRejectID := 304,
+														sMetsDisplayCode:='XXDUPn1-n2XX',
+														sMetsSearchCode:='DUP',
+														sFssSendCode:='Validation_DuplicateData');
+
+	stPackNotLinedError:		ST_RejectItems :=(	nRejectID := 305,
+														sMetsDisplayCode:='XXPACKnnXX',
+														sMetsSearchCode:='XPACK',
+														sFssSendCode:='Validation_BadPackCode');
+
+	stOuterGTINError:		ST_RejectItems :=(		nRejectID := 306,
+														sMetsDisplayCode:='XXOUTERGTINnnXX',
+														sMetsSearchCode:='OUTERGTIN',
+														sFssSendCode:='Validation_BadOuterCode');
+
+	stOuterSerialError:		ST_RejectItems :=(		nRejectID := 307,
+														sMetsDisplayCode:='XXOUTERSERnnXX',
+														sMetsSearchCode:='OUTERSER',
+														sFssSendCode:='Validation_BadOuterCode');
+
+	stOuterRSKUError:		ST_RejectItems :=(		nRejectID := 308,
+														sMetsDisplayCode:='XXOUTERSKUnnXX',
+														sMetsSearchCode:='OUTERSKU',
+														sFssSendCode:='Validation_BadOuterCode');
+
+	stNoCaseLabelError:		ST_RejectItems :=(		nRejectID := 309,
+														sMetsDisplayCode:='XXNOCASELABELXX',
+														sMetsSearchCode:='NOCASELABEL',
+														sFssSendCode:='NoReadCase');
+
+	stCasePackerReject:		ST_RejectItems :=(		nRejectID := 310,
+														sMetsDisplayCode:='XXCASEPACKERREJECTXX',
+														sMetsSearchCode:='CASEPACKERREJECT',
+														sFssSendCode:='CasePackerReject');
+
+	stDoorGuardReject:		ST_RejectItems :=(		nRejectID := 311,
+														sMetsDisplayCode:='XXDOORGUARDREJECTXX',
+														sMetsSearchCode:='DOORGUARDREJECT',
+														sFssSendCode:='DoorReject');
+
+	stCaseLabelGtinError:	ST_RejectItems :=(		nRejectID := 312,
+														sMetsDisplayCode:='XXCASEGTINXX',
+														sMetsSearchCode:='CASEGTIN',
+														sFssSendCode:='Validation_BadLabel');
+
+	stCaseLabelRskuError:	ST_RejectItems :=(		nRejectID := 313,
+														sMetsDisplayCode:='XXCASESKUXX',
+														sMetsSearchCode:='CASESKU',
+														sFssSendCode:='Validation_BadLabel');
+
+	stCaseLabelProductionOrderError:	ST_RejectItems :=(	nRejectID := 314,
+														sMetsDisplayCode:='XXCASEPRODXX',
+														sMetsSearchCode:='CASEPROD',
+														sFssSendCode:='Validation_BadLabel');
+
+	stCaseLabelBatchIDError:	ST_RejectItems :=(		nRejectID := 315,
+														sMetsDisplayCode:='XXCASEBATCHXX',
+														sMetsSearchCode:='CASEBATCH',
+														sFssSendCode:='Validation_BadLabel');
+
+	stCaseLabelSerialCodeError:	ST_RejectItems :=(	nRejectID := 316,
+														sMetsDisplayCode:='XXCASESERIALCODEXX',
+														sMetsSearchCode:='CASESERIALCODE',
+														sFssSendCode:='Validation_BadLabel');
+
+	stCaseLabelDuplicate:	ST_RejectItems :=(		nRejectID := 317,
+														sMetsDisplayCode:='XXDUPCASELABELXX',
+														sMetsSearchCode:='DUPCASELABEL',
+														sFssSendCode:='Validation_CaseDuplicate');
+
+	stCaseNoCaseData:	ST_RejectItems :=(			nRejectID := 318,
+														sMetsDisplayCode:='XXNOCASEDATAXX',
+														sMetsSearchCode:='NOCASEDATA',
+														sFssSendCode:='Integrity_TooFewItemsCase');
+
+	stCaseBarcodeInvalidLength:	ST_RejectItems :=(	nRejectID := 319,
+														sMetsDisplayCode:='XXCASECODELENGTHXX',
+														sMetsSearchCode:='CASECODELENGTH',
+														sFssSendCode:='Validation_BadLabel');
+
+	stCaseDBInvalidCheck	:	ST_RejectItems :=(	nRejectID := 320,
+														sMetsDisplayCode:='XXCACDBINVALIDXX',
+														sMetsSearchCode:='CACDBINVALID',
+														sFssSendCode:='Validation_DBInvalid');
+
+	stCaseWhitelistInvalidCheck	:	ST_RejectItems :=(	nRejectID := 321,
+														sMetsDisplayCode:='XXOHMWHITELISTXX',
+														sMetsSearchCode:='OHMWHITELIST',
+														sFssSendCode:='Validation_OHMWhitelistInvalid');
+
+	stOuterBrandError				:	ST_RejectItems :=(	nRejectID := 322,
+														sMetsDisplayCode:='XXOUTERSBRANDnnXX',
+														sMetsSearchCode:='OUTERSBRAND',
+														sFssSendCode:='Validation_BadOuterCode');
+
+	stCaseLabelBrandCodeError:	ST_RejectItems :=(	nRejectID := 323,
+														sMetsDisplayCode:='XXCASEBRANDXX',
+														sMetsSearchCode:='CASEBRAND',
+														sFssSendCode:='Validation_BadLabel');
+
+	stUnknownCaseReject:		ST_RejectItems :=(	nRejectID := 300,
+														sMetsDisplayCode:='UnknownReason',
+														sMetsSearchCode:='UnknownReason',
+														sFssSendCode:='UnknownReason');
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

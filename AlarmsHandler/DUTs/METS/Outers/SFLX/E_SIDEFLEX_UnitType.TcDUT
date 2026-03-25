@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SIDEFLEX_UnitType" Id="{1b422683-95b1-4351-ac11-a36c5885ff95}">
+    <Declaration><![CDATA[TYPE E_SIDEFLEX_UnitType :
+(
+	E_SIDEFLEX_UNKNOWN			:= 0,
+	E_SIDEFLEX_2PROG				:= 1,
+	E_SIDEFLEX_4PROG				:= 2
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

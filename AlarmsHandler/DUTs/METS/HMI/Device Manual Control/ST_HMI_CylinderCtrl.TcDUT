@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_CylinderCtrl" Id="{000c6fef-d352-402d-b32f-174268bed49d}">
+    <Declaration><![CDATA[//{warning 'CONVERSION MESSAGE: This text contained unprintable characters, that have been deleted'.}
+TYPE ST_HMI_CylinderCtrl :
+STRUCT
+	stDisable			: ST_HMI_Buttons;
+	stRelease			: ST_HMI_Buttons;
+	eCommand			: E_CYLINDER_Position;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

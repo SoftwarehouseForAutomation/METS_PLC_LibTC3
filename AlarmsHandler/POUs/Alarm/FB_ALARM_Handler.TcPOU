@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_ALARM_Handler" Id="{340007e7-45c9-49e9-9c57-20d7a6d0e075}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ALARM_Handler
+VAR_INPUT
+	bCurrentStatus					:	BOOL;
+	bAlarmTrigger					:	BOOL;
+	tAlarmTimout					:	TIME;
+	bAlarmEnable					:	BOOL;
+	bInhibitReset					:	BOOL;
+	bAutoReset						:	BOOL;
+
+END_VAR
+VAR_OUTPUT
+	bAlarmActive					: 	BOOL;
+END_VAR
+VAR
+	ftStatusReset				: 	F_TRIG;
+	//bAlarmConfirmed				:	BOOL;
+	tonDelayTimer				:	TON;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(*****************************************************************************)
+IF NOT  bAlarmEnable THEN
+	bAlarmActive	:= FALSE;
+	ftStatusReset(CLK:=FALSE, Q=>); 
+	tonDelayTimer(IN:= FALSE, PT:= , Q=> , ET=> );
+	RETURN;
+END_IF
+
+IF bAlarmActive AND bInhibitReset THEN
+	bAlarmActive := TRUE;
+	RETURN;
+END_IF
+
+ftStatusReset(CLK:=bCurrentStatus );  (* timer is reseteed even Alarm Triger still active*)
+tonDelayTimer(IN:= bAlarmTrigger AND NOT ftStatusReset.Q , PT:= tAlarmTimout , Q=> , ET=> );
+
+(* Conditions to generate message event*)
+IF tonDelayTimer.Q	AND NOT bAlarmActive THEN
+	
+	bAlarmActive := TRUE;
+	
+ELSIF NOT bCurrentStatus 					OR 
+	( NOT tonDelayTimer.Q AND bAutoReset)	THEN
+	
+	bAlarmActive := FALSE;
+
+END_IF
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

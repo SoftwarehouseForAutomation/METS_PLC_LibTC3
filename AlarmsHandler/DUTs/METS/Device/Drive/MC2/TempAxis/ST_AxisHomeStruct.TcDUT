@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AxisHomeStruct" Id="{5bdd7f8e-244b-40eb-8724-e7a62537d057}">
+    <Declaration><![CDATA[TYPE ST_AxisHomeStruct :
+STRUCT
+
+	n_State								: 	DINT;			(* Current Sequence State *)
+	n_StateBuffer							: 	DINT;			(* Next Sequence State *)
+	b_FunctionRequest						: 	BOOL;		(* Sequence Function Request from Home *)
+	b_FunctionInProgress					: 	BOOL;		(* Sequence Function In Progress Handshaking *)
+	b_FunctionComplete					: 	BOOL;		(* Sequence Function Complete Handshaking *)
+	b_FunctionAbort						: 	BOOL;		(* Sequence Function Abort *)
+	b_FunctionHomed						: 	BOOL;		(* Sequence Function Homed *)
+	b_CycleStopped						: 	BOOL;		(* Sequence Function Cycle Stopped *)
+	n_Handshaking							: 	DINT;		(* Generic Handshaking Tag *)
+	b_AxisHome							:	BOOL;
+	b_AxisStop							:	BOOL;
+	b_MoveToEndStop						:	BOOL;
+	b_AxisEnable							:	BOOL;
+	b_AxisReset							:	BOOL;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

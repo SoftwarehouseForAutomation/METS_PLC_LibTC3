@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_G120Status" Id="{faac1b11-c13d-4a7b-b4ef-386bc0dcba45}">
+    <Declaration><![CDATA[TYPE ST_HMI_G120Status :
+STRUCT
+
+(* read only *)
+	bReadyForSwitchingOn		: BOOL;
+	bReady							: BOOL;
+	bOperationEnable				: BOOL;
+	bFault							: BOOL;
+	nFaultCode						: UINT;
+	bAlarm							: BOOL;
+	nWarningCode					: UINT;
+	fActualSpeed					: REAL;
+	fCurrent						: REAL;
+	fTorque						: REAL;
+	bTorqueLimitReached			: BOOL;
+	bMotorOverTemp				: BOOL;
+	bHoldingBrake					: BOOL;
+
+	eDriveStatus					: E_HMI_DriveStatus;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

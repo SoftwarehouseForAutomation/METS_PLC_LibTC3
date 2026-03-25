@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_USBConfig" Id="{1fa7b4c9-696d-46d1-83be-2be89b635429}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_USBConfig :
+STRUCT
+	bEnabled					: BOOL;										(* Enable HandScanner *)
+	sScannerName				: STRING	:= 'USB';
+	bReset					: BOOL;										(* Reset HandScanner *)
+	nScannerPosition			: UINT;										(* Array position used in the camera configs.  This allows the HMi to display the handscanner stuff as a microscan camera *)
+	sComPort					: STRING(5) := 'COM3';									(* COM port type*)
+	nBaudRate				: UINT:= 9600;								(* Baud rate for scanner. 2 = 1200, 3=2400, 4=4800, 5=9600, 6=19200, 7=38400, 8=57600, 9=115200 - Default baudrate for hand sanner sick1910i *)          								 (* 1  *)
+	tRXTimeOut				: TIME := T#0ms;
+	nPackPerOuter				: INT := 20;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

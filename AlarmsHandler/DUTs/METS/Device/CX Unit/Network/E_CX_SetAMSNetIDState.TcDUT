@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_CX_SetAMSNetIDState" Id="{91e69182-94bf-4980-8581-58f0dede6776}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_CX_SetAMSNetIDState : (
+	//E_CX_SETAMSNETID_IDLE,
+	//E_CX_SETAMSNETID_NEXTREGKEY,
+	//E_CX_SETAMSNETID_READREGKEY,
+	//E_CX_SETAMSNETID_WRITEREGKEY,
+	//E_CX_SETAMSNETID_PAUSE,
+	//E_CX_SETAMSNETID_REBOOT,
+	//E_CX_SETAMSNETID_DONE
+	DUMMY
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

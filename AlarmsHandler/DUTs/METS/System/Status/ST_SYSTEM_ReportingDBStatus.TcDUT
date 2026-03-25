@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_ReportingDBStatus" Id="{57ac764b-a31b-4a3e-9eba-2256dad5a215}">
+    <Declaration><![CDATA[//{warning 'CONVERSION MESSAGE: This text contained unprintable characters, that have been deleted'.}
+TYPE ST_SYSTEM_ReportingDBStatus :
+STRUCT
+	sReportingDBVersion			: STRING;
+	nReportingDBStatus 			: INT;
+	nReportingDBWatchdog 		: DINT;
+	bReportingDBHealthy			: BOOL;
+	
+	sPLCVersionHMI				: STRING;
+	sPLCVersionInfoHMI			: T_MaxString;
+
+	stMachineID				: ST_SYSTEM_MachineID;
+	stMachineState			: ST_SYSTEM_MachineState;
+	
+	bMainItemReset			: BOOL;
+	sStartDateTime			: T_ISO8601Time;		(* last PLC restart*)
+	
+	nShiftID				: INT;
+	
+	nCodingAndTrackingMode	: INT;
+	sBatchNumber			: T_CodeBATCH;
+	sProductionOrder		: T_CodePO;
+	sRetailSKU 				: T_CodeRSKU;
+	sProductDescription		: T_ProductDescription;
+	
+	nPacksPerOuter			: INT;			(* Amount Of  Packs per Outer unit for current PCM *)
+	nPacksPerCase			: INT;			(* Amount Of  Packs per Case unit for current PCM *)
+	nOutersPerCase			: INT;			(* Amount Of  Outers  per Case unit for current PCM *)
+	
+	aCameraName				: ARRAY[1..cMAX_CAMERA_NUMBER] OF STRING(30);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

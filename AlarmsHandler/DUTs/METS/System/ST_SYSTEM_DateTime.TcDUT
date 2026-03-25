@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_DateTime" Id="{933d1e32-0730-4d75-acf2-75d2f588c338}">
+    <Declaration><![CDATA[TYPE ST_SYSTEM_DateTime :
+STRUCT
+	bSystemTimeValid		: BOOL;
+	sSystemTime			: TIMESTRUCT;
+	nSystemTimeOffset		: DINT;			(* sSystemTime offset from UTC in ms *)
+	sUTCTime				: TIMESTRUCT;
+	sUTCTimeZoneOffset	: STRING(6);		(*Time Zone Offset from HMI in ISO 8601 format*)
+	sOffsetTime			: TIMESTRUCT;
+	bPCMTimeValid		: BOOL;
+	sPCMTime			: TIMESTRUCT;
+	strHMIDateTime		: STRING(19);	(* date/time as HH:MM:SS DD/MM/YYYY for HMI display *)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

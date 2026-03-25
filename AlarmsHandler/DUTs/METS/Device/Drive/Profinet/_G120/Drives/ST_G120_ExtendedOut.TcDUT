@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_G120_ExtendedOut" Id="{3ba30f79-c2de-41a8-a130-f4288735f852}">
+    <Declaration><![CDATA[TYPE ST_G120_ExtendedOut :
+(*
+Version history:
+Date		|	Version/Author 		|	Remark
+----------------------------------------------------------------------------------------------------
+09.02.18	|	2.000.016	PSA		|	Original Version.
+									|	Siemens G120 drive extended output structure
+*)
+STRUCT
+	xTorqueLimitReached				: BOOL;
+	xSpeedExceeded					: BOOL;
+	xHoldingBrake					: BOOL;
+	xMotorOverTemp					: BOOL;
+	xMotorRotatingClockwise			: BOOL;
+	xMotorRotatingCClockwise		: BOOL;
+	xControlRequested				: BOOL;
+	xSetSpeedPointReached			: BOOL;
+
+	xValue							: BOOL;
+	iValue							: INT;
+	diValue							: DINT;
+	rValue							: REAL;
+	xReadWriteError					: BOOL;
+	uiFaultCode						: UINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

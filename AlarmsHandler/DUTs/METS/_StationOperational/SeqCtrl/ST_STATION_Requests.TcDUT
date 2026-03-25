@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_STATION_Requests" Id="{093dd33d-98f7-4979-a633-e8c01ba4c897}">
+    <Declaration><![CDATA[TYPE ST_STATION_Requests :
+STRUCT
+
+	bSeqAbort						:BOOL;		(*Function Abort By Manager*)
+	bSeqInhibit						: BOOL;		(*in girafe is like bMachineInError*)
+	bSeqHomingRequest			:BOOL;		(*FUNCTION Homing Requested BY Manager OR Internal Functions*)
+	bSeqWaitOnRequest			:BOOL;		(*Function In Valide State Avaiting For Request Command*)
+	bSeqRequest					:BOOL;		(*Request Commnad To Start Function Cycle*)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

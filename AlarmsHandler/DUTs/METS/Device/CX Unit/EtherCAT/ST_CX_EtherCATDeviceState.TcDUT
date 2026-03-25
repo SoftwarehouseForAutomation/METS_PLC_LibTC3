@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CX_EtherCATDeviceState" Id="{3860d439-9fa2-42a7-9295-7eeba572a8fc}">
+    <Declaration><![CDATA[TYPE ST_CX_EtherCATDeviceState :
+STRUCT
+	bPresent		: BOOL;
+	bOpMode			: BOOL;
+	bError			: BOOL;
+	nDeviceState	: BYTE;
+	nLinkState		: BYTE;
+	strStatus		: STRING(17);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

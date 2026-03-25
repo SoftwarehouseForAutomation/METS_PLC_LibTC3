@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="IOVariablesCX_CML" Id="{3946c4c9-6c77-4de2-a5ab-514fd237f73d}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+(***************************Terminal States Diagnostic********************************)
+
+	istEtherCATMasterState					AT	%I*	: ST_CX_EtherCATMasterState;
+	iaEtherCATSlaveState					AT 	%I*	: ARRAY [0..cMAX_ETHERCAT_SLAVES] OF UINT;
+
+(*****************************Input/Output Cards***********************************)
+
+(*CX - Main unit*)
+	(*TERMINAL 46KF2 (EK1200-5000 EtherCAT Power supply (2A E-Bus)) *****************************************)
+
+(*TERMINAL 50KF1 (EL6001 Interface (RS232))  ********1-Channel Serial Interface RS232*****************)
+	(*ib50KF1_EL6001PortNo								AT%I*: UINT;
+	ist50KF1_HandScannerCOMPortDataIn					AT%I*: EL6InData22B;
+	qst50KF1_HandScannerCOMPortDataOut					AT%Q*: EL6OutData22B;*)
+
+(*TERMINAL 60KF1 - EL1008 ******************************************************)
+	ib60KF1_1_AirPressureOK 							AT %I* : BOOL; (* 60KF1_1 *)
+	ib60KF1_5_24VSupplyOK								AT %I* : BOOL; (* 60KF1_5 *)
+	ib60KF1_2_PSRIsResetSignal							AT %I* : BOOL; (* 60KF1_2 *)
+	ib60KF1_6_PSRIsOkaySignal							AT %I* : BOOL; (* 60KF1_6 *)
+	ib60KF1_3_EmergancyStopSignal						AT %I* : BOOL; (* 60KF1_3 *)
+	ib60KF1_7_EmergancyCircuitSignal						AT %I* : BOOL; (* 60KF1_7 *)
+	ib60KF1_4_NetworkOK								AT %I* : BOOL; (* 60KF1_4 *)
+	ib60KF1_8_Spare									AT %I* : BOOL; (* 60KF1_8 *)
+
+(*TERMINAL 80KF1 - EL2008 ******************************************************)
+	qb80KF1_1_SafetyResetSignal							AT %Q* : BOOL; (* 80KF1_1 *)
+	qb80KF1_5_AdditionalSafetyResetSignal					AT %Q* : BOOL; (* 80KF1_5 *)
+	qb80KF1_2_Spare									AT %Q* : BOOL; (* 80KF1_2 *)
+	qb80KF1_6_Spare									AT %Q* : BOOL; (* 80KF1_6 *)
+	qb80KF1_3_Spare									AT %Q* : BOOL; (* 80KF1_3 *)
+	qb80KF1_7_Spare									AT %Q* : BOOL; (* 80KF1_7 *)
+	qb80KF1_4_Spare									AT %Q* : BOOL; (* 80KF1_4 *)
+	qb80KF1_8_Spare									AT %Q* : BOOL; (* 80KF1_8 *)
+
+(*TERMINAL 95KF1 - EL6631 -  PROFINET IO Controller **************************************************)
+
+	ist95KF1_Master01PNetState 							AT %I* : ST_CX_EtherCATMasterPNetState;
+
+	(*DRIVE  403T1  - G120C *************************************************************************)
+	ist403T1_infeedconveyor								AT %I* : ST_DRIVE_INPUT;
+	qst403T1_infeedconveyor								AT %Q* : ST_DRIVE_OUTPUT;
+
+	(*DRIVE  405T1  - G120C *************************************************************************)
+	ist405T1_loweratorbelts								AT %I* : ST_DRIVE_INPUT;
+	qst405T1_loweratorbelts								AT %Q* : ST_DRIVE_OUTPUT;
+
+(*DRIVE  406T1  - G120C ******************************************************************************)
+	ist406T1_rotarytransfer								AT %I* : ST_DRIVE_INPUT;
+	qst406T1_rotarytransfer								AT %Q* : ST_DRIVE_OUTPUT;
+
+(*DRIVE  407T1  - G120C ******************************************************************************)
+	ist407T1_rejectconveyor								AT %I* : ST_DRIVE_INPUT;
+	qst407T1_rejectconveyor								AT %Q* : ST_DRIVE_OUTPUT;
+
+(*DRIVE  408T1  - G120C ******************************************************************************)
+	ist408T1_slowdownmotors							AT %I* : ST_DRIVE_INPUT;
+	qst408T1_slowdownmotors							AT %Q* : ST_DRIVE_OUTPUT;
+
+(*DIS inputs 46KF2 (CX2100 Power Supply) ******************************************)
+
+	ib446KF2_Up						 				AT %I* : BOOL;
+	ib446KF2_Down		 							AT %I* : BOOL;
+	ib446KF2_Left		 								AT %I* : BOOL;
+	ib446KF2_Right	 									AT %I* : BOOL;
+	ib446KF2_Enter	 									AT %I* : BOOL;
+
+(*METS CML*)
+	(*TERMINAL 446KF2 (EK1200-5000 EtherCAT Power supply (2A E-Bus)) *****************************************)
+
+(*TERMINAL447KF1 (EL9410 E-Bus Power Supplier  (Diagnostics)) ***************2A Bus Supplay***********************)
+
+	ib447KF1_UndervoltageUs							AT%I* : BOOL;
+	ib447KF1_UndervoltageUp							AT%I* : BOOL;
+
+(*TERMINAL 460KF1 - EL1008 ***********************************************************************)
+	ib460KF1_1_Guard1UpperSideAccessDoor				AT %I* : BOOL; (* 460KF1_1 *)
+	ib460KF1_5_Guard2UpperDoorLabellerSide				AT %I* : BOOL; (* 460KF1_5 *)
+	ib460KF1_2_Guard3OutfeedTunnel						AT %I* : BOOL; (* 460KF1_2 *)
+	ib460KF1_6_Guard4ElectricalBoxInPosition				AT %I* : BOOL; (* 460KF1_6 *)
+	ib460KF1_3_Guard5RejectBinLHSide						AT %I* : BOOL; (* 460KF1_3 *)
+	ib460KF1_7_Guard6RejectBinRHSide						AT %I* : BOOL; (* 460KF1_7 *)
+	ib460KF1_4_Guard7HTTDoorGuard						AT %I* : BOOL; (* 460KF1_4 *)
+	ib460KF1_8_Spare									AT %I* : BOOL; (* 460KF1_8 *)
+
+(*TERMINAL 461KF1 - EL1008 ***********************************************************************)
+	ib461KF1_1_Guard8Labeller1InPosition					AT %I* : BOOL; (* 461KF1_1 *)
+	ib461KF1_5_Guard9Labeller2InPosition					AT %I* : BOOL; (* 461KF1_5 *)
+	ib461KF1_2_Guard10FrontUpperDoor					AT %I* : BOOL; (* 461KF1_2 *)
+	ib461KF1_6_Guard11GuardLowerLabellerSide				AT %I* : BOOL; (* 461KF1_6 *)
+	ib461KF1_3_RejectBinGuardIsReset						AT %I* : BOOL; (* 461KF1_3 *)
+	ib461KF1_7_Labeller1GuardIsReset						AT %I* : BOOL; (* 461KF1_7 *)
+	ib461KF1_4_Labeller2GuardIsReset						AT %I* : BOOL; (* 461KF1_4 *)
+	ib461KF1_8_Spare									AT %I* : BOOL; (* 461KF1_8 *)
+
+(*TERMINAL 462KF1 - EL1008 ***********************************************************************)
+	ib462KF1_1_Labeller1Ready							AT %I* : BOOL; (* 462KF1_1 *)
+	ib462KF1_5_Labeller1SummaryWarning					AT %I* : BOOL; (* 462KF1_5 *)
+	ib462KF1_2_FrontCameraTrigger						AT %I* : BOOL; (* 462KF1_2 *)
+	ib462KF1_6_Labeller1DataReady						AT %I* : BOOL; (* 462KF1_6 *)
+	ib462KF1_3_Labeller1HomePosition						AT %I* : BOOL; (* 462KF1_3 *)
+	ib462KF1_7_Labeller1LabelPrinted						AT %I* : BOOL; (* 462KF1_7 *)
+	ib462KF1_4_Labeller1Error							AT %I* : BOOL; (* 462KF1_4 *)
+	ib462KF1_8_Labeller1OuterAtLabeller					AT %I* : BOOL; (* 462KF1_8 *)
+
+(*TERMINAL 463KF1 - EL1008 ***********************************************************************)
+	ib463KF1_1_Labeller2Ready							AT %I* : BOOL; (*4 63KF1_1 *)
+	ib463KF1_5_Labeller2SummaryWarning					AT %I* : BOOL; (* 463KF1_5 *)
+	ib463KF1_2_RearCameraTrigger							AT %I* : BOOL; (* 463KF1_2 *)
+	ib463KF1_6_Labeller2DataReady						AT %I* : BOOL; (* 463KF1_6 *)
+	ib463KF1_3_Lebeller2HomePosition						AT %I* : BOOL; (* 463KF1_3 *)
+	ib463KF1_7_Labeller2LabelPrinted						AT %I* : BOOL; (* 463KF1_7 *)
+	ib463KF1_4_Labeller2Error							AT %I* : BOOL; (* 463KF1_4 *)
+	ib463KF1_8_Labeller2OuterAtLabeller					AT %I* : BOOL; (* 463KF1_8 *)
+
+(*TERMINAL 464KF1 - EL1008 ***********************************************************************)
+	ib464KF1_1_RotaryTransferPackAtStopPlate				AT %I* : BOOL; (* 464KF1_1 *)
+	ib464KF1_5_RotaryTransferTorqueLimiter					AT %I* : BOOL; (* 464KF1_5 *)
+	ib464KF1_2_RotaryTransferDelayStop1					AT %I* : BOOL; (* 464KF1_2 *)
+	ib464KF1_6_RotaryTransferDelayStop2					AT %I* : BOOL; (* 464KF1_6 *)
+	ib464KF1_3_Spare									AT %I* : BOOL; (* 464KF1_3 *)
+	ib464KF1_7_Spare									AT %I* : BOOL; (* 464KF1_7 *)
+	ib464KF1_4_Spare									AT %I* : BOOL; (* 464KF1_4 *)
+	ib464KF1_8_Spare									AT %I* : BOOL; (* 464KF1_8 *)
+
+(*TERMINAL 465KF1 - EL1008***********************************************************************)
+	ib465KF1_1_OuterAtReject							AT %I* : BOOL; (* 465KF1_1 *)
+	ib465KF1_5_CMLExitBlock								AT %I* : BOOL; (* 465KF1_5 *)
+	ib465KF1_2_RejectPB								AT %I* : BOOL; (* 465KF1_2 *)
+	ib465KF1_6_LoweratorGuideRHLowerInPosition			AT %I* : BOOL; (* 465KF1_6 *)
+	ib465KF1_3_LoweratorGuideLHLowerInPosition			AT %I* : BOOL; (* 465KF1_3 *)
+	ib465KF1_7_RejectCylinderExtended					AT %I* : BOOL; (* 465KF1_7 *)
+	ib465KF1_4_RejectCylinderRetracted					AT %I* : BOOL; (* 465KF1_4 *)
+	ib465KF1_8_RejectBinFull								AT %I* : BOOL; (* 465KF1_8 *)
+
+(*TERMINAL 466KF1 - EL1008***********************************************************************)
+	ib466KF1_1_AdditionalConveyor1Isolator					AT %I* : BOOL; (* 466KF1_1 *)
+	ib466KF1_5_AdditionalConveyor2Isolator					AT %I* : BOOL; (* 466KF1_5 *)
+	ib466KF1_2_AdditionalConveyor3Isolator					AT %I* : BOOL; (* 466KF1_2 *)
+	ib466KF1_6_AdditionalConveyor4ThermalOverload			AT %I* : BOOL; (* 466KF1_6 *)
+	ib466KF1_3_PreLabelCameraTrigger						AT %I* : BOOL; (* 466KF1_3 *)						(*not used on C922 and C925 *)
+	ib466KF1_7_PostLabelCameraTrigger					AT %I* : BOOL; (* 466KF1_7 *)						(*not used on C922 and C925 *)
+	ib466KF1_4_NCWShiftRegister							AT %I* : BOOL; (* 466KF1_4 *)						(*not used on C922 and C925 *)
+	ib466KF1_8_ResetPB									AT %I* : BOOL; (* 466KF1_8 *)
+
+(*TERMINAL 467KF1 - EL1008***********************************************************************)
+	ib467KF1_1_Spare									AT %I* : BOOL; (* 467KF1_1 *)
+	ib467KF1_5_OutfeedCleatedConveyorTorqueLimiter		AT %I* : BOOL; (* 467KF1_5 not used *)
+	ib467KF1_2_AdditionalConveyor4OK					AT %I* : BOOL; (* 467KF1_2 sofstart is happy*)
+	ib467KF1_6_Spare									AT %I* : BOOL; (* 467KF1_6 *)
+	ib467KF1_3_PreMachineAutorun						AT %I* : BOOL; (* 467KF1_3 *)
+	ib467KF1_7_PostMachineAutorun						AT %I* : BOOL; (* 467KF1_7 *)
+	ib467KF1_4_ConveyorIndexContact						AT %I* : BOOL; (* 467KF1_4 delay stop for inffed conv for packs *)
+	ib467KF1_8_OutfeedCleatedConveyorTransfer				AT %I* : BOOL; (* 467KF1_8 not used *)
+
+(*TERMINAL 468KF1 - EL1008************************************************************************)
+	ib468KF1_1_HTTMinimumLevel						AT %I* : BOOL; (* 468KF1_1 *)
+	ib468KF1_5_HTTDatumSwich							AT %I* : BOOL; (* 468KF1_5 *)
+	ib468KF1_2_HTTPackAtStop							AT %I* : BOOL; (* 468KF1_2 *)
+	ib468KF1_6_HTTPackExitBlocked						AT %I* : BOOL; (* 468KF1_6 *)
+	ib468KF1_3_HTTGuideCylinderExtended					AT %I* : BOOL; (* 468KF1_3 *)
+	ib468KF1_7_PackBuildBackPreMachineCutout				AT %I* : BOOL; (* 468KF1_7 *)
+	ib468KF1_4_InfeedCleatedConveyorTorqueLimiter			AT %I* : BOOL; (* 468KF1_4 *)
+	ib468KF1_8_InfeedCleatedConveyorTransfer				AT %I* : BOOL; (* 468KF1_8 *)
+
+(*TERMINAL 469KF1 - EL1008************************************************************************)
+	ib469KF1_1_HTT2MinimumLevel						AT %I* : BOOL; (* 469KF1_1 *)						(*not used on C922 and C925 *)
+	ib469KF1_5_HTT2DatumSwich							AT %I* : BOOL; (* 469KF1_5 *)						(*not used on C922 and C925 *)
+	ib469KF1_2_HTT2PackAtStop							AT %I* : BOOL; (* 469KF1_2 *)						(*not used on C922 and C925 *)
+	ib469KF1_6_HTT2ExitBlocked							AT %I* : BOOL; (* 469KF1_6 *)						(*not used on C922 and C925 *)
+	ib469KF1_3_HTT2GuideCylinderExtended					AT %I* : BOOL; (* 469KF1_3 *)						(*not used on C922 and C925 *)
+	ib469KF1_7_PackBuildBack2PreMachineCutout				AT %I* : BOOL; (* 469KF1_7 *)						(*not used on C922 and C925 *)
+	ib469KF1_4_PreMachineHTT2ConveyorRun				AT %I* : BOOL; (* 469KF1_4 *)						(*not used on C922 and C925 *)
+	ib469KF1_8_Spare									AT %I* : BOOL; (* 469KF1_8 *)						(*not used on C922 and C925 *)
+
+(*TERMINAL 480KF1 - EL2008 ************************************************************************)
+	qb480KF1_1_Spare									AT %Q* : BOOL; (* 480KF1_1 *)
+	qb480KF1_5_AdditionalConveyor1Run					AT %Q* : BOOL; (* 480KF1_5 *)
+	qb480KF1_2_AdditionalConveyor2Run					AT %Q* : BOOL; (* 480KF1_2 *)
+	qb480KF1_6_AdditionalConveyor3Run					AT %Q* : BOOL; (* 480KF1_6 *)
+	qb480KF1_3_AdditionalConveyor4Run					AT %Q* : BOOL; (* 480KF1_3 *)
+	qb480KF1_7_Spare									AT %Q* : BOOL; (* 480KF1_7 *)
+	qb480KF1_4_CleatedConveyrBrake						AT %Q* : BOOL; (* 480KF1_4 *)
+	qb480KF1_8_PackSeparationMotorBrake					AT %Q* : BOOL; (* 480KF1_8 *)
+
+(*TERMINAL 481KF1 - EL2008 ************************************************************************)
+	qb481KF1_1_RejectCylinderExtend						AT %Q* : BOOL; (* 481KF1_1 *)	(*Solenoid*)
+	qb481KF1_5_RejectCylinderRetract						AT %Q* : BOOL; (* 481KF1_5 *)	(*Solenoid*)
+	qb481KF1_2_FrontHightResCameraPower					AT %Q* : BOOL; (* 481KF1_2 *)
+	qb481KF1_6_ReartHightResCameraPower					AT %Q* : BOOL; (* 481KF1_6 *)
+	qb481KF1_3_HTTGiudesCylinderExtend					AT %Q* : BOOL; (* 481KF1_3 *)	(*Solenoid*)
+	qb481KF1_7_HTTGiudesCylinderRetract					AT %Q* : BOOL; (* 481KF1_7 *)	(*Solenoid*)
+	qb481KF1_4_FrontHightResCameraTrigger				AT %Q* : BOOL; (* 481KF1_4 *)
+	qb481KF1_8_ReartHightResCameraTrigger				AT %Q* : BOOL; (* 481KF1_8 *)
+
+(*TERMINAL 482KF1 - EL2008 ************************************************************************)
+	qb482KF1_1_RejectCameraPower						AT %Q*  : BOOL; (* 482KF1_1 *)	(*MasterListCameraPower*)
+	qb482KF1_5_RejectCameraTrigger						AT %Q*  : BOOL; (* 482KF1_5 *)	(*MasterListCameraTrigger*)
+	qb482KF1_2_PreLabelCameraPower						AT %Q*  : BOOL; (* 482KF1_2 *)						(*not used on C922 and C925 *)
+	qb482KF1_6_PreLabelCameraTrigger						AT %Q*  : BOOL; (* 482KF1_6 *)						(*not used on C922 and C925 *)
+	qb482KF1_3_PostLabelCameraPower					AT %Q*  : BOOL; (* 482KF1_3 *)						(*not used on C922 and C925 *)
+	qb482KF1_7_PostLabelCameraTrigger					AT %Q*  : BOOL; (* 482KF1_7 *)						(*not used on C922 and C925 *)
+	qb482KF1_4_Labbeller1ApplyAvailable					AT %Q*  : BOOL; (* 482KF1_4 *)
+	qb482KF1_8_Labbeller2ApplyAvailable					AT %Q*  : BOOL; (* 482KF1_8 *)
+
+(*TERMINAL 483KF1 - EL2008 ************************************************************************)
+	qb483KF1_1_LightPoleGreen							AT %Q*  : BOOL; (* 483KF1_1 *)	(*MasterListCameraPower*)
+	qb483KF1_5_LightPoleAmber							AT %Q*  : BOOL; (* 483KF1_5 *)	(*MasterListCameraTrigger*)
+	qb483KF1_2_LightPoleRed							AT %Q*  : BOOL; (* 483KF1_2 *)
+	qb483KF1_6_LightPoleAlarm							AT %Q*  : BOOL; (* 483KF1_6 *)
+	qb483KF1_3_ResetPB								AT %Q*  : BOOL; (* 483KF1_3 *)
+	qb483KF1_7_AdditionalPreMachineCutoutBeltInMotion		AT %Q*  : BOOL; (* 483KF1_7 *)
+	qb483KF1_4_PreMachineCutoutSignalRelay				AT %Q*  : BOOL; (* 483KF1_4 *)
+	qb483KF1_8_MachineRunSignalRelay					AT %Q*  : BOOL; (* 483KF1_8 *)
+
+(*TERMINAL 490KF1 - EL2624 ************************************************************************)
+	qb490KF1_1_Labeller1ResetSignal						AT %Q*  : BOOL; (*490KF1_1*)
+	qb490KF1_2_Labeller2ResetSignal						AT %Q*  : BOOL; (*490KF1_2*)
+	qb490KF1_3_Labeller1PrintSignal						AT %Q*  : BOOL; (*490KF1_3*)
+	qb490KF1_4_Labeller2PrintSignal						AT %Q*  : BOOL; (*490KF1_4*)
+
+
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

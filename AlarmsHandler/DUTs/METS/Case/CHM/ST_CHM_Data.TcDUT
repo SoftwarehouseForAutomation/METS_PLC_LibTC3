@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CHM_Data" Id="{06fbaa38-aa20-43c0-9f5f-5cfebd7faa43}">
+    <Declaration><![CDATA[TYPE ST_CHM_Data :
+STRUCT
+	MessageHeader		:	ST_MessageHeader;
+	Factory				:	STRING(3);
+	GenericHierarchy		:	ST_GenericHierarchy;
+	Attributes				:	ST_Attributes;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

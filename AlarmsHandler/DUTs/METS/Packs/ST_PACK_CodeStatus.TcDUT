@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PACK_CodeStatus" Id="{092cd40a-e1e5-47a5-ac8f-a7b38e061fcd}">
+    <Declaration><![CDATA[TYPE ST_PACK_CodeStatus :
+STRUCT
+
+	strCode			: T_PACK_Barcode;
+	strCodeToHMI		: T_PACK_Barcode;
+	aCode			: ARRAY[1..4] OF T_PACK_Barcode;
+	nStringSize		: INT;
+	nStatus			: BYTE;
+	nCameraIndex		: INT;
+	nScanNo			: INT;
+	fXPos			: LREAL;
+	fYPos			: LREAL;
+	nProgramNo		: BYTE;
+	nTriggerID 		: UDINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

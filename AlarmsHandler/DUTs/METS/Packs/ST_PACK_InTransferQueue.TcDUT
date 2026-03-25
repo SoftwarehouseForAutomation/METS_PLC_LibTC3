@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PACK_InTransferQueue" Id="{6ebee12f-1406-4b4e-8df3-b74ebaf1f2aa}">
+    <Declaration><![CDATA[TYPE ST_PACK_InTransferQueue :
+STRUCT
+
+	nIndex				: INT;				(* number of Outers in queue *)
+	bDoorReject			: BOOL;
+	sLastBarcodeAdded		: T_PACK_Barcode;	(* last Outer barcode added to Infeed Queue *)
+
+	aPackQueue			: ARRAY[1..35] OF ST_PACK_Data; (* Stacker queue *)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

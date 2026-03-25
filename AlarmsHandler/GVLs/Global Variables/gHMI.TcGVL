@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="gHMI" Id="{a11f23dd-c66f-437c-b71b-24a190094702}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+	(*stPassthroughHMI 					: ST_HMI_Buttons;*)  (* - TO be replaced like in STG with status*)
+	stVisualisation						: ST_HMI_Visualisation;
+
+	stEnableForcingOutputs				: ST_HMI_Buttons;
+	stForceOutputHMI					: ARRAY[1..6] OF ST_HMI_Buttons;
+
+	nMachineStatusHMI					: INT;
+
+	sPLCVersionHMI						: STRING;
+	sPLCVersionInfoHMI					: T_MaxString;
+	sPLCExternalInterfceHMI				: STRING;
+	sScreenVersionInfoHMI				: T_MaxString;
+	sBridgeVersionHMI					: STRING;
+
+	(*nOuterSerialLenghtHMI				: UINT;	*)(*READ*)
+	
+	stStartHMI							: ST_HMI_Buttons;
+	stStopHMI							: ST_HMI_Buttons;
+	stResetHMI				 			: ST_HMI_Buttons;
+
+	stResetTCPServerHMI					: ST_HMI_Buttons;
+
+	aDebugDontStartScreenHMI			: ARRAY[1..2] OF ST_HMI_Buttons;
+	stDebugDontStartBridgeHMI			: ST_HMI_Buttons;
+    aWatchdogToHMI                      : ARRAY[1..cMAX_HMI_DISPLAYS] OF DINT;
+    aWatchdogFromHMI                    : ARRAY[1..cMAX_HMI_DISPLAYS] OF DINT;
+
+	stResetAllStatistics				: ST_HMI_Buttons;
+	stResetPackInspectionHMI			: ST_HMI_Buttons;
+	stResetOuterInspectionHMI			: ST_HMI_Buttons;
+	stResetCaseInspectionHMI			: ST_HMI_Buttons;
+
+	stResetAllCameraStatisticHMI		: ST_HMI_Buttons;
+
+	stClearAlarmsWarningHistory			: ST_HMI_Buttons;
+
+	stClearAllQueuesHMI					: ST_HMI_Buttons;
+	stClearOuterArrayHMI				: ST_HMI_Buttons;
+	stClearConveyorQueueHMI				: ST_HMI_Buttons;
+	stClearPackerQueueHMI				: ST_HMI_Buttons;
+	stClearCaseQueueHMI					: ST_HMI_Buttons;
+	stClearOutfeedQueueHMI				: ST_HMI_Buttons;
+	stClearCasePackerArrayHMI			: ST_HMI_Buttons;
+
+	stClearVerifiedCaseDataHMI			: ST_HMI_Buttons;
+	stClearFailedCaseDataHMI			: ST_HMI_Buttons;
+
+	nClearDoneHMI						: WORD;
+
+	aClearErrorDataHMI					: ARRAY[1..2] OF ST_HMI_Buttons;
+	aErrorOuterPlusHMI					: ARRAY[1..2] OF ST_HMI_Buttons;
+	aErrorOuterMinusHMI					: ARRAY[1..2] OF ST_HMI_Buttons;
+	aErrorIndexHMI						: ARRAY[1..2] OF INT :=[2(1)];
+
+	stForceNVClearHMI					: ST_HMI_Buttons;
+
+	stManuallyReceivePCM				: ST_HMI_Buttons;
+	(*nMEWebServiceStateHMI				: WORD;	(*READ BY PLC ONLY*) (*0-Created, 1 - Opening, 2 - Opened, 3 - Closing, 4 - Closed, 5 Faulted*)*)
+
+	stShiftCSVStoreTable				: ST_HMI_CSVStoreTable;
+	stProdCSVStoreTable					: ST_HMI_CSVStoreTable;
+
+	(*HMI PLAS structure*)
+	stPackLinearStatusHMI				: ST_HMI_PLAS_Queue;
+
+	(*HMI PAOL structure*)
+	stPackBufferStatusHMI				: ST_HMI_PACK_BufferStatus;
+
+	(*sLastReadOuterBarcodeHMI			: T_OUTER_Barcode;
+	aConfPackCodeInPositionHMI			: ARRAY[0..1] OF T_PACK_Barcode;*)
+	stOuterAggregationHMI				: ST_HMI_OuterStatus;
+	stFailureDiagnosticHMI				: ST_HMI_OuterStatus;
+	bValidateForRejectDoneHMI			: BOOL;
+
+	stInfeedConvQueueHMI				: ST_HMI_InfeedQueue;
+	aPackerQueueHMI						: ARRAY [0..1] OF ST_HMI_InfeedQueue;
+
+	aCaseQueueRejectCodeHMI				: ARRAY[1..cMAX_CASE_QUEUE] OF ST_HMI_CaseRejectCode;
+	aVerifiedCaseIDCodeHMI				: ARRAY[1..cMAX_VERIFIED_CASE_QUEUE] OF ST_HMI_CaseVerifiedCode;
+	aFailedCaseRejectCodeHMI			: ARRAY[1..cMAX_FAILED_CASE_QUEUE] OF ST_HMI_CaseRejectCode;
+
+	(*CaseContent Aux data*)
+	stCaseQueueHMI						: ST_HMI_CASE_CaseQueue;
+	aFailedCACDataHMI					: ARRAY[1..cMAX_FAILED_CASE_QUEUE] OF ST_HMI_CAC_Data;	(* array of failed CAC data *)
+	aVerifiedCACDataHMI					: ARRAY[1..cMAX_VERIFIED_CASE_QUEUE] OF ST_HMI_CAC_Data;	(* array of verified CAC data *)
+
+
+	(*eTPDDriveStatusHMI				: E_HMI_DriveStatus;
+	stLogAlarmsHMI						: ST_HMI_LogMessage;
+	stLogWarrningsHMI					: ST_HMI_LogMessage;*)
+
+	stBarGraph							: ST_HMI_BarGraph;
+	bPerformanceTriggerHMI				: BOOL;
+	bMemoRejectDoneForHMI				: BOOL;
+
+(* Backup	 ************************************************************************************************)
+
+	stCreateBackupHMI					: ST_HMI_Buttons;
+	bBackupDoneHMI						: BOOL;
+	sRestoreBackupNameHMI				: STRING;
+	stRestoreBackupHMI					: ST_HMI_Buttons;
+	bRestoreDoneHMI						: BOOL;
+
+(* DB Report   ******************************************************************************************)
+
+	stDBReportHMI						: ST_DB_ReportResult;
+
+(* OLD CONTROL*)
+	(*aAxisControlHMI					: ARRAY[1..cMAX_MC2_DRIVES] OF ST_HMI_AxisControl;*)
+
+(* Manual Control ***************************************************************************************************)
+	
+	aCylinderCtrlHMI					: ARRAY[1..cMAX_CYLINDERS] OF ST_HMI_CylinderCtrl;
+	aG120CtrlHMI						: ARRAY[1..cMAX_PROFINET_DRIVES] OF ST_HMI_G120Ctrl;
+	aPrinterCtrlHMI						: ARRAY[1..cMAX_PRINTER_NUMBER] OF ST_HMI_PrinterCtrl;
+	aAxisCtrlHMI						: ARRAY[1..cMAX_MC2_DRIVES] OF ST_HMI_AxisCtrl;
+
+(* Device Status  ***************************************************************************************************)
+
+	aCylinderStatusHMI					: ARRAY[1..cMAX_CYLINDERS] OF  ST_HMI_CylinderStatus;
+	aG120StatusHMI						: ARRAY[1..cMAX_PROFINET_DRIVES] OF ST_HMI_G120Status;
+	aPrinterStatusHMI					: ARRAY[1..cMAX_PRINTER_NUMBER] OF ST_HMI_PrinterStatus;
+	aAxisStatusHMI						: ARRAY[1..cMAX_MC2_DRIVES] OF ST_HMI_AxisStatus;
+
+	aHoneywellStatusHMI					: ARRAY[1..cMAX_HAND_SCANNERS] OF ST_HMI_HoneywellStatus;
+
+(* HAND SCANNER ************************************************************************************************)
+
+	stEnablePackInvalidSearchHMI		: ST_HMI_Buttons;
+
+	bOCVSearchCodeHMI					: BOOL;
+	sOCVSearchBarcodeHMI				: T_MaxString;
+	stEnableInvalidOCVSearchHMI			: ST_HMI_Buttons;
+	bOCVSearchCodeFoundHMI				: BOOL;
+
+	bScanDoneHMI						: BOOL;
+	sSearchedBarcodeHMI					: T_MaxString;
+	stEnableOuterInvalidSearchHMI		: ST_HMI_Buttons;
+	bOACSearchCodeFoundHMI				: BOOL;
+
+	stEnablePackCodeRefeedHMI			: ST_HMI_Buttons;
+	bRefeedButtonAvailableHMI			: BOOL;		(*bEnableRefeedButton*)
+
+	stRemoveOuterFromQueueHMI			: ST_HMI_Buttons;
+	stEnableCaseContentSearchHMI		: ST_HMI_Buttons;
+
+(*
+	bPackCodeFoundInDBHMI				:	 BOOL;	(*WRITE TO HMI ONLY*)
+	bPackCodeNotFoundInDBHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+*)
+	bRestoredOCVDataValidHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+	bRestoredOCVDataInvalidHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+	bRestoredOCVDataNotExistHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+
+	bRestoredOACDataValidHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+	bRestoredOACDataInvalidHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+	bRestoredOACDataNotExistHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+
+	bRestoredCACDataValidHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+	bRestoredCACDataInvalidHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+	bRestoredCACDataNotExistHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+
+	bRestoredCHMDataNotExistHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+
+
+(* CASE INSPACTION ************************************************************************************************)
+
+	bCaseLabelScanCompleteHMI			: BOOL;	(*WRITE TO HMI ONLY*)
+
+	(*outerinfeed conveyer *)
+	nOuterProcessedHMI					: UDINT;
+	nOuterAggregatedHMI					: UDINT;
+	nMasterListRestoredSuccessfulHMI	: UDINT;	(*READ*)
+	nMasterListRemovedHMI				: UDINT;	(*READ*)
+	nQAButtonRejectOuterHMI				: UDINT;	(*READ*)
+
+	(*row validation*)
+	nRowValidationIndexUnderHMI			: UDINT;	(*READ*)
+	nRowValidationIndexOverHMI			: UDINT;	(*READ*)
+	nRowValidationIndexCorrectHMI		: UDINT;	(*READ*)
+	nRowValidationIndexNotFoundHMI		: UDINT;	(*READ*)
+
+	(*outer to case validation*)
+	nOuterToCaseValidationIndexUnderHMI		: UDINT;	(*READ*)
+	nOuterToCaseValidationIndexOverHMI		: UDINT;	(*READ*)
+	nOuterToCaseValidationIndexCorrectHMI	: UDINT;	(*READ*)
+	nOuterToCaseValidationIndexNoDataHMI	: UDINT;	(*READ*)
+
+	(*case validation*)
+	nCaseValidationScannedHMI				: UDINT;	(*READ*)
+	nCaseValidationCorrectHMI				: UDINT;	(*READ*)
+	nCaseValidationCasePackerRejectHMI		: UDINT;	(*READ*)
+	nCaseValidationNoCaseLabelHMI			: UDINT;	(*READ*)
+
+(* CASE PACKER SIGNALS  ******************************************************************************************)
+
+	(*RowComplete*)
+	nRowCompleteSensorHMI				: UDINT;	(*READ/WRITE*)
+	nRowCompleteMachineHMI				: UDINT;	(*READ/WRITE*)
+	nRowCompleteHMI						: UDINT;	(*READ/WRITE*)
+
+	(*LayerComplete*)
+	nLayerCompleteSensorHMI				: UDINT;	(*READ/WRITE*)
+	nLayerCompleteMachineHMI			: UDINT;	(*READ/WRITE*)
+	nLayerCompleteHMI					: UDINT;	(*READ/WRITE*)
+
+	(*CaseComplete*)
+	nCaseCompleteSensorHMI				: UDINT;	(*READ/WRITE*)
+	nCaseCompleteMachineHMI				: UDINT;	(*READ/WRITE*)
+	nCaseCompleteHMI					: UDINT;	(*READ/WRITE*)
+	
+	(*CaseComplete*)
+	nCaseDischargedSensorHMI			: UDINT;	(*READ/WRITE*)
+	nCaseDischargedMachineHMI			: UDINT;	(*READ/WRITE*)
+	nCaseDischargedHMI					: UDINT;	(*READ/WRITE*)
+	
+	(*CaseLabelValidation*)
+	nCaseLabelValidationSensorHMI		: UDINT;	(*READ/WRITE*)
+	nCaseLabelValidationMachineHMI		: UDINT;	(*READ/WRITE*)
+	nCaseLabelValidationHMI				: UDINT;	(*READ/WRITE*)
+
+
+(* IO Status ******************************************************************************************************)
+
+	aInputsStatusHMI					: ARRAY[1..64] OF ST_IO2_Diagnostic;
+	aOutputsStatusHMI					: ARRAY[1..32] OF ST_IO2_Diagnostic;
+	aForceOutputsHMI					: ARRAY[1..6] OF ST_IO2_Diagnostic;
+	
+
+END_VAR
+
+
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

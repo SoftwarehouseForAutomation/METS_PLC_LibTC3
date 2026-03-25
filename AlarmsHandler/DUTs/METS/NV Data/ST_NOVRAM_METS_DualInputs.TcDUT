@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_NOVRAM_METS_DualInputs" Id="{53408c38-d1f1-4d86-84c1-6b71cfd1114c}">
+    <Declaration><![CDATA[TYPE ST_NOVRAM_METS_DualInputs :
+STRUCT
+
+	MachineID					: ST_SYSTEM_MachineID;
+	StartDateTime					: T_ISO8601Time;
+	CodingAndTrackingMode			: INT;
+
+	RowComplete			:	ST_KPI_CasePackerSignals;
+	LayerComplete			:	ST_KPI_CasePackerSignals;
+	CaseComplete			:	ST_KPI_CasePackerSignals;
+	CaseDischarged		:	ST_KPI_CasePackerSignals;
+	CaseLabelValidation		:	ST_KPI_CasePackerSignals;
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

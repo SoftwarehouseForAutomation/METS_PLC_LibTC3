@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DB_OCVDataCtrl" Id="{c0b323fe-e1f6-4a83-b537-afbf9c1cf85f}">
+    <Declaration><![CDATA[TYPE ST_DB_OCVDataCtrl :
+STRUCT
+	bCreateDataReq				: BOOL;	(* C *)
+	bReadDataReq				: BOOL;	(* R *)
+	bUpdateDataReq				: BOOL;	(* U *)
+	bDeleteDataReq				: BOOL;	(* D *)
+
+	sFileCodeName1				: T_MaxString;
+	sFileCodeName2				: T_MaxString;
+	
+	bBlockRecord				: BOOL;
+	bRestored					: BOOL;
+
+	stOCVStatusDB				: ST_OUTER_Status;
+
+	bDone						: BOOL;
+	bError						: BOOL;
+	nErrorID					: UDINT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

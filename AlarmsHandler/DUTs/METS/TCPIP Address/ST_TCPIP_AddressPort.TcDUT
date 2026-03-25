@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_TCPIP_AddressPort" Id="{2b3009af-55c9-4f82-9693-7de329701810}">
+    <Declaration><![CDATA[TYPE ST_TCPIP_AddressPort :
+STRUCT
+	IP			: T_IPv4Addr;
+	Port		: UINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

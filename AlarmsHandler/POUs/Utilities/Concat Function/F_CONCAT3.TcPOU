@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_CONCAT3" Id="{e9dce370-253d-421c-97c8-7de3d83ece43}" SpecialFunc="None">
+    <Declaration><![CDATA[(* concatenate 3 strings *)
+FUNCTION F_CONCAT3 : T_MaxString
+VAR_INPUT
+	strString1		: T_MaxString;
+	strString2		: T_MaxString;
+	strString3		: T_MaxString;
+END_VAR
+VAR
+END_VAR
+(*
+-------------------------------------------------------------------------------------------------
+Date		Version	Author	Comments
+-------------------------------------------------------------------------------------------------
+30/01/2015	3.00.00	PB		No change
+
+-------------------------------------------------------------------------------------------------
+05/02/2010	1.00.00	PB		Initial release
+
+-------------------------------------------------------------------------------------------------
+*)]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[F_CONCAT3 := CONCAT(strString1, strString2);
+F_CONCAT3 := CONCAT(F_CONCAT3, strString3);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

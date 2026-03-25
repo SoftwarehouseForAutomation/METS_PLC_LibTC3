@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_G120_Status" Id="{493ea123-23d7-4eb4-b166-2749a400cc14}">
+    <Declaration><![CDATA[TYPE ST_G120_Status :
+(*
+Version history:
+Date		|	Version/Author 		|	Remark
+----------------------------------------------------------------------------------------------------
+09.02.18	|	2.000.016	PSA		|	Original Version.
+									|	Siemens G120 drive structure
+*)
+STRUCT
+	I								: ST_G120_IN;
+	Q								: ST_G120_OUT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

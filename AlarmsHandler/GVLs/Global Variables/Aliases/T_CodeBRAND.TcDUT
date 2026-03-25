@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_CodeBRAND" Id="{0f6a90b5-e3f1-4b19-8f33-cb1038a41999}">
+    <Declaration><![CDATA[ TYPE T_CodeBRAND : STRING[9];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

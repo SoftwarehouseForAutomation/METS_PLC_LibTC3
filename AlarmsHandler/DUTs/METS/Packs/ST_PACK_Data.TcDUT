@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PACK_Data" Id="{1b543cb4-61d6-47c1-ac78-7af7e1ff7d12}">
+    <Declaration><![CDATA[TYPE ST_PACK_Data :
+STRUCT
+	sPackCode			: T_PACK_Barcode;		(*explicitee Pack barcode in case will be neccesary modified it comapre to scanner data*)
+	nPackTriggerID			: UDINT;	(* TriggerID value for scanners *)
+	sProductionDate		: STRING(10);
+	sProductionTime		: STRING(8);
+	sProductionTimeOffset	: STRING(6);		(* time offset between system and UTC, '+1:00' means SystemTime = UTC + 1hr *)
+	sPackTimeStamp			: T_ISO8601Time;
+	nPackStatus			: BYTE;		(*Match to OACPackStatus*)
+	sPackRejectCode		: T_RejectCode;
+	nPackRejectID			: UINT;
+	(*nPackSUPIResult		: DINT;	(* Pack code SUPI status *)*)
+	ePackCodeFilledIn		: E_PACK_FilledInStatus;	(* Pack code filled in by first/secondary master list/removed  *)
+	stPackCodeData		: ST_SCANNER_CodeData; (* Infeed queue *)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

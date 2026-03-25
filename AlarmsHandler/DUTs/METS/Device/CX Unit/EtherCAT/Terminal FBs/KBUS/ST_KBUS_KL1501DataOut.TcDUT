@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_KBUS_KL1501DataOut" Id="{5488fde7-402c-4c8c-8d9f-727134ee78a1}">
+    <Declaration><![CDATA[TYPE ST_KBUS_KL1501DataOut :
+STRUCT
+	nCtrl	: BYTE;
+	arrData	: ARRAY [0..1] OF UINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

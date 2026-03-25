@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_G120Ctrl" Id="{82340275-35e2-4444-a46a-a7b70d601128}">
+    <Declaration><![CDATA[TYPE ST_HMI_G120Ctrl :
+STRUCT
+	stRun				: ST_HMI_Buttons;
+	stReset				: ST_HMI_Buttons;
+	nSpeedHz 			: UINT;
+	stInvertDirection	: ST_HMI_Buttons;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_ImageData" Id="{4856edd7-2e4c-4fa8-ab37-5891843cd423}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_ImageData :
+STRUCT
+	nCodesRead		: INT;
+	tScanTime		: TIME;		(* image cycle time (including image acquisition time and decode time) *)
+	sStatus			: T_MaxString;
+	stTriggerID		: ST_SCANNER_TriggerID;
+	aCodeData		: ARRAY[1..cMAX_CAMERA_PROG_NUMBER] OF ST_SCANNER_CodeData;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

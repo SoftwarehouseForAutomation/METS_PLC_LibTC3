@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HierarchyData" Id="{f4fa1992-5070-43f0-a1cb-81cabd8dd48d}">
+    <Declaration><![CDATA[//{attribute 'pack_mode' := '8'}
+TYPE ST_HierarchyData :
+STRUCT
+
+	UnitQty 	: STRING(10);
+	GTIN 		: T_CodeGTIN;
+	EAN 		: STRING(20);
+	BCODE9	: T_CodeBRAND;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_Performance" Id="{367c03ae-e88b-4276-8b3c-2fe50ebf92fa}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_Performance :
+STRUCT
+	tLastDiff : TIME;
+	tAverageDiff : TIME;
+	arrTimeDiff : ARRAY[0..9] OF TIME;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_G120_IN" Id="{66a464fc-46a6-4aa6-829a-5eefed4f87d2}">
+    <Declaration><![CDATA[TYPE ST_G120_IN :
+(*
+Version history:
+Date		|	Version/Author 		|	Remark
+----------------------------------------------------------------------------------------------------
+09.02.18	|	2.000.016	PSA		|	Original Version.
+									|	Siemens G120 drive control input structure
+*)
+STRUCT
+	xEnable							: BOOL;
+	xDriveEnable					: BOOL;
+	xClearFault						: BOOL;
+	xInvertDirection				: BOOL;
+	uiSpeed							: UINT;
+	stExt							: ST_G120_ExtendedIn;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

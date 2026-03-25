@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_Visualisation" Id="{807aeb0f-bbbb-462d-908e-d62243bd9d08}">
+    <Declaration><![CDATA[TYPE ST_HMI_Visualisation:
+STRUCT
+	(*Test outputs*)
+(*	bEnableForcingOutputs			: BOOL;
+
+	bForceEUCAMachineRun_STCP		: BOOL;	(*to set qb82KF1_1_EUCAMachineRun*)
+	bForceCaseValidationOK_STCP		: BOOL;	(*to set qb82KF1_5_CaseValidationOK*)
+	bForceOuterValidationOK_STCP	: BOOL;	(*to set qb82KF1_2_OuterValidationOK*)
+	bForceLabellerInhibit_STL		: BOOL;	(*to set qb82KF1_3_LabellerInhibit_STL*)
+	bForceTPDMachineRun			: BOOL;	(*to set qb482KF1_4_TPDMachineRun*)
+	bForceSpare					: BOOL;
+*)
+
+	(*Update PCM*)
+	bEnableUpdatePCM				: BOOL;
+
+	strLastRetailSKU 				: T_CodeRSKU;
+	strLastProductionOrder			: T_CodePO;
+	strLastBatchNumber				: T_CodeBATCH;
+
+	strLastPackGTIN 				: T_CodeGTIN;
+	strLastOuterGTIN 				: T_CodeGTIN;
+	strLastCaseGTIN 				: T_CodeGTIN;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

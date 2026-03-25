@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_DataSequence" Id="{78c9dff4-e8e0-4e89-97f2-63c140b1ff91}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_DataSequence :
+(	
+	//E_Send,
+	//E_SendWait,
+	//E_Recieve,
+	//E_RecieveWait
+	DUMMY
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

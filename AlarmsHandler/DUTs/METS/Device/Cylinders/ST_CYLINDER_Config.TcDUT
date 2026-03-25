@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CYLINDER_Config" Id="{81d8e8f3-ab78-4ee2-b542-48f1ed458740}">
+    <Declaration><![CDATA[TYPE ST_CYLINDER_Config :
+STRUCT
+
+	bEnable					: BOOL;
+	sDeviceName				: STRING(30) := 'Cylinder';
+	tOperationalTime		: TIME := t#100ms;
+	tTimeOut				: TIME := t#1s;
+	bExtendAsHomePos	 	: BOOL;
+
+	stTagID					: ST_CYLINDER_TagID;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

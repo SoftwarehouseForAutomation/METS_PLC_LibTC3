@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_RejectItems" Id="{799b56e3-be3c-40f5-8160-c24777a53621}">
+    <Declaration><![CDATA[TYPE ST_RejectItems :
+STRUCT
+	nRejectID			: UINT;
+	sMetsDisplayCode	: T_RejectCode; (*this is what is displayed on our HMI - nn is replaced by the number of failures/successes*)
+	sMetsSearchCode	: STRING(50); (*this is what to search for when changing the reject reason for FSS*)
+	sFssSendCode		: T_FSS_RejecCode; (*this is what to send to FSS*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

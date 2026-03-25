@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_Config" Id="{cf0326da-92a5-45d7-8849-a87b0ede590e}">
+    <Declaration><![CDATA[{attribute 'pack_mode' := '1'}
+TYPE ST_SYSTEM_Config :
+STRUCT
+(*******************************************************************************************************************************************************)
+(*********************************************************General EUCA-TPD*******************************************************************************)
+(*******************************************************************************************************************************************************)
+(*General screen*)
+	sBackupName								: STRING;
+	sProductionSite 							: STRING(4);
+	stProductionLine 							: ST_SYSTEM_ProductionLine;
+	sShiftOffsetTime							: STRING(6);	(* shift offset time, formatted as '-06:00' or '+02:00' *)
+	stSoftVersion								: ST_SYSTEM_SoftwareVersion;
+
+	sFC1ReplacmentChar						: STRING(1) := '';
+
+(*FSS settings*)
+	tFSSLostConnectionTimeOut				: TIME := t#30m;
+	sFSS_Server_IPAddress						: STRING:= '127.0.0.1'; (*Do not remove. Used for HMI*)
+	sFSS_Server_WebRequest					: T_MaxString := 'http://127.0.0.1/Apriso/MessageProcessor/FlexNetMessageProcessor.asmx'; (*Do not removed. Used for HMI - this is the CHM sending endpoint*)
+	nFSSResponseTimeout						: UINT := 60000; (*: TIME := t#60s;*)
+	nFSSResendAttempts						: INT := 5;
+
+(*Shift Setup schedule*)
+	aShiftSchedule								: ARRAY[1..cSHIFTNUMBER] OF TIMESTRUCT;
+	aShiftChangeActive							: ARRAY[1..cSHIFTNUMBER] OF BOOL;
+
+(*Door*)
+	stDoorSettingsZone1					: ST_SYSTEM_Door;
+	stDoorSettingsZone2					: ST_SYSTEM_Door;
+
+(*Barcode setup - NEW - Gradually implementing*)
+	stCodeInfo_Pack								: ST_CodeInfo :=		(eCodeType :=E_CodeType.E_PACK);
+	stCodeInfo_Intermediate						: ST_CodeInfo :=		(eCodeType :=E_CodeType.E_INTERIM);
+	stCodeInfo_Outer								: ST_CodeInfo :=		(eCodeType :=E_CodeType.E_OUTER);
+	stCodeInfo_Case								: ST_CodeInfo :=		(eCodeType :=E_CodeType.E_CASE);
+
+(*******************************************************************************************************************************************************)
+(********************************************************Switch******************************************************************************)
+(*******************************************************************************************************************************************************)
+(*General Switches*)
+	bEUCAMonitor24VSupply					: BOOL := TRUE;
+	bMonitorRemote24VSupply				: BOOL;
+	bInhibitSafetyResetWhenAirNOK			: BOOL;
+
+	bKPIRemoteShareEnable					: BOOL;
+	bSystemLogEnable							: BOOL := TRUE;
+	bArchiveDBEnable							: BOOL := TRUE;
+	bPassthrough								: BOOL;
+	bPassthroughTPD							: BOOL;
+	bHandScannerInMainCabinet				: BOOL; (**)
+	bValidateOCVOnly							: BOOL;
+	bEnableRestoreOCV						: BOOL;		(*Enable Restoring of OCV data from structure*)
+	bATTPModeEnable							: BOOL := TRUE;
+
+	bConditionalStateAllowed					: BOOL := TRUE;
+	bNoStationsAvailable						: BOOL := TRUE;
+	bCommisioningMode						: BOOL; 	(**)
+	bConveyorAsPreMachine					: BOOL := TRUE;
+
+	bExistPreTPDBuildBackSensor				: BOOL := TRUE;
+	bExistTPDExitBlockedSensor				: BOOL := TRUE;
+	bExistPreEUCABuildBackSensor			: BOOL;
+	bExistEUCAExitBlockedSensor				: BOOL;
+	bExistWrapperPackRejectSesnor			: BOOL;
+
+(*Enable Master List Fillin*)
+	bEnablePackPrimaryMasterList					: BOOL:=TRUE;
+	bEnablePackSecondaryMasterList				: BOOL:=TRUE;
+	bEnableOuterMasterList						: BOOL:=TRUE;
+
+	bExtendedDiagnosticEnable				: BOOL;
+	bDotCodeFormat								: BOOL;
+	bQRCodeFormat								: BOOL;
+
+(*Pack*)
+	bEnableFastArming							: BOOL:=TRUE;		(*Enable arming sensors even if outer did not leave Lightox yet *)
+	bPAOLIsolatorExist						: BOOL;
+	bLightbox4TrigerSystemExist				: BOOL;
+	bLightboxLensAirExist						: BOOL;
+	bLighboxOverCMLConveyor					: BOOL;
+	bLightboxCamerasOnFullResolution				: BOOL;
+	bCloseCameraRelay						: BOOL;
+	bPackSeparatorAnalogControl				: BOOL;
+	bCameraOnLeftSide							: BOOL; 	(*Set to true if the camera is on the left hand side of the conveyor as the packs travel trhough it towards the CML*)
+	bPackCodesTrailing							: BOOL := TRUE; 	(*Set to true if the pack codes are on the trailing edge of the pack as it travels through the infeed cameras*)
+	bFirstPackCodeOnTop							: BOOL;			(*Used for correct mapping packs from pack confirmation camera*)
+
+	bEnableCodeAdjustment						: BOOL;
+	bEnableCodeDuplicateCheck					: BOOL;
+	bExtendedOCVDupCheck						: BOOL;
+	bLinearPackBufferExist							: BOOL;
+	bEnableStopForInvalideCode					: BOOL;	(*Stop METS immidiatly after Lightbox detect invalide code*)
+	bEnablePackCodeDateCheck					: BOOL;
+	bFixedTriggerOffsetEnable						: BOOL;
+
+(*Outer*)
+	bFrontConfirmationCameraInUse			: BOOL;				(*Rear confirmation camera 192.168.1.41 = false, front confiramtion camera 192.168.1.42 = true*)
+	bEnableOuterRejectConfirmation			: BOOL;
+	bEnableOuterTransferConfirmation		: BOOL;
+	bMasterListCameraDoubleRead				: BOOL := TRUE;
+	bAggregationCameraRunWithTrigger			: BOOL;
+	bAggregationStopOnInvalidCode				: BOOL ;
+	bUseAuxRowCompleteSesnor					: BOOL;
+	bUseInterimCodeForLastPosition				: BOOL;
+	bSkipStopGate									: BOOL;
+	bPreLabelerShiftRegUsed						: BOOL;
+	bConfirmOnOuter								: BOOL;		(*At Focke NCW outer is confirmet by it last packs*)
+	bEanbleRestoreOCVFromConfirmation			: BOOL;		(*At Focke NCW two outers will be resotred after index = 2 x pack per outers*)
+	bExtendedOACDupCheck						: BOOL;
+
+(*Case*)
+	bPushIntoCaseCount							: BOOL;
+	bIntermediateBufferExist						: BOOL;
+	bCasePackerDirectCutOut						: BOOL;
+	bCasePositionOverwritingCheck				: BOOL := TRUE;
+	//bAddOACFromFileOnly						: BOOL;	(*Add OAC to infeed from file not from arrOuterStatus*)
+	bSentOnlyGoodHierarchy						: BOOL := TRUE;
+	bArchiveRejectedHierarchy					: BOOL := TRUE;
+	bEnableStopOnOverWrittenData				: BOOL;
+	bResetPushCountOnDoorOpen				: BOOL;
+	bCheckDuplicateCaseLabel					: BOOL;
+	bManualConfirmationEnable					: BOOL;
+	bEnableStopOnCaseInavlid						: BOOL;
+	bUseCaseFullAsValidationTrigger				: BOOL;
+	bUseCaseContentReject						: BOOL;
+	bUseRejectByCasepacker						: BOOL;
+	bAggregationWithoutCamera					: BOOL;
+	bOrcaExist										: BOOL;
+
+(*Commisioning settings*)
+	bDisableOuterReject						: BOOL;	(*Disable any outer reject - just for commisioning*)
+	bDisableCaseReject						: BOOL;	(*Disable any case reject - just for commisioning*)
+	bOuterRejectWithHighSignal				: BOOL;
+	bCaseRejectWithHighSignal				: BOOL;
+
+(* Device Settings*)
+	bUPSExist										: BOOL;
+	bUPSImmediateShutdown						: BOOL := FALSE;		(*Option to control immediate shutdown on power loss*)
+
+	bApplyLabelInPassthrough					: BOOL;
+	bDisableApplyLabel						: BOOL;
+	bPrinterHighSpeedEnable					: BOOL;
+	bEANValidationEnable						: BOOL;
+
+	bPrintSignalFromPLC						: BOOL;
+	bEnableResendCommand					: BOOL;
+
+(*******************************************************************************************************************************************************)
+(********************************************************Numercis******************************************************************************)
+(*******************************************************************************************************************************************************)
+(*Line system type set up*)
+	nPackAggregationMode						: INT := 0; (* 0 -NOPACKAGGREGATION, 1 -STRUCTURALAGGREGATION (PAOL), 2 -STRUCTURALAGGREGATION (2CAM),  3 - LINEARAGGREGATION (PLAS), 4 - NCWAGGREGATION (PLAS + INTERIM)*)
+	nOuterAggregationMode						: INT := 0; (* 0 - SYNCHROCONFIRMATION, 1 - SHIFTCONFIRMATION, 2 -SFLXNOCONFIRMATION, 3 - SFLXWITHCONFIRMATION, 4 - LASERPRINTLABEL*)
+	nAutomationMode								: INT := 0; (* 0 - EXTERNAL, 1 - CML, 2 - LARS, 3 - SIDEFLEX *)
+
+(* Consecutive rejects counter*)
+	nConsecutivePackRejects						: UINT := 3;
+	nConsecutivePackConfirmationMissing		: UINT := 3;
+	nConsecutiveOCVMissing						: UINT := 3;
+	nConsecutiveIntermediateNoRead				: UINT := 3;
+	nConsecutiveOuterRejects						: UINT := 3;
+	nConsecutiveCaseContentMissing				: UINT := 3;
+	nConsecutiveCaseRejects						: UINT := 3;
+
+(*Archive settings*)
+	nMaximumArchiveAge							: INT := 28;		(*Max archive age in days*)
+	nMaximumArchiveFiles						: INT := 100;
+
+	nMaximumOCVFiles							: INT := 5000;
+	nMaximumOACFiles							: INT := 1000;
+	nMaximumErrorFiles							: INT := 100;
+
+(* HMI settings*)
+	nWarningLevelPack							: REAL := 99.95;
+	nAlarmLevelPack								: REAL := 99.9;
+	nWarningLevelOuter							: REAL := 99.5;
+	nAlarmLevelOuter								: REAL := 99.0;
+	nWarningLevelCase							: REAL := 99.5;
+	nAlarmLevelCase								: REAL := 95.0;
+
+	tPassthroughDisableDelay						: TIME := t#2s;
+(*SequenceTimeOut*)
+	tPackMasterListTimeout						: TIME := t#250ms;
+	tPackAgreggationTimeout						: TIME := t#500ms;
+	tPackConfirmationTimeout					: TIME := t#500ms;
+	tInterimTimeout								: TIME := T#500ms;
+	tOuterValidationTimeout						: TIME := t#750ms;
+(*Sensors Timeouts*)
+	tRejectSensorTimeout							: TIME := T#10s;
+	tRowCompleteSignalTimeOut					: TIME := t#25s;
+	tLayerCompleteSignalTimeOut					: TIME := t#25s;
+	tIntermediatePushSignalTimeOut				: TIME := t#25s;
+	tCaseCompleteSignalTimeOut					: TIME := t#25s;
+	tDischargeSignalTimeOut						: TIME := t#25s;
+	tCaseLabelValidationSignalTimeOut			: TIME := t#25s;
+	tCaseRejectTimeOut							: TIME := t#60s;
+
+(*Pack*)
+	nAggregationUnitLightingIntensityTop		: INT := 100;		(*to be removed and replaced with camera config*)
+	nAggregationUnitLightingIntensity			: INT := 100;				(*to be removed and replaced with camera config*)
+	tLightboxLensAirFrequency					: TIME := t#3h;
+	tLightboxLensAirBlowDuration				: TIME := t#10s;
+	nClearPMLIndex								: INT;
+	nClearPMLRecords								: INT;
+	stPackAgregationCameraOffset				: ST_PACK_TriggerOffset;	(*Used for SFLX 2 Cam aggregation*)
+	stPackCamera01Offset							: ST_PACK_TriggerOffset;	(*Used for SFLX 2 Cam aggregation*)
+	stPackCamera02Offset							: ST_PACK_TriggerOffset;	(*Used for SFLX 2 Cam aggregation*)
+
+	nConfirmationPackCode1						: INT := 1;
+	nConfirmationPackCode2						: INT := 2;
+	nPacksPerStack								: UINT := 5;
+	nMaxOutersBuffer								: UINT := 1; 		(*Maximum number of outers that can be processes at one time allowing for camera buffers - can be set higher if camera sequence max buffer is fixed!*)
+	tBufferDelayTime								: TIME := t#200ms; 		(*Adjust this time so each outer stops for a moment before the first infeed camera sensor in order to avoid out of sync errors*)
+	nCheckStatusOCV								: BYTE := 2;
+	nExpectedValidationDepth						: INT := 1;
+	nInterimQueueIndex							: INT :=1;
+
+(*Outer*)
+	nOutersPerRow									: INT := 5;
+	tTwoOutersOnRejectConv						: TIME := T#500ms;
+	nMasterListNumbersWarning					: INT := 5;
+	nAuxRowCount								: INT := 2;
+	nAggregationQueueIndex						: INT := 0;
+	tInspectionDelay								: TIME := t#30ms;
+
+(* Case*)
+	nCaseQueueLength							: INT := 3;
+	nCaseContentBuffer							: INT;
+
+(*Device*)
+	tUPSShutdownDelay							: TIME := t#30s;		(*Default grace period for NT_Shutdown FB*)
+
+(*******************************************************************************************************************************************************)
+(********************************************************Devices******************************************************************************)
+(*******************************************************************************************************************************************************)
+(*Camera - IP/Port settings for All scanners used in EUCA-TPD  arrays with up to 6 scanners per array *)
+	aCameraSettings							: ARRAY [1..cMAX_CAMERA_NUMBER] OF ST_SCANNER_Config;
+
+(*Printers*)
+	aPrinterSettings							: ARRAY [1..cMAX_PRINTER_NUMBER] OF ST_PRINTER_Config;
+
+(*Hand Scanners*)
+	aHandScannersConfig						: ARRAY [1..cMAX_HAND_SCANNERS] OF ST_SCANNER_HoneywellConfig;
+	aHoneywellCtrl								: ARRAY [1..cMAX_HAND_SCANNERS] OF ST_SCANNER_HoneywellCtrl;
+	stUSBScannerConfig						: ST_SCANNER_USBConfig;
+
+(* Profinet drives *)
+	aProfiNetMaster							: ARRAY [1..cMAX_PROFINET_MASTERS]  OF  ST_ProfinetMasterConfig; (* EL6631 *)
+	aProfiNetDrive								: ARRAY [1..cMAX_PROFINET_DRIVES]  OF ST_ProfinetDrive; (*config for individual drives *)
+
+(*MC2 drives*)
+	aAxisConfig								: ARRAY [1..cMAX_MC2_DRIVES] OF ST_AXIS_Config;
+
+(* Analog drive*)
+	stPackSeparator							: ST_AnalogDrive;
+
+(*Cylinders*)
+	aCylinderConfig							: ARRAY [1..cMAX_CYLINDERS] OF ST_CYLINDER_Config;
+
+(* CAMS  *)
+	(*aAFS50camConfig						: ARRAY [1.. cMAX_CAMS] OF ST_AFS60_Config;*)
+
+(*Database*)
+	(*stDBConfig								: ST_DB_Config;*)
+
+(*******************************************************************************************************************************************************)
+(********************************************************Single IO******************************************************************************)
+(*******************************************************************************************************************************************************)
+(*Single Input Config*)
+	st_I_TransferCoveyorDoorGuard1			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#10ms, 	sInputName:='Transfer Coveyor Door Guard 1' );	(**)
+	st_I_TransferCoveyorDoorGuard2			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#10ms, 	sInputName:='Transfer Coveyor Door Guard 2' );	(**)
+
+	st_I_DoorOpenZone1					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#10ms, 	sInputName:='Door Open Zone 1' );	(**)
+	st_I_DoorOpenZone2					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#10ms, 	sInputName:='Door Open Zone 2' );	(**)
+
+	st_I_AuxRowCompleteSesnor			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#10ms, 	sInputName:='Aux Row Complete' );	(**)
+	st_I_CaseRejectedByCasePacker		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#10ms, 	sInputName:='Case Rejected By Casepacker' );	(**)
+
+	st_I_PreMachineAutoRun				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='PreMachine AutoRun' );	(**)
+	st_I_CasePackerAutoRun				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Casepacker AutoRun' );	(**)
+
+	st_I_QAButtonRejectOuter				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='QA Button Reject Outer' );	(**)
+	st_I_OuterAtRejectStation				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Outer At Reject Station' );	(**)
+	st_I_OuterRejectConfirm				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Outer Reject Confirm' );	(**)
+	st_I_RejectBinFull						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Bin Full' );	(**)
+
+	st_I_EUCABuildBackPreMachine			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='EUCA Buildback Sensor' );	(**)
+	st_I_EUCAExitBlocked						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='EUCA Exit Blocked Sensor' );	(**)
+
+	st_I_OuterAtSystemInfeed					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Outer At System Infeed Sensor' );	(**)
+	st_I_OuterAtAdditionalConv				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Outer At Additional Conv Sensor' );	(**)
+
+	st_I_TransferConveyorPlugConnected		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#100ms, 	sInputName:='Transfer Conveyor Plug Connected' );	(**)
+	st_I_OutfeedConveyorPlugConnected		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#100ms, 	sInputName:='Outfeed Conveyor Plug Connected' );	(**)
+	st_I_AdditionalConveyorPlugConnected	: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#100ms, 	sInputName:='Outfeed Conveyor Plug Connected' );	(**)
+
+(*Single Input Config for camera triggers*)
+	st_I_Camera01						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#6ms, 		tTimeOffFilter:=t#20ms, 	sInputName:='Camera 01' );	(**)
+	st_I_Camera02						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#6ms, 		tTimeOffFilter:=t#20ms, 	sInputName:='Camera 02' );	(**)
+	st_I_Camera03						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#6ms, 		tTimeOffFilter:=t#20ms, 	sInputName:='Camera 03' );	(**)
+	st_I_Camera04						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Camera 04' );	(**)
+	st_I_Camera05						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Camera 05' );	(**)
+	st_I_Camera06						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Camera 06' );	(**)
+	st_I_Camera07						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Camera 07' );	(**)
+	st_I_Camera08						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Camera 08' );	(**)
+	st_I_Camera09						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Camera 09' );	(**)
+	st_I_Camera10						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Camera 10' );	(**)
+	st_I_Camera11						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Camera 11' );	(**)
+	st_I_Camera12						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Camera 12' );	(**)
+
+(*METS Cylinders Filtered Inputs *)
+	st_I_ClampCylinderExtended		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Clamp Cylinder Extended' );	(**)
+	st_I_ClampCylinderRetracted		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Clamp Cylinder Retracted' );	(**)
+
+	st_I_GateCylinderExtended		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Gate Cylinder Extended' );	(**)
+	st_I_GateCylinderRetracted 		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Gate Cylinder Retracted' );	(**)
+
+	st_I_RejectCylinderExtended		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Cylinder Extended' );	(**)
+	st_I_RejectCylinderRetracted 		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Cylinder Retracted' );	(**)
+
+	st_I_AdditionalRejectCylinderExtended		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Cylinder Extended' );	(**)
+	st_I_AdditionalRejectCylinderRetracted 		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Cylinder Retracted' );	(**)
+
+	st_I_FirstPusherCylinderExtended		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Cylinder Extended' );	(**)
+	st_I_FirstPusherCylinderRetracted 		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Cylinder Retracted' );	(**)
+
+	st_I_SecondPusherCylinderExtended		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Cylinder Extended' );	(**)
+	st_I_SecondPusherCylinderRetracted 		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Cylinder Retracted' );	(**)
+
+(*METS Labellers Filtered Inputs *)
+	st_I_Labeller1InPosition					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller1 In Position' );	(**)
+	st_I_Labeller1OuterAtLabeller				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller1 Outer At Labeller' );	(**)
+	tLabeller1OuterAtLabellerTimeLatch		: TIME := t#200ms; (*Variable used separately to keep one standard with HMI user controls for Single Inputs*)
+
+	st_I_Labeller1Ready						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller1 Ready' );	(**)
+	st_I_Labeller1DataReady					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller1 Data Ready' );	(**)
+	st_I_Labeller1HomePosition				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller1 Home Position' );	(**)
+	st_I_Labeller1LabelPrinted					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller1 Label Printed' );	(**)
+	st_I_Labeller1ReadyToApply				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller1 Ready To Apply' );	(**)
+	st_I_Labeller1ApplyDone					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller1 Apply Done' );	(**)
+	st_I_Labeller1SummaryWarning			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller1 Summary Warning' );	(**)
+	st_I_Labeller1Error							: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller1 Error' );	(**)
+
+
+	st_I_Labeller2InPosition					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller2 In Position' );	(**)
+	st_I_Labeller2OuterAtLabeller				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller2 Outer At Labeller' );	(**)
+	tLabeller2OuterAtLabellerTimeLatch		: TIME := t#40ms; (*Variable used separately to keep one standard with HMI user controls for Single Inputs*)
+
+	st_I_Labeller2Ready						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller2 Ready' );	(**)
+	st_I_Labeller2DataReady					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller2 Data Ready' );	(**)
+	st_I_Labeller2HomePosition				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller2 Home Position' );	(**)
+	st_I_Labeller2LabelPrinted					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller2 Label Printed' );	(**)
+	st_I_Labeller2ReadyToApply				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller2 Ready To Apply' );	(**)
+	st_I_Labeller2ApplyDone					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller2 Apply Done' );	(**)
+	st_I_Labeller2SummaryWarning			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller2 Summar yWarning' );	(**)
+	st_I_Labeller2Error							: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Labeller2 Error' );	(**)
+
+(*METS SADDLE (Gating&Reject System) Filtered Inputs  FB***************************************************************************************************************)
+	st_I_OuterAtClamp					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#100ms, 		sInputName:='Outer At Clamp');	(**)
+	st_I_OuterAtLabelGate				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#100ms, 		sInputName:='Outer At Label Gate');	(**)
+	st_I_GateClear						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#100ms, 		sInputName:='Gate Clear');	(**)
+	st_I_GateImpact					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#100ms, 		sInputName:='Gate Impact');	(**)
+
+(* Single Inputs for METS CML*)
+	st_I_RotaryTransferPackAtStopPlate		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Rotary Transfer Outer At Stop Plate');	(**)
+	st_I_RotaryTransferTorqueLimiter			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Rotary Transfer Torque Limiter');	(**)
+	st_I_RotaryTransferDelayStop1			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Rotary Transfer Delay Stop1');	(**)
+	st_I_RotaryTransferDelayStop2			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Rotary Transfer Delay Stop2');	(**)
+	st_I_ConveyorIndexContact				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50s, 	sInputName:='Infeed Conveyor Start');	(**)
+	st_I_Guard4ElectricalBoxInPosition		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50s, 	sInputName:='Electrical Box In Position Sensor');	(**)
+
+(* Single Inputs for METS Manual Machine*)
+	st_I_InfeedConveyorStart				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Infeed Conveyor Start');	(**)
+	st_I_RejectChuteExitBlocked			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Chute Blocked');	(**)
+
+(* Single Inputs for METS SFLX Machine*)
+	st_I_OuterInfeedJam						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Outer Infeed Jam' );	(**)
+	(*st_I_PackAggregationCameraTrigger		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Pack Aggregation Camera Trigger');*)	(**)
+	st_I_OutfeedConveyorStart				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Outfeed Conveyor Start');	(**)
+	st_I_RejectConfirmationNCW				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Confirmation NCW');	(**)
+	st_I_RejectBinFullNCW						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Reject Bin Full NCW');	(**)
+	st_I_OuterAtTransferReject				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Outer At Transfer Reject');	(**)
+	st_I_OuterAtSideFlexExit					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Outer At Side Flex Exit');	(**)
+	st_I_OuterAtPostMachineInfeed			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Outer At PostMachine Infeed');	(**)
+
+	st_I_Guard1FlexInfeedDoor				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#1000ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Guard 1 Flex Infeed Door');	(**)
+	st_I_Guard3FlexRHDoor					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#200ms, 		tTimeOffFilter:=t#200ms, 	sInputName:='Guard 3 Flex RH Door');	(**)
+	st_I_Guard4FlexPrinterDoor				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#200ms, 		tTimeOffFilter:=t#200ms, 	sInputName:='Guard 4 Flex Printer Door');	(**)
+	st_I_Guard5FlexLHDoor					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#200ms, 		tTimeOffFilter:=t#200ms, 	sInputName:='Guard 5 Flex LH Door	');	(**)
+
+(*Single Input for PACAN*)
+(*	st_I_StackerArmAtBackwardPosition	: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Stacker Arm At Backward Position');	(**)
+	st_I_StackerArmInTopPosition			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Stacker Arm In Top Position');	(**)
+	st_I_StackPresentSensor1				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Stack Present Sensor1');	(**)
+	st_I_StackPresentSensor2				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Stack Present Sensor2');	(**)
+	st_I_StackerTransferPusher			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Stacker Transfer Pusher');	(**)
+	st_I_StackerTransferComplete			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#10ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='Stacker Transfer Complete');	(**)
+	st_I_OuterAtPACANRejectStation		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#100ms, 	sInputName:='Outer At PACAN Reject Station');	(**)
+*)
+(*Single Input for PAOL*)
+	st_I_TPDExitBlockedSensor			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='PAOL Exit Blocked Sensor');	(**)
+	st_I_PreMachineBuildBackSensor		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='PAOL Buildback Sensor');	(**)
+	st_I_PackAggregCameraRigSensor		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#6ms, 		tTimeOffFilter:=t#6ms, 	sInputName:='Pack Aggreg Camera Rig Sensor');	(**)
+
+(*Single Input for PLAS*)
+	st_I_MasterlistDoorGuard1				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Masterlist Door Guard1');	(**)
+	st_I_MasterlistDoorGuard2				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Masterlist Door Guard2');	(**)
+	st_I_MasterlistDoorGuard3				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Masterlist Door Guard3');	(**)
+
+	st_I_OuterBrushOpen						: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Outer Brush Open');	(**)
+	st_I_PackAggregationDoorGuard1			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Pack Aggregation Door Guard1');	(**)
+	st_I_PackAggregationDoorGuard2			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Pack Aggregation Door Guard2');	(**)
+
+	st_I_WrapperDoorGuard1					:  ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Wrapper Door Guard1');	(**)
+	st_I_WrapperDoorGuard2					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Wrapper Door Guard2');	(**)
+
+	st_I_HeatTunelPackReject				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Heat Tunenel Pack Reject Sensor');	(**)
+	st_I_WrapperPackReject				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Wrapper Pack Reject Sensor');	(**)
+	st_I_WrapperPackReject2				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Wrapper Pack Reject 2 Sensor');	(**)
+	st_I_WrapperOuterComplete			: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Wrapper Pushing Arm Sensor');	(**)
+	st_I_InhibitIntermediateCamera		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NC,		tTimeOnFilter:=t#50ms, 		tTimeOffFilter:=t#50ms, 	sInputName:='Inhibit Intermediate Camera');	(**)
+
+(*Single Input for Laser*)
+	st_I_CoderReady					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='LASER - Ready');	(**)
+	st_I_CoderBusy					: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='LASER - Busy');	(**)
+	st_I_WrappingMaterialPresent		: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='LASER - WrapPresent');	(**)
+	st_I_TabKnifeMoving				: ST_IO2_SingleInputCtrl:=			(eTypeInput:=E_IO2_Type.NO,		tTimeOnFilter:=t#100ms, 		tTimeOffFilter:=t#0ms, 	sInputName:='LASER - TabKnife');	(**)
+
+
+(*******************************************************************************************************************************************************)
+(********************************************************Double IO******************************************************************************)
+(*******************************************************************************************************************************************************)
+(*Double Input Config*)
+	st_I_RowComplete						: ST_IO2_DoubleInputCtrl:=		(eInputSource:=E_IO2_InputSource.SENSOR,	sInputName:='Row Complete',
+																						eTypeInput1:=E_IO2_Type.NO,		tTimeOnFilter1:=t#0ms,	tTimeOffFilter1	:=t#0ms,	(**)
+											 											eTypeInput2:=E_IO2_Type.NO,		tTimeOnFilter2:=t#0ms,	tTimeOffFilter2	:=t#0ms);	(**)
+	st_I_LayerComplete					: ST_IO2_DoubleInputCtrl:=		(eInputSource:=E_IO2_InputSource.SENSOR,	sInputName:='Layer Complete',
+																						eTypeInput1:=E_IO2_Type.NO,		tTimeOnFilter1:=t#0ms,	tTimeOffFilter1	:=t#0ms,	(**)
+											 											eTypeInput2:=E_IO2_Type.NO,		tTimeOnFilter2:=t#0ms,	tTimeOffFilter2	:=t#0ms);	(**)
+	st_I_IntermediatePush					: ST_IO2_DoubleInputCtrl:=		(eInputSource:=E_IO2_InputSource.SENSOR,	sInputName:='Intermediate Push',
+																						eTypeInput1:=E_IO2_Type.NO,		tTimeOnFilter1:=t#0ms,	tTimeOffFilter1	:=t#0ms,	(**)
+											 											eTypeInput2:=E_IO2_Type.NO,		tTimeOnFilter2:=t#0ms,	tTimeOffFilter2	:=t#0ms);	(**)
+	st_I_CaseComplete					: ST_IO2_DoubleInputCtrl:=		(eInputSource:=E_IO2_InputSource.SENSOR,	sInputName:='Case Complete',
+																						eTypeInput1:=E_IO2_Type.NO,		tTimeOnFilter1:=t#0ms,	tTimeOffFilter1	:=t#0ms,	(**)
+											 											eTypeInput2:=E_IO2_Type.NO,		tTimeOnFilter2:=t#0ms,	tTimeOffFilter2	:=t#0ms);	(**)
+	st_I_CaseDischarged					: ST_IO2_DoubleInputCtrl:=		(eInputSource:=E_IO2_InputSource.SENSOR,	sInputName:='Case Discharged',
+																						eTypeInput1:=E_IO2_Type.NO,		tTimeOnFilter1:=t#0ms,	tTimeOffFilter1	:=t#0ms,	(**)
+											 											eTypeInput2:=E_IO2_Type.NO,		tTimeOnFilter2:=t#0ms,	tTimeOffFilter2	:=t#0ms);	(**)
+	st_I_CaseLabelValidation				: ST_IO2_DoubleInputCtrl:=		(eInputSource:=E_IO2_InputSource.SENSOR,	sInputName:='Case Label Validation',
+																						eTypeInput1:=E_IO2_Type.NO,		tTimeOnFilter1:=t#0ms,	tTimeOffFilter1	:=t#0ms,	(**)
+											 											eTypeInput2:=E_IO2_Type.NO,		tTimeOnFilter2:=t#0ms,	tTimeOffFilter2	:=t#0ms);	(**)
+(*
+	st_I_LiftComplete						: ST_IO2_DoubleInputCtrl:=		(eInputSource:=SENSOR,		eTypeInput1:=E_IO2_Type.NO,		tTimeOnFilter1:=t#0ms,	tTimeOffFilter1	:=t#0ms,	(**)
+											 											eTypeInput2:=E_IO2_Type.NO,		tTimeOnFilter2:=t#0ms,	tTimeOffFilter2	:=t#0ms);	(**)
+	st_I_StackComplete					: ST_IO2_DoubleInputCtrl:=		(eInputSource:=SENSOR,		eTypeInput1:=E_IO2_Type.NO,		tTimeOnFilter1:=t#0ms,	tTimeOffFilter1	:=t#0ms,	(**)
+											 											eTypeInput2:=E_IO2_Type.NO,		tTimeOnFilter2:=t#0ms,	tTimeOffFilter2	:=t#0ms);	(**)
+	st_I_BundleCrossPushComplete		: ST_IO2_DoubleInputCtrl:=		(eInputSource:=SENSOR,		eTypeInput1:=E_IO2_Type.NO,		tTimeOnFilter1:=t#0ms,	tTimeOffFilter1	:=t#0ms,	(**)
+											 											eTypeInput2:=E_IO2_Type.NO,		tTimeOnFilter2:=t#0ms,	tTimeOffFilter2	:=t#0ms);	(**)
+	st_I_BundleTranferComplete			: ST_IO2_DoubleInputCtrl:=		(eInputSource:=SENSOR,		eTypeInput1:=E_IO2_Type.NO,		tTimeOnFilter1:=t#0ms,	tTimeOffFilter1	:=t#0ms,	(**)
+											 											eTypeInput2:=E_IO2_Type.NO,		tTimeOnFilter2:=t#0ms,	tTimeOffFilter2	:=t#0ms);	(**)
+*)
+
+(*******************************************************************************************************************************************************)
+(********************************************************Outpurs******************************************************************************)
+(*******************************************************************************************************************************************************)
+(*Output Config*)
+	st_Q_TPDMachineRun					: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms,	sOutputName:='TPD Machine Run');		(* *)
+	st_Q_CMLConvoyerRun				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms,	sOutputName:='CML Convoyer Run');		(* *)
+	st_Q_EUCAPreMachineRun				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms,	sOutputName:='EUCA Machine Run');		(* *)
+	st_Q_EUCAMachineRun				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms,	sOutputName:='EUCA Machine Run');		(* *)
+	st_Q_CaseContentOK					: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms,	sOutputName:='Case Content OK');		(* *)
+	st_Q_CaseValidationOK				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms,	sOutputName:='Case Validation OK');		(* *)
+	st_Q_OuterValidationOK				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms,	sOutputName:='Outer Validation OK');		(* *)
+	st_Q_LabellerInhibit					: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms,	sOutputName:='Labeller Inhibit');		(* *)
+	st_Q_SideBeltDriveBrake				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#500ms,	tOutputLocked:=t#20ms,	sOutputName:='Side Belt Drive Brake');		(* *)
+	st_Q_PackSeparatorDriveBrake			: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#200ms,	tOutputLocked:=t#100ms,sOutputName:='Pack Separator Drive Brake');		(* *)
+
+	st_Q_CameraLightning1				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 1');		(* *)
+	st_Q_CameraLightning2				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 2');		(* *)
+	st_Q_CameraLightning3				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 3');		(* *)
+	st_Q_CameraLightning4				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 4');		(* *)
+	st_Q_CameraLightning5				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 5');		(* *)
+	st_Q_CameraLightning6				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 6');		(* *)
+	st_Q_CameraLightning7				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 7');		(* *)
+	st_Q_CameraLightning8				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 8');		(* *)
+	st_Q_CameraLightning9				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 9');		(* *)
+	st_Q_CameraLightning10				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 10');	(* *)
+	st_Q_CameraLightning11				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 11');	(* *)
+	st_Q_CameraLightning12				: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#15ms,	sOutputName:='Camera Lightning 12');	(* *)
+
+(*Output Config for camera triggers*)
+(*
+	st_Q_Camera01						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+	st_Q_Camera02						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+	st_Q_Camera03						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+	st_Q_Camera04						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+	st_Q_Camera05						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+	st_Q_Camera06						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+	st_Q_Camera07						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+	st_Q_Camera08						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+	st_Q_Camera09						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+	st_Q_Camera10						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+	st_Q_Camera11						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+	st_Q_Camera12						: ST_IO2_OutputCtrl:=			(eTypeOutput:=E_IO2_Type.NO,		tOutputDelayed:=t#0ms,		tOutputLocked:=t#0ms);		(* *)
+*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

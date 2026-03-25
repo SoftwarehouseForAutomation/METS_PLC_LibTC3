@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DB_ReportDBCtrl" Id="{d5f37569-c29e-45e3-be5e-fa0615b82669}">
+    <Declaration><![CDATA[TYPE ST_DB_ReportDBCtrl :
+STRUCT
+	bExecuteCheck			: BOOL;
+	bCheckComplete			: BOOL;
+	sStoreProcedureName		: STRING := 'TC_DBReport';
+	bDBError				: BOOL;
+	nDBErrorID				: UDINT;
+	sSqlState				: ST_DBSQLError;
+	nRecords				: UDINT;
+	stResultRecord			: ST_DB_ReportResult;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

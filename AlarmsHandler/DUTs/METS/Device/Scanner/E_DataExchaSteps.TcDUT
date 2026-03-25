@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_DataExchaSteps" Id="{41efc066-89d5-4c00-8d3c-b75f0eb14445}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_DataExchaSteps :
+(
+	//DATAEXCHA_STATE_IDLE,
+	//DATAEXCHA_STATE_SEND_START,
+	//DATAEXCHA_STATE_SEND_WAIT,
+	//DATAEXCHA_STATE_RECEIVE_START,
+	//DATAEXCHA_STATE_RECEIVE_WAIT,
+	//DATAEXCHA_STATE_ERROR
+	DUMMY
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

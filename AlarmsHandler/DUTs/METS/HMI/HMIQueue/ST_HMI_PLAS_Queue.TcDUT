@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_PLAS_Queue" Id="{e11612ad-04a9-4998-a35b-214a1c63cca8}">
+    <Declaration><![CDATA[TYPE ST_HMI_PLAS_Queue :
+STRUCT
+(*Pack Infeed queue*)
+	nInfeedIndex					: INT;				(* number of Outers in queue *)
+	aPackInfeedQueue				: ARRAY[1..cMAX_HMI_PACK_INFEED_QUEUE] OF T_HMI_PACK_Barcode; (* pack infeed queue + status (999)*)
+
+(*Pack Buffer intermediat queue*)
+	aBufferQueue					: ARRAY[1..cMAX_HMI_PACK_INFEED_QUEUE] OF T_HMI_PACK_Barcode; (* intermediat pack queue + status (999)*)
+
+(*OCV Data*)
+	sProductionDate				: STRING(10);
+	sProductionTime				: STRING(8);
+
+	aOCVData						: ARRAY[1..cMAX_HMI_PACKS_PER_OUTER] OF T_HMI_PACK_Barcode; (* pack queue + status (999)*)
+
+	nNumberOfPacks				: INT;
+	nAcceptanceLevel				: INT;
+	nNumberOfLinkedPacks		: INT;
+	nMaxPackPerOuter				: INT; (*real number of codes*)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

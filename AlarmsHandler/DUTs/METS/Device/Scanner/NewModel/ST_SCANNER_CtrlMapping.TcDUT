@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_CtrlMapping" Id="{87ad718d-a03a-4c0f-9dc8-ebda85a0a3fb}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_CtrlMapping :
+STRUCT
+	nIndex				: INT;
+	nReqProgram			: BYTE;
+	aPackPos				: ARRAY[1..5, 1..cMAX_CAMERA_PROG_NUMBER] OF BYTE;
+	aTargetBuffer			: ARRAY[1..5] OF BYTE;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

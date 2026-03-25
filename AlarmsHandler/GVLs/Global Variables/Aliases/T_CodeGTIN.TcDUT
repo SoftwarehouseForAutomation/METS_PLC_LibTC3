@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_CodeGTIN" Id="{40228a55-c217-425d-b436-a785b4e25a68}">
+    <Declaration><![CDATA[TYPE T_CodeGTIN : STRING[20];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

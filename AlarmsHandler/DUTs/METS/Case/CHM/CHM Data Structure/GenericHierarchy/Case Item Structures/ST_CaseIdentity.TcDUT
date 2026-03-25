@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CaseIdentity" Id="{9a0442ca-024d-4fae-a007-5661cae4c7fc}">
+    <Declaration><![CDATA[TYPE ST_CaseIdentity :
+STRUCT
+		SKU			: T_CodeRSKU;
+		GTIN			: T_CodeGTIN;
+		ID			:STRING(cMAX_CHM_CASEID_LENGHT);
+		URL		:T_CodeURL;
+		ReadQuality	:STRING(6);
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

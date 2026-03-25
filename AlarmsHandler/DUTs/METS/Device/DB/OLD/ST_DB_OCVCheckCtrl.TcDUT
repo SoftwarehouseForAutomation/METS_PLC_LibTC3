@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DB_OCVCheckCtrl" Id="{bfb3f5f7-f247-4164-b19f-6bc28f05bf3b}">
+    <Declaration><![CDATA[TYPE ST_DB_OCVCheckCtrl :
+STRUCT
+	bDB_ExecuteOcvCheck			: BOOL;
+	bDB_OcvCheckComplete			: BOOL;
+	bDB_AllCodesFound				: BOOL;
+	bDB_Error						: BOOL;
+	bDB_OCVValid					: BOOL;
+	stOcvToCheck 					: ST_OUTER_Status;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

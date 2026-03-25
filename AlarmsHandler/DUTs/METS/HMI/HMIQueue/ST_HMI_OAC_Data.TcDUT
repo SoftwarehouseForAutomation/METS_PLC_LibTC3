@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_OAC_Data" Id="{6afafe94-83a6-4e4e-ab47-2e1b78a73b6f}">
+    <Declaration><![CDATA[TYPE ST_HMI_OAC_Data :
+STRUCT
+	sBarcode				: T_OUTER_Barcode;
+	aPackCode				: ARRAY[1..cMAX_HMI_PACKS_PER_OUTER] OF T_HMI_PACK_Barcode;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

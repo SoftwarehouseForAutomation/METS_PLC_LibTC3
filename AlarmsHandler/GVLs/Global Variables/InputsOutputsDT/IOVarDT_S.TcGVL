@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="IOVarDT_S" Id="{7915cb0c-ec0f-4044-a1f2-b87cfb98c6b7}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+    bDT_TestErrorBypass								   : BOOL;	(* TRUE *)
+
+	ibDT_24VPowerSupplyOK 						AT %I* : BOOL;	(* TRUE *)
+	ibDT_PSRIsResetSignal						AT %I* : BOOL;	(* TRUE *)
+	ibDT_PSRIsOkaySignal						AT %I* : BOOL;	(* TRUE *)
+	ibDT_EmergencyStopFrom						AT %I* : BOOL;	(* TRUE *)
+	ibDT_EmergancyCircuitSignal					AT %I* : BOOL;	(* TRUE *)
+
+	ibDT_PreMachineInAutorun					AT %I* : BOOL;	(* TRUE *)
+	ibDT_PostMachineInAutorun					AT %I* : BOOL;	(* TRUE *)
+	ibDT_PackSeparationDriveOK					AT %I* : BOOL;	(* TRUE *)
+	ibDT_PackIsolatorDrive						AT %I* : BOOL;	(* TRUE *)
+
+	ibDT_PrePackAggregationCameraRigTrigger		AT %I* : BOOL;	(* SEQ *)
+	ibDT_PackAggregationCamera1Trigger			AT %I* : BOOL;	(* SEQ *)
+	ibDT_PackAggregationCamera2Trigger			AT %I* : BOOL;	(* SEQ *)
+	ibDT_PackAggregationCamera3Trigger 			AT %I* : BOOL;	(* SEQ *)
+	ibDT_PackAggregationCamera4Trigger 			AT %I* : BOOL;	(* For future *)
+
+	ifDT_EncoderPosition						AT %I* : UDINT;
+	ibDT_OuterValidationCameraTrigger			AT %I* : BOOL;	(* SEQ *)
+
+	ibDT_RowCompleteSensor						AT %I* : BOOL;	(* DONE *)
+	ibDT_LayerCompleteSensor					AT %I* : BOOL;	(* DONE *)
+	ibDT_IntermediatePushSensor					AT %I* : BOOL;	(* For future *)
+	ibDT_CaseCompleteSensor						AT %I* : BOOL;	(* DONE *)
+	ibDT_CaseDischargedSensor					AT %I* : BOOL;	(* DONE *)
+	ibDT_CaseLabelValidationTrigSensor 			AT %I* : BOOL;	(* DONE *)
+
+	qbDT_PackAggregation01CameraTriggerOut		AT %Q* : BOOL;	(* SEQ *)
+	qbDT_PackAggregation02CameraTriggerOut		AT %Q* : BOOL;	(* SEQ *)
+	qbDT_PackAggregation03CameraTriggerOut		AT %Q* : BOOL;	(* SEQ *)
+
+	qbDT_RearConfirmationCameraTriggerOut		AT %Q* : BOOL;
+	qbDT_FrontConfirmationCameraTriggerOut		AT %Q* : BOOL;
+	qbDT_OuterValidationCameraTriggerOut		AT %Q* : BOOL;
+
+	qbDT_OuterAggregationCameraTriggerOut		AT %Q* : BOOL;
+	qbDT_CaseContentValidationCameraTriggerOut 	AT %Q* : BOOL;
+	qbDT_CaseLabelValidationCameraTriggerOut	AT %Q* : BOOL;
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

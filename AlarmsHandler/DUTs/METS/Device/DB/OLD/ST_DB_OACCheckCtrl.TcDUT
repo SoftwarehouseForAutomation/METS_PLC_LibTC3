@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DB_OACCheckCtrl" Id="{5c5dcd82-396c-49c0-ae41-72b3eef996af}">
+    <Declaration><![CDATA[TYPE ST_DB_OACCheckCtrl :
+STRUCT
+	bDB_ExecuteOacCheck			: BOOL;
+	bDB_OacCheckComplete			: BOOL;
+	bOacValid						: BOOL;
+	bDB_Error						: BOOL;
+	stOacToCheck					: ST_OUTER_Status;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

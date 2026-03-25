@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_PACK_State" Id="{e3e1609c-2a41-4825-9f5f-4fb6a054dd12}">
+    <Declaration><![CDATA[TYPE E_PACK_State :
+(
+	E_PACK_IDLE,
+	E_PACK_DBREQUEST,
+	E_PACK_DBRESPONSE,
+	E_PACK_CODEVALIDATION,
+	E_PACK_DUPLICATECHEKC,
+	E_PACK_VALIDECODEADD,
+	E_PACK_INVLIDECODEADD,
+	E_PACK_SCANINFEEDQUEUE,
+	E_PACK_UPDATEINFEEDQUEUE,
+	E_PACK_UPDATEOCVQUEUE,
+	E_PACK_DONE
+
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

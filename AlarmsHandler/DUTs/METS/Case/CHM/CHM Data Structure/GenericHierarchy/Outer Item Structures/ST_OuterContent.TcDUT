@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_OuterContent" Id="{f3dd2f52-bef4-4a60-9559-6d13a82ada2d}">
+    <Declaration><![CDATA[TYPE ST_OuterContent :
+STRUCT
+	DefaultIdentity 	: ST_DefaultIdentity;
+	ExpectedItemCount		:STRING(3);
+	ItemReadRate			:STRING(3);
+	arrPackItem			:ARRAY[1..cMAX_PACKS_PER_OUTER] OF ST_PackItem;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

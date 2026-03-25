@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CYLINDER_IN" Id="{5f59030a-1b46-4c2d-bcb7-c69fdf9227ec}">
+    <Declaration><![CDATA[TYPE ST_CYLINDER_IN :
+STRUCT
+	bEnable				: BOOL;
+	bRelExtend			: BOOL;
+	bRelRetract			: BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AXIS_Control" Id="{2708af60-c9bf-4354-a15a-080b437dddca}">
+    <Declaration><![CDATA[TYPE ST_AXIS_Control :
+STRUCT
+	eMotionType		: E_AXIS_MotionType;
+
+	fDistance			: LREAL;	(*target relative position*)
+	fPosition			: LREAL;	(*target absolute position*)
+	fSetVelo			: LREAL;	(* target velocity *)
+	bStopAtPos		: BOOL;	(* set TRUE to stop at specified pos, set FALSE to stop immediately *)
+	fStopPos			: LREAL;	(* target modulo stop position *)
+
+	bJogFwd			: BOOL;		(* set TRUE to jog forwards *)
+	bJogRev			: BOOL;		(* set TRUE to jog reverse *)
+	fJogVelo			: LREAL;	(* jog velocity (does not take effect if jog is in progress *)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

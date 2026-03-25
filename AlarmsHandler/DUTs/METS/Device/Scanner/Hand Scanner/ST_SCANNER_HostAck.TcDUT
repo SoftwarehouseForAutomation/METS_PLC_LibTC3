@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_HostAck" Id="{fca606a5-7eef-4142-b24f-43404294aee8}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_HostAck :
+STRUCT
+	bSetHostAckTimeOut				: BOOL;
+	tAckTimeOut						: TIME;
+	bGoodReadResponse				: BOOL;
+	bBadReadResponse				: BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

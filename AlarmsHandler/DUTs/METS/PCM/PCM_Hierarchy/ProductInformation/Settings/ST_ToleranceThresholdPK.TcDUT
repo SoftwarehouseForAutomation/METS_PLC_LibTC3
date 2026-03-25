@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_ToleranceThresholdPK" Id="{a4f7e30e-295a-4b82-8431-d9c33017842a}">
+    <Declaration><![CDATA[//{attribute 'pack_mode' := '8'}
+TYPE ST_ToleranceThresholdPK :
+STRUCT
+		GoodReadPercentagePAL		:	STRING(6);
+		GoodReadPercentageCS		:	STRING(6);
+		GoodReadPercentageOUT		:	STRING(6);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

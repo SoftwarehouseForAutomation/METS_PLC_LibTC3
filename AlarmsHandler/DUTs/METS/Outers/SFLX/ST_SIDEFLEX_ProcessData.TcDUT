@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SIDEFLEX_ProcessData" Id="{9a19757e-c6ab-4eb5-9e7f-8d75af1a2fab}">
+    <Declaration><![CDATA[TYPE ST_SIDEFLEX_ProcessData :
+STRUCT
+
+	stOCVPackStatus			: ST_OUTER_Status;
+	nCurrentPosition			: UDINT;
+	nLeadingPosition			: UDINT;
+	nTrailingPosition			: UDINT;
+	nOuterLenght				: UDINT;
+
+	bOCVUpdated				: BOOL;
+	bOCVInvalid				: BOOL;
+
+	bOuterAtLabeller			: BOOL;
+	bApplyDone				: BOOL;
+	bOuterCompleted			: BOOL;
+	bOutrRejected				: BOOL;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

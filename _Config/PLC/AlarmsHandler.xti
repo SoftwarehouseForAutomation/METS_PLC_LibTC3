@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.19" ClassName="CNestedPlcProjDef">
+	<Project GUID="{12ABAD3B-C525-412C-8D96-C6BA7B86A1CE}" Name="AlarmsHandler" PrjFilePath="..\..\AlarmsHandler\AlarmsHandler.plcproj" TmcFilePath="..\..\AlarmsHandler\AlarmsHandler.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+		<Instance File="AlarmsHandler Instance.xti"/>
+	</Project>
+</TcSmItem>

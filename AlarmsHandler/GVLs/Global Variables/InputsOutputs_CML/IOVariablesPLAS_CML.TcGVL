@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="IOVariablesPLAS_CML" Id="{99c07c98-5ea8-45a7-af2e-8d743ad2b7a2}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+(*TERMINAL XXXKF1 - EK1100 ******************************************************)
+
+
+(*TERMINAL 747KF1 - EL4002 ******************************************************)
+	qn747KF1_1_LightingIntensityPackAggregationCamera			AT %Q* : INT;
+	qn747KF1_2_LightingIntensityPackConfirmationCamera			AT %Q* : INT;
+
+(*TERMINAL 763KF1 - EL1008 ******************************************************)
+	ib763KF1_1_MasterListCameraTrigSensor						AT %I* : BOOL;
+	ib763KF1_5_SpareMasterListCameraTrigSensor					AT %I* : BOOL;		(* Option *)
+	ib763KF1_2_AggregationCameraTrigSensor					AT %I* : BOOL;
+	ib763KF1_6_SpareAggregationCamera1TrigSensor				AT %I* : BOOL;		(* Option *)
+	ib763KF1_3_SpareAggregationCamera2TrigSensor				AT %I* : BOOL;		(* Option *)
+	ib763KF1_7_PackQueueIndex								AT %I* : BOOL;
+	ib763KF1_4_StackQueueIndex								AT %I* : BOOL; 		(* Option *)
+	ib763KF1_8_SpareIndex									AT %I* : BOOL;		(* Option *)
+
+(*TERMINAL 764KF1 - EL1008 ******************************************************)
+	ib764KF1_1_OuterIndexComplete							AT %I* : BOOL;
+	ib764KF1_5_SpareCameraTrigSensor							AT %I* : BOOL;		(* Option *)
+	ib764KF1_2_Guard1 										AT %I* : BOOL;		(*FOCKE/GD Master list guard*)
+	ib764KF1_6_Guard2										AT %I* : BOOL;		(*FOCKE/GD Master list guard*)
+	ib764KF1_3_Guard3 										AT %I* : BOOL;		(*FOCKE/GD Aggregation guard*)
+	ib764KF1_7_Guard4 										AT %I* : BOOL;		(*FOCKE/GD Aggregationt guard*) (*Option*)
+	ib764KF1_4_OuterBrushOpen								AT %I* : BOOL;		(*Option*)
+	ib764KF1_8_RejectTowerActive								AT %I* : BOOL;
+
+(*TERMINAL 765KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ib765KF1_1_FilmInPosition								AT %I*: BOOL;		(*Option*)
+	ib765KF1_5_SparePrinterTrigger							AT %I*: BOOL;		(*Option*)
+	ib765KF1_2_IntermediateCamera1TrigSesnor					AT %I*: BOOL;
+	ib765KF1_6_HeatTunenelPackReject							AT %I*: BOOL;												(*not used on C922 and C925 *)
+	ib765KF1_3_OuterAtAdditionalConveyor01 					AT %I*: BOOL;												(*not used on C922 and C925 *)
+	ib765KF1_7_IntermediateCamera2TrigSesnor					AT %I*: BOOL;												(*not used on C922 and C925 *)
+	ib765KF1_4_OuterAtReject								AT %I*: BOOL;		(*AdditionalConveyor01*)					(*not used on C922 and C925 *)
+	ib765KF1_8_RejectConfirmation	 						AT %I*: BOOL;		(*AdditionalConveyor01*)					(*not used on C922 and C925 *)
+
+(*TERMINAL 783KF1 - EL2008 ******************************************************)
+	qb783KF1_1_MasterListCameraPower						AT %Q* : BOOL;
+	qb783KF1_5_SpareMasterListCameraPower					AT %Q* : BOOL;		(* Option *)
+	qb783KF1_2_SpareAggregationCameraPower					AT %Q* : BOOL;		(* Option *)
+	qb783KF1_6_AggregationCamera1Power						AT %Q* : BOOL;
+	qb783KF1_3_AggregationCamera2Power						AT %Q* : BOOL;
+	qb783KF1_7_ConfirmationCamera1Power						AT %Q* : BOOL;
+	qb783KF1_4_ConfirmationCamera2Power						AT %Q* : BOOL; 	(* Option *)
+	qb783KF1_8_PLCControlledPackAggCamLightning			AT %Q* : BOOL;
+
+(*TERMINAL 784KF1 - EL2008 ******************************************************)
+	qb784KF1_1_MasterListCameraTrigger						AT %Q* : BOOL;
+	qb784KF1_5_SpareMasterListCameraTrigger					AT %Q* : BOOL;		(* Option *)
+	qb784KF1_2_AggregationCameraTrigger						AT %Q* : BOOL;
+	qb784KF1_6_AggregationCamera1Trigger						AT %Q* : BOOL; 	(* Option *)
+	qb784KF1_3_AggregationCamera2Trigger						AT %Q* : BOOL; 	(* Option *)
+	qb784KF1_7_ConfirmationCamera1Trigger					AT %Q* : BOOL;
+	qb784KF1_4_ConfirmationCamera2Trigger					AT %Q* : BOOL; 	(* Option *)
+	qb784KF1_8_PLCControlledPackConfirmCamLightning		AT %Q* : BOOL;
+
+(*TERMINAL 785KF1 (EL2008 8Ch. Dig. Output 24V, 3ms) ******************************************************)
+	qb785KF1_1_IntermediateCamera1Trigger					AT %Q*: BOOL;
+	qb785KF1_5_IntermediateCamera1Power					AT %Q*: BOOL;
+	qb785KF1_2_IntermediateCamera2Trigger					AT %Q*: BOOL;												(*not used on C922 and C925 *)
+	qb785KF1_6_IntermediateCamera3Power					AT %Q*: BOOL;												(*not used on C922 and C925 *)
+	qb785KF1_3_RejectCylinderExtended						AT %Q*: BOOL;			(*AdditionalConveyor01*)				(*not used on C922 and C925 *)
+	qb785KF1_7_RjectCylinderRetracted							AT %Q*: BOOL;			(*AdditionalConveyor01*)				(*not used on C922 and C925 *)
+	qb785KF1_4_IntermediateCamera3Trigger					AT %Q*: BOOL;												(*not used on C922 and C925 *)
+	qb785KF1_8_IntermediateCamera3Power					AT %Q*: BOOL;												(*not used on C922 and C925 *)
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

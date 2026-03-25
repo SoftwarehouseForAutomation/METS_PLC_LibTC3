@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_FILE_State" Id="{5da2e1ef-95b6-45be-b5db-99a7634a4166}">
+    <Declaration><![CDATA[TYPE E_FILE_State :
+(
+	E_FILE_IDLE,
+	E_FILE_GETSIZE,
+	E_FILE_OPEN,
+	E_FILE_OPEN2,
+	E_FILE_READ,
+	E_FILE_READ2,
+	E_FILE_WRITE,
+	E_FILE_CLOSE,
+	E_FILE_CLOSE2,
+	E_FILE_COPY,
+	E_FILE_COMPARE,
+	E_FILE_ABORT,
+	E_FILE_DELETE,
+	E_FILE_MOVE,
+	E_FILE_CHECKIFEXISTS,
+	E_FILE_SEEK,
+	E_FILE_FINDFILE,
+	E_FILE_NEXTFILE,
+	E_FILE_CLOSELIST,
+	E_FILE_DONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

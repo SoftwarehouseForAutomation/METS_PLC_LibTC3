@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="IOVariablesEUCA_SFLX" Id="{c4ec3249-b460-410e-9f06-e33b5fa7e42a}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+(*TERMINAL XXXKF1 - EK1100 **********************************************************)
+
+(*ENCODER 333P2 - SICK AFS60A  ******************************************************)
+	in333P2_PositionValue						AT %I* : UDINT;
+	in333P2_RawPositionValue					AT %I* : UDINT;
+	in333P2_AlarmStatus							AT %I* : UINT;
+	in333P2_WarningStatus						AT %I* : UINT;
+
+(*TERMINAL 349KF1 - EL4002 ******************************************************)
+	qn349KF1_1_LightingIntensityTop						AT %Q* : INT;
+	qn349KF1_2_LightingIntensityBottom					AT %Q* : INT;
+
+(*TERMINAL 350KF1 (EL6001 Interface (RS232))  ********1-Channel Serial Interface RS232***********************)
+	ib350A1_EL6001PortNo								AT %I* :  UINT;
+	ist350A1_HandScannerCOMPortDataIn					AT %I* :  EL6InData22B;
+	qst350A1_HandScannerCOMPortDataOut					AT %Q*: EL6OutData22B;
+
+(*TERMINAL 351KF1 - EL4002 ******************************************************)
+	qn351KF1_1_OuterValidationLightingIntensity						AT %Q* : INT;
+	qn351KF1_2_OuterAggregationLightingIntensity				AT %Q* : INT;
+
+(*TERMINAL 352KF1 - EL4002 ******************************************************)
+	qn352KF1_1_CaseContentValidationLightingIntensity		AT %Q* : INT;
+	qn352KF1_2_LightingIntensity							AT %Q* : INT;
+
+(*TERMINAL 360KF1 - EL1008 ***********************************************************)
+	ib360KF1_1_OuterAtInfeed							AT %I* : BOOL;	(* Option *)
+	ib360KF1_5_OuterInfeedBlocked						AT %I* : BOOL;	(* Option *)
+	ib360KF1_2_OuterAtLabeller							AT %I* : BOOL;
+	ib360KF1_6_PackConfirmationCameraTrigSensor			AT %I* : BOOL;
+	ib360KF1_3_OuterMasterListTrigSensor 					AT %I* : BOOL;
+	ib360KF1_7_OuterAtReject							AT %I* : BOOL;
+	ib360KF1_4_RejectConfirmation						AT %I* : BOOL;
+	ib360KF1_8_RejectBinFull								AT %I* : BOOL;
+
+(*TERMINAL 361KF1 - EL1008 ***********************************************************)
+	ib361KF1_1_OuterGateExtended							AT %I* : BOOL;
+	ib361KF1_5_OuterGateRetracted					AT %I* : BOOL;
+	ib361KF1_2_FirstPusherExtended						AT %I* : BOOL;
+	ib361KF1_6_FirstPusherRetracted						AT %I* : BOOL;
+	ib361KF1_3_RejectCylinderExtended					AT %I* : BOOL;
+	ib361KF1_7_RejectCylinderRetracted					AT %I* : BOOL;
+	ib361KF1_4_SecondPusherExtended						AT %I* : BOOL;	(* Option *)
+	ib361KF1_8_SecondPusherRetracted						AT %I* : BOOL;
+
+(*TERMINAL 362KF1 - EL1008 ************************************************************)
+	ib362KF1_1_Labeller01Ready							AT %I*: BOOL;
+	ib362KF1_5_Labeller01DataReady						AT %I*: BOOL;
+	ib362KF1_2_Labeller01ApplicatorHomePosition 			AT %I*: BOOL;
+	ib362KF1_6_Labeller01LabelPrinted						AT %I*: BOOL;
+	ib362KF1_3_Labeller01SummaryWarning					AT %I*: BOOL;
+	ib362KF1_7_Labeller01Error							AT %I*: BOOL;
+	ib362KF1_4_AirPressureOK							AT %I*: BOOL;
+	ib362KF1_8_Labeller01InPosition					AT %I*: BOOL;	(* ??? *)
+
+(*TERMINAL 363KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ***************************************)
+	ib363KF1_1_QAButtonRejectOuter						AT %I*: BOOL;	(* Option *)
+	ib363KF1_5_IntermediatePushSensor					AT %I*: BOOL;
+	ib363KF1_2_CaseLabelValidationCameraTrigSensor	AT %I*: BOOL;
+	ib363KF1_6_CaseAtRejectStation						AT %I*: BOOL;	(* Option *)
+	ib363KF1_3_RowCompleteSensor						AT %I*: BOOL;
+	ib363KF1_7_LayerCompleteSensor						AT %I*: BOOL;
+	ib363KF1_4_CaseCompleteSensor						AT %I*: BOOL;
+	ib363KF1_8_CaseDischargedSensor						AT %I*: BOOL;
+
+(*TERMINAL 364KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ****************************************)
+	ib364KF1_1_AdditionalRejectCylExtended				AT %I*: BOOL;
+	ib364KF1_5_AdditionalRejectCylRetracted				AT %I*: BOOL;
+	ib364KF1_2_OuterInfeedJam							AT %I*: BOOL;
+	ib364KF1_6_PackAggregationCameraRigTrigger		AT %I*: BOOL;
+	ib364KF1_3_OuterAtSideFlexExit						AT %I*: BOOL;
+	ib364KF1_7_OuterTransferConfirmation				AT %I*: BOOL;
+	ib364KF1_4_EUCAExitBlocked								AT %I*: BOOL;
+	ib364KF1_8_EUCABuildBack							AT %I*: BOOL;
+
+(*TERMINAL 365KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ****************************************)
+	ib365KF1_1_OuterAtPostMachineInfeed				AT %I*: BOOL;
+	ib365KF1_5_RejectConfirmationNCW				AT %I*: BOOL;
+	ib365KF1_2_RejectBinFullNCW						AT %I*: BOOL;
+	ib365KF1_6_OuterReadingConfirmation			AT %I*: BOOL;
+	ib365KF1_3_OuterAtTransferReject				AT %I*: BOOL;
+	ib365KF1_7_Spare									AT %I*: BOOL;
+	ib365KF1_4_Spare									AT %I*: BOOL;
+	ib365KF1_8_Spare									AT %I*: BOOL;
+
+(*TERMINAL 366KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ****************************************)
+	ib366KF1_1_Spare									AT %I*: BOOL;
+	ib366KF1_5_Spare									AT %I*: BOOL;
+	ib366KF1_2_Spare									AT %I*: BOOL;
+	ib366KF1_6_Spare									AT %I*: BOOL;
+	ib366KF1_3_Spare									AT %I*: BOOL;
+	ib366KF1_7_Spare									AT %I*: BOOL;
+	ib366KF1_4_Spare									AT %I*: BOOL;
+	ib366KF1_8_Spare									AT %I*: BOOL;
+
+(*TERMINAL 380KF1 - EL2008 (EL2008 8Ch. Dig. Output 24V, 0.5A) ********************************)
+	qb380KF1_1_FirstPusherCylinderExtend				AT %Q*: BOOL;
+	qb380KF1_5_SecondPusherCylinderExtend	 			AT %Q*: BOOL;
+	qb380KF1_2_GateCylinderExtend 						AT %Q*: BOOL;		(*Additional reject acturator for SFLX*)
+	qb380KF1_6_GateCylinderRetract	 					AT %Q*: BOOL;		(*Additional reject acturator for SFLX*)
+	qb380KF1_3_RejectCylinderExtend						AT %Q*: BOOL;
+	qb380KF1_7_RejectCylinderRetract			  		AT %Q*: BOOL;
+	qb380KF1_4_FirstPusherCylinderRetract				AT %Q*: BOOL;
+	qb380KF1_8_SecondPusherCylinderRetract				AT %Q*: BOOL;
+
+(*TERMINAL 381KF1 (EL2008 8Ch. Dig. Output 24V, 0.5A) ***************************************)
+	qb381KF1_1_RearConfirmationCameraTrigger			AT %Q*: BOOL;
+	qb381KF1_5_RearConfirmationCameraPower				AT %Q*: BOOL;
+	qb381KF1_2_FrontConfirmationCameraTrigger			AT %Q*: BOOL;
+	qb381KF1_6_FrontConfirmationCameraPower	 			AT %Q*: BOOL;
+	qb381KF1_3_OuterValidationCameraTrig 					AT %Q*: BOOL;
+	qb381KF1_7_OuterValidationCameraPower				AT %Q*: BOOL;
+	qb381KF1_4_OuterAggregationCameraTrig					AT %Q*: BOOL;
+	qb381KF1_8_OuterAggregationCameraPower					AT %Q*: BOOL;
+
+(*TERMINAL 382KF1 (EL2008 8Ch. Dig. Output 24V, 0.5A) ****************************************)
+	qb382KF1_1_CaseContentValidationCameraTrig				AT %Q*: BOOL;
+	qb382KF1_5_CaseContentValidationCameraPower			AT %Q*: BOOL;
+	qb382KF1_2_CaseLabelValidationCameraTrig				AT %Q*: BOOL;
+	qb382KF1_6_CaseLabelValidationCameraPower	 			AT %Q*: BOOL;
+	qb382KF1_3_PackAggregationCamera1Trigger			AT %Q*: BOOL;		(*Used for SFLX*)
+	qb382KF1_7_PackAggregationCamera1Power				AT %Q*: BOOL;		(*Used for SFLX*)
+	qb382KF1_4_PackAggregationCamera2Trigger			AT %Q*: BOOL;		(*Used for SFLX*)
+	qb382KF1_8_PackAggregationCamera2Power				AT %Q*: BOOL;		(*Used for SFLX*)
+
+(*TERMINAL 383KF1 (EL2008 8Ch. Dig. Output 24V, 0.5A) ****************************************)
+	qb383KF1_1_LightPoleGREEN						AT %Q*: BOOL;
+	qb383KF1_5_LightPoleAMBER						AT %Q*: BOOL;
+	qb383KF1_2_LightPoleRED						AT %Q*: BOOL;
+	qb383KF1_6_LightPoleALARM						AT %Q*: BOOL;
+	qb383KF1_3_OuterContentValidationCameraTrig			AT %Q*: BOOL;
+	qb383KF1_7_OuterContentValidationCameraPower	AT %Q*: BOOL;
+	qb383KF1_4_RejectActiveNCW										AT %Q*: BOOL;
+	qb383KF1_8_Spare									AT %Q*: BOOL;
+
+(*TERMINAL 384KF1 (EL2008 8Ch. Dig. Output 24V, 0.5A) ****************************************)
+	qb384KF1_1_Spare										AT %Q*: BOOL;
+	qb384KF1_5_Spare										AT %Q*: BOOL;
+	qb384KF1_2_Spare										AT %Q*: BOOL;
+	qb384KF1_6_Spare										AT %Q*: BOOL;
+	qb384KF1_3_PLCControlledOuterValidCamLightning		AT %Q*: BOOL;
+	qb384KF1_7_PLCControlledOuterAggCamLightning		AT %Q*: BOOL;
+	qb384KF1_4_PLCControlledCaseContentCamLightning	AT %Q*: BOOL;
+	qb384KF1_8_Spare									AT %Q*: BOOL;
+
+(*TERMINAL 390KF1 (EL2624 4Ch. Relay Output, 125 V AC, 30 V DC, 0.5 A AC, 2 A DC)******************)
+	qb390KF1_1_Labeller1ResetSignal						AT %Q*: BOOL;
+	qb390KF1_2_Labeller1PrintSignal						AT %Q*: BOOL;
+	qb390KF1_3_Labeller1ApplySignal						AT %Q*: BOOL;
+	qb390KF1_4_DoorGuardOK								AT %Q*: BOOL;
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

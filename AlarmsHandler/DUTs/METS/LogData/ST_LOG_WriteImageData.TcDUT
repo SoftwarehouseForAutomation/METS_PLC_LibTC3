@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_LOG_WriteImageData" Id="{afdbf980-d7f3-48d2-93ed-ab477fa5324b}">
+    <Declaration><![CDATA[TYPE ST_LOG_WriteImageData :
+STRUCT
+	aLogPT			: ARRAY[0..65000] OF BYTE;
+	aLogML			: ARRAY[0..65000] OF BYTE;
+	aLogOT			: ARRAY[0..65000] OF BYTE;
+	aLogCT			: ARRAY[0..65000] OF BYTE;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

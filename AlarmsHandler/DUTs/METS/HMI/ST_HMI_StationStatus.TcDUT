@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_StationStatus" Id="{599caf56-86ec-4de8-85dd-8b5dd3f72f98}">
+    <Declaration><![CDATA[TYPE ST_HMI_StationStatus :
+STRUCT
+
+	bSeqAbort					: BOOL;		(**)
+	bSeqIsHoming				: BOOL;
+	bSeqInProgress				: BOOL;		(**)
+	bSeqComplete				: BOOL;		(**)
+	bSeqError					: BOOL;
+	nSeqErrorID					: UDINT;
+
+	bStationHomed				: BOOL;		(**)
+	bStationNotMoving			: BOOL;		(**)
+
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

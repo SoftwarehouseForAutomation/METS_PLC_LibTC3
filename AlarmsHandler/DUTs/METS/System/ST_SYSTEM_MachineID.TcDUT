@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_MachineID" Id="{482d73a6-893c-4ee8-8d4e-42807139dcc3}">
+    <Declaration><![CDATA[TYPE ST_SYSTEM_MachineID :
+STRUCT
+	ProductionSite 		: STRING(4);
+	ProductionLine 		: STRING(4);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

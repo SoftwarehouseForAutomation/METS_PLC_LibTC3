@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_PRINTER_State" Id="{7a9fa87a-f55b-427d-a993-7718f7de6cdb}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_PRINTER_State :
+(
+	IDLE,
+	//E_PRINTER_CONNECT,
+	//E_PRINTER_COMMAND,
+	SEND,
+	RECEIVE,
+	//E_PRINTER_LOADDATA,
+	//E_PRINTER_FILESIZE,
+	DISCONNECT,
+	DONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

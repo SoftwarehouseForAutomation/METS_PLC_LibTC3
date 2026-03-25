@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DB_CACDataCtrl" Id="{aa02d732-e78f-47a0-a1f1-e9bd058c7f48}">
+    <Declaration><![CDATA[TYPE ST_DB_CACDataCtrl :
+STRUCT
+	bCreateDataReq				: BOOL;	(* C *)
+	bReadDataReq				: BOOL;	(* R *)
+	bUpdateDataReq				: BOOL;	(* U *)
+	bDeleteDataReq				: BOOL;	(* D *)
+
+	sFileCodeName				: T_MaxString;
+	sArchiveName				: STRING;
+		
+	bBlockRecord				: BOOL;
+	bReanimated					: BOOL;
+
+	stCACStatusDB				: ST_CAC_Data;
+
+	bDone						: BOOL;
+	bError						: BOOL;
+	nErrorID					: UDINT;
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

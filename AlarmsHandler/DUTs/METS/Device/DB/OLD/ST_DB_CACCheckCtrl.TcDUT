@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DB_CACCheckCtrl" Id="{f921fc95-419d-4d17-93be-ae6cd946c1b4}">
+    <Declaration><![CDATA[TYPE ST_DB_CACCheckCtrl :
+STRUCT
+	bDB_ExecuteCacCheck			: BOOL;
+	bDB_CACCheckComplete		: BOOL;
+	bDB_CaseOk					: BOOL;
+	bDB_Error						: BOOL;
+	stCacToCheck					: ST_CAC_Data;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

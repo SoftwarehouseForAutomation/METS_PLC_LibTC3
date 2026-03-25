@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CASE_DefferOuter" Id="{bf84f0f4-3e39-4aed-968b-e2d5a69d7b01}">
+    <Declaration><![CDATA[TYPE ST_CASE_DefferOuter :
+STRUCT
+	sID 					: STRING(255);
+	ProductionDate 		: STRING(10);
+	ProductionTime 		: STRING(8);
+	ProductionTimeOffset 	: STRING(6);
+	RejectCode 			: STRING(255);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

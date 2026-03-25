@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_CHM_GeneratorState" Id="{19cdbd47-7e64-4db5-aff5-06fdbbf0d24c}">
+    <Declaration><![CDATA[TYPE E_CHM_GeneratorState :
+(
+	E_CHM_IDLEGENERATOR,
+	E_CHM_FILECHECK,
+	E_CHM_FILEOPEN,
+	E_CHM_GENERATEHEAD,
+	(*E_CHM_HEADDONE,*)
+	E_CHM_GENERATEBODY,
+	(*E_CHM_BODYDONE,*)
+	E_CHM_GENERATEENDING,
+	(*E_CHM_ENDINGDONE,*)
+	E_CHM_FILECLOSE,
+	E_CHM_GENERATEFLG,
+	(*E_CHM_FLGDONE,*)
+	E_CHM_TIMEOUT,
+	E_CHM_DONEGENERATOR
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

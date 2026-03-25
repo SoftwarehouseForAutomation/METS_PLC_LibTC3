@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_LoggerStatus" Id="{94f0d5a5-035a-4295-98c0-fd6bbd073daa}">
+    <Declaration><![CDATA[//{warning 'CONVERSION MESSAGE: This text contained unprintable characters, that have been deleted'.}
+TYPE ST_SYSTEM_LoggerStatus :
+STRUCT
+	sLoggerVersion				: STRING;
+	nLoggerStatus 				: INT;
+	nLoggerWatchdog 			: DINT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

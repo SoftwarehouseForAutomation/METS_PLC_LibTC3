@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SYSTEM_MachineState" Id="{26c90d2d-1164-48a9-84cc-e384909aff63}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+//{attribute 'strict'}
+{attribute 'to_string'}
+TYPE E_SYSTEM_MachineState :
+(
+	(*Grey*)
+	POWERUP				:=0,
+
+	(*Red*)
+	IMMEDIATESTOPPED			:=100,
+	MACHINEINERROR			:=110,
+	
+	(*Yellow*)
+	INITIALISING			:=200,
+	MANUAL				:=210,
+
+	(*Blue*)
+	READYTOSTART		:=300,
+	STOPPING						:=310,
+
+	(*Green*)
+	RUNNING				:=400,
+	WAITINGFORPRODUCT	:=410,
+	PASSTHROUGHACTIVE		:=420,
+	CONDITIONALRUNNING	:=430
+);
+
+END_TYPE
+
+(*
+	(*Grey*)
+	eSYSTEM_POWER_UP				:=0,
+
+	(*Red*)
+	eIMMEDIATE_STOPPED			:=100,
+	eMACHINE_IN_ERROR			:=110,
+
+	(*Yellow*)
+	eSYSTEM_INITIALISING			:=200,
+	eSYSTEM_MANUAL				:=210,
+
+	(*Blue*)
+	eSYSTEM_READY_TO_START		:=300,
+	eSTOPPING						:=310,
+
+	(*Green*)
+	eSYSTEM_RUNNING				:=400,
+	eMACHINE_WAITING_FOR_PRODUCT	:=410,
+	eCONVEYOR_MODE_ACTIVE		:=420,
+	eSYSTEM_CONDITIONAL_RUNNING	:=430
+	*)]]></Declaration>
+  </DUT>
+</TcPlcObject>

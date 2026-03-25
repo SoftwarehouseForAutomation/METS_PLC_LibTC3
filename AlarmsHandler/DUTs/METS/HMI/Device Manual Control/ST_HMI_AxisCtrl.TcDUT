@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_AxisCtrl" Id="{fb9c1011-00d5-4e30-b842-66ce49765480}">
+    <Declaration><![CDATA[TYPE ST_HMI_AxisCtrl :
+STRUCT
+	stReqEanble		: ST_HMI_Buttons;
+	stReqReset		: ST_HMI_Buttons;
+	stReqPositioning	: ST_HMI_Buttons;	(*Button start positioning manual mode*)
+	stRelease			: ST_HMI_Buttons;
+
+	stReqJogFwd			: ST_HMI_Buttons;		(* set TRUE to jog forwards *)
+	stReqJogRev			: ST_HMI_Buttons;		(* set TRUE to jog reverse *)
+	fJogVelocity			: LREAL;	(* jog velocity (does not take effect if jog is in progress *)
+
+	eMotionType		: E_AXIS_MotionType;
+
+	fDistance			: LREAL;	(*target relative position*)
+	fPosition			: LREAL;	(*target absolute position*)
+	fVelocity			: LREAL;	(* target velocity *)
+	bStopAtPos		: BOOL;	(* set TRUE to stop at specified pos, set FALSE to stop immediately *)
+	fStopPos			: LREAL;	(* target modulo stop position *)
+
+	(*eMotionState 		: MC_AxisStates;*)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

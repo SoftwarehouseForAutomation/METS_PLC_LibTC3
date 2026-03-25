@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AxisCtrlRamps" Id="{e226dfd8-670b-44f8-aef9-46766806440a}">
+    <Declaration><![CDATA[TYPE ST_AxisCtrlRamps :
+STRUCT
+	fFastStopDecel	: LREAL;
+	fFastStopJerk	: LREAL;
+	fNormalAccel	: LREAL;
+	fNormalDecel	: LREAL;
+	fNormalJerk		: LREAL;
+	fJogAccel		: LREAL;
+	fJogDecel		: LREAL;
+	fJogJerk		: LREAL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

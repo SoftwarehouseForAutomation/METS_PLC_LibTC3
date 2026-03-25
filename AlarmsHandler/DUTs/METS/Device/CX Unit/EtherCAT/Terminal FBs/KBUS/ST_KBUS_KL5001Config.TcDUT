@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_KBUS_KL5001Config" Id="{82ce0aed-572b-425e-a935-a2935fbed2d9}">
+    <Declaration><![CDATA[TYPE ST_KBUS_KL5001Config :
+STRUCT
+	nTerminalType	: UINT;
+	strFirmware		: STRING(2);
+	nFeatureReg		: UINT;
+	nDataRate		: UINT;		(* 1=MHz, 2=250kHz (default), 3=125kHz, 4=100kHz, 5=83kHz, 6=71kHz, 7=62.5kHz *)
+	nDataBits		: UINT;		(* data bits (default=25) *)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

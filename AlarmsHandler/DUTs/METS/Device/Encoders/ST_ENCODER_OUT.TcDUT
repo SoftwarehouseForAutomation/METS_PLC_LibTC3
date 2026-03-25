@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_ENCODER_OUT" Id="{fe17c430-3140-454c-87c9-5ee52f941489}">
+    <Declaration><![CDATA[TYPE ST_ENCODER_OUT :
+STRUCT
+	bDeviceDisable			: BOOL;
+
+	nRevolutions			: UDINT := 0;
+	nPulses				: UDINT;
+	fPositionInMM			: LREAL;
+
+	bError					: BOOL;
+	sError					: STRING;
+
+	nWarningStatus		: UINT;
+	nAlarmStatus			: UINT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

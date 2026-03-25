@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CX_EL6080DataIn" Id="{b7b006cc-cb82-4069-b4c8-c13f4bb50148}">
+    <Declaration><![CDATA[TYPE ST_CX_EL6080DataIn :
+STRUCT
+	nStatus			: UINT;
+	arrData			: ARRAY[0..1277] OF BYTE;
+	bWcState		: BOOL;
+	bInputToggle	: BOOL;
+	nState			: UINT;
+	sAMSAddress		: ST_CX_AMSAddress;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

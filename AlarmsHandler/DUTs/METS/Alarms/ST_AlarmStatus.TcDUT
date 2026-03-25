@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AlarmStatus" Id="{0043a0a1-fba3-4c6f-a522-02f9f6331a4a}">
+    <Declaration><![CDATA[TYPE ST_AlarmStatus :
+STRUCT
+	bNoActiveAlarms					: BOOL;
+	bNoActiveWarrnings				: BOOL;
+
+	bGeneralSystemAlarmActive		: BOOL;		(*Message type 0*)
+	bEUCASubsytemAlarmActive		: BOOL;		(*Message type 1*)
+	bTPDSubsytemAlarmActive		: BOOL;		(*Message type 2*)
+	bExternalAlarmActive				: BOOL;		(*Message type 3*)
+
+	bSpare04AlarmActive				: BOOL;		(*Message type 4*)
+	bSpare05AlarmActive				: BOOL;		(*Message type 5*)
+	bSpare06AlarmActive				: BOOL;		(*Message type 6*)
+	bSpare07AlarmActive				: BOOL;		(*Message type 7*)
+
+	bGeneralSystemWarningActive		: BOOL;		(*Message type 8*)
+	bEUCASubsytemWarningActive	: BOOL;		(*Message type 9*)
+	bTPDSubsytemWarningActive		: BOOL;		(*Message type 10*)
+	bExternalWarningActive			: BOOL;		(*Message type 11*)
+
+	bSpare12WarningActive			: BOOL;		(*Message type 12*)
+	bSpare13WarningActive			: BOOL;		(*Message type 13*)
+	bSpare14WarningActive			: BOOL;		(*Message type 14*)
+	bSpare15WarningActive			: BOOL;		(*Message type 15*)
+
+	(*eMessageType					: E_MessageType;*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

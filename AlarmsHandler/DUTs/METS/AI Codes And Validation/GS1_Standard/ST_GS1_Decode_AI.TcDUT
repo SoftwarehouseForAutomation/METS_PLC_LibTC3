@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_GS1_Decode_AI" Id="{082f7c67-3f96-46c0-9461-6071fa4970b1}">
+    <Declaration><![CDATA[TYPE ST_GS1_Decode_AI :
+STRUCT
+	sAI_Id		: STRING(5);
+	bFixed		: BOOL;
+	nLength		: UINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

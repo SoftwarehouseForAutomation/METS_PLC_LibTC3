@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_MC_Name" Id="{0914b707-f435-4bb3-8caa-5c6b26c4d871}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_MC_Name :
+(
+	REVOLUTION		:=1	(*REVS*)
+	//E_MC_SPARE	:=2	(*REVS*)
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

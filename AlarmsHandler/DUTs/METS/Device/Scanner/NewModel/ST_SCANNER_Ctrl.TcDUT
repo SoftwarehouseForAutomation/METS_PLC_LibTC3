@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_Ctrl" Id="{d8b1c7c7-f13e-4669-b41a-f9eda99bb635}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_Ctrl :    //ST_SCANNER_CameraMap
+STRUCT
+	bProcessNewCode		: BOOL;
+	bTCPTrigger			: BOOL;
+	bManualTrigger		: BOOL;
+	bResetStats			: BOOL;	
+	
+	stOptions			: ST_SCANNER_Options;
+	stCameraMap			: ST_SCANNER_CtrlMapping;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

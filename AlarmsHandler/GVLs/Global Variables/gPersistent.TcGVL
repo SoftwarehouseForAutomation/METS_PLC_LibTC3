@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="gPersistent" Id="{6322c936-6592-448e-b025-6c0c82f2c14b}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL PERSISTENT
+
+(**************************************************************************************************************)
+(* Local persistend data, not important currently form METS process perspective, but not removed to keep consistency		*)
+(* with old version of software.																		*)
+(**************************************************************************************************************)
+	stWriteOCVFileStatistic			: ST_FILE_WriteFileStatistic;
+	stWriteOACFileStatistic			: ST_FILE_WriteFileStatistic;	(*Move to METSEfficency one day*)
+	stWriteCHMFileStatistic			: ST_FILE_WriteFileStatistic;	(*Move to METSEfficency one day*)
+
+	stLocalCHMData					: ST_CHM_Data;	(* CHM data printed to XML file *)
+
+	bRefreshSystemIno				: BOOL;
+
+	nReadOCVError					: UDINT;
+	nReadOCVFound					: UDINT;
+	nReadOCVFoundInErr				: UDINT;
+
+	nValidationTrigerMonitroing 	: UINT;
+	tValidationTrigerTimeout		: TIME :=t#5000ms;
+
+	nAirPrssureMonitoring			: UINT;
+	tAirPressureTimeout				: TIME :=T#5000MS;
+
+	nPrinterHomeMonitoring			: UINT;
+	tPrinterHomeTimeout				: TIME :=T#5000MS;
+
+	nGateRetractMonitoring			: UINT;
+	tGateRetractTimeout				: TIME :=T#5000MS;
+
+	nCasHeadCounter					: UDINT;
+	nOuterHeadCounter				: UDINT;
+	nCaseEndCounter					: UDINT;
+
+	bEnableSUPICheck				: BOOL;	 	(*Enable SUPI check for pack code*)
+	nSUPI_Identyfication			: DINT;
+
+	(*pack code validation*)
+	nPackCodeTooShortIndex			: UDINT;	(*READ*)
+	nPackCodeTooLongIndex			: UDINT;	(*READ*)
+	nPackCodeTypeErrorIndex			: UDINT;	(*READ*)
+
+	nRestoredOCVSuccessful			: UDINT;	(*READ*)
+	nRestoredOCVProcessed			: UDINT;	(*READ*)
+
+	bDisableInfeedQueueAlarm 		: BOOL;
+	bDisablePackerQueueAlarm		: BOOL;
+
+	sLastFileNameToDlogHMI			: T_CAC_Filename;	(*READ/WRITE BY HMI ONLY*)
+	sLastFileTimeToDlogHMI			: STRING(19);		(*READ/WRITE BY HMI ONLY*)
+
+	nStackIndexDebug				: ARRAY[0..10] OF UDINT;
+	
+	nRecoverOuterLable				: INT;
+
+	(*sHMICaseStats				 	: ST_SCANNER_Statistics;*)
+
+(*	fbShiftPackMonitor	: FB_KPI_ChangeItemsProducedTrig;
+	fbShiftOuterMonitor	: FB_KPI_ChangeItemsProducedTrig;
+	fbShiftCaseMonitor	: FB_KPI_ChangeItemsProducedTrig;
+	fbProdPackMonitor	: FB_KPI_ChangeItemsProducedTrig;
+	fbProdOuterMonitor	: FB_KPI_ChangeItemsProducedTrig;
+	fbProdCaseMonitor	: FB_KPI_ChangeItemsProducedTrig;*)
+
+	stEmptyEfficiency				: ST_NOVRAM_METS_Inspection;
+
+	strLastBarcodeRead				: STRING(255);
+	tPassthroughDelay				: TIME := T#180MS;
+
+	(*strHMIVersionInfo				: STRING;
+	strPLCVersion					: STRING;
+	strPLCVersionInfo				: STRING;
+*)
+	nWriteOCVErrorIndex			: UINT;
+	nWriteOACErrorIndex			: UINT;
+	nReadOCVErrorIndex			: UINT;
+
+
+	bEUCAMonitorEthernet		: BOOL := FALSE;
+	bTPDMonitorEthernet			: BOOL := FALSE;
+	bEUCAAirConditionExist		: BOOL := FALSE;
+	bTPDAirConditionExist		: BOOL := FALSE;
+
+	(*sCameraPack				: ARRAY[1..6] OF ST_SCANNER; 	(*PACK AGGREGATION OR INTERMEDIAT CAMERAs*)*)
+
+	bUseMultipleOuterFormats		: BOOL := FALSE;
+	bInfeedRejectFitted				: BOOL;
+
+	bCaseValidationOverTime 		: BOOL;
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

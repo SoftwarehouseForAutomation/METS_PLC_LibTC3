@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_MessageHeader" Id="{785d0490-46b4-4a7d-b08e-39e5edbd2045}">
+    <Declaration><![CDATA[TYPE ST_MessageHeader :
+STRUCT
+
+	(*CreationDate 				: STRING(10);
+	CreationTime 				: STRING(25);*)
+	ReferenceID				: T_MaxString;
+	CreationTimeLocalUTC		: T_ISO8601Time;
+	MessageType	 			: STRING(25);
+	SenderSystem				: STRING(5);
+	ReceiverSystem			: STRING(5);
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

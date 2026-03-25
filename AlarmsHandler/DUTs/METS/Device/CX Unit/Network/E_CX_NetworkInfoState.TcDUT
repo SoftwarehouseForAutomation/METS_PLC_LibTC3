@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_CX_NetworkInfoState" Id="{048fec68-b7fb-4bba-8888-127a10c275d4}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_CX_NetworkInfoState : (
+	IDLE,
+	GETDEVICETYPE,
+	GETHOSTNAME,
+	GETLOCALAMSNETID,
+	GETADAPTERINFO,
+	GETDNSINFO,
+	GETSNTPSERVER,
+	GETSNTPTIME,
+	DONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

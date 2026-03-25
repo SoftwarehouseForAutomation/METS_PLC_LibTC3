@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_OAC_Data" Id="{faa2208c-06ef-4b62-ab3f-8749ea0a230a}">
+    <Declaration><![CDATA[TYPE ST_OAC_Data :
+STRUCT
+	Barcode					: T_OUTER_Barcode;
+	ProductionDate			: STRING(10);
+	ProductionTime			: STRING(8);
+	ProductionTimeOffset		: STRING(6);		(* time offset between system and UTC, '+1:00' means SystemTime = UTC + 1hr *)
+	OuterTimeStamp				: T_ISO8601Time;
+	PackTimeStamp				: T_ISO8601Time;
+	RetailSKU					: T_CodeRSKU;
+	OuterMachine				: ST_SYSTEM_MachineID;
+	AggregationCodes			: ARRAY[1..2] OF T_PACK_Barcode; 		(* pack aggregation codes for CML *)
+	OuterMasterListRestored		: BOOL;
+	CodingAndTrackingMode		: INT;
+	NumberOfPacks			: INT;
+	AcceptanceLevel			: INT;
+	NumberOfLinkedPacks		: INT;
+	BatchNumber				: T_CodeBATCH;
+	DataSource				: STRING(4);
+	(*ProductCode5678			: STRING(4);*)
+	OuterRejectCode			:  T_RejectCode;
+	OuterRejectID				: UINT;
+	OuterCodeStatus			: WORD;	(*16bits states *)
+	PackCode					: ARRAY[1..cMAX_PACKS_PER_OUTER] OF T_PACK_Barcode;
+	PackRejectCode			: ARRAY[1..cMAX_PACKS_PER_OUTER] OF T_RejectCode;
+	PackRejectID				: ARRAY[1..cMAX_PACKS_PER_OUTER] OF UINT;
+	PackCodeStatus			: ARRAY[1..cMAX_PACKS_PER_OUTER] OF WORD;			(*16bits states *)
+
+
+(*OuterCodeStatus dcoding bits - concept.
+b0		Outer Code - Database check performed
+b1		Outer Code - Database error during check
+b2		Outer Code - Found in database - DB validation OK
+b3		Outer Code - has expired - result from DB check
+b4 		Outer Code - Outer MasterList Restored
+b5		Outer Code - Val Index error found
+b6		Outer Code - OAC File Write Error
+b7		Outer Code - OAC biuld form restored OCV
+b8		Outer Code - Reserved of use in future
+b9		Outer Code - Reserved of use in future
+b10	Outer Code - Reserved of use in future
+b11	Outer Code - Reserved of use in future
+b12	Outer Code - Reserved of use in future
+b13	Outer Code - Reserved of use in future
+b14	Outer Code - Reserved of use in future
+b15	Outer Code - Reserved of use in future
+
+*)
+
+
+(*	PackCodeStatus dcoding bits - concept.
+
+b0	 	Pack code -  no readed.
+b1 		Pack code - over-written.  2 different codes read for same Pack position
+b2		Pack code - invalid GTIN/SerialLenght/CodeType/CodeLenght 
+b3		Pack code - duplicate code found in one outer. Currentpack code contains data and matches another pack code. 
+b4		Pack code - change status to indicate invalid packcode  in an accepted outer
+b5		Pack code - valid code
+b6		Pack code - packcode manually repaired ( restored manually by hand scanner), status used in arrErrorOuters only for HMI
+b7		Pack code - Reserved of use in future 
+b8	 	Pack code - Pack Data reanimated 
+b9 		Pack code - restored by primary master list camera
+b10   	Pack code - restored by secondary master list camera
+b11	Pack code - pcakcode removed form the system (NCW)
+b12	Pack code - Database check performed
+b13	Pack code - Database error during check
+b14 	Pack code - Pack found in database - DB validation OK
+b15 	Pack code - has expired - result from DB check
+
+*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

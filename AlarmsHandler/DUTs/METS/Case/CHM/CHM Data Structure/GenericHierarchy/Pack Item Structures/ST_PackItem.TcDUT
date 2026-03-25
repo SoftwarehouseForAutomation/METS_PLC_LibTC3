@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PackItem" Id="{aa6910d5-bc6b-4600-8ce6-506094b95d93}">
+    <Declaration><![CDATA[TYPE ST_PackItem :
+STRUCT
+	Identity				: 	ST_PackIdentity;
+	ItemState				:	STRING(15);
+	RejectReason			: T_FSS_RejecCode;
+	TimeStamp				: T_ISO8601Time;
+	NoRead				:	STRING(5);
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

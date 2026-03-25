@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_MachineMode" Id="{2f45629e-eceb-4fd7-981e-dd744aa28a3e}">
+    <Declaration><![CDATA[TYPE ST_SYSTEM_MachineMode :
+STRUCT
+	bDisable			: BOOL;
+	bManual			: BOOL;
+	bAutomatic		:  BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

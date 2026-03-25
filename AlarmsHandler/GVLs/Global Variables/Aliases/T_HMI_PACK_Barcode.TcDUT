@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_HMI_PACK_Barcode" Id="{87d9f579-d014-445b-83cf-1fb3312f62c9}">
+    <Declaration><![CDATA[TYPE T_HMI_PACK_Barcode : STRING(cMAX_HMI_PACKCODE_LENGHT);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

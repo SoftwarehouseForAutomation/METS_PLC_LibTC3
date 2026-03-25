@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CASE_OperationData" Id="{0691b358-c9eb-431e-8088-63dfc3b4415f}">
+    <Declaration><![CDATA[TYPE ST_CASE_OperationData :
+STRUCT
+
+	nActualNumberOfOutersIndex		: UINT;
+	nFianalNumberOfOutersIndex		: INT;
+	nCrossPushToCaseIndex			: UINT;
+
+	nAcceptedWeight					: UDINT;
+	nRejectedWeight					: UDINT;
+		
+	bDoorOpen						: BOOL;
+	
+	bCheckDuplicates				: BOOL;
+	bIsDuplicateOuters				: BOOL;
+	bIsDuplicatePacks				: BOOL;
+
+	bReadyToValidate				: BOOL;
+	nValidationIndex				: INT;
+	nMasterListRestoreIndex			: INT;
+
+	bCaseAccepted					: BOOL;
+	bCaseRejected					: BOOL;
+
+	sValidateRejectCode				: T_MaxString;
+	nValidationErrorID 				: UINT;
+
+	sFirstBarcodeInCase				: T_OUTER_Barcode;
+	sLastBarcodeInCase				: T_OUTER_Barcode;
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

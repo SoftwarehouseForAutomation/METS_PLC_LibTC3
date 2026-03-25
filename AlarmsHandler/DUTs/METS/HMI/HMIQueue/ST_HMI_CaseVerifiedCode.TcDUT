@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_CaseVerifiedCode" Id="{9f1f209d-248d-4de4-8bce-1fa8bcb76542}">
+    <Declaration><![CDATA[TYPE ST_HMI_CaseVerifiedCode :
+STRUCT
+	sCaseIDCode				: STRING(10);
+	sProductionDate			: STRING(10);
+	sProductionTime			: STRING(8);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

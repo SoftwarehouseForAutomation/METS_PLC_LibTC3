@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_IO2_OutputPLC" Id="{19ac6cb9-5832-4fd4-a4d0-6e2639ea754f}">
+    <Declaration><![CDATA[TYPE ST_IO2_OutputPLC :
+STRUCT
+	bOutputEnable				: BOOL;
+
+	bStateOutput				: BOOL;
+	bDelayedOutput			: BOOL;
+	bLockedOutput			: BOOL;
+	bDelayedLockedOtput		: BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

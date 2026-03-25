@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_HoneywellConfig" Id="{2229d04b-bd54-4820-9dd3-863c1ed4049e}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_HoneywellConfig :
+STRUCT
+	bEnabled					: BOOL;										(* Enable HandScanner *)
+	sDeviceName				: STRING(30) := 'HandScanner';
+	bReset					: BOOL;										(* Reset HandScanner *)
+	nScannerPosition			: UINT;										(* Array position used in the camera configs.  This allows the HMi to display the handscanner stuff as a microscan camera *)
+	eComPortMode			: ComSerialLineMode_t := SERIALLINEMODE_EL6_22B;	(* COM port type, PC/KL/EL COM ports can all be used - SERIALLINEMODE_EL6_22B *)
+	nBaudRate				: UDINT:= 115200;								(* Baud rate for scanner. 2 = 1200, 3=2400, 4=4800, 5=9600, 6=19200, 7=38400, 8=57600, 9=115200 - Default baudrate for hand sanner sick1910i *)
+  	nDatabits      				: BYTE := 8;             								(*  8   *)
+  	eParity          				: ComParity_t;      								(* PARITY_NONE=0*)
+  	nStopbits             			: BYTE := 1;            								 (* 1  *)
+	tRXTimeOut				: TIME := T#0ms;
+	sReplacmentChar			: T_Char  := '';
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

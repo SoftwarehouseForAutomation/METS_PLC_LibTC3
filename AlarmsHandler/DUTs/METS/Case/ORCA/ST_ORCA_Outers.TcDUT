@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_ORCA_Outers" Id="{7203581f-5f54-43a2-8e5d-a09454fd6aa2}">
+    <Declaration><![CDATA[TYPE ST_ORCA_Outers :
+STRUCT
+	Code 	: STRING(255);
+	xPos		: INT;
+	yPos		: INT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

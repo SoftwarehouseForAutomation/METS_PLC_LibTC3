@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DB_OACDataCtrl" Id="{bd0eb1ae-7677-4e37-a200-7ff3ad801833}">
+    <Declaration><![CDATA[TYPE ST_DB_OACDataCtrl :
+STRUCT
+	bCreateDataReq				: BOOL;	(* C *)
+	bReadDataReq				: BOOL;	(* R *)
+	bUpdateDataReq				: BOOL;	(* U *)
+	bDeleteDataReq				: BOOL;	(* D *)
+
+	sFileCodeName				: T_MaxString;
+	
+	bBlockRecord				: BOOL;
+	bRestored					: BOOL;
+
+	stOACStatusDB				: ST_OUTER_Status;
+
+	bDone						: BOOL;
+	bError						: BOOL;
+	nErrorID					: UDINT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

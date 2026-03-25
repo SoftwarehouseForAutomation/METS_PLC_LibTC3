@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_ENOCDER_Name" Id="{0e592805-18bc-4c18-866e-92f0f7e47305}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_ENOCDER_Name :
+(
+	ENC_2CAM	:=1
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

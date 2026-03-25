@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_GS1_CodeInfo" Id="{ca7115a2-12ce-4aee-975f-7748ab9cb4d8}">
+    <Declaration><![CDATA[TYPE ST_GS1_CodeInfo :
+STRUCT
+	eCodeLvlType					:	E_GS1_CodeLvl;
+
+	nMinLength					: 	INT;
+	nEntireLength					:	INT;
+	bValidateEntireLength			: 	BOOL;
+	nNumberOfAIs					:	INT;
+
+	stGS1_Field 					: ARRAY[1..cMAX_VALIDATION_ITEMS] OF 	ST_GS1_CodeValidation	;
+
+	(*stGS1_Field01 				:	ST_GS1_CodeValidation	;
+	stGS1_Field02 					:	ST_GS1_CodeValidation	;
+	stGS1_Field03 					:	ST_GS1_CodeValidation	;
+	stGS1_Field04 					:	ST_GS1_CodeValidation	;
+	stGS1_Field05					:	ST_GS1_CodeValidation	;
+	stGS1_Field06					:	ST_GS1_CodeValidation	;
+	stGS1_Field07		 			:	ST_GS1_CodeValidation	;
+	stGS1_Field08					:	ST_GS1_CodeValidation	;
+	stGS1_Field09					:	ST_GS1_CodeValidation	;
+	stGS1_Field10					:	ST_GS1_CodeValidation	;*)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

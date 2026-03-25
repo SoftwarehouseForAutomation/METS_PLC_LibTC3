@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_ORCA_SiteInfo" Id="{1a92788f-f2dd-42b7-955c-42ed84d7e29a}">
+    <Declaration><![CDATA[TYPE ST_ORCA_SiteInfo :
+STRUCT
+
+	ProductionSite 			: STRING(255);
+	ProductionLine 		: STRING(255);
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_IO2_OutputCtrl" Id="{fecbf5ed-2572-4457-859b-9f1c83262995}">
+    <Declaration><![CDATA[TYPE ST_IO2_OutputCtrl :
+STRUCT
+	eTypeOutput		: E_IO2_Type;
+	tOutputDelayed	: TIME;
+	tOutputLocked		: TIME;
+	sOutputName		: STRING(40);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_BridgeStatus" Id="{ce9f4ab0-7ea0-4f94-b70e-579244a848bf}">
+    <Declaration><![CDATA[//{warning 'CONVERSION MESSAGE: This text contained unprintable characters, that have been deleted'.}
+TYPE ST_SYSTEM_BridgeStatus :
+STRUCT
+	sBridgeVersion				: STRING;
+	sFSSServerIpAddress 		: STRING :='10.16.16.27';
+	sFSSServerWebRequest	 	: T_MaxString :='Apriso/MessageProcessor/FlexNetMessageProcessor.asmx';
+	(*nFSSResponseTimeout		: TIME := t#60s;*)
+	nFSSResponseTimeout		: UINT := 60000;
+	nBridgeStatus 				: INT; (* Initialized = 0,           (TwincatInitialized = 1,            PLCVariablesInitialized = 2,            ReadProcessVariablesError = 3,            PCMReceiverInitialized = 4,            PCMReceiverRunning = 5,            PCMReceiverNewPCMArrived = 6,            Error = 7,            BridgeInCommissioningMode = 8,            BridgeConnectedToFSS = 9*)
+	nBridgeWatchdog 			: INT;
+	nBridgeTimeout 			: INT;
+	sFaultCodeDirectory 		: STRING :='C:/METS';
+	sFSSFaultCodeAge 			: INT :=10;
+	sFSSCHMDirectory 			: STRING:='C:/METS/CHM';
+	bCommissioningMode		: BOOL;
+	bFSSReportsError			: BOOL;
+	nFSSResendAttempts 		: INT :=5;
+
+	sLastFileTimeToDlogHMI 		: STRING(255);
+	sLastFileNameToDlogHMI 	: STRING(255);
+
+	sDBConnectionString		: STRING(50);
+	sLocalBridgePath			: T_FolderPath;
+	sLocalCACPath 				: T_FolderPath;
+
+	(*sBridgeUIPath :STRING := 'C:/METS/Bridge/METS_Bridge_UI/METS_Bridge_UI.exe';
+	sPLCSymbolsPath :STRING :='C:/METS/Bridge/METS_Bridge_Core/XML/PLC_Variables.xml';
+	sADSIp :STRING :='10.185.3.235.1.1';
+	sADSPort :STRING :='801';*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

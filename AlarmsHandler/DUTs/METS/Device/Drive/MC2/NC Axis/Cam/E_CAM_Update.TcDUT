@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_CAM_Update" Id="{60de5c6f-f350-4078-8a6e-a3d072ae8dd5}">
+    <Declaration><![CDATA[//{attribute 'qualified_only'}
+//{attribute 'strict'}
+TYPE E_CAM_Update : (
+	//E_CAM_IDLE,
+	//E_CAM_READCAMINFO,
+	//E_CAM_CALCULATECAM,
+	//E_CAM_WAITNEWDATA,
+	//E_CAM_SETCHANGEMODE,
+	//E_CAM_DOWNLOADTABLE,
+	//E_CAM_DONE
+	E_CAM_DUMMY
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

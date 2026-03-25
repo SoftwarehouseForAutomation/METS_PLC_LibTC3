@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_NC_EncDataIn" Id="{355f8a3d-dfc1-47ac-8c76-29a802738e48}">
+    <Declaration><![CDATA[TYPE ST_NC_EncDataIn :
+STRUCT
+	nInData1	: ARRAY[0..1] OF UINT;
+	nInData2	: ARRAY[0..1] OF UINT;
+	nStatus1	: BYTE;
+	nStatus2	: BYTE;
+	nStatus3	: BYTE;
+	nStatus4	: BYTE;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_00_StationStructTemplate" Id="{3f2083c8-d543-48dc-9e65-6fbde5a50fa8}">
+    <Declaration><![CDATA[TYPE ST_00_StationStructTemplate :
+STRUCT
+
+	e00SeqState		: E_00_StationStateTemplate;
+
+	REQ				: ST_STATION_Requests;
+	STAT				: ST_STATION_Status;
+
+(*Variable examles only*)
+(*
+	bPassthroughMode			:BOOL;
+
+	stBundleTracking				: ST_BundleTrackingRegister;
+	bTrigCamera					: BOOL;
+	bCameraDone					: BOOL;
+
+
+*)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

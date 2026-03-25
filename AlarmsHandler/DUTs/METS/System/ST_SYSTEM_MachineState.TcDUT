@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_MachineState" Id="{dc6aa5f8-f83e-4171-906a-4889af7ca59b}">
+    <Declaration><![CDATA[TYPE ST_SYSTEM_MachineState :
+STRUCT
+
+	bSystemPowerUp 				: BOOL;
+	bImmediateStopped 			: BOOL;
+	bMachineInError				: BOOL;
+	bSystemInitialising 			: BOOL;
+	bManualMode					: BOOL;
+	bSystemReadyToStart 			: BOOL;
+	bSystemCycleStopping			: BOOL;
+	bSystemRunning				: BOOL;
+	bMachineWaitingForProduct	: BOOL;
+	bMachineInConditionalRun	: BOOL;
+	bTrackAndTraceDeactivated	: BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

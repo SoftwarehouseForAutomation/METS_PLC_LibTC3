@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_PACK_ReadStep" Id="{d7ed43e4-8b0b-4f78-8a2a-d68153d59c9c}">
+    <Declaration><![CDATA[TYPE E_PACK_ReadStep :
+(
+	E_DISARMED,
+
+	E_RELAY_1,
+	E_RELAY_235,
+	E_RELAY_46,
+	E_RELAY_78,
+
+	E_2CAM_TRIG01,
+	E_2CAM_TRIG02,
+	E_2CAM_TRIG03,
+	E_2CAM_TRIG04,
+	E_2CAM_TRIG05,
+	E_2CAM_TRIG06,
+	E_2CAM_SEQDWELL
+
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

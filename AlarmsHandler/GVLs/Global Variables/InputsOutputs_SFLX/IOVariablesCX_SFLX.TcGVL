@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="IOVariablesCX_SFLX" Id="{4b889ced-85ec-48a7-9966-2b9dcf4576a8}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+(***************************Terminal States Diagnostic*****************************************************)
+
+	istEtherCATMasterState							AT	%I*	: ST_CX_EtherCATMasterState;
+	iaEtherCATSlaveState							AT 	%I*	: ARRAY [0..cMAX_ETHERCAT_SLAVES] OF UINT;
+
+(*****************************Input/Output Cards*********************************************************)
+
+	(*TERMINAL 45KF2 (EK1200-5000 EtherCAT Power supply (2A E-Bus)) ***************************************)
+
+	(*TERMINAL 50KF1 (EL6001 Interface (RS232))  ********1-Channel Serial Interface RS232***********************)
+	ib50A1_EL6001PortNo								AT %I* :  UINT;
+	ist50A1_HandScannerCOMPortDataIn				AT %I* :  EL6InData22B;
+	qst50A1_HandScannerCOMPortDataOut				AT %Q*: EL6OutData22B;
+
+	(*TERMINAL 60KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ib60KF1_1_Spare 								AT %I*: BOOL;
+	ib60KF1_5_Spare									AT %I*: BOOL;
+	ib60KF1_2_Spare									AT %I*: BOOL;
+	ib60KF1_6_Spare									AT %I*: BOOL;
+	ib60KF1_3_Spare 								AT %I*: BOOL;
+	ib60KF1_7_Spare									AT %I*: BOOL;
+	ib60KF1_4_Spare									AT %I*: BOOL;
+	ib60KF1_8_Spare 	 							AT %I*: BOOL;
+
+	(*TERMINAL 61KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ib61KF1_1_DoorOpenZone1_SFCP					AT %I*: BOOL;
+	ib61KF1_5_DoorOpenZone2_SFCP					AT %I*: BOOL;
+	ib61KF1_2_CasePackerAutoRun_SFCP  				AT %I*: BOOL;
+	ib61KF1_6_CaseRejected_SFCP		 				AT %I*: BOOL;
+	ib61KF1_3_RowComplete_SFCP  					AT %I*: BOOL;
+	ib61KF1_7_LayerComplete_SFCP  					AT %I*: BOOL;
+	ib61KF1_4_CaseComplete_SFCP  					AT %I*: BOOL;
+	ib61KF1_8_CaseDischarged_SFCP  					AT %I*: BOOL;
+
+	(*TERMINAL 62KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ib62KF1_1_Spare									AT %I*: BOOL;
+	ib62KF1_5_Spare 								AT %I*: BOOL;
+	ib62KF1_2_Spare 								AT %I*: BOOL;
+	ib62KF1_6_Spare 								AT %I*: BOOL;
+	ib62KF1_3_Spare									AT %I*: BOOL;
+	ib62KF1_7_Spare 								AT %I*: BOOL;
+	ib62KF1_4_Spare 								AT %I*: BOOL;
+	ib62KF1_8_Spare 								AT %I*: BOOL;
+
+	(*TERMINAL 63KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ib63KF1_1_24VPowerSupplyOK 						AT %I*: BOOL;
+	ib63KF1_5_EthernetSwitchOK 						AT %I*: BOOL;	 (* Option *)
+	ib63KF1_2_CaseLabelValidationTrig_SFCP 			AT %I*: BOOL;
+	ib63KF1_6_QAButtonRejectOuter_SFCP 				AT %I*: BOOL;
+	ib63KF1_3_IntermediatePush_SFCP 				AT %I*: BOOL;
+	ib63KF1_7_Spare									AT %I*: BOOL;
+	ib63KF1_4_CasePresentPrintAreaSensor			AT %I*: BOOL;	 (* Option *)
+	ib63KF1_8_CaseLeavingPrintAreaSensor			AT %I*: BOOL;	 (* Option *)
+
+	(*TERMINAL 64KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ib64KF1_1_MainsSupplyHealthy					AT %I*: BOOL;	(* UPS *)
+	ib64KF1_5_UPSHealthy							AT %I*: BOOL;	(* UPS *)
+	ib64KF1_2_UPSBatteryMode						AT %I*: BOOL;	(* UPS *)
+	ib64KF1_6_UPSBatteryCharging					AT %I*: BOOL;	(* UPS *)
+	ib64KF1_3_TransferConveyorPlugConnected			AT %I*: BOOL; (*LARS and SFLX*)
+	ib64KF1_7_OutfeedConveyorPlugConnected			AT %I*: BOOL;	(* SFLX*)
+	ib64KF1_4_Guard1 								AT %I*: BOOL; 	(* LARS Transfer Coveyor printer*)
+	ib64KF1_8_Guard2								AT %I*: BOOL; 	(* LARS Transfer Coveyor or pinch guard*)
+
+	(*TERMINAL 65KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ib65KF1_1_PSRisReset							AT %I*: BOOL;
+	ib65KF1_5_PSRisOK								AT %I*: BOOL;
+	ib65KF1_2_EmergencyStopFromPSR					AT %I*: BOOL;
+	ib65KF1_6_EmergencyCircuitFromPSR 				AT %I*: BOOL;
+	ib65KF1_3_Guard6									AT %I*: BOOL; 	(*  SFLX*)
+	ib65KF1_7_Guard3								AT %I*: BOOL; 	(*  SFLX*)
+	ib65KF1_4_Guard4								AT %I*: BOOL; 	(*  SFLX *)
+	ib65KF1_8_Guard5								AT %I*: BOOL; 	(*  SFLX*)
+
+	(*TERMINAL 66KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ib66KF1_1_Spare									AT %I*: BOOL;
+	ib66KF1_5_PreMachineInAutorun					AT %I*: BOOL;		(*coneccted - input in PreMachine plug 18DX1 *)
+	ib66KF1_2_PostMachineInAutorun					AT %I*: BOOL;		(*not coneccted - input in Safety plug 18DX2 *)
+	ib66KF1_6_Spare									AT %I*: BOOL;
+	ib66KF1_3_Spare									AT %I*: BOOL;
+	ib66KF1_7_Spare									AT %I*: BOOL;
+	ib66KF1_4_Spare									AT %I*: BOOL;
+	ib66KF1_8_Spare									AT %I*: BOOL;
+
+	(*TERMINAL 67KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ib67KF1_1_Spare									AT %I*: BOOL;
+	ib67KF1_5_Spare									AT %I*: BOOL;
+	ib67KF1_2_Spare									AT %I*: BOOL;
+	ib67KF1_6_Spare									AT %I*: BOOL;
+	ib67KF1_3_Spare									AT %I*: BOOL;
+	ib67KF1_7_Spare									AT %I*: BOOL;
+	ib67KF1_4_Spare									AT %I*: BOOL;
+	ib67KF1_8_Spare									AT %I*: BOOL;
+
+	(*TERMINAL 68KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ib68KF1_1_ReadyToPrint							AT %I*: BOOL;		(*M-Series Printer Ready*)
+	ib68KF1_5_BufferNotEmpty						AT %I*: BOOL;		(*M-Series Data Ready*)
+	ib68KF1_2_PrintDone								AT %I*: BOOL;		(*M-Series Label Printed*)
+	ib68KF1_6_PrinterWarning							AT %I*: BOOL;		(*M-Series Summary Warningy*)
+	ib68KF1_3_PrinterError							AT %I*: BOOL;		(*M-Series Summary Error*)
+	ib68KF1_7_Spare									AT %I*: BOOL;
+	ib68KF1_4_AdditionalConveyorPlugConnected	AT %I*: BOOL;
+	ib68KF1_8_Spare									AT %I*: BOOL;
+
+	(*TERMINAL 80KF1 (EL2008 8Ch. Dig. Output 24V, 0.5A) ******************************************************)
+	qb80KF1_1_LightPoleGREEN  						AT %Q*: BOOL;
+	qb80KF1_5_LightPoleAMBER  						AT %Q*: BOOL;
+	qb80KF1_2_LightPoleRED  						AT %Q*: BOOL;
+	qb80KF1_6_LightPoleALARM  						AT %Q*: BOOL;	 (* Option *)
+	qb80KF1_3_LightHandscannerBoxGreen 				AT %Q*: BOOL;	 (* Option *)
+	qb80KF1_7_LightHandscannerBoxRed  				AT %Q*: BOOL;	 (* Option *)
+	qb80KF1_4_Spare  								AT %Q*: BOOL;
+	qb80KF1_8_OuterRejectSignal   					AT %Q*: BOOL;	 (*Option nie uzywamy*)
+
+	(*TERMINAL 81KF1 (EL2008 8Ch. Dig. Output 24V, 0.5A) ******************************************************)
+	qb81KF1_1_SafetyReset	  						AT %Q*: BOOL;
+	qb81KF1_5_Spare 								AT %Q*: BOOL;
+	qb81KF1_2_PackSeperationDriveBrakeRelease		AT %Q*: BOOL;	 (* Option *)
+	qb81KF1_6_Spare 								AT %Q*: BOOL;
+	qb81KF1_3_Spare									AT %Q*: BOOL;
+	qb81KF1_7_PreMachineAddditionalCutOut			AT %Q*: BOOL;	 (* Option *)
+	qb81KF1_4_PreMachineCutOut						AT %Q*: BOOL;(*coneccted - output in PreMachine plug 18DX1 *)
+	qb81KF1_8_PostMachineRun	 					AT %Q*: BOOL;		(* not coneccted - output in Safety plug 18DX2 *)
+
+	(*TERMINAL 82KF1 (EL2008 8Ch. Dig. Output 24V, 0.5A) ******************************************************)
+	qb82KF1_1_CutOut_STCP		  					AT %Q*: BOOL;
+	qb82KF1_5_CaseValidationOK_STCP					AT %Q*: BOOL;
+	qb82KF1_2_OuterValidationOK_STCP 				AT %Q*: BOOL;
+	qb82KF1_6_CaseContentOK_STCP					AT %Q*: BOOL;
+	qb82KF1_3_LabellerInhibit_STL					AT %Q*: BOOL;
+	qb82KF1_7_RejectSignal3_STL 					AT %Q*: BOOL;	(* Option *)
+	qb82KF1_4_Miscellaneous_STL						AT %Q*: BOOL;	(* Option *)
+	qb82KF1_8_Spare			 						AT %Q*: BOOL;
+
+	(*TERMINAL 83KF1 (EL2008 8Ch. Dig. Output 24V, 0.5A) ******************************************************)
+	qb83KF1_1_Spare									AT %Q*: BOOL;
+	qb83KF1_5_Spare									AT %Q*: BOOL;
+	qb83KF1_2_Spare									AT %Q*: BOOL;
+	qb83KF1_6_Spare									AT %Q*: BOOL;
+	qb83KF1_3_Spare									AT %Q*: BOOL;
+	qb83KF1_7_Spare									AT %Q*: BOOL;
+	qb83KF1_4_Spare									AT %Q*: BOOL;
+	qb83KF1_8_Spare			 						AT %Q*: BOOL;
+
+	(*TERMINAL 90KF1 (EL2624 4Ch. Relay Output, 125 V AC, 30 V DC, 0.5 A AC, 2 A DC)******************)
+	qb90KF1_1_PrintingEnableSignal						AT %Q*: BOOL;		(*M-Series Print*)
+	qb90KF1_2_AlarmQuiteSignal							AT %Q*: BOOL;		(*M-Series Reset*)
+	qb90KF1_3_ProductDetectSignal						AT %Q*: BOOL;		(*M-Series Apply*)
+	qb90KF1_4_Spare										AT %Q*: BOOL;
+
+
+	(*TERMINAL 97KF1 - EL6631 -  PROFINET IO Controller ********************************************************)
+	ist97KF1_Master01PNetState 						AT %I* : ST_CX_EtherCATMasterPNetState;
+
+	(*DRIVE  3T1  - G120C ************************************************************************************)
+	ist3T1_outerseparation							AT %I* : ST_DRIVE_INPUT;
+	qst3T1_outerseparation							AT %Q* : ST_DRIVE_OUTPUT;
+
+	(*DRIVE  4T1  - G120C ************************************************************************************)
+	ist4T1_transferconveyor							AT %I* : ST_DRIVE_INPUT;
+	qst4T1_transferconveyor							AT %Q* : ST_DRIVE_OUTPUT;
+
+	(*DRIVE  5T1  - G120C ************************************************************************************)
+	ist5T1_outfeedconveyor							AT %I* : ST_DRIVE_INPUT;
+	qst5T1_outfeedconveyor							AT %Q* : ST_DRIVE_OUTPUT;
+
+	(*DRIVE  6T1  - G120C ************************************************************************************)
+	ist6T1_additionalconveyor						AT %I* : ST_DRIVE_INPUT;
+	qst6T1_additionalconveyor					AT %Q* : ST_DRIVE_OUTPUT;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

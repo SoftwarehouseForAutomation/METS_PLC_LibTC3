@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_KeyPadDisplay" Id="{dd7e4bf4-9597-402d-919f-6b4dd8356166}">
+    <Declaration><![CDATA[TYPE ST_KeyPadDisplay :
+STRUCT
+	sTopLine                         :STRING[12];
+    	sTopLineUnit                  :STRING[5];
+   	rBottomLine                     :REAL;
+    	sBottomLineUnit            :STRING[5];
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_XML_GeneratorState" Id="{dd73a691-6d59-4d03-afa4-adb6d96e5716}">
+    <Declaration><![CDATA[TYPE E_XML_GeneratorState :
+(
+	E_XML_GENERATOR_IDLE,
+	E_XML_GENERATE_HEAD_CHM,
+	E_XML_DONE_HEAD_CHM,
+	E_XML_GENERATE_BODY_CHM,
+	E_XML_DONE_BODY_CHM,
+	E_XML_GENERATE_ENDING_CHM,
+	E_XML_DONE_ENDING_CHM,
+	E_XML_GENERATE_GMES,
+	E_XML_DONE_GMES,
+	E_XML_GENERATE_FLG,
+	E_XML_DONE_FLG,
+	E_XML_GENERATE_GMES_FLG,
+	E_XML_DONE_GMES_FLG,
+	E_XML_GENERATOR_DONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

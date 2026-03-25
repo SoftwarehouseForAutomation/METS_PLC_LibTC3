@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_ORCA_Data" Id="{f0235477-1ea0-4f38-b49c-ae7052c07790}">
+    <Declaration><![CDATA[TYPE ST_ORCA_Data :
+STRUCT
+	SiteInfo 				: ST_ORCA_SiteInfo;
+	BrandInfo 			: ST_ORCA_BrandInfo;
+	ProductInfo			: ST_ORCA_ProductInfo;
+	Outers				: ARRAY[1..60] OF ST_ORCA_Outers;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

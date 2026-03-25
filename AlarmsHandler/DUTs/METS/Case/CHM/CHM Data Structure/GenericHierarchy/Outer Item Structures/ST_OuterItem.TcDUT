@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_OuterItem" Id="{eee69505-212a-427e-88ca-b466ce3b1268}">
+    <Declaration><![CDATA[TYPE ST_OuterItem :
+STRUCT
+	Identity				: 	ST_OuterIdentity;
+	ItemState				:	STRING(15);
+	RejectReason			: T_FSS_RejecCode;
+	TimeStamp				: T_ISO8601Time;
+	NoRead				:	STRING(5);
+	Content				:	ST_OuterContent;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

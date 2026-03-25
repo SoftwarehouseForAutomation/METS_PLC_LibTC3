@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_PrinterCtrl" Id="{2fe0972b-79c7-4da8-a132-1d9ab1bfdc22}">
+    <Declaration><![CDATA[TYPE ST_HMI_PrinterCtrl :
+STRUCT
+	stPrinterSelect		: ST_HMI_Buttons;
+	stPrintLabel		: ST_HMI_Buttons;
+	stApplyLabel		: ST_HMI_Buttons;	(*Button start positioning manual mode*)
+	stPrinterReset		: ST_HMI_Buttons;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

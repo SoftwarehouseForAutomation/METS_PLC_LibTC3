@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CasePackerInfo" Id="{8d236e61-07ba-4fcb-ac04-03c5560ea14e}">
+    <Declaration><![CDATA[TYPE ST_CasePackerInfo :	(* 8 bytes *)
+STRUCT
+	ProductionSite 	: STRING(4);
+	ProductionLine 	: STRING(4);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

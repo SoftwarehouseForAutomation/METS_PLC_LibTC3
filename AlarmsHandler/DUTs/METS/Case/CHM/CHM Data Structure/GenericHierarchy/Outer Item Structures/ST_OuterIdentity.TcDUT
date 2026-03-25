@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_OuterIdentity" Id="{6870b40a-7ea1-4247-8971-000e7f233e04}">
+    <Declaration><![CDATA[TYPE ST_OuterIdentity :
+STRUCT
+
+		ID			:STRING(cMAX_CHM_OUTERID_LENGHT);
+		URL		:T_CodeURL;
+		ReadQuality	:STRING(6);
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

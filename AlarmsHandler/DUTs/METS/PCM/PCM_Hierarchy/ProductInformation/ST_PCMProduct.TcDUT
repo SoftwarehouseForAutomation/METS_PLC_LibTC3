@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PCMProduct" Id="{aa06421f-be09-4d70-963e-ed1d9371da0a}">
+    <Declaration><![CDATA[//{attribute 'pack_mode' := '8'}
+TYPE ST_PCMProduct :
+STRUCT
+	EndMarket			: 	STRING(10);
+	BatchID			:	T_CodeBATCH;
+	ProductionOrder	:	T_CodePO;
+	OuterType			: 	STRING(5);
+	PITCode			:	T_CodePIT;
+
+	HierarchyDataList	:	ST_HierarchyDataList;
+
+	UoM				:	STRING(5);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_TriggerID" Id="{03403db2-fb77-423a-b1ad-d6384017e47e}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_TriggerID :
+STRUCT
+	nTriggerID			: UDINT;
+	nScanNo				: INT := 1;
+	nScannerIndex		: INT := 1;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

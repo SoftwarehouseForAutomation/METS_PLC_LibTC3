@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="IOVariablesPACAN_CML" Id="{2cfe84a8-bc63-4391-b1c3-01dee2c39d9f}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+(*TERMINAL 860KF1 - EL1008 ***********************************************************************)
+	ib860KF1_1_FockeSignalPackAggregationTriggerCAM1			AT %I* : BOOL; (* 860KF1_1 *)
+	ib860KF1_5_FockeSignalPackAggregationTriggerCAM2			AT %I* : BOOL; (* 860KF1_5 *)
+	ib860KF1_2_FockeSignalPackAggregationTriggerCAM3			AT %I* : BOOL; (* 860KF1_2 *)
+	ib860KF1_6_FockeSignalAutoRun								AT %I* : BOOL; (* 860KF1_6 *)
+	ib860KF1_3_FockeSignalServoIndex 							AT %I* : BOOL; (* 860KF1_3 *)
+	ib860KF1_7_FockeSignalMachineIndex 							AT %I* : BOOL; (* 860KF1_7 *)
+	ib860KF1_4_FockeSignalPackRejected 							AT %I* : BOOL; (* 860KF1_4 *)
+	ib860KF1_8_Spare 											AT %I* : BOOL; (* 860KF1_8 *)
+
+(*TERMINAL 861KF1 - EL1008 ***********************************************************************)
+	ib861KF1_1_FockeSignalStackerIndex							AT %I* : BOOL; (* 861KF1_1 *)
+	ib861KF1_5_FockeSignalStackerIndex2							AT %I* : BOOL; (* 861KF1_5 *)
+	ib861KF1_2_FockeSignalFilmIndex								AT %I* : BOOL; (* 861KF1_2 *)
+	ib861KF1_6_FockeSignalMasterListTrigger						AT %I* : BOOL; (* 861KF1_6 *)
+	ib861KF1_3_FockeSignalTriggerBackupCAM1_3					AT %I* : BOOL; (* 861KF1_3 *)
+	ib861KF1_7_FockeSignalElevatorCameraTrigger					AT %I* : BOOL; (* 861KF1_7 *)
+	ib861KF1_4_FockeSignalIntermediateCameraTrigger				AT %I* : BOOL; (* 861KF1_4 *)
+	ib861KF1_8_FockeSignalTriggerBackupCAM1_3					AT %I* : BOOL; (* 861KF1_8 *)
+
+(*TERMINAL 862KF1 - EL1008 ***********************************************************************)
+	ib862KF1_1_FockeSignalPushIntoTurret						AT %I* : BOOL; (* 862KF1_1 *)
+	ib862KF1_5_FockeSignalBuildBack								AT %I* : BOOL; (* 862KF1_5 *)
+	ib862KF1_2_FockeSignalInfeedServoRunning					AT %I* : BOOL; (* 862KF1_2 *)
+	ib862KF1_6_FockeSignalOuterAccepted							AT %I* : BOOL; (* 862KF1_6 *)
+	ib660KF1_3_FockeSignalMachineRunning						AT %I* : BOOL; (* 862KF1_3 *)
+	ib862KF1_7_FockeSignalFilmPresent							AT %I* : BOOL; (* 862KF1_7 *)
+	ib862KF1_4_FockeSignalLightControlCamera					AT %I* : BOOL; (* 862KF1_4 *)
+	ib862KF1_8_FockeSignalPrinterReady							AT %I* : BOOL; (* 862KF1_8 *)
+
+(*TERMINAL 863KF1 - EL1008 ***********************************************************************)
+	ib863KF1_1_FockeSignalRefeedServo							AT %I* : BOOL; (* 863KF1_1 *)
+	ib863KF1_5_Spare											AT %I* : BOOL; (* 863KF1_5 *)
+	ib863KF1_2_Spare											AT %I* : BOOL; (* 863KF1_2 *)
+	ib863KF1_6_Spare											AT %I* : BOOL; (* 863KF1_6 *)
+	ib863KF1_3_24VDCOK											AT %I* : BOOL; (* 863KF1_3 *)
+	ib863KF1_7_Spare											AT %I* : BOOL; (* 863KF1_7 *)
+	ib863KF1_4_Spare											AT %I* : BOOL; (* 863KF1_4 *)
+	ib863KF1_8_Spare											AT %I* : BOOL; (* 863KF1_8 *)
+
+
+(*TERMINAL 880KF1 - EL2008 ************************************************************************)
+	qb880KF1_1_SignalToFockeReady								AT %Q* : BOOL; (* 880KF1_1 *)
+	qb880KF1_5_SignalToFockeCutOut								AT %Q* : BOOL; (* 880KF1_5 *)
+	qb880KF1_2_SignalToFockeRejectOuter							AT %Q* : BOOL; (* 880KF1_2 *)
+	qb880KF1_6_SignalToFockeRejectLimitReachedTrigger			AT %Q* : BOOL; (* 880KF1_6 *)
+	qb880KF1_3_SignalToFockeDynamicCameraTriggerPower			AT %Q* : BOOL; (* 880KF1_3 *)
+	qb880KF1_7_Spare											AT %Q* : BOOL; (* 880KF1_7 *)
+	qb880KF1_4_Spare											AT %Q* : BOOL; (* 880KF1_4 *)
+	qb880KF1_8_Spare											AT %Q* : BOOL; (* 880KF1_8 *)
+
+(*TERMINAL 881KF1 - EL2008 ************************************************************************)
+	qb881KF1_1_MasterListCameraPower							AT %Q* : BOOL; (* 881KF1_1 *)
+	qb881KF1_5_MasterListCameraTrigger							AT %Q* : BOOL; (* 881KF1_5 *)
+	qb881KF1_2_AggregationCamera1Power							AT %Q* : BOOL; (* 881KF1_2 *)
+	qb881KF1_6_AggregationCamera1Trigger						AT %Q* : BOOL; (* 881KF1_6 *)
+	qb881KF1_3_AggregationCamera2Power							AT %Q* : BOOL; (* 881KF1_3 *)
+	qb881KF1_7_AggregationCamera2Trigger						AT %Q* : BOOL; (* 881KF1_7 *)
+	qb881KF1_4_AggregationCamera3Power							AT %Q* : BOOL; (* 881KF1_4 *)
+	qb881KF1_8_AggregationCamera3Trigger						AT %Q* : BOOL; (* 881KF1_8 *)
+
+(*TERMINAL 882KF1 - EL2008 ************************************************************************)
+	qb882KF1_1_LightPoleGreen									AT %Q* : BOOL; (* 882KF1_1 *)
+	qb882KF1_5_LightPoleAmber									AT %Q* : BOOL; (* 882KF1_5 *)
+	qb882KF1_2_LightPoleRed										AT %Q* : BOOL; (* 882KF1_2 *)
+	qb882KF1_6_LightPoleAlarm									AT %Q* : BOOL; (* 882KF1_6 *)
+	qb882KF1_3_Spare											AT %Q* : BOOL; (* 882KF1_3 *)
+	qb882KF1_7_Spare											AT %Q* : BOOL; (* 882KF1_7 *)
+	qb882KF1_4_Spare											AT %Q* : BOOL; (* 882KF1_4 *)
+	qb882KF1_8_Spare											AT %Q* : BOOL; (* 882KF1_8 *)
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

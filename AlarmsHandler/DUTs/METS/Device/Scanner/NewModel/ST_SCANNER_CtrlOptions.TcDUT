@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_CtrlOptions" Id="{ec15caaf-bc5d-4f18-bac4-0f213643f5ad}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_CtrlOptions :
+STRUCT
+	eScannerType			: E_SCANNER_DeviceType;
+	nImageBuffer			: INT;
+	(*nSequenceProgs		: BYTE;*)
+	bUseExternalLight		: BOOL;
+	nExpectedResp			: INT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

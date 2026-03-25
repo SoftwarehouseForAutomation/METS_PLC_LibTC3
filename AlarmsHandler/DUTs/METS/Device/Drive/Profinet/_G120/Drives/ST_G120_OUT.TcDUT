@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_G120_OUT" Id="{ce9d8bff-c5ef-49f3-ba66-db9543608731}">
+    <Declaration><![CDATA[TYPE ST_G120_OUT :
+(*
+Version history:
+Date		|	Version/Author 		|	Remark
+----------------------------------------------------------------------------------------------------
+09.02.18	|	2.000.016	PSA		|	Original Version.
+									|	Siemens G120 drive control output structure
+*)
+STRUCT
+	xReadyForSwitchingOn		: BOOL;
+	xReady							: BOOL;
+	xOperationEnable				: BOOL;
+	xPowerOnInhibit					: BOOL;
+	xFault							: BOOL;
+	xAlarm							: BOOL;
+	rActualSpeed					: REAL;
+	rCurrent						: REAL;
+	rTorque							: REAL;
+	iWarningCode					: UINT;
+	iFaultCode						: UINT;
+	stExt							: ST_G120_ExtendedOut;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

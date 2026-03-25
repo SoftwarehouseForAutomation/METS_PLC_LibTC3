@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PackIdentity" Id="{941adef5-d4cf-4b8a-b909-02d3b3f0e1de}">
+    <Declaration><![CDATA[TYPE ST_PackIdentity :
+STRUCT
+
+		ID			:STRING(cMAX_CHM_PACKID_LENGHT);
+		URL		:T_CodeURL;
+		ReadQuality	:STRING(6);
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

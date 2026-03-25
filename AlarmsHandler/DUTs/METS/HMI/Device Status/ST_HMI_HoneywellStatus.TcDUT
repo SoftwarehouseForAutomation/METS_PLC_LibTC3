@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_HoneywellStatus" Id="{b26faea6-bcc1-43a7-8192-fa45b78bdd68}">
+    <Declaration><![CDATA[TYPE ST_HMI_HoneywellStatus :
+STRUCT
+
+(* read only *)
+	bHandScanerPortOK			: BOOL;
+	bHandScannerBaudrateOK	: BOOL;
+	sLastScannerBarcode		: T_MaxString;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

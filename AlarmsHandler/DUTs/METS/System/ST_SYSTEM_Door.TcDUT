@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_Door" Id="{25e34554-b43e-4e55-b7f2-69a3821f8eeb}">
+    <Declaration><![CDATA[TYPE ST_SYSTEM_Door :
+STRUCT
+	bClearConveyorQueue						: BOOL;
+	bClearPackerQueue							: BOOL;
+	aClearCaseQueue							: ARRAY[1..cMAX_CASE_QUEUE] OF BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

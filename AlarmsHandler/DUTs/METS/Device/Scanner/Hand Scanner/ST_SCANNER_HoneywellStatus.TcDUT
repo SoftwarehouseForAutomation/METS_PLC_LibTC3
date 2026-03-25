@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_HoneywellStatus" Id="{99c02ef8-273b-4e2e-bce7-6bdb0dee2e5e}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_HoneywellStatus :
+STRUCT
+	bStringReceived			: BOOL;
+	bExtStringReceived			: BOOL;
+	bHandScanerPortOK			: BOOL;
+	bHandScannerBaudrateOK	: BOOL;
+	sLastScannerBarcode		: STRING(255);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

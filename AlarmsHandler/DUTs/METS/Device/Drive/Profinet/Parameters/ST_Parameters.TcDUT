@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_Parameters" Id="{98003dff-dc06-4226-8f3a-0d7c95e8e9d0}">
+    <Declaration><![CDATA[TYPE ST_Parameters :
+STRUCT
+	astParameterList                :ARRAY[1..cPARAMETER_STORAGE_SIZE]OF ST_Parameter;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

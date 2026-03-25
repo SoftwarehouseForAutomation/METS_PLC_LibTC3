@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_OHM_Filename" Id="{fb049b48-4f96-416a-950a-f2f0aac9e93f}">
+    <Declaration><![CDATA[TYPE T_OHM_Filename : STRING(44);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

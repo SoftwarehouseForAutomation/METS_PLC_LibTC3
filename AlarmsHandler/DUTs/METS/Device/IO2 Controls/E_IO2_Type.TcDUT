@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_IO2_Type" Id="{e68513ab-47e5-48b0-bfcf-e15080969b49}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_IO2_Type :
+(
+	BLOCKED	:= 0,
+	NO := 1,
+	NC := 2
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

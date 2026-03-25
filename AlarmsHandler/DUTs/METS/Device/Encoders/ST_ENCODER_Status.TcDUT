@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_ENCODER_Status" Id="{b77340e5-cb0f-4586-a464-a2dea8e91189}">
+    <Declaration><![CDATA[  TYPE ST_ENCODER_Status :
+STRUCT
+
+	I					: ST_ENCODER_IN;
+	Q					: ST_ENCODER_OUT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CYLINDER_TagID" Id="{f578e442-587f-4a61-b08d-84f823fb53fa}">
+    <Declaration><![CDATA[TYPE ST_CYLINDER_TagID :
+STRUCT
+	sDeviceTagID			: STRING(10);
+	sRetractTagID			: STRING(10);
+	sExtendTagID			: STRING(10);
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

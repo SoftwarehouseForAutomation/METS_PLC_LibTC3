@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_OAC_State" Id="{c38617c1-ae9c-4864-9a63-87f822dfc0c1}">
+    <Declaration><![CDATA[TYPE E_OAC_State :
+(
+	E_OAC_IDLE,
+	E_OAC_HEADER,
+	E_OAC_PACKDATA,
+	E_OAC_MOVENAS,
+	E_OAC_MOVELOCAL,
+	E_OAC_VALIDATEOUTER,
+	E_OAC_VALIDATEPACK,
+	E_OAC_DBREQUEST,
+	E_OAC_DBRESPONSE,
+	E_OAC_READFILE,
+	E_OAC_FINDFILE,
+	E_OAC_DELETEFILE,
+	E_OAC_DONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

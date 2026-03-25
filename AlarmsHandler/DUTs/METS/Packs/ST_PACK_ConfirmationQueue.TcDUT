@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PACK_ConfirmationQueue" Id="{212066c5-ac48-447f-896d-dde7c4fb923b}">
+    <Declaration><![CDATA[TYPE ST_PACK_ConfirmationQueue :
+STRUCT
+
+	nIndex				: INT;				(* number of Outers in queue *)
+	sLastBarcode			: ST_SCANNER_ImageData;	(* last Outer barcode added to Infeed Queue *)
+	aPackQueue			: ARRAY[1..10] OF ST_SCANNER_ImageData; (* Infeed queue *)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

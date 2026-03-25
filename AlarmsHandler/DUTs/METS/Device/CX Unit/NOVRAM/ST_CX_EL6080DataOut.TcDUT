@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CX_EL6080DataOut" Id="{41142290-0554-4710-b4fe-1f911e42e8dd}">
+    <Declaration><![CDATA[TYPE ST_CX_EL6080DataOut :
+STRUCT
+	nControl		: UINT;
+	arrData			: ARRAY[0..1277] OF BYTE;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

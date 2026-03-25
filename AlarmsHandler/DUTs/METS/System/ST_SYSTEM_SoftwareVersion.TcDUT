@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_SoftwareVersion" Id="{7591316a-6db5-4e7b-a133-ab34a4ff1cdb}">
+    <Declaration><![CDATA[TYPE ST_SYSTEM_SoftwareVersion :
+STRUCT
+	sPLCVersionHMI					: STRING;
+	sScreenVersionInfoHMI				: STRING;
+	sBridgeVersionHMI					: STRING;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

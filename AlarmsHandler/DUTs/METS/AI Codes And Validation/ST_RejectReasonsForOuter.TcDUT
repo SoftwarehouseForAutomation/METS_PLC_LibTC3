@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_RejectReasonsForOuter" Id="{992022e6-d155-4220-b077-4b0c944d7164}">
+    <Declaration><![CDATA[TYPE ST_RejectReasonsForOuter :
+STRUCT
+	stOuterBarcodeGtinError:		ST_RejectItems :=(	nRejectID := 201,
+															sMetsDisplayCode:='Outer code invalid GTIN',
+															sMetsSearchCode:='GTIN',
+															sFssSendCode:='WrongMasterData');
+
+	stOuterBarcodeRskuError:	ST_RejectItems :=(	nRejectID := 202,
+															sMetsDisplayCode:='Outer code invalid RSKU',
+															sMetsSearchCode:='RSKU',
+															sFssSendCode:='WrongMasterData');
+
+	stOuterCodeSerialError:		ST_RejectItems :=(	nRejectID := 203,
+															sMetsDisplayCode:='Outer code invalid lenght Serial Code',
+															sMetsSearchCode:='Serial',
+															sFssSendCode:='Validation_BadCode');
+
+	stOuterBarcodeInvalidLength:	ST_RejectItems :=(	nRejectID := 204,
+															sMetsDisplayCode:='Outer code invalid Length',
+															sMetsSearchCode:='Length',
+															sFssSendCode:='Validation_BadCode');
+
+	stOuterBarcodeNotRead:		ST_RejectItems :=(	nRejectID := 205,
+															sMetsDisplayCode:='Outer Label Code Not Read',
+															sMetsSearchCode:='Outer Label Code Not Read',
+															sFssSendCode:='NoReadOuter');
+
+	stOuterBarcodeDuplicate:	ST_RejectItems :=(	nRejectID := 206,
+															sMetsDisplayCode:='Outer code duplicate',
+															sMetsSearchCode:='code duplicate',
+															sFssSendCode:='Validation_OuterDup');
+
+	stOuterDataNotFound:		ST_RejectItems :=(	nRejectID := 207,
+															sMetsDisplayCode:='Outer data (OAC) not found',
+															sMetsSearchCode:='(OAC) not found',
+															sFssSendCode:='NoReadOuterData');
+
+	stOuterGeneralCodeError:	ST_RejectItems :=(	nRejectID := 208,
+															sMetsDisplayCode:='No Codes Read At Aggregation Station',
+															sMetsSearchCode:='No Codes Read At Aggregation Station',
+															sFssSendCode:='Validation_General');
+
+	stOuterTimeOutValidation:	ST_RejectItems :=(	nRejectID := 209,
+															sMetsDisplayCode:='Outer Validation Timeout',
+															sMetsSearchCode:='Validation Timeout',
+															sFssSendCode:='Validation_General');
+
+(*Outer general erros related to pack codes only - barcode validation - OK*)
+
+	stOuterDuplicatedPackCodesFound:		ST_RejectItems :=(	nRejectID := 210,
+															sMetsDisplayCode:='Outer contain duplicate pack codes',
+															sMetsSearchCode:='duplicate pack codes',
+															sFssSendCode:='Validation_PackDup');
+
+	stOuterPackCodeDataNotFound:		ST_RejectItems :=(	nRejectID := 211,
+															sMetsDisplayCode:='Outer - Pack codes data (OCV) not found',
+															sMetsSearchCode:='OCV',
+															sFssSendCode:='NoPacksCodeData');
+
+	stOuterConfirmCodeNotRead:			ST_RejectItems :=(	nRejectID := 212,
+															sMetsDisplayCode:= 'Interim code(s) not read',
+															sMetsSearchCode:='Interim code(s) not read',
+															sFssSendCode:='NoPackCodeData');
+
+	stOuterPackCodeNotRead:				ST_RejectItems :=(	nRejectID := 213,
+															sMetsDisplayCode:= 'Outer acceptance level - n1 of n2 pack codes read',
+															sMetsSearchCode:='acceptance level',
+															sFssSendCode:='Tolerance_PackNoRead');
+
+	stOuterPackCodeInvalid:				ST_RejectItems :=(	nRejectID := 214,
+															sMetsDisplayCode:= 'Outer - invalid pack code(s) found',
+															sMetsSearchCode:='Outer - invalid pack',
+															sFssSendCode:='Tolerance_PackInv');
+
+(*Outer external rejeqt for quality - barcode validation - OK, pack codes(s) validation - OK*)
+
+	stOuterQAReject:			ST_RejectItems :=(	nRejectID := 215,
+															sMetsDisplayCode:='Outer QA Reject',
+															sMetsSearchCode:='QA',
+															sFssSendCode:='QA_Reject');
+
+	stOuterPackCodeDBError:				ST_RejectItems :=(	nRejectID := 216,
+															sMetsDisplayCode:= 'Number Pack code not found - n1 of n2 - DB Error',
+															sMetsSearchCode:='pack codes DB Error',
+															sFssSendCode:='Validation_BadDB');
+
+	stOuterBarcodeDBError:				ST_RejectItems :=(	nRejectID := 217,
+															sMetsDisplayCode:= 'Outer code not found  - DB Error',
+															sMetsSearchCode:='Outer code DB Error',
+															sFssSendCode:='Validation_BadDB');
+
+	stOuterCodesBrandSpecError	:		ST_RejectItems :=(	nRejectID := 218,
+														sMetsDisplayCode:='Outer code invalid Brand',
+														sMetsSearchCode:='Outer code invalid Brand',
+														sFssSendCode:='Validation_BadCode');
+
+
+	stUnknownOuterReject:		ST_RejectItems :=(	nRejectID := 200,
+															sMetsDisplayCode:='',
+															sMetsSearchCode:='',
+															sFssSendCode:='UnknownReason');
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

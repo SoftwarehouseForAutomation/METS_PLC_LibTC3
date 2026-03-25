@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AFS60_Status" Id="{b3f68b71-3f98-4c36-a5ef-896932da7f7e}">
+    <Declaration><![CDATA[TYPE ST_AFS60_Status :
+STRUCT
+	fActualValue					: LREAL;
+	fTemp							: LREAL;
+	nMsecUpTime					: UDINT;
+	bCam1							: BOOL;
+	bCam2							: BOOL;
+	bCam3							: BOOL;
+	bCam4							: BOOL;
+	bCam5							: BOOL;
+	bCam6							: BOOL;
+	bCam7							: BOOL;
+	bCam8							: BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

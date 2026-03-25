@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="IOVarDT_H" Id="{3e18991b-7954-41db-91ea-aac87d955f5a}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	
+	(***************************Terminal States Diagnostic*****************************************************)
+
+	istEtherCATMasterState								AT	%I*	: ST_CX_EtherCATMasterState;
+	iaEtherCATSlaveState								AT 	%I*	: ARRAY [0..cMAX_ETHERCAT_SLAVES] OF UINT;
+
+(*****************************Input/Output Cards*********************************************************)
+
+	(*TERMINAL DTKF1 (EK1100 EtherCAT Power supply (2A E-Bus)) ***************************************)
+
+
+	(*TERMINAL DT01KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ibDT01KF1_1_EL1008									AT %I*: BOOL;
+	ibDT01KF1_5_EL1008									AT %I*: BOOL;
+	ibDT01KF1_2_EL1008									AT %I*: BOOL;
+	ibDT01KF1_6_EL1008									AT %I*: BOOL;
+	ibDT01KF1_3_EL1008 									AT %I*: BOOL;
+	ibDT01KF1_7_EL1008									AT %I*: BOOL;
+	ibDT01KF1_4_EL1008									AT %I*: BOOL;
+	ibDT01KF1_8_EL1008 	 								AT %I*: BOOL;
+	
+	(*TERMINAL DT02KF1 (EL1008 8Ch. Dig. Input 24V, 3ms) ******************************************************)
+	ibDT02KF1_1_EL1008									AT %I*: BOOL;
+	ibDT02KF1_5_EL1008									AT %I*: BOOL;
+	ibDT02KF1_2_EL1008									AT %I*: BOOL;
+	ibDT02KF1_6_EL1008									AT %I*: BOOL;
+	ibDT02KF1_3_EL1008 									AT %I*: BOOL;
+	ibDT02KF1_7_EL1008									AT %I*: BOOL;
+	ibDT02KF1_4_EL1008									AT %I*: BOOL;
+	ibDT02KF1_8_EL1008	 								AT %I*: BOOL;
+	
+	(*TERMINAL DT03KF1 (EL2008 8Ch. Dig. Output 24V, 0.5A) ******************************************************)
+	qbDT03KF1_1_EL2008									AT %Q*: BOOL;
+	qbDT03KF1_5_EL2008									AT %Q*: BOOL;
+	qbDT03KF1_2_EL2008									AT %Q*: BOOL;
+	qbDT03KF1_6_EL2008									AT %Q*: BOOL;
+	qbDT03KF1_3_EL2008									AT %Q*: BOOL;
+	qbDT03KF1_7_EL2008									AT %Q*: BOOL;
+	qbDT03KF1_4_EL2008									AT %Q*: BOOL;
+	qbDT03KF1_8_EL2008									AT %Q*: BOOL;
+	
+	(*TERMINAL DT04KF1 (EL2624 4Ch. Relay Output, 125 V AC, 30 V DC, 0.5 A AC, 2 A DC)******************)
+	qbDT04KF1_1_EL2624									AT %Q*: BOOL;
+	qbDT04KF1_2_EL2624									AT %Q*: BOOL;
+	qbDT04KF1_3_EL2624									AT %Q*: BOOL;
+	qbDT04KF1_4_EL2624									AT %Q*: BOOL;
+	
+	(*TERMINAL DT05KF1 (EL6001 Interface (RS232))  ********1-Channel Serial Interface RS232***********************)
+	ibDT05KF1_EL6001_PortNo								AT %I*: UINT;
+	istDT05KF1_EL6001_COMPortDataIn						AT %I*: EL6InData22B;
+	qstDT05KF1_EL6001_COMPortDataOut					AT %Q*: EL6OutData22B;
+	
+	(*TERMINAL DT06KF1 (EL9410 EtherCAT Power supply extension (2A E-Bus)) **************************************)
+
+	ibDT06KF1_EL9410_UndervoltageEBus					AT%I*: BOOL;
+	ibDT06KF1_EL9410_Undervoltage						AT%I*: BOOL;
+	
+	(*TERMINAL DT07KF1 (EL9505 Power supply terminal 5V) ***************5V Power Supplay***********************)
+
+	ibDT07KF1_EL9505_PowerStatusOK						AT%I*: BOOL;
+	ibDT07KF1_EL9505_PowerOverloaded					AT%I*: BOOL;
+	
+	
+	
+	
+	(*TERMINAL DTKF2 (EK1100 EtherCAT Power supply (2A E-Bus)) ***********************************************)
+	
+	
+	(*TERMINAL DT01KF2 (EL7031-0030 Stepper motor terminal, 24 VDC, 2.8 A, 2 analog inputs 0 – 10V) **********)
+	ibDT01KF2_EL7031_Underrange_01						AT %I*: BOOL;
+	ibDT01KF2_EL7031_Overrange_01						AT %I*: BOOL;
+	
+	ibDT01KF2_EL7031_Underrange_02						AT %I*: BOOL;
+	ibDT01KF2_EL7031_Overrange_02						AT %I*: BOOL;
+	
+	refDT01KF2_EL7031_Axis								: AXIS_REF;
+	
+	(*TERMINAL DT02KF2 (EL6070 | License Key Terminal for TwinCAT 3.1) ***************************************)
+	
+	
+	(*TERMINAL DT03KF2 (EL7031-0030 Stepper motor terminal, 24 VDC, 2.8 A, 2 analog inputs 0 – 10V) **********)
+	ibDT03KF2_EL7031_Underrange_01						AT %I*: BOOL;
+	ibDT03KF2_EL7031_Overrange_01						AT %I*: BOOL;
+	
+	ibDT03KF2_EL7031_Underrange_02						AT %I*: BOOL;
+	ibDT03KF2_EL7031_Overrange_02						AT %I*: BOOL;
+	
+	refDT03KF2_EL7031_Axis								: AXIS_REF;
+	
+	
+	(*TERMINAL DTKF3 (EK1818 EtherCAT coupler with digital inputs and outputs) ************************)
+	ibDTKF3_1_EK1818									AT %I*: BOOL;
+	ibDTKF3_2_EK1818									AT %I*: BOOL;
+	ibDTKF3_3_EK1818									AT %I*: BOOL;
+	ibDTKF3_4_EK1818									AT %I*: BOOL;
+	ibDTKF3_5_EK1818									AT %I*: BOOL;
+	ibDTKF3_6_EK1818									AT %I*: BOOL;
+	ibDTKF3_7_EK1818									AT %I*: BOOL;
+	ibDTKF3_8_EK1818									AT %I*: BOOL;
+	
+	qbDTKF3_1_EK1818									AT %Q*: BOOL;
+	qbDTKF3_2_EK1818									AT %Q*: BOOL;
+	qbDTKF3_3_EK1818									AT %Q*: BOOL;
+	qbDTKF3_4_EK1818									AT %Q*: BOOL;
+	
+	(*TERMINAL DT01KF3 (EL7211-9014 | Servo Motor Terminals with OCT (One Cable Technology) and STO, 48 V DC) **********)
+	
+	refDTKF3_EL7211_Axis								: AXIS_REF;
+	
+	(*TERMINAL DT02KF3 (EL1918 | EtherCAT Terminal, 8-channel digital input, 24 V DC, TwinSAFE, TwinSAFE Logic) **********)
+// 	ibDT02KF3_1_EL1918_Input							AT %I*: BOOL;
+// 	ibDT02KF3_2_EL1918_Input							AT %I*: BOOL;
+// 	ibDT02KF3_3_EL1918_Input							AT %I*: BOOL;
+// 	ibDT02KF3_4_EL1918_Input							AT %I*: BOOL;
+// 	ibDT02KF3_5_EL1918_Input							AT %I*: BOOL;
+// 	ibDT02KF3_6_EL1918_Input							AT %I*: BOOL;
+// 	ibDT02KF3_7_EL1918_Input							AT %I*: BOOL;
+// 	ibDT02KF3_8_EL1918_Input							AT %I*: BOOL;
+	
+	(*TERMINAL DT03KF3 (EL3208 | 8-channel Analog Input Terminals, temperature, RTD (Pt100, Pt1000, ...) 16 bit *******************)
+	qnDT03KF3_1_EL3208									AT %I*: INT; 
+	qnDT03KF3_2_EL3208									AT %I*: INT; 
+	qnDT03KF3_3_EL3208									AT %I*: INT; 
+	qnDT03KF3_4_EL3208									AT %I*: INT; 
+	qnDT03KF3_5_EL3208									AT %I*: INT; 
+	qnDT03KF3_6_EL3208									AT %I*: INT; 
+	qnDT03KF3_7_EL3208									AT %I*: INT; 
+	qnDT03KF3_8_EL3208									AT %I*: INT; 
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

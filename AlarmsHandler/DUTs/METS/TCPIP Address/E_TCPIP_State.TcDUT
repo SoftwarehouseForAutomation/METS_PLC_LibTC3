@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_TCPIP_State" Id="{213315cb-5cc3-4380-87cb-c673a32a2b69}">
+    <Declaration><![CDATA[TYPE E_TCPIP_State :
+(
+	E_TCPIP_IDLE,
+	E_TCPIP_CONNECT,
+	E_TCPIP_SEND,
+	E_TCPIP_RECEIVE,
+	E_TCPIP_DISCONNECT,
+	E_TCPIP_CLOSEALL,
+	E_TCPIP_DONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

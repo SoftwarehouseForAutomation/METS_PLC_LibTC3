@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_Cylinder_C715" Id="{631d47ce-f7b0-4325-829b-46572ebaeef6}">
+    <Declaration><![CDATA[TYPE E_Cylinder_C715 :
+(
+	E_C715_STOPGATE01		:=1,
+	E_C715_STOPGATE02		:=2,
+	E_C715_BUNDLEALIGN	:=3,
+	E_C715_TAMPHEAD		:=4,
+	E_C715_LABELFORM		:=5,
+	E_C715_BUNDLEREJECT	:=6,
+	E_C715_BUNDLEPUSH	:=7
+
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

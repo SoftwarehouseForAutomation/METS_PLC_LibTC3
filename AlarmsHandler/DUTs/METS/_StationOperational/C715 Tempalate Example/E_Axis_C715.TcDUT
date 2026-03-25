@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_Axis_C715" Id="{f6c0327b-1e11-4ad0-b520-22f698317183}">
+    <Declaration><![CDATA[TYPE E_Axis_C715 :
+(
+	E_C715_WALKINGBEAM	:=1,
+	E_C715_ELEVATOR		:=2,
+	E_C715_TRANSFER		:=3,
+	E_C715_PRESENTATION	:=4
+
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

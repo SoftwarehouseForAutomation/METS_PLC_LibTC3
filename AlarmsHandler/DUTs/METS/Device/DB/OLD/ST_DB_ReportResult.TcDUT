@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DB_ReportResult" Id="{b2a7bf76-a2ec-481f-b293-f944eb5f46fb}">
+    <Declaration><![CDATA[TYPE ST_DB_ReportResult :
+STRUCT
+	nPackCodesTotal		: DINT;
+	nPCV_NoDate 			: DINT;
+	nPCV_NoOuterCode 	: DINT;
+	nNoCACPack			: DINT;
+	nOuterCodesTotal		: DINT;
+	nOAC_NoDate 			: DINT;
+	nNoOHMSuccesfull		: DINT;
+	nNoCACOuter 			: DINT;
+	nPackCodesArchive	 	: DINT;
+	nOuterCodesArchive	: DINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

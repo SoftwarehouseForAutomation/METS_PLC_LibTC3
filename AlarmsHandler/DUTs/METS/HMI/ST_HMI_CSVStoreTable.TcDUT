@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_CSVStoreTable" Id="{87ff9d7e-498f-4921-91c8-f4aff22e7630}">
+    <Declaration><![CDATA[TYPE ST_HMI_CSVStoreTable :
+STRUCT
+	(*sProductionLine			: STRING(4);*)
+	nShiftID					: T_PositiveINT;
+	sProductionOrder			: T_CodePO;
+	sRSKU						: T_CodeRSKU;
+	stEventStartDT				: TIMESTRUCT;
+	stEventEndDT				: TIMESTRUCT;
+	bDataStoredByHMI			: BOOL;
+	stMachineStateStatistic		: ST_LOG_MachineState;
+	aGeneralKPIStatistic		: ARRAY[0..2] OF  ST_KPI_ItemsProduced;
+	aAlarmsStatistic			: ARRAY[0..255] OF ST_LOG_Alarms;
+	aRejectCounters				: ARRAY[0..cMAX_REJECT_REASON] OF ST_LOG_RejectReasons;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

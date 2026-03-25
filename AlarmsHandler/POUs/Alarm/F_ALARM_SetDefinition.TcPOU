@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_ALARM_SetDefinition" Id="{d14fade4-19c9-4f49-a1eb-f9c0d416cb93}" SpecialFunc="None">
+    <Declaration><![CDATA[(*Max text message cannot exceed 255 char including perfedeined: ('MessageTypeNo:=', INT_TO_STRING(nMessageTypeNo), ' ; MessageInfo="',sTextMessage,'"', ' ; AutoReset=', BOOL_TO_STRING(bAutoReset))*)
+FUNCTION F_ALARM_SetDefinition : BOOL
+VAR_INPUT
+	bAlarmTrigger 				: BOOL;
+	nCategoryNo				: INT;
+	nMessageTypeNo			: INT;
+	sTextMessage				: STRING(200); (* Number of 200 char + 51 char form predefined message*)
+	tAlarmTimout 				: TIME :=t#1000ms;
+	bAlarmDefinitionEnable 	: BOOL;
+	bInhibitReset 				: BOOL;
+//	bInternalReset 				: BOOL;
+END_VAR
+
+VAR
+	sMessagePrfix				: T_Char;
+	sMessageNo				: STRING(3);
+
+	bAutoReset 				: BOOL;
+	nGroupIndex 				: INT;
+	nActualAlarmPosition		: INT;
+END_VAR
+(*All VAR_IN_OUT variables have been moved to the end of the declaration due to compatibility reasons*)
+VAR_IN_OUT
+	aAlarmsSettings 		: ARRAY [0..cMAX_ALARM_GROUP] OF ST_AlarmSettings;
+	nAlarmIndex				: INT;
+	sMsgInfo				: T_MaxString;
+	stMsgAux				: ST_ALARM_Aux;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[nAlarmIndex := LIMIT(0, nAlarmIndex, cMAX_MESSAGE_NUMBER);
+
+//**********************************************************************************************************	
+
+IF nAlarmIndex <> cMAX_MESSAGE_NUMBER THEN
+
+	nGroupIndex:= nAlarmIndex/32;
+	nActualAlarmPosition:= nAlarmIndex MOD 32;
+	
+	IF nMessageTypeNo >= 0  AND  nMessageTypeNo <= 15 THEN
+
+		sMessagePrfix := 'A';
+		IF nMessageTypeNo > 7 THEN; 	(*Message type from 8 to 15 are set up as warrninrg*)
+			bAutoReset 		:= TRUE;
+			sMessagePrfix 	:= 'W';
+		END_IF
+
+		sMessageNo := F_AddPadding(nAlarmIndex, 3);
+
+		IF NOT bAlarmDefinitionEnable THEN
+			
+			sTextMessage :=  F_CONCAT5('(','D',sMessageNo,') ','ALARM MANAGEMENT BLOCK DISABLE');
+		ELSIF sTextMessage = '' THEN
+
+			sTextMessage :=  F_CONCAT5('(','S',sMessageNo,') ','ALARM MISSING DESCRIPTION');
+		ELSE
+			
+			sTextMessage :=  F_CONCAT5('(',sMessagePrfix,sMessageNo,') ',sTextMessage);
+		END_IF
+	
+		IF stMsgAux.bAutoReset <> bAutoReset OR stMsgAux.nCategoryNo <> nCategoryNo OR stMsgAux.nMessageTypeNo <> nMessageTypeNo OR stMsgAux.sTextMessage <> sTextMessage THEN
+
+			sMsgInfo := F_CONCAT9('Cat=',INT_TO_STRING(nCategoryNo),';MsgType=', INT_TO_STRING(nMessageTypeNo),';MsgInfo="',sTextMessage,'"', ';AutoRst=', BOOL_TO_STRING(bAutoReset));
+		END_IF
+
+		aAlarmsSettings[nGroupIndex].aTextMessageTable[nActualAlarmPosition]		:= sTextMessage;
+		aAlarmsSettings[nGroupIndex].aAlarmTriggerTable[nActualAlarmPosition]		:= bAlarmTrigger ;
+		aAlarmsSettings[nGroupIndex].aAlarmTimoutTable[nActualAlarmPosition]		:= tAlarmTimout;
+		aAlarmsSettings[nGroupIndex].aBlockEnableTable[nActualAlarmPosition]		:= bAlarmDefinitionEnable;
+		aAlarmsSettings[nGroupIndex].aInhibitResetTable[nActualAlarmPosition]		:= bInhibitReset AND bAlarmDefinitionEnable;
+		aAlarmsSettings[nGroupIndex].aAutoResetTable[nActualAlarmPosition]			:= bAutoReset;
+		aAlarmsSettings[nGroupIndex].aCategoryNoTable[nActualAlarmPosition]			:= nCategoryNo;
+		aAlarmsSettings[nGroupIndex].aMessageTypeStatusTable[nActualAlarmPosition]	:= F_FiltredSetBitState16(TRUE, 'ALL', nMessageTypeNo, TRUE, aAlarmsSettings[nGroupIndex].aMessageTypeStatusTable[nActualAlarmPosition]);
+		
+	ELSE	
+		sMessageNo := F_AddPadding(nAlarmIndex, 3);
+		sTextMessage :=  F_CONCAT5('(','D',sMessageNo,') ','ALARM DISABLE BY WRONG MESSAGE TYPE');
+		aAlarmsSettings[nGroupIndex].aTextMessageTable[nActualAlarmPosition]	:= sTextMessage;
+		
+		IF stMsgAux.bAutoReset <> bAutoReset OR stMsgAux.nCategoryNo <> nCategoryNo OR stMsgAux.nMessageTypeNo <> nMessageTypeNo OR stMsgAux.sTextMessage <> sTextMessage THEN
+
+			sMsgInfo := F_CONCAT9('Cat=',INT_TO_STRING(0),';MsgType:=', INT_TO_STRING(-1),';MsgInfo="',sTextMessage,'"', ';AutoRst=', BOOL_TO_STRING(FALSE));
+		END_IF
+	END_IF
+
+	nAlarmIndex := nAlarmIndex +1;
+	F_ALARM_SetDefinition := TRUE;
+	
+ELSE
+	sTextMessage :=  F_CONCAT4('(','D255',') ','ALARM NUMBER MAX LIMIT');
+	aAlarmsSettings[7].aTextMessageTable[31]	:= sTextMessage;
+	
+	IF stMsgAux.bAutoReset <> bAutoReset OR stMsgAux.nCategoryNo <> nCategoryNo OR stMsgAux.nMessageTypeNo <> nMessageTypeNo OR stMsgAux.sTextMessage <> sTextMessage THEN
+
+		sMsgInfo := F_CONCAT9('Cat=',INT_TO_STRING(0),';MsgType:=', INT_TO_STRING(-2),';MsgInfo="',sTextMessage,'"', ';AutoRst=', BOOL_TO_STRING(FALSE));
+	END_IF	
+END_IF
+
+//**********************************************************************************************************	
+stMsgAux.bAutoReset 	:= bAutoReset;
+stMsgAux.nCategoryNo	:= nCategoryNo;
+stMsgAux.nMessageTypeNo	:= nMessageTypeNo;
+stMsgAux.sTextMessage	:= sTextMessage;]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

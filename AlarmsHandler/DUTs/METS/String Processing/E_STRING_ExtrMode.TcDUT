@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_STRING_ExtrMode" Id="{9a2bef55-e1d4-4a23-9120-7f7ea596a3db}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_STRING_ExtrMode :
+(
+	WITHIDENT,						//extract with ident and dont purge left side string
+	WITHIDENT_PURGE,				//extract with ident and purge left side string
+	WITHOUTIDENT,					//extract with ident and dont purge left side string, both ident left in origin string 
+	WITHOUTIDENT_PURGE,				//extract with ident and purge left side string, only sufix ident left in origin string
+	WITHOUTIDENT_REMIDENT,			//extract with ident and dont purge left side string, no ident left in origin string
+	WITHOUTIDENT_REMIDENT_PURGE		//extract with ident and purge left side string, no ident left in origin string
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_IO2_InputPLC" Id="{2ef7afa2-8da0-48aa-a4be-6b1d81ae200d}">
+    <Declaration><![CDATA[TYPE ST_IO2_InputPLC :
+STRUCT
+	bRawInput			: BOOL;
+	bRawRTrigger			: BOOL;
+	bRawFTrigger			: BOOL;
+	bStateInput			: BOOL;
+	bStateRTrigger			: BOOL;
+	bStateFTrigger			: BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_CX_EtherCATState" Id="{efefb878-be5b-4d20-8f53-54164a1a5e56}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_CX_EtherCATState : (
+	IDLE,
+	READADDR,
+	READSTATE,
+	MAP,
+	//E_CX_ETHERCAT_IORESET,
+	//E_CX_ETHERCAT_SETINITMODE,
+	//E_CX_ETHERCAT_WAITINITMODE,
+	//E_CX_ETHERCAT_SETOPMODE,
+	//E_CX_ETHERCAT_WAITOPMODE,
+	DONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

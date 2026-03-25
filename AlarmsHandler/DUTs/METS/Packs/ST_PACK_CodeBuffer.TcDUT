@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PACK_CodeBuffer" Id="{6c673eb5-75d2-4d59-94af-105b1f023203}">
+    <Declaration><![CDATA[TYPE ST_PACK_CodeBuffer :
+STRUCT
+	sBuffer			: ARRAY[1..2] OF ST_PACK_CodeStatus;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

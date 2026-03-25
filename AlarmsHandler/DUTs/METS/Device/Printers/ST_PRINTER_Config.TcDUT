@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PRINTER_Config" Id="{1ec88f2e-81da-4c47-a5df-479955acdd4c}">
+    <Declaration><![CDATA[TYPE ST_PRINTER_Config :
+STRUCT
+
+	bEnable				: BOOL;
+	sDeviceName			: STRING(30) := 'Printer';
+	sPrinterID				: STRING;							(*Printer ID, used to request the correct codes from the database*)
+
+	stIPAdressPort			:  ST_TCPIP_AddressPort;
+	tTimeout				: TIME;			(* TCP command timeout delay *)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

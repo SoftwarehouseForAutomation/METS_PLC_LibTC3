@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AnalogDrive" Id="{7e14d559-243c-4932-ae66-a82064ca710b}">
+    <Declaration><![CDATA[TYPE ST_AnalogDrive :
+STRUCT
+	nDriveSpeed					: INT:=60;
+	tTimeOut						: TIME:=t#60s;
+	(*bIsolatorExist					: BOOL;*)
+	bBrakeExist					: BOOL:=TRUE;
+	(*tBrakeDelayStart				: TIME:=t#100ms;*)
+	tDriveDelayStart				: TIME:=t#500ms;
+	(*tStoppingTime					: TIME:=t#10s;*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

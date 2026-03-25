@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_EBUS_AnalogueDataIn" Id="{ace872fc-a4e9-4faf-a740-6e962ce85199}">
+    <Declaration><![CDATA[TYPE ST_EBUS_AnalogueDataIn :
+STRUCT
+	nStatus		: WORD;
+	nValue		: INT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

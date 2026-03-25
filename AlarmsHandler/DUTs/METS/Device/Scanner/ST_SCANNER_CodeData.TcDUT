@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_CodeData" Id="{b72ce796-d408-4b5f-8f16-050cebb7033e}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_CodeData :
+STRUCT
+	nScannerIndex			: INT;			(* scanner index when an array of scanners is used *)
+	strDataString			: T_MaxString;	(* data string read from code *)
+	eCodeType			: E_SCANNER_CodeType;	(* code type *)
+	fOverallGrade			: LREAL;		(* overall grade of code *)
+	fXPos				: LREAL;		(* X position of centre of code *)
+	fYPos				: LREAL;		(* Y position of centre of code *)
+	fAngle				: LREAL;		(* angle of code *)
+	fCellSize				: LREAL;		(* cell size *)
+	fSymbolContrast		: LREAL;		(* symbol contrast *)
+	nEvaluation			: INT;			(* general code quality evaluatio*)
+	fUnusedErrCorr			: LREAL;		(* unused error correction *)
+	nProgramNo			: BYTE;			(* program number *)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

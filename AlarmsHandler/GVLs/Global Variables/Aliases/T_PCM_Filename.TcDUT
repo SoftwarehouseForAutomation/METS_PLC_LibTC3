@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_PCM_Filename" Id="{cf1008ad-6240-4701-b38c-edaa930ced58}">
+    <Declaration><![CDATA[ TYPE T_PCM_Filename : T_MaxString;
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

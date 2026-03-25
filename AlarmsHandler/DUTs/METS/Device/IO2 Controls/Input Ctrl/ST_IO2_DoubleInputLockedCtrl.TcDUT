@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_IO2_DoubleInputLockedCtrl" Id="{54a6833a-b2cf-4566-a7c3-e936f34d08a2}">
+    <Declaration><![CDATA[TYPE ST_IO2_DoubleInputLockedCtrl :
+STRUCT
+	eInputSource			: E_IO2_InputSource;
+	sInputName		: STRING(40);
+
+	eTypeInput1			: E_IO2_Type;
+	tTimeOnFilter1			: TIME;
+	tTimeOffFilter1			: TIME;
+	tTimeLatch1			: TIME;
+
+	eTypeInput2			: E_IO2_Type;
+	tTimeOnFilter2			: TIME;
+	tTimeOffFilter2			: TIME;
+	tTimeLatch2			: TIME;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

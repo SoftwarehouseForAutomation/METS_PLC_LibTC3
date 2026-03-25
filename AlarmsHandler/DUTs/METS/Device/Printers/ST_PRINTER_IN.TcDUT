@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PRINTER_IN" Id="{e425f444-ded7-445a-9143-db6d98072374}">
+    <Declaration><![CDATA[TYPE ST_PRINTER_IN :
+STRUCT
+
+	bSystemReset			: BOOL;			(* set TRUE to send SystemReset command to printer *)
+	bSendCommand		: BOOL;			(* set TRUE to send command to printer *)
+	sCommand				: T_LongSTRING;	(* command to be sent to the printer *)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

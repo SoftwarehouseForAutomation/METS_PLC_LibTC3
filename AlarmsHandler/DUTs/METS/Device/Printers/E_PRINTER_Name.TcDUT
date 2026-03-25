@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_PRINTER_Name" Id="{e88a01e8-855c-4877-9482-00061973c530}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_PRINTER_Name :
+(
+	PACK01		:= 1,
+	PACK02		:= 2,
+	INTERIM		:= 3,
+	OUTER01		:= 4,
+	OUTER02		:= 5,
+	PRN_CASE	:= 6
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

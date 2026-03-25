@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_OuterPrintStationStruct" Id="{c0180f90-8114-4544-b98f-57da0e8b98db}">
+    <Declaration><![CDATA[TYPE ST_OuterPrintStationStruct :
+STRUCT
+
+	eOuterPrintStationState				: 	E_OuterPrintStationState;
+
+	bStationRequest			: 	BOOL;		(*Request Commnad To Start Function Cycle*)
+	bStationWaitOnRequest	:	BOOL;		(*Function In Valide State Avaiting For Request Command*)
+	bStationInProgress		: 	BOOL;		(*Function In Progress With Cycle*)
+	bStationComplete			: 	BOOL;		(*Function Complete Cycle - Flag Set After Every Cycle Finsh*)
+
+	bStationHomingRequest		:	BOOL;		(*FUNCTION Homing Requested BY Manager OR Internal Functions*)
+	bStationHomed					: 	BOOL;		(*FUNCTION Homed*)
+	bStationDone					:	BOOL;		(*Function Sequence Finished With Success - Flag Set For One PLC Cycle*)
+	bStationAbort					: 	BOOL;		(*Function Abort By Manager*)
+	bStationInhibit					: BOOL;
+
+	bStationNotMoving			: 	BOOL;		(*Function Parts Are Not Moving*)
+
+	bPassthroughMode						: BOOL;
+
+
+	eGateCommand		: E_CYLINDER_Position := E_CYLINDER_Position.STOP;
+
+	bGateInPosition					: BOOL;
+	bGateRetractedPosition				: BOOL;
+	bGateExtendedPosition				: BOOL;
+	bGateIsRetracting					: BOOL;
+	bGateIsExtending					: BOOL;
+	bGatePositionError					: BOOL;
+
+	bOuterAtApplyPosition					: BOOL;
+	bApplyLabel							: BOOL;
+	bApplyDone							: BOOL;
+
+	bSkipGate							: BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DeviceAddress" Id="{5e5cfa2c-134f-4865-bfb2-e00108651ec6}">
+    <Declaration><![CDATA[TYPE ST_DeviceAddress :
+STRUCT
+	arrNetID		: ARRAY[0..5] OF BYTE;
+	nPortNo			: UINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

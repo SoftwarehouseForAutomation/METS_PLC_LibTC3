@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_GS1_CodeAIType" Id="{8f332ad4-4bce-4e97-840d-ecd5187f69c1}">
+    <Declaration><![CDATA[TYPE E_GS1_CodeAIType :
+(
+	GS1_00		:= 0,		(*GS1 Not defined*)
+	GS1_01		 :=1,		(***********Global Trade Item Number (GTIN)	N2+N14*************)
+	GS1_10		:=10,		(***********Batch or lot number	N2+X..20*************)
+	GS1_11		:=11,		(***********Production date (YYMMDD)		N2+N6*************)
+	GS1_15		:=15,		(***********Best before date (YYMMDD)			N2+N6*************)
+	GS1_17		:=17,		(***********Expiration date (YYMMDD)		N2+N6*************)
+	GS1_21		:=21,		(***********Serial number		N2+X..20*************)
+	GS1_240		:=240,	(***********Additional product identification assigned by the manufacturer	N3+X..30*************)
+	GS1_8005		:=8005,	(***********Price per unit of measure	N4+N6*************)
+	GS1_8006		:=8006,	(***********Identification of an individual trade item piece	N4+N14+N2+N2*************)
+	GS1_8008		:=8008,	(***********Date and time of production		N4+N8+N..4*************)
+	GS1_91		:=91,		(***********Company internal information	N2+X..90*************)
+	GS1_92		:=92,		(***********Company internal information	N2+X..90*************)
+	GS1_93		:=93,		(***********Company internal information	N2+X..90*************)
+	GS1_94		:=94,		(***********Company internal information	N2+X..90*************)
+	NON_GS1_01		:=10001,	(***********Non GS1 - user defined		X..255*************)
+	NON_GS1_02		:=10002,	(***********Non GS1 - user defined		X..255*************)
+	NON_GS1_03		:=10003,	(***********Non GS1 - user defined		X..255*************)
+	NON_GS1_04		:=10004,	(***********Non GS1 - user defined		X..255*************)
+	NON_GS1_05		:=10005,	(***********Non GS1 - user defined		X..255*************)
+	NON_GS1_06		:=10006,	(***********Non GS1 - user defined		X..255*************)
+	NON_GS1_07		:=10007,	(***********Non GS1 - user defined		X..255*************)
+	NON_GS1_08		:=10008,	(***********Non GS1 - user defined		X..255*************)
+	NON_GS1_09		:=10009,	(***********Non GS1 - user defined		X..255*************)
+	NON_GS1_10		:=10010	(***********Non GS1 - user defined		X..255*************)
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

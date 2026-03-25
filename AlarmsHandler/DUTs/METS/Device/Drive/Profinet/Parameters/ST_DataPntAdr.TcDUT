@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DataPntAdr" Id="{72a74ecb-35c4-4719-bd55-6136aa6217d9}">
+    <Declaration><![CDATA[TYPE ST_DataPntAdr :
+STRUCT
+	pAddress		:UDINT;
+	udiSize		:UDINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

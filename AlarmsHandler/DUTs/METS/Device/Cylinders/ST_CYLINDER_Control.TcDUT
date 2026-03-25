@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CYLINDER_Control" Id="{9cdf542e-e54b-4762-8636-a0df942675c3}">
+    <Declaration><![CDATA[TYPE ST_CYLINDER_Control :
+STRUCT
+	eCommand		: E_CYLINDER_Position;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

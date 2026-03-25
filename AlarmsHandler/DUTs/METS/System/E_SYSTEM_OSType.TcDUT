@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SYSTEM_OSType" Id="{512c7970-af37-4c3d-ae8b-32758b51bea6}">
+    <Declaration><![CDATA[TYPE E_SYSTEM_OSType : (
+	E_OS_UNKNOWN,
+	E_OS_WINCE,
+	E_OS_WINDOWS
+);
+
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CaseItem" Id="{0b65df9e-be34-42a0-95f1-860180d47729}">
+    <Declaration><![CDATA[TYPE ST_CaseItem :
+STRUCT
+	Identity				: 	ST_CaseIdentity;
+	ItemState				:	STRING(15);
+	RejectReason			: T_FSS_RejecCode;
+	TimeStamp				: T_ISO8601Time;
+	NoRead				:	STRING(5);
+	Content				:	ST_CaseContent;
+	ProductionOrder		:	T_CodePO;
+	LocalProductionOrder	: T_CodePO;
+	PITCode				:	T_CodePIT;
+	BatchID				:	T_CodeBATCH;
+	ProductionLine			:	STRING(4);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CX_AdapterInfo" Id="{80e66d5b-0390-4585-9d9b-cb3861cd82fc}">
+    <Declaration><![CDATA[TYPE ST_CX_AdapterInfo :
+STRUCT
+	bDefault			: BOOL;
+	strAdapterName		: STRING(75);
+	bDHCPEnabled		: BOOL;
+	strIPAddress		: T_IPv4Addr;
+	strSubnetMask		: T_IPv4Addr;
+	strDefaultGateway	: T_IPv4Addr;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

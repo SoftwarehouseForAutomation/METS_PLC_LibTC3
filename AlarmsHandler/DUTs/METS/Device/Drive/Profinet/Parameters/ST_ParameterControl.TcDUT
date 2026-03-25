@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_ParameterControl" Id="{cc8447e4-6e47-4ac4-b554-2a942d46ca2b}">
+    <Declaration><![CDATA[TYPE ST_ParameterControl :
+STRUCT
+	etDriveReference                      	:INT;
+           xHMIDriveDownButton                   :BOOL;
+           xHMIDriveUpButton                     	:BOOL;
+           xRefreshButton                       		:BOOL;
+           xWriteParametersButton             	:BOOL;
+           stHMIStandardReadParameters           	:ST_Parameters;
+           stHMIStandardReadWriteParameters      	:ST_Parameters;
+           stHMIFastReadParameterList           		:ST_Parameters;
+           iHMIReadSequence                      			:INT;
+           stKeyPadDisplay                      			:ST_KeyPadDisplay;
+           udiAdvancedParameter                  		:UDINT;(*Advanced Parameter*)
+           udiAdvancedSubIndex                   		:UDINT;(*Advanced Sub Index Parameter*)
+	  etDataType							:INT;
+           etDrivesAvailable                     			:INT;
+           etServosAvailable                      			:INT;
+           xLoading                               				:BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

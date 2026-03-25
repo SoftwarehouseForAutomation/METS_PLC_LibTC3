@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_HoneywellCtrl" Id="{414c1546-1b2c-4341-aad4-c5e94b93f829}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_HoneywellCtrl :
+STRUCT
+	bEnableAck							: BOOL;
+	bTrigger						: BOOL;
+	bResetTirgger					: BOOL;
+	bReset							: BOOL;
+	bBeepOn						: BOOL;
+	bBeepOff						: BOOL;
+	bPowerUpBeepOff				: BOOL;
+	bPowerUpBeepOn				: BOOL;
+	(*bHealth							: BOOL;*)
+	bInfo							: BOOL;
+	(*bNotOnFile						: BOOL;*)
+	(*stHostAck						: ST_SCANNER_HostAck;*)
+
+(*	nState							: BYTE;
+	bResetStats						: BOOL;
+	sSStats_Pack					: ST_SCANNER_Statistics;
+	sSStats_Carton					: ST_SCANNER_Statistics;
+	sSStats_Case					: ST_SCANNER_Statistics;
+	sCameraEvaluation				:  ST_SCANNER_Evaluation; (* copied in and out of nvram *)
+
+	UID								: UINT;
+
+(* Outputs *)
+	strStringReceived				: STRING(255);
+	bStringReceived					: BOOL;
+	bError							: BOOL;
+
+	eCodeType						: E_CodeType;
+	bPackBarcode					: BOOL;
+	bCartonBarcode					: BOOL;
+	bCaseBarcode					: BOOL;
+	sScannerBarcode				: STRING(255);*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PCM_Status" Id="{4610db63-01cd-4f02-a81d-c1d20434fe7f}">
+    <Declaration><![CDATA[//{attribute 'pack_mode' := '8'}
+TYPE ST_PCM_Status :
+STRUCT
+	bEnabled				: BOOL;			(* TRUE = PCM active on machine *)
+	bLoaded					: BOOL;			(* TRUE = PCM data loaded *)
+	bValid					: BOOL;			(* TRUE = PCM data valid *)
+	bTemplateOK				: BOOL;			(* TRUE = all configured printers have templates loaded OK *)
+
+	sPCMCurrent				: T_PCM_Filename;
+	sPCMTemplate			: T_PCM_Filename;
+
+	sFieldName				: STRING(255);	(* name of PCM field where validation failed *)
+	sFieldData				: STRING(255);	(* data in PCM field where validation failed *)
+
+	sLastFileName			: T_PCM_Filename;(* name of last PCM file loaded *)
+	sLastFileTime			: STRING(19);	(* date/time when last PCM file loaded *)
+	stLastPCMTime			: TIMESTRUCT;
+
+	sProductionSite 		: STRING(4);
+	sProductionLine			: STRING(4);
+	sLocalFactoryProductLine: STRING(4);
+
+	stGS1_AI_Definition		: ST_GS1_AI_Definition;
+
+	bOpModeChanged			: BOOL;			(* TRUE = <CodingAndTrackingMode> has changed *)
+	bPackGTINChanged		: BOOL;			(* TRUE = <PACK GTIN> has changed *)
+	bOuterGTINChanged		: BOOL;			(* TRUE = <OUTER GTIN> has changed *)
+	bCaseGTINChanged		: BOOL;			(* TRUE = <CASE GTIN> has changed *)
+	bBatchChanged			: BOOL;			(* TRUE = <BatchID> has changed *)
+	bProductionChanged		: BOOL;			(* TRUE = <PrductionOrder> has changed *)
+	bRSKUChanged			: BOOL;
+	bPitCodeChanged			: BOOL;
+	bPackBrandSpecChanged	: BOOL;
+	bOuterBrandSpecChanged	: BOOL;
+	bCaseBrandSpecChanged	: BOOL;
+
+	sEndMarket				: STRING(10);
+	sOuterType				: STRING(5);
+	nOpMode					: INT;	(* selected operating mode *)
+
+	sPackGTIN 				: T_CodeGTIN;
+	sOuterGTIN 				: T_CodeGTIN;
+	sCaseGTIN 				: T_CodeGTIN;
+
+	sBatchNumber			: T_CodeBATCH;
+	sProductionOrder		: T_CodePO;
+	sRetailSKU 				: T_CodeRSKU;
+	sPitCode				: T_CodePIT;
+
+	sPackBrandSpec 			: T_CodeBRAND;
+	sOuterBrandSpec 		: T_CodeBRAND;
+	sCaseBrandSpec 			: T_CodeBRAND;
+
+	sProductDescription		: T_ProductDescription;
+
+	bEnablePassThrough		: BOOL;			(* enable pass-through mode *)
+	bEnableCaseLabels		: BOOL;			(* enable labels on Case *)
+	bEnableAggregation		: BOOL;			(* enable aggregation of Outers into Case *)
+	bEnableOuterLabels		: BOOL;			(* enable labels on Outer *)
+	bEnableOAC				: BOOL;			(* enable old OAC files *)
+	bEnableOHM				: BOOL;			(* enable OHM files *)
+	bEnablePacks			: BOOL;			(* enable Pack scanners *)
+
+	nAcceptanceLevel		: INT;			(* acceptance level of Packs per Outer for Pack Agregation - In pack numbers NOT %*)
+
+	nCaseAcceptanceLevelPacks	: REAL;			(* acceptance level of Packs per Outer *)
+	nOuterAcceptanceLevelPacks	: REAL;			(* acceptance level of Packs per Outer *)
+	nCaseAcceptanceLevelOuters	: REAL;			(* acceptance level of Packs per Outer *)
+
+	nPacksPerOuter			: INT;			(* Amount Of  Packs per Outer unit for current PCM *)
+	nPacksPerCase			: INT;			(* Amount Of  Packs per Case unit for current PCM *)
+	nOutersPerCase			: INT;			(* Amount Of  Outers  per Case unit for current PCM *)
+
+	bReloadPCM				: BOOL;			(* set TRUE to reload local OPI file *)
+	(*bBrowsePCM				: BOOL;*)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

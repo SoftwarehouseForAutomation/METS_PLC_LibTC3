@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AlarmSettings" Id="{10e88961-cdcc-40c5-8fb1-02ee6fd2b01c}">
+    <Declaration><![CDATA[TYPE ST_AlarmSettings :
+STRUCT
+	aTextMessageTable		: ARRAY [0..31] OF STRING(200);
+	aAlarmTriggerTable		: ARRAY [0..31] OF BOOL;
+
+	aAlarmTimoutTable		: ARRAY [0..31] OF TIME;
+	aBlockEnableTable		: ARRAY [0..31] OF BOOL :=[ 32 (FALSE)];
+	aInhibitResetTable		: ARRAY [0..31] OF BOOL;
+	aAutoResetTable			: ARRAY[0..31] OF BOOL;
+	//aInternalResetTable		: ARRAY [0..31] OF BOOL;
+
+	aCategoryNoTable		: ARRAY[0..31] OF INT;
+	aMessageTypeStatusTable	: ARRAY[0..31] OF WORD;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

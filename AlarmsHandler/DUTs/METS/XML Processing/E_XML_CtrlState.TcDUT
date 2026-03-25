@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_XML_CtrlState" Id="{711f7f3b-09aa-4495-95f2-f2504c371c06}">
+    <Declaration><![CDATA[TYPE E_XML_CtrlState :
+(
+	E_XML_IDLE,
+	E_XML_COPYTOCURRENT,
+	E_XML_READXML,
+	E_XML_VALIDATE,
+	E_XML_GENERATEIMAGE,
+	E_XML_WRITEXML,
+	E_XML_CHECKFILESIZE,
+	E_XML_DONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

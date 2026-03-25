@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CASE_InfeedQueue" Id="{a298b496-7ae3-40ac-96ad-9e7eaa872deb}">
+    <Declaration><![CDATA[TYPE ST_CASE_InfeedQueue :
+STRUCT
+	nIndex			: T_PositiveINT;				(* number of Outers in queue *)
+	sLastBarcode		: T_OUTER_Barcode;	(* last Outer barcode added to Infeed Queue *)
+	bDoorReject		: BOOL;
+	aOuter			: ARRAY[1..cMAX_INFEED_QUEUE] OF ST_OAC_Data;	(* array of Outer OAC data *)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

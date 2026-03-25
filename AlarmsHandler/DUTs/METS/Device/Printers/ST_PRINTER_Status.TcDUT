@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PRINTER_Status" Id="{4eb57f3f-ab88-43cb-b8dd-fe3f4d78c47d}">
+    <Declaration><![CDATA[(*
+Version history:
+Date		|	Version/Author 		|	Remark
+----------------------------------------------------------------------------------------------------
+14.09.16	|	1.000.001	PSA		|	Original Version.
+									|	Printer data structure
+*)
+TYPE ST_PRINTER_Status :
+STRUCT
+
+(* read only *)
+	bPrinterReady					: BOOL;
+	bActivePrinter					: BOOL;
+	bPrinterInService				: BOOL;		(*printer Avalable*)
+	bDataReady					: BOOL;
+	bHomePosition				: BOOL;
+	bLabelPrinted					: BOOL;
+	bReadyToApply				: BOOL;
+	bApplyDone					: BOOL;
+	bSummaryWarning				: BOOL;
+	bPrinterError					: BOOL;
+
+	bSelectPrinter					: BOOL;
+	bPrinterSelected				: BOOL;
+
+	I					: ST_PRINTER_IN;
+	Q					: ST_PRINTER_OUT;
+
+	aLast10CodesPrinted	: ARRAY[1..10] OF T_OUTER_Barcode;
+
+
+	(*nPrinterStatusCode			: INT;
+	nPrinterState					: BYTE;
+	eLabelStatus					: E_WOLKE_LABEL_STATUS;
+	ePrintLabelStatus				: E_WOLKE_PRINT_LABEL_STATUS;
+	ePLabelStatus					: E_WOLKE_PLABEL_STATUS;
+	strInkLevel						: STRING;
+	sManualCtrlPrinter				: ST_PRINTER_ManualCtrl;
+	sCurrentCode					: STRING(255);
+	aLastPrintedCodes				: ARRAY[1..10] OF STRING(255);
+	eSocketState					: E_SocketConnectionState;*)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

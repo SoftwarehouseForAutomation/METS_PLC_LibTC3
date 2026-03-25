@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="gNovRAM" Id="{50e12786-e5e8-48c2-8a93-22764d5639a7}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+(* *********************************************************** *)
+(* *********    Non-volatile data    CASE PACKER     ********* *)
+(* *********************************************************** *)
+(* Non-volatile data - for CX2030, the CPU has a 128 kB (up to %MB131072 ) NOVRAM persistent data memory for situations where no UPS is used. *)
+
+	bInitBit							AT %MX0.0 		: BOOL := TRUE; 					(* must not be moved *)
+
+	stMetsCamerasNV						AT %MB8			: ST_NOVRAM_METS_Cameras;			(*Size 811 B - allocated 999 B*)
+	stMetsEfficiencyNV					AT %MB1000		: ST_NOVRAM_METS_Inspection; 		(*Size 515 B  - allocated 600 B*)
+	stCasePackerSignalsNV				AT %MB1600		: ST_NOVRAM_METS_DualInputs;		(*Size 103 B - allocated 150 B*)
+	stCaseInspactionLogNV				AT %MB1748		: ST_NOVRAM_METS_CaseInspactionLog;	(*Size 115 B  - allocated 150 B*)
+
+	sCurrentCHMArchiveDateNameNV		AT %MB1900		: STRING(11);						(*Size 12 B  - allocated 20 B*)
+	sNewCHMArchiveDateNameNV			AT %MB1920		: STRING(11);						(*Size 12 B  - allocated 20 B*)
+	sLastSendingTimeToFactoryLayerNV	AT %MB1940		: STRING(19);						(*Size 20 B  - allocated 20 B*)
+	(*nDummySecquentionalCounter		AT %MB1960		: UDINT;*)							(*Size 8 B  - allocated 20 B*)
+
+	stShiftStatisticNV					AT %MB2000		: ST_NOVRAM_METS_EventCounters; 	(*Size 14597 B - allocated 15000 B*)
+	stProdStatisticNV					AT %MB17000		: ST_NOVRAM_METS_EventCounters; 	(*Size 14597 B - allocated 15000 B*)
+
+	nNVChecksum							AT %MB32764	: WORD;									(* must not be moved *)
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

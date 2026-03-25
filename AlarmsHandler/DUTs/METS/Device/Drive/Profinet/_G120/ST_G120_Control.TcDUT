@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_G120_Control" Id="{86a9cc3c-2485-4ab8-a74f-be737fde4c57}">
+    <Declaration><![CDATA[TYPE ST_G120_Control :
+STRUCT
+	bSafetyOk			: BOOL;
+	bRun				: BOOL;
+	bClearFault			: BOOL;
+	nSpeedHz 			: UINT;
+	bInvertDirection		: BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_ArchiveDBStatus" Id="{1bd93795-45b2-443f-ac96-b3d044465f6a}">
+    <Declaration><![CDATA[//{warning 'CONVERSION MESSAGE: This text contained unprintable characters, that have been deleted'.}
+TYPE ST_SYSTEM_ArchiveDBStatus :
+STRUCT
+	sArchiveDBVersion			: STRING;
+	nArchiveDBStatus 			: INT;
+	nArchiveDBWatchdog 			: DINT;
+	bArchiveDBHealthy			: BOOL;
+
+	bInitialized 				: BOOL;
+	bHasError 					: BOOL;
+	bUseFiles 					: BOOL;
+	bUseDb 						: BOOL;
+	bDbConnected 				: BOOL;
+	bTcConnected 				: BOOL;
+	bApiWork 					: BOOL;
+	
+	bClearProdData				: BOOL;
+
+	nMaximumCACArchiveAge		: INT := 28;		(*Max archive age in days*)
+	nMaximumErrorFiles			: INT := 100;
+	nMaximumOCVFiles			: INT := 5000;
+	nMaximumOACFiles			: INT := 1000;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

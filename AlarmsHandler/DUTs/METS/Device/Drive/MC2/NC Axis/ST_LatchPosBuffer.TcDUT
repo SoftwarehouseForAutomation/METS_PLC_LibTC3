@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_LatchPosBuffer" Id="{4adfe7d8-f2e5-4da3-a846-0a55be483fec}">
+    <Declaration><![CDATA[TYPE ST_LatchPosBuffer :
+STRUCT
+	nIndex			: BYTE;		(* index of arrLatchedPos where last value was added *)
+	bBufferHasData	: BOOL;		(* indicates buffer has 1 or more values in arrLatchedPos *)
+	bPosAdded		: BOOL;		(* set TRUE for 1 cycle when new value has been added to arrLatchedPos *)
+	bPosDeleted		: BOOL;		(* set TRUE for 1 cycle when new value has been deleted from arrLatchedPos *)
+	fLastTargetPos	: LREAL;	(* last position removed from arrLatchedPos *)
+	fLastFeedLength	: LREAL;	(* distance moved to reach fLastTargetPos *)
+	fNextFeedLength	: LREAL;	(* distance to move from fLastTargetPos to arrLatchedPos[1] *)
+	arrLatchedPos	: ARRAY[1..25] OF LREAL;	(* array of latched position values *)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

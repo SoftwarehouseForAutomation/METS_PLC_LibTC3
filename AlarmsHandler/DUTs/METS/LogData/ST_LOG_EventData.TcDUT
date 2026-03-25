@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_LOG_EventData" Id="{4463bd79-d049-4b66-ae3b-513f1a26e364}">
+    <Declaration><![CDATA[TYPE ST_LOG_EventData :
+STRUCT
+	bEnable					: BOOL;
+	nCounter				: UDINT;
+	sTimeStamp				: STRING;
+	nImageByte				: UINT;
+	aDataLogImage			: ARRAY[0..65000] OF BYTE;
+	nMaxImageArraySize		: UINT := 65000 ;
+	nControlSize			: UINT;
+	bBufferOverflow			: BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

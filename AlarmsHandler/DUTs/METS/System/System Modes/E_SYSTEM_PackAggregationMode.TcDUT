@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SYSTEM_PackAggregationMode" Id="{34562647-1513-4636-8c76-b526df8dba2e}">
+    <Declaration><![CDATA[//{attribute 'strict'}
+TYPE E_SYSTEM_PackAggregationMode :
+(
+	E_SYSTEM_NOPACKAGGREGATION		:= 0,
+	E_SYSTEM_PAOL_2CAM				:= 1,
+	E_SYSTEM_PAOL_3CAM				:= 2,
+	E_SYSTEM_PLAS_T01					:= 3,		(*GD, 2cam linear, clearwrap*)
+	E_SYSTEM_PLAS_T02					:= 4,	(*GD, 2 cam, preprint outer label  -> until no info in PCM about production, this include into FB_PCM_Validate*)
+	E_SYSTEM_PLAS_T03					:= 5,		(*FOCKE multistack, single type production*)
+	E_SYSTEM_PLAS_T04					:= 6		(* FOCKE HYBRID NON CLEAR WRAP - Validation as confirmation *)
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

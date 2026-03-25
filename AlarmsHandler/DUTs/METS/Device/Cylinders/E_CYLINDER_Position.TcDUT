@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_CYLINDER_Position" Id="{c7a8c768-7353-462a-9ef8-76aa8e7cdba9}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_CYLINDER_Position :
+(
+	STOP		:= 0,
+	EXTEND 		:= 1,
+	RETRACT		:= 2
+	//POSITION 	:=3
+	
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

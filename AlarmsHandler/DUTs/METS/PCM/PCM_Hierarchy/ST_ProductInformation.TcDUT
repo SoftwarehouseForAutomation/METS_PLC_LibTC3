@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_ProductInformation" Id="{1af63761-32ba-40c9-9c85-2b4fad1adcda}">
+    <Declaration><![CDATA[//{attribute 'pack_mode' := '8'}
+TYPE ST_ProductInformation :
+STRUCT
+	FactoryID				: STRING(3);
+	LineID					: STRING(4);
+	LineSystemNo			: STRING(4);
+	TrackingIndicator		: STRING(3);
+	ProductNo				: T_CodeRSKU;
+	Description			: STRING(50);
+
+	Settings				: ST_PCMSettings;
+	Product				: ST_PCMProduct;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

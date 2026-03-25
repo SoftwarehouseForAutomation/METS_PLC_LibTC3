@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AFS60_Config" Id="{b3b52dc9-5f24-472c-9e0d-c520c2e3b56b}">
+    <Declaration><![CDATA[TYPE ST_AFS60_Config :
+STRUCT
+		nCamScallingFactor				: LREAL := 0.001373291015625; (* cound per degree  *)
+		stCamsHMi						: ARRAY[1..8] OF ST_AFS60_CamHMi; (* 8 in encoder *)
+		nEncoderSlaveAddress			: UINT := 1025; (* ethercat slave address. Ethercat tab -> Ethercat Addr *)
+		nEncoderPresetZero				: UDINT;
+		strCAMDeviceName				: STRING := 'Device 1 (EtherCAT)';
+		strCAMBoxName				: STRING := 'CAM1 (SICK AFS60A ST, 18-Bit)';
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

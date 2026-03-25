@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="gMessage" Id="{15467d14-d4aa-4b1b-b26a-c9c9d54fd6c9}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+(************************************************************************************)
+
+	aAlarms 			: ARRAY [0..cMAX_ALARM_GROUP] OF ST_Alarms;
+	aAlarmsSettings 	: ARRAY [0..cMAX_ALARM_GROUP] OF ST_AlarmSettings;
+
+	stAlarmTable		: ST_AlarmsTable;
+	stAlarmStatus		: ST_AlarmStatus;
+	
+(**Alarms DWord releted to Infeed Case Packer Sequence**************)
+
+	bAlarm_PackCodeDataInvalid					: BOOL;
+	bAlarm_ConsecutivePackCodeDataInvalid		: BOOL;
+	bAlarm_DuplicatePackCode					: BOOL;(*bAlarm_DuplicatePackCode*)
+
+	bWarning_DuplicatePackCode					: BOOL;
+	bWarning_DuplicateOCVRemoved				: BOOL;
+	bWarning_OCVStackOutOfSequence				: BOOL;
+	bAlarm_ConsecutiveOCVStackOutOfSeq			: BOOL;
+
+	bWarning_OCVArmOutOfSequence				: BOOL;
+	bWarning_OCVContentRepairing				: BOOL;
+	bAlarm_ConsecutiveOCVMissing				: BOOL;
+
+	bAlarm_ConsecutiveIntermediateNoRead		: BOOL;
+	bAlarm_DuplicateIntermediateCode			: BOOL;
+
+	bWarning_TwoOutersInAggregationArea			: BOOL; (*used in SFLX*)
+	bAlarm_OuterAtChuteExitNotConfirmed			: BOOL;	(*used in SFLX*)
+	bAlarm_OuterRejectNotConfirmed				: BOOL;
+	bAlarm_OuterDataInvalide					: BOOL;
+	bAlarm_ConsecutiveOuterRejects				: BOOL;
+	bAlarm_DuplicateOuterLabel					: BOOL;
+	bWarning_DuplicateOACRemoved				: BOOL;
+
+	bAlarm_InfeedQueueInvalideData				: BOOL;
+	bAlarm_InfeedQueueDuplicateData				: BOOL;
+	bWarning_CaseContentMissing					: BOOL;(*bWarning_CaseContentMissing*)
+	bAlarm_CaseContentNotFound					: BOOL;(*bAlarm_CaseContentNotFound*)
+	bAlarm_ConsecutiveCaseContentMissing		: BOOL;(*bAlarm_ConsecutiveCaseContentMissing*)
+	bAlarm_DuplicateCaseContentLabel			: BOOL; (*bAlarm_DuplicateCaseLabel*)
+	bAlarm_CaseContentDataInvalide				: BOOL; (*bAlarm_CaseLabelInvalidData*)
+	bWarrning_DuplicatesFoundInCase				: BOOL; (*stCaseQueue.stPrintCHMData.GenericHierarchy.CaseItem.RejectReason*)
+
+	nAlarm_DataOverWrittenInCaseQueue			: BYTE;(*nAlarm_DataOverWrittenInCaseQueue*)
+
+	bAlarm_CaseLabelInvalidData					: BOOL;
+	bAlarm_ConsecutiveCaseRejects				: BOOL;
+	bAlarm_DuplicateCaseLabel					: BOOL;
+	nDuplicateCaseLabelIndex					: INT;
+	bWarning_CaseReanimating					: BOOL;(*bWarning_CaseReanimating*)
+	bWarning_OutersTooClose						: BOOL;
+
+	(*bAlarm_CaseRejectedData				: BOOL;*)
+
+(* *********************************************************** *)
+(* *********           Printer alarms            	 ********* *)
+(* *********************************************************** *)
+
+	bAlarm_PrinterError				: BOOL;
+	bAlarm_PritnerComms				: BOOL;
+
+(* *********************************************************** *)
+(* *********      Global DB Error  alarms flag       ********* *)
+(* *********************************************************** *)
+
+	bAlarm_AuxPCVCheckDBError			: BOOL;
+	bAlarm_PCVCheckDBError				: BOOL;
+	bAlarm_OCVCheckDBError				: BOOL;
+	bAlarm_OACCheckDBError				: BOOL;
+	bAlarm_OACCaseCheckDBError			: BOOL;
+	bAlarm_CACCheckDBError				: BOOL;
+
+(* *********************************************************** *)
+(* *********           G03_EtherCAT alarms           ********* *)
+(* *********************************************************** *)
+
+	bAlarm_EtherCAT_IO_Error			: BOOL;
+
+(* *********************************************************** *)
+(* *********           NV memory overlap alarms           ********* *)
+(* *********************************************************** *)
+
+	nAlarm_OverlapNVMemCheck			: WORD;
+	nAlarm_OverlapBitDisplay			: WORD;
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

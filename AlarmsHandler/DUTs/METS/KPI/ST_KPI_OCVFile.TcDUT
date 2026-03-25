@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_KPI_OCVFile" Id="{92b7ec91-def3-40d0-95c0-64b4833a8910}">
+    <Declaration><![CDATA[TYPE ST_KPI_OCVFile :
+STRUCT
+	nOCVFiles					: UDINT;
+	nOuterStoredInOCV				: UDINT;
+	nLinkedPackInOCV				: UDINT;
+	nOCVWriteErrorCounter			: UDINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

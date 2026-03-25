@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_EtherCATStatus" Id="{28e2951d-d45b-4e7e-86ab-82b06a443c2c}">
+    <Declaration><![CDATA[TYPE ST_EtherCATStatus :
+STRUCT
+
+	sEtherCATMasterAmsNetID	: T_AmsNetID;
+	nSlavesCount				: UINT;
+	arrSlaveInfo				: ARRAY[0..cMAX_ETHERCAT_SLAVES] OF ST_EtherCATSlaveInfo;
+	nNodeWithError			: UINT;
+	sNodeWithErrorName		: STRING(16);
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

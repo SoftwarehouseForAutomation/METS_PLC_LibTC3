@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AFS60_Cam" Id="{48b24227-87dc-458f-ab80-1056987bff47}">
+    <Declaration><![CDATA[TYPE ST_AFS60_Cam :
+STRUCT
+	bEnable				: BOOL;
+	nLowerLimit1		: UDINT;
+	nLowerLimit2		: UDINT;
+	nUpperLimit1		: UDINT;
+	nUpperLimit2		: UDINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

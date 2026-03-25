@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="gIOFiltered" Id="{78c870ce-8b6f-4394-96b4-d55409832c6d}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+(*METS Serial Filtered Inputs ***************************************************************************************************************)
+
+	stEmptyCOMPortDataIn		: EL6InData22B;		(* linked to the EL60xx in the TwinCAT System Manager *)
+	stEmptyCOMPortDataOut		: EL6OutData22B;	(* linked to the EL60xx in the TwinCAT System Manager *)
+
+(*DRIVE - G120C ******************************************************)
+	stEmpty_DriveInput			: ST_DRIVE_INPUT;
+	stEmpty_DriveOutput			: ST_DRIVE_OUTPUT;
+
+(*METS Safety Filtered Inputs ***************************************************************************************************************)
+
+	stMetsStart					: ST_IO2_InputPLC;
+	stMetsStop					: ST_IO2_InputPLC;
+	stMetsReset					: ST_IO2_InputPLC;
+
+(*METS Safety Filtered Inputs ***************************************************************************************************************)
+
+	stPSR_IsReset				: ST_IO2_InputPLC;
+	stPSR_OK					: ST_IO2_InputPLC;
+	stEmergencyStop				: ST_IO2_InputPLC;
+	stEmergencyCircuit			: ST_IO2_InputPLC;
+	stMotorInverterOK			: ST_IO2_InputPLC;
+	stGuardDoorOK				: ST_IO2_InputPLC;
+
+(*METS General Filtered Inputs ***************************************************************************************************************)
+
+	stMETS_24VPowerSupplyOK			: ST_IO2_InputPLC;
+	stTPD24VPowerSupplyOK			: ST_IO2_InputPLC;
+	stAirPressureOK					: ST_IO2_InputPLC;
+	stAirConditionerOK				: ST_IO2_InputPLC;
+	stUPSBatteryAlarm				: ST_IO2_InputPLC;
+	stNetworkOKFromSwitch			: ST_IO2_InputPLC;
+
+	stDoorOpenZone1					: ST_IO2_InputPLC;
+	stDoorOpenZone2					: ST_IO2_InputPLC;
+
+	stCaseAtRejectStation	 		: ST_IO2_InputPLC;
+	stCaseRejectedByCasePacker		: ST_IO2_InputPLC;
+	stCaseContentValidationComplete	: ST_IO2_InputPLC;
+	stCaseLeavingPrintArea			: ST_IO2_InputPLC;
+
+
+(*METS CX UPS  Filtered Inputs ***************************************************************************************************************)
+
+	stMainSupplyHealthy				: ST_IO2_InputPLC;	
+	stUPSHealthy					: ST_IO2_InputPLC;
+	stUPSBatteryMode				: ST_IO2_InputPLC;
+	stUPSBatteryCharging			: ST_IO2_InputPLC;
+
+(*METS Camera Filtered Inputs ***************************************************************************************************************)
+
+	stCamera01				: ST_IO2_InputPLC;
+	stCamera02				: ST_IO2_InputPLC;
+	stCamera03				: ST_IO2_InputPLC;
+	stCamera04				: ST_IO2_InputPLC;
+	stCamera05				: ST_IO2_InputPLC;
+	stCamera06				: ST_IO2_InputPLC;
+	stCamera07				: ST_IO2_InputPLC;
+	stCamera08				: ST_IO2_InputPLC;
+	stCamera09				: ST_IO2_InputPLC;
+	stCamera10				: ST_IO2_InputPLC;
+	stCamera11				: ST_IO2_InputPLC;
+	stCamera12				: ST_IO2_InputPLC;
+
+(*METS Casepacker  Filtered Inputs ***************************************************************************************************************)
+
+	stPreMachineAutoRun			: ST_IO2_InputPLC;
+	stCasePackerAutoRun			: ST_IO2_InputPLC;
+
+	stEUCAExitBlocked			: ST_IO2_InputPLC;
+	stEUCABuildBackPreMachine	: ST_IO2_InputPLC;
+	stQAButtonReject			: ST_IO2_InputPLC;
+
+	stOuterAtSystemInfeed		: ST_IO2_InputPLC;
+	stOuterAtAdditionalConv		: ST_IO2_InputPLC;
+
+	(*Transfer Conveyor*)
+	stTransferCoveyorDoorGuard1			: ST_IO2_InputPLC;
+	stTransferCoveyorDoorGuard2			: ST_IO2_InputPLC;
+
+	stTransferConveyorPlugConnected		: ST_IO2_InputPLC;
+	stOutfeedConveyorPlugConnected		: ST_IO2_InputPLC;
+	stAdditionalConveyorPlugConnected	: ST_IO2_InputPLC;
+
+	stOuterAtRejectStation 				: ST_IO2_InputPLC;
+	stOuterRejectConfirm				: ST_IO2_InputPLC;
+	stRejectBinFull						: ST_IO2_InputPLC;
+
+	stAuxRowCompleteSesnor		: ST_IO2_InputPLC;
+	stRowComplete				: ST_IO2_InputPLC;
+	stLayerComplete				: ST_IO2_InputPLC;
+	stIntermediatePush			: ST_IO2_InputPLC;
+	stCaseComplete				: ST_IO2_InputPLC;
+	stCaseDischarged			: ST_IO2_InputPLC;
+	stCaseLabelValidation		: ST_IO2_InputPLC;
+
+(*METS Cylinders Filtered Inputs  FB***************************************************************************************************************)
+
+	stClampCylinderExtended					: ST_IO2_InputPLC;
+	stClampCylinderRetracted				: ST_IO2_InputPLC;
+
+	stGateCylinderExtended					: ST_IO2_InputPLC;
+	stGateCylinderRetracted 				: ST_IO2_InputPLC;
+
+	stRejectCylinderExtended				: ST_IO2_InputPLC;
+	stRejectCylinderRetracted 				: ST_IO2_InputPLC;
+
+	stAdditionalRejectCylinderExtended		: ST_IO2_InputPLC;
+	stAdditionalRejectCylinderRetracted 	: ST_IO2_InputPLC;
+
+	stFirstPusherCylinderExtended			: ST_IO2_InputPLC;
+	stFirstPusherCylinderRetracted 			: ST_IO2_InputPLC;
+
+	stSecondPusherCylinderExtended			: ST_IO2_InputPLC;
+	stSecondPusherCylinderRetracted 		: ST_IO2_InputPLC;
+
+(*METS SFLX Machine Filtered Inputs ***************************************************************************************************************)
+
+	stOuterInfeedJam						: ST_IO2_InputPLC;
+	stOuterTransferConfirmation				: ST_IO2_InputPLC;
+	stRejectConfirmationNCW					: ST_IO2_InputPLC;
+	stRejectBinFullNCW						: ST_IO2_InputPLC;
+	stOuterAtTransferReject					: ST_IO2_InputPLC;
+	stOuterAtSideFlexExit					: ST_IO2_InputPLC;
+	stOuterAtPostMachineInfeed				: ST_IO2_InputPLC;
+
+	stGuard1FlexInfeedDoor  				: ST_IO2_InputPLC;
+	(*stGuard2FlexPrinterInPositon			: ST_IO2_InputPLC;   (*Printer in Position stLabeller1InPosition	 *) *)
+	stGuard3FlexRHDoor						: ST_IO2_InputPLC;
+	stGuard4FlexPrinterDoor					: ST_IO2_InputPLC;
+	stGuard5FlexLHDoor						:	ST_IO2_InputPLC;
+
+(*METS CML Filtered Inputs ***************************************************************************************************************)
+
+	stGuard1UpperSideAccessDoor			: ST_IO2_InputPLC;
+	stGuard2UpperDoorLabellerSide		: ST_IO2_InputPLC;
+	stGuard3OutfeedTunnel				: ST_IO2_InputPLC;
+	stGuard4ElectricalBoxInPosition		: ST_IO2_InputPLC;
+	stGuard5RejectBinLHSide				: ST_IO2_InputPLC;
+	stGuard6RejectBinRHSide				: ST_IO2_InputPLC;
+	stGuard7HTTDoorGuard				: ST_IO2_InputPLC;
+
+	stGuard10FrontUpperDoor				: ST_IO2_InputPLC;
+	stGuard11GuardLowerLabellerSide		: ST_IO2_InputPLC;
+
+	stRejectBinGuardIsReset				: ST_IO2_InputPLC;
+	stLabeller1GuardIsReset				: ST_IO2_InputPLC;
+	stLabeller2GuardIsReset				: ST_IO2_InputPLC;
+
+	stResetPB							: ST_IO2_InputPLC;
+	stOuterAtCMLRejectStation			: ST_IO2_InputPLC;
+
+	stRotaryTransferPackAtStopPlate		: ST_IO2_InputPLC;
+	stRotaryTransferTorqueLimiter		: ST_IO2_InputPLC;
+	stRotaryTransferDelayStop1			: ST_IO2_InputPLC;
+	stRotaryTransferDelayStop2			: ST_IO2_InputPLC;
+
+	stLoweratorGuideRHLowerInPosition	: ST_IO2_InputPLC;
+	stLoweratorGuideLHLowerInPosition	: ST_IO2_InputPLC;
+
+	stAdditionalConveyor1Isolator		: ST_IO2_InputPLC;
+	stAdditionalConveyor2Isolator		: ST_IO2_InputPLC;
+	stAdditionalConveyor3Isolator		: ST_IO2_InputPLC;
+	stAdditionalConveyor4Isolator		: ST_IO2_InputPLC;
+
+	stAdditionalConveyor4OK				: ST_IO2_InputPLC;
+
+	stConveyorIndexContact				: ST_IO2_InputPLC;
+
+(*METS SADDLE (Gating&Reject System) Filtered Inputs  FB***************************************************************************************************************)
+
+	stOuterAtClamp						: ST_IO2_InputPLC;
+	stOuterAtLabelGate					: ST_IO2_InputPLC;
+	stSaddlePressureOK					: ST_IO2_InputPLC;
+	stGateImpactSensor					: ST_IO2_InputPLC;
+	stGateClear							: ST_IO2_InputPLC;
+
+
+(*METS PLAS Machine Filtered Inputs ***************************************************************************************************************)
+	(*Wrapper*)
+	
+	stMasterlistDoorGuard1				: ST_IO2_InputPLC;
+	stMasterlistDoorGuard2				: ST_IO2_InputPLC;
+	stMasterlistDoorGuard3				: ST_IO2_InputPLC;
+
+	stOuterBrushOpen					: ST_IO2_InputPLC;
+	stPackAggregationDoorGuard1			: ST_IO2_InputPLC;
+	stPackAggregationDoorGuard2			: ST_IO2_InputPLC;
+
+	stWrapperDoorGuard1					: ST_IO2_InputPLC;
+	stWrapperDoorGuard2					: ST_IO2_InputPLC;
+
+	stHeatTunelPackReject				: ST_IO2_InputPLC;
+	stWrapperPackReject					: ST_IO2_InputPLC;
+	stWrapperPackReject2				: ST_IO2_InputPLC;
+	stWrapperOuterComplete				: ST_IO2_InputPLC;
+
+	stInhibitIntermediateCamera			: ST_IO2_InputPLC;
+	stFilmInPosition					: ST_IO2_InputPLC;
+	stIntermediatePrinterTrigger		: ST_IO2_InputPLC;
+
+(*METS Labellers Filtered Inputs ***************************************************************************************************************)
+
+	stLabeller1InPosition				: ST_IO2_InputPLC;
+	stLabeller1OuterAtLabeller			: ST_IO2_InputPLC;
+
+	stLabeller1Ready					: ST_IO2_InputPLC;
+	stLabeller1DataReady				: ST_IO2_InputPLC;
+	stLabeller1HomePosition				: ST_IO2_InputPLC;
+	stLabeller1LabelPrinted				: ST_IO2_InputPLC;
+	stLabeller1ReadyToApply				: ST_IO2_InputPLC;
+	stLabeller1ApplyDone				: ST_IO2_InputPLC;
+	stLabeller1SummaryWarning			: ST_IO2_InputPLC;
+	stLabeller1Error					: ST_IO2_InputPLC;
+
+	stLabeller2InPosition				: ST_IO2_InputPLC;
+	stLabeller2OuterAtLabeller			: ST_IO2_InputPLC;
+
+	stLabeller2Ready					: ST_IO2_InputPLC;
+	stLabeller2DataReady				: ST_IO2_InputPLC;
+	stLabeller2HomePosition				: ST_IO2_InputPLC;
+	stLabeller2LabelPrinted				: ST_IO2_InputPLC;
+	stLabeller2ReadyToApply				: ST_IO2_InputPLC;
+	stLabeller2ApplyDone				: ST_IO2_InputPLC;
+	stLabeller2SummaryWarning			: ST_IO2_InputPLC;
+	stLabeller2Error					: ST_IO2_InputPLC;
+
+(*METS PAOL  Filtered Inputs ***************************************************************************************************************)
+
+	stPreMachineBuildBack			: ST_IO2_InputPLC;
+	stTPDExitBlocked				: ST_IO2_InputPLC;
+	(*stInfeedConveyorStart			: ST_IO2_InputPLC;*)
+
+	stPackSeparationDriveOK			: ST_IO2_InputPLC;
+	stInfeedConveyorDriveOK			: ST_IO2_InputPLC;
+
+	stPackAggregCameraRigSensor		: ST_IO2_InputPLC;
+(*	stPackAggregCameraTrig1Sensor	: ST_IO2_InputPLC;
+	stPackAggregCameraTrig2Sensor	: ST_IO2_InputPLC;
+	stPackAggregCameraTrig3Sensor	: ST_IO2_InputPLC;
+	stPackAggregCameraTrig4Sensor	: ST_IO2_InputPLC;*)
+
+	stPackIsolatorDrive				: ST_IO2_InputPLC;
+
+(*METS General Outputs  ***************************************************************************************************************)
+
+	stSafetyResetSignal				: ST_IO2_OutputPLC;
+	stAdditionalSafetyResetSignal	: ST_IO2_OutputPLC;
+	stResetPBIndicator				: ST_IO2_OutputPLC;
+
+(*METS TPD Outputs ***************************************************************************************************************)
+
+	stTPDMachineRun				: ST_IO2_OutputPLC;
+	stCMLConvoyerRun			: ST_IO2_OutputPLC;
+	stEUCAPreMachineRun			: ST_IO2_OutputPLC;
+	stEUCAMachineRun			: ST_IO2_OutputPLC;
+
+	stOuterValidationOK			: ST_IO2_OutputPLC;
+	stCaseContentOK				: ST_IO2_OutputPLC;
+	stCaseValidationOK			: ST_IO2_OutputPLC;
+	stLabellerInhibit			: ST_IO2_OutputPLC;
+
+	stPackAggregCamLensAir		: ST_IO2_OutputPLC;
+	(*stOuterRejetct				:	ST_IO2_OutputPLC;
+	stMLCameraLightning			:	ST_IO2_OutputPLC;
+	stAggCameraLightning		:	ST_IO2_OutputPLC;
+	stConfCameraLightning		:	ST_IO2_OutputPLC;
+	stOuterAggCameraLightning	:	ST_IO2_OutputPLC;*)
+
+(*METS Camera Filtered Outputs ***************************************************************************************************************)
+
+	aCameraOutput				: ARRAY[1..cMAX_CAMERA_NUMBER] OF ST_IO2_OutputPLC;	(**)
+
+	(*stCamera01Out				:	ST_IO2_OutputPLC;
+	stCamera02Out				:	ST_IO2_OutputPLC;
+	stCamera03Out				:	ST_IO2_OutputPLC;
+	stCamera04Out				:	ST_IO2_OutputPLC;
+	stCamera05Out				:	ST_IO2_OutputPLC;
+	stCamera06Out				:	ST_IO2_OutputPLC;
+	stCamera07Out				:	ST_IO2_OutputPLC;
+	stCamera08Out				:	ST_IO2_OutputPLC;
+	stCamera09Out				:	ST_IO2_OutputPLC;
+	stCamera10Out				:	ST_IO2_OutputPLC;
+	stCamera11Out				:	ST_IO2_OutputPLC;
+	stCamera12Out				:	ST_IO2_OutputPLC;*)
+
+
+	aCameraLightning			: ARRAY[1..cMAX_CAMERA_NUMBER] OF ST_IO2_OutputPLC;	(**)
+
+	(*stCamera01Lightning				:	ST_IO2_OutputPLC;
+	stCamera02Lightning				:	ST_IO2_OutputPLC;
+	stCamera03Lightning				:	ST_IO2_OutputPLC;
+	stCamera04Lightning				:	ST_IO2_OutputPLC;
+	stCamera05Lightning				:	ST_IO2_OutputPLC;
+	stCamera06Lightning				:	ST_IO2_OutputPLC;
+	stCamera07Lightning				:	ST_IO2_OutputPLC;
+	stCamera08Lightning				:	ST_IO2_OutputPLC;
+	stCamera09Lightning				:	ST_IO2_OutputPLC;
+	stCamera10Lightning				:	ST_IO2_OutputPLC;
+	stCamera11Lightning				:	ST_IO2_OutputPLC;
+	stCamera12Lightning				:	ST_IO2_OutputPLC;*)
+
+(*METS LightPole Filtered Outputs ***************************************************************************************************************)
+
+	stLightPoleGreen				: ST_IO2_OutputPLC;		(**)
+	stLightPoleAmber				: ST_IO2_OutputPLC;		(**)
+	stLightPoleRed					: ST_IO2_OutputPLC;		(**)
+	stLightPoleAlarm				: ST_IO2_OutputPLC;		(**)
+	stHandScannerGreen				: ST_IO2_OutputPLC;		(**)
+	stHandScannerRed				: ST_IO2_OutputPLC;		(**)
+	stGreenButtonLamp				: ST_IO2_OutputPLC;		(**)
+
+(*METS Drives Filtered Outputs ***************************************************************************************************************)
+
+	stDriveFaultAcknowledge		: ST_IO2_OutputPLC;		(**)
+	
+	stSideBeltDriveBrake		: ST_IO2_OutputPLC;		(**)
+	stInfeedConveyorDriveRun	: ST_IO2_OutputPLC;
+
+	stPackSeparatorDriveBrake	: ST_IO2_OutputPLC;		(**)
+	stPackSeparationDriveRun	: ST_IO2_OutputPLC;
+
+	stAdditionalConveyor1Run	: ST_IO2_OutputPLC;
+	stAdditionalConveyor2Run	: ST_IO2_OutputPLC;
+	stAdditionalConveyor3Run	: ST_IO2_OutputPLC;
+	stAdditionalConveyor4Run	: ST_IO2_OutputPLC;
+
+(*METS Cylinders Filtered Outputs ***************************************************************************************************************)
+
+	stClampCylinderExtend				: ST_IO2_OutputPLC;		(**)
+	stClampCylinderRetract				: ST_IO2_OutputPLC;
+
+	stGateCylinderExtend				: ST_IO2_OutputPLC;		(**)
+	stGateCylinderRetract				: ST_IO2_OutputPLC;
+
+	stRejectCylinderExtend				: ST_IO2_OutputPLC;		(**)
+	stRejectCylinderRetract				: ST_IO2_OutputPLC;
+
+	stAdditionalRejectCylinderExtend	: ST_IO2_OutputPLC;		(**)
+	stAdditionalRejectCylinderRetract	: ST_IO2_OutputPLC;
+
+	stFirstPusherCylinderExtend			: ST_IO2_OutputPLC;		(**)
+	stFirstPusherCylinderRetract		: ST_IO2_OutputPLC;
+
+	stSecondPusherCylinderExtend		: ST_IO2_OutputPLC;		(**)
+	stSecondPusherCylinderRetract		: ST_IO2_OutputPLC;
+
+	stRejectActiveNCW					: ST_IO2_OutputPLC;
+
+(*METS Printers Filtered Outputs ***************************************************************************************************************)
+
+	stLabeller1Reset					: ST_IO2_OutputPLC;
+	stLabeller1Print					: ST_IO2_OutputPLC;
+	stWhiteLabe11Print					: ST_IO2_OutputPLC;
+	stLabeller1Apply					: ST_IO2_OutputPLC;
+	stLabbeller1ApplyAvailable			: ST_IO2_OutputPLC;
+
+	stLabeller2Reset					: ST_IO2_OutputPLC;
+	stLabeller2Print					: ST_IO2_OutputPLC;
+	stWhiteLabe12Print					: ST_IO2_OutputPLC;
+	stLabeller2Apply					: ST_IO2_OutputPLC;
+	stLabbeller2ApplyAvailable			: ST_IO2_OutputPLC;
+
+	stIntermediatePrinterTrigger1		: ST_IO2_OutputPLC;
+
+(*METS Laser Filtered Outputs ***************************************************************************************************************)
+
+	stLaserEnable						: ST_IO2_OutputPLC;
+	stLaserPrintAllow					: ST_IO2_OutputPLC;
+	stPrintStart						: ST_IO2_OutputPLC;	
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

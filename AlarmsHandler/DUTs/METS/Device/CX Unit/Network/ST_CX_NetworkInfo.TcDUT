@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CX_NetworkInfo" Id="{8ed44a4c-74a6-4303-b439-f80c97f5b4a5}">
+    <Declaration><![CDATA[TYPE ST_CX_NetworkInfo :
+STRUCT
+	strDeviceName		: STRING(75);
+	strAMSNetID			: STRING(23);
+	strSNTPServer		: STRING(75);
+	strSNTPRefreshTime	: STRING(31);
+	arrAdapterInfo		: ARRAY[1..6] OF ST_CX_AdapterInfo;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

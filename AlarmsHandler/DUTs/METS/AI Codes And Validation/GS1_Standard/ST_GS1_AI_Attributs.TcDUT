@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_GS1_AI_Attributs" Id="{825c1084-35c1-458b-bc2e-cc8f9406ded4}">
+    <Declaration><![CDATA[TYPE ST_GS1_AI_Attributs :
+STRUCT
+	sDataField 	: T_MaxString;
+	bDataChanged	: BOOL;
+	sAI_Id		: STRING(5);
+	eGS1_AI		: E_GS1_CodeAIType;
+	bFixed		: BOOL;
+	nLength		: UINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

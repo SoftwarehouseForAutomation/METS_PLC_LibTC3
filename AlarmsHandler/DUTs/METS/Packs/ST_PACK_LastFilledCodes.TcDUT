@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PACK_LastFilledCodes" Id="{75f33ab0-e51f-4a2e-931e-284252f54a95}">
+    <Declaration><![CDATA[TYPE ST_PACK_LastFilledCodes :
+STRUCT
+	nIndexOfMissingPackInfeedCode				: T_PositiveINT;
+	sLastFilledCode								: T_PACK_Barcode;
+	aArrayOfCodesPackInfeed						: ARRAY[1..2] OF T_PACK_Barcode;
+	aPositionOfTheCodesInMasterList				: ARRAY[1..2] OF T_PositiveINT;
+	sLastFoundCodeToFill						: T_PACK_Barcode;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

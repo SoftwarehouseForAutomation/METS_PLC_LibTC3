@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_KPI_ItemsProduced" Id="{71f64bb6-5fe6-4be1-8fc0-1b16dcf2b2bf}">
+    <Declaration><![CDATA[TYPE ST_KPI_ItemsProduced :
+STRUCT
+	Total					: UDINT;
+	Passed				: UDINT;
+	Rejected				: UDINT;
+	Efficiency				: LREAL;
+	CreatedFiles			: UDINT;
+	WarningLevel			: REAL := 99.75;
+	AlarmLevel			: REAL := 99.50;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

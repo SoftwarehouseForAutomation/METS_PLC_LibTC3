@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DRIVE_STATUS" Id="{69aaa808-9dd9-47b8-84e8-f58b36c38c8b}">
+    <Declaration><![CDATA[TYPE ST_DRIVE_STATUS :
+(*
+Version history:
+Date		|	Version/Author 		|	Remark
+----------------------------------------------------------------------------------------------------
+09.02.18	|	2.000.016	PSA		|	Original Version.
+									|	Siemens G120 drive status infomaration structure
+*)
+STRUCT
+	xReadyForSwitchingOn	: BOOL;
+	xReady					: BOOL;
+	xOperationEnable		: BOOL;
+	xPowerOnInhibit			: BOOL;
+	xFault					: BOOL;
+	xAlarm					: BOOL;
+	xTorqueLimitReached		: BOOL;
+	xSpeedExceeded			: BOOL;
+	xHoldingBrake			: BOOL;
+	xMotorOverTemp			: BOOL;
+	xMotorRotatingClockwise	: BOOL;
+	xMotorRotatingCClockwise: BOOL;
+	xControlRequested		: BOOL;
+	xSetSpeedPointReached	: BOOL;
+
+	rActualSpeed			: REAL;
+	rCurrent				: REAL;
+	rTorque					: REAL;
+	iWarningCode			: UINT;
+	iFaultCode				: UINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

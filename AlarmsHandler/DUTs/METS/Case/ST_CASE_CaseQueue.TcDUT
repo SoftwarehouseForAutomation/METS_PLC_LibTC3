@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CASE_CaseQueue" Id="{c370d5ec-332e-4cdc-9e3e-f97354ec3c62}">
+    <Declaration><![CDATA[TYPE ST_CASE_CaseQueue :
+STRUCT
+	aCACData		: ARRAY[1..cMAX_CASE_QUEUE] OF ST_CAC_Data;	(* array of CAC data *)
+	stPrintCACData	: ST_CAC_Data;	(* CAC data sent to printer *)
+
+	stPrintCHMData	: ST_CHM_Data;	(* CHM data printed to XML file *)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

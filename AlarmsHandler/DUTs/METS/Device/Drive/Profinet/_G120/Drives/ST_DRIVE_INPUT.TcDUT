@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DRIVE_INPUT" Id="{a3df2df3-3a6b-4450-aa2e-5f8606ba7814}">
+    <Declaration><![CDATA[TYPE ST_DRIVE_INPUT :
+	(*
+Version history:
+Date		|	Version/Author 		|	Remark
+----------------------------------------------------------------------------------------------------
+09.02.18	|	2.000.016	PSA		|	Original Version.
+									|	Siemens G120 drive IO input structure
+*)
+STRUCT
+	uiDriveInput					: ARRAY[1..10] OF UINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

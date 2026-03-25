@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_AxisStatus" Id="{a8c8a850-e96e-4a37-bcad-ce8b1f532628}">
+    <Declaration><![CDATA[//{warning 'CONVERSION MESSAGE: This text contained unprintable characters, that have been deleted'.}
+TYPE ST_HMI_AxisStatus :
+STRUCT
+
+(* read only *)
+
+	eMotionState 		: MC_AxisStates;
+
+	bInitOK				: BOOL;
+	bEnabled			: BOOL;
+	bHomeActive			: BOOL;
+	bVeloActive			: BOOL;
+	bRelativeActive		: BOOL;
+	bAbsoluteActive		: BOOL;
+	bJogActive			: BOOL;
+
+
+	bOperational 				: BOOL;
+	bHasJob						: BOOL;
+	bInTargetPosition 			: BOOL;
+	bInPositionRange 			: BOOL;
+	bHomed 						: BOOL;
+	bHomingBusy 				: BOOL;
+	bMovingPositiveDirection 	: BOOL;
+	bMovingNegativeDirection	: BOOL;
+	bNotMoving 					: BOOL;
+
+	bError 						: BOOL;
+	nErrorId 					: UDINT;
+
+	fActualPosition 			: LREAL;
+	fActualVelocity 			: LREAL;
+	fSetpointPosition 			: LREAL;
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

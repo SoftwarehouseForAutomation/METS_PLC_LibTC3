@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DB_PcvCheckCtrl" Id="{be737cf2-5568-4306-9c18-a88d8040646b}">
+    <Declaration><![CDATA[TYPE ST_DB_PcvCheckCtrl :
+STRUCT
+	bDB_ExecutePcvCheck			: BOOL;
+	bDB_PcvCheckComplete			: BOOL;
+	bPackCodeFoundInDB			: BOOL;
+	bPackExpired					: BOOL;
+	sAssociatedCase 				: STRING(150);
+	bDB_Error						: BOOL;
+	stPackToCheck					: ST_PACK_Data;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

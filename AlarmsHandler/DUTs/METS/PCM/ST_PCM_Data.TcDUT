@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PCM_Data" Id="{4fc6979a-590c-43e3-b8ba-c2bc6f4f052e}">
+    <Declaration><![CDATA[//{attribute 'pack_mode' := '8'}
+TYPE ST_PCM_Data :
+STRUCT
+	MessageHeader		:	ST_PCMMessageHeader;
+	ProductInformation	:	ST_ProductInformation;
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

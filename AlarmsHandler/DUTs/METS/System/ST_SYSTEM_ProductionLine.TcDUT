@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_ProductionLine" Id="{2a7531ce-5163-45a0-b470-9f3d82161e64}">
+    <Declaration><![CDATA[TYPE ST_SYSTEM_ProductionLine :
+STRUCT
+	sPCM			: STRING(4);
+	sMENo			: STRING(5);
+	nTopologyID	: INT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

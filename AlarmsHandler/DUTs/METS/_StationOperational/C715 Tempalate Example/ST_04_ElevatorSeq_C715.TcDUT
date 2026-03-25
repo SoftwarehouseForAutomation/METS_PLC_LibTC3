@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_04_ElevatorSeq_C715" Id="{1fe582a6-2f0a-46ac-9a96-5d28dcb86fcf}">
+    <Declaration><![CDATA[  TYPE ST_04_ElevatorSeq_C715 :
+STRUCT
+	e04SeqState					: E_04_ElevatorState_C715;
+
+	bSeqAbort					:BOOL;		(*Function Abort By Manager*)
+	bSeqHomingRequest			:BOOL;		(*FUNCTION Homing Requested BY Manager OR Internal Functions*)
+	bSeqWaitOnRequest			:BOOL;		(*Function In Valide State Avaiting For Request Command*)
+	bSeqRequest					:BOOL;		(*Request Commnad To Start Function Cycle*)
+
+	bSeqIsHoming					: BOOL;
+	bSeqInProgress				:BOOL;		(*Function In Progress With Cycle*)
+	bSeqComplete				:BOOL;		(*Function Complete Cycle - Flag Set After Every Cycle Finsh*)
+	bSeqDone					:BOOL;		(*Function Sequence Finished With Success - Flag Set For One PLC Cycle*)
+	bSeqError						: BOOL;
+	nSeqErrorID					: UDINT;
+
+	bAutoHomingAllowed			: BOOL;
+	bStationHomed					:BOOL;		(*FUNCTION Homed*)
+	bStationNotMoving				:BOOL;		(*Function Parts Are Not Moving*)
+	bStationInPause				: BOOL;
+
+	bMachineInError				: BOOL;
+	bPassthroughMode				:BOOL;
+
+	stBundleTracking				: ST_BundleTrackingRegister_C715;
+	bTrackigDataSync				: BOOL;
+	bDisableBottomLimit			: BOOL;
+
+	bSynchroMoveActive			: BOOL;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_STATION_Status" Id="{ca4edff0-7187-4a7e-a9d8-347eb908fc88}">
+    <Declaration><![CDATA[TYPE ST_STATION_Status :
+STRUCT
+
+	bSeqIsHoming					: BOOL;
+	bStationHomed					:BOOL;		(*FUNCTION Homed*)
+	bSeqInProgress				:BOOL;		(*Function In Progress With Cycle*)
+	bSeqComplete				:BOOL;		(*Function Complete Cycle - Flag Set After Every Cycle Finsh*)
+	bSeqDone					:BOOL;		(*Function Sequence Finished With Success - Flag Set For One PLC Cycle*)
+	bStationNotMoving				:BOOL;		(*Function Parts Are Not Moving*)
+
+	bSeqError						: BOOL;
+	nSeqErrorID					: UDINT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

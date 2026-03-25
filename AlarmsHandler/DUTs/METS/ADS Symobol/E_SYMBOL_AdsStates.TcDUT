@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SYMBOL_AdsStates" Id="{80af1a86-a13e-48b5-9bec-7db50cca6fbe}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+TYPE E_SYMBOL_AdsStates :
+(
+	ADSSTATES_INVALID :=0,
+	ADSSTATES_IDLE :=1,
+	ADSSTATES_RESET :=2,
+	ADSSTATES_INIT :=3,
+	ADSSTATES_START :=4,
+	ADSSTATES_RUN :=5,
+	ADSSTATES_STOP :=6,
+	ADSSTATES_SAVECFG :=7,
+	ADSSTATES_LOADCFG :=8,
+	ADSSTATES_POWERFAILURE :=9,
+	ADSSTATES_POWERGOOD :=10,
+	ADSSTATES_ERROR :=11
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

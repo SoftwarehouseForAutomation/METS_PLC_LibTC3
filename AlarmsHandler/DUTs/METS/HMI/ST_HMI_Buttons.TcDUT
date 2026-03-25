@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_Buttons" Id="{5ee86268-3834-4b48-b1b9-77f4771753f4}">
+    <Declaration><![CDATA[TYPE ST_HMI_Buttons :
+STRUCT
+
+	bButtonState			: 	BOOL;
+	bButtonRisingEdge		:	BOOL;
+   	bButtonFallingEdge		:	BOOL;
+	(*nChangeLogID			: 	INT;*)
+
+
+(*	bStartButtonRisingEdge		:	BOOL;
+   	bStartButtonFallingEdge		:	BOOL;
+    	bResetButtonRisingEdge		:	BOOL;
+    	bResetButtonFallingEdge		:	BOOL;
+    	bStopButtonRisingEdge		:	BOOL;
+    	bStopButtonFallingEdge		:	BOOL;*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

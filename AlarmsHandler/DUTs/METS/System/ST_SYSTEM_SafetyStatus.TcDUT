@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SYSTEM_SafetyStatus" Id="{558cfa0f-6d4d-42cd-b2a3-22e44fe6f43a}">
+    <Declaration><![CDATA[TYPE ST_SYSTEM_SafetyStatus :
+STRUCT
+	bSafetyRelayOK					: BOOL;
+	bEStopButtonPressed				: BOOL;
+	bEmergencyCircuitOK				: BOOL;
+	bGuardDoorOK						: BOOL;
+	bMotorDriversOK					: BOOL;
+	bSafetyOK						: BOOL;			(* All systems Go! *)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

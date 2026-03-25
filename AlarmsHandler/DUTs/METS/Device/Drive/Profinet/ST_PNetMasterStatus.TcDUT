@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PNetMasterStatus" Id="{aaa037b8-0a1a-4a21-bdfd-d4f165b0066b}">
+    <Declaration><![CDATA[TYPE ST_PNetMasterStatus :
+(* EL6631 *)
+STRUCT
+	nPNetIoError		: UINT;
+	nPNetIoDiag		: UINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

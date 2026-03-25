@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_AXIS_MotionType" Id="{d89aeb0a-7a1f-4ec1-b9bc-dc442b907187}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_AXIS_MotionType : (
+	NONE,
+	MCHOME,
+	MCVELOCITY,
+	MCABSOLUT,
+	MCRELATIVE
+	//E_AXIS_MCMODULO,
+	//E_AXIS_MCHALT,
+	//E_AXIS_MCSTOP
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

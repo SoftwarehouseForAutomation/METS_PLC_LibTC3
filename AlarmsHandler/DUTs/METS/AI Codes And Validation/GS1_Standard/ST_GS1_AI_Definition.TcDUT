@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_GS1_AI_Definition" Id="{647d9868-2ec8-43dc-a970-29a7564f5171}">
+    <Declaration><![CDATA[TYPE ST_GS1_AI_Definition :
+STRUCT
+	sDotCode_CI	: STRING(3) := ']j';			(* GS1 marker (FNC1 Carrier Identifiers for DataMatrix barcode *)
+	sDMC_CI		: STRING(3) := ']d2';			(* GS1 marker (FNC1 Carrier Identifiers for DataMatrix barcode *)
+	sCode128_CI	: STRING(3) := ']c1';			(* GS1 marker (FNC1 Carrier Identifiers for Code128 barcode *)
+	stAI_01_Lvl1	: ST_GS1_AI_Attributs := (sAI_Id:='01', eGS1_AI:=GS1_01, bFixed:= TRUE, nLength:=14);	(***********N2+N14*************)
+	stAI_01_Lvl2	: ST_GS1_AI_Attributs := (sAI_Id:='01', eGS1_AI:=GS1_01, bFixed:= TRUE, nLength:=14);	(***********N2+N14*************)
+	stAI_01_Lvl3	: ST_GS1_AI_Attributs := (sAI_Id:='01', eGS1_AI:=GS1_01, bFixed:= TRUE, nLength:=14);	(***********N2+N14*************)
+	stAI_10		: ST_GS1_AI_Attributs := (sAI_Id:='10', eGS1_AI:=GS1_10, bFixed:= FALSE, nLength:=20);	(***********N2+X..20*************)
+	stAI_11		: ST_GS1_AI_Attributs := (sAI_Id:='11', eGS1_AI:=GS1_11, bFixed:= TRUE, nLength:=6);	(***********N2+N6*************)
+	stAI_15		: ST_GS1_AI_Attributs := (sAI_Id:='15', eGS1_AI:=GS1_15, bFixed:= TRUE, nLength:=6);	(***********N2+N6*************)
+	stAI_17		: ST_GS1_AI_Attributs := (sAI_Id:='17', eGS1_AI:=GS1_17, bFixed:= TRUE, nLength:=6);	(***********N2+N6*************)
+	stAI_21		: ST_GS1_AI_Attributs := (sAI_Id:='21', eGS1_AI:=GS1_21, bFixed:= FALSE, nLength:=20);	(***********N2+X..20*************)
+	stAI_240		: ST_GS1_AI_Attributs := (sAI_Id:='240', eGS1_AI:=GS1_240, bFixed:= FALSE, nLength:=30);		(***********N3+X..30*************)
+	stAI_8005		: ST_GS1_AI_Attributs := (sAI_Id:='8005', eGS1_AI:=GS1_8005, bFixed:= TRUE, nLength:=6);		(***********N4+N6*************)
+	stAI_8006		: ST_GS1_AI_Attributs := (sAI_Id:='8006', eGS1_AI:=GS1_8006, bFixed:= TRUE, nLength:=18);	(***********N4+N14+N2+N2*************)
+	stAI_8008		: ST_GS1_AI_Attributs := (sAI_Id:='8008', eGS1_AI:=GS1_8008, bFixed:= TRUE, nLength:=12);	(***********N4+N8+N..4*************)
+	stAI_91		: ST_GS1_AI_Attributs := (sAI_Id:='91', eGS1_AI:=GS1_91, bFixed:= FALSE, nLength:=90);		(***********N2+X..90*************)
+	stAI_92		: ST_GS1_AI_Attributs := (sAI_Id:='92', eGS1_AI:=GS1_92, bFixed:= FALSE, nLength:=90);		(***********N2+X..90*************)
+	stAI_93		: ST_GS1_AI_Attributs := (sAI_Id:='93', eGS1_AI:=GS1_93, bFixed:= FALSE, nLength:=90);		(***********N2+X..90*************)
+	stAI_94		: ST_GS1_AI_Attributs := (sAI_Id:='94', eGS1_AI:=GS1_94, bFixed:= FALSE, nLength:=90);		(***********N2+X..90*************)
+
+	stNON_GS1_01		: ST_GS1_AI_Attributs := (sAI_Id:='10001', eGS1_AI:=NON_GS1_01, bFixed:= FALSE, nLength:=255);		(***********X..255*************)
+	stNON_GS1_02		: ST_GS1_AI_Attributs := (sAI_Id:='10002', eGS1_AI:=NON_GS1_02, bFixed:= FALSE, nLength:=255);		(***********X..255*************)
+	stNON_GS1_03		: ST_GS1_AI_Attributs := (sAI_Id:='10003', eGS1_AI:=NON_GS1_03, bFixed:= FALSE, nLength:=255);		(***********X..255*************)
+	stNON_GS1_04		: ST_GS1_AI_Attributs := (sAI_Id:='10004', eGS1_AI:=NON_GS1_04, bFixed:= FALSE, nLength:=255);		(***********X..255*************)
+	stNON_GS1_05		: ST_GS1_AI_Attributs := (sAI_Id:='10005', eGS1_AI:=NON_GS1_05, bFixed:= FALSE, nLength:=255);		(***********X..255*************)
+	stNON_GS1_06		: ST_GS1_AI_Attributs := (sAI_Id:='10006', eGS1_AI:=NON_GS1_06, bFixed:= FALSE, nLength:=255);		(***********X..255*************)
+	stNON_GS1_07		: ST_GS1_AI_Attributs := (sAI_Id:='10007', eGS1_AI:=NON_GS1_07, bFixed:= FALSE, nLength:=255);		(***********X..255*************)
+	stNON_GS1_08		: ST_GS1_AI_Attributs := (sAI_Id:='10008', eGS1_AI:=NON_GS1_08, bFixed:= FALSE, nLength:=255);		(***********X..255*************)
+	stNON_GS1_09		: ST_GS1_AI_Attributs := (sAI_Id:='10009', eGS1_AI:=NON_GS1_09, bFixed:= FALSE, nLength:=255);		(***********X..255*************)
+	stNON_GS1_10		: ST_GS1_AI_Attributs := (sAI_Id:='10010', eGS1_AI:=NON_GS1_10, bFixed:= FALSE, nLength:=255);		(***********X..255*************)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

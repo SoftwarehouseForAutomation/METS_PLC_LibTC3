@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_OUT" Id="{c07356c4-66fd-4d8f-a68a-6a8b59515f95}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_OUT :
+STRUCT
+	bDone								: BOOL;			(* TRUE = code scan complete *)
+	bBusy								: BOOL;			(* TRUE = code scan in progress *)
+	bError								: BOOL;			(* TRUE = code scan error *)
+
+	bReady								: BOOL;			(* TRUE = scanner port connected *)
+	bEnableActive						: BOOL;
+	nTriggerCounter						: UDINT;
+
+	bCameraTrigger						: BOOL;			(* TRG signal to camera *)
+	bLightTrigger						: BOOL;
+	
+	nActiveProgram						: BYTE;			(* active program *)
+	bAcceptTrigger						: BOOL;			(* TRUE = camera will accept trigger *)
+	bTCPComsLockedUp					: BOOL;
+	
+	stOpState							: ST_SCANNER_OpState;	(* operating state values *)
+	sStatus								: T_MaxString;				(* image status string *)
+	sCurrentCodeRead					: T_MaxString;
+	aLast10CodesRead					: ARRAY[1..10]  OF STRING(255);
+	stImageData							: ST_SCANNER_ImageData;		(* image data structure *)
+	stReadPerformance					: ST_SCANNER_Performance;
+	eSocketState						: E_SocketConnectionState;	(* TCP socket connection state *)
+	
+	bLastBarcodeValid					: BOOL;
+	sLastStatus							: T_MaxString;
+	
+
+	
+
+
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

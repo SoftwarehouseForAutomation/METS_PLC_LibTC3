@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_FILE_CtrlState" Id="{99960360-056d-4d9c-81cc-e92f2896876d}">
+    <Declaration><![CDATA[TYPE E_FILE_CtrlState :
+(
+	E_CX_FILEIDLE,
+	E_CX_FILEOPEN,
+	E_CX_FILESEEK,
+	E_CX_FILEREAD,
+	E_CX_FILEWRITE,
+	E_CX_FILECLOSE,
+	E_CX_FILEDONE
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

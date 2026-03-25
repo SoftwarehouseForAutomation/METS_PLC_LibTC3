@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_OUTER_AgrregationState" Id="{5b168fe4-707b-4370-8210-91a9338f1d63}">
+    <Declaration><![CDATA[TYPE E_OUTER_AgrregationState :
+(
+	E_OUTER_IDLE_OCV,
+	E_OUTER_READ_OCV,
+	E_OUTER_ERROR_OCV_READ,
+	E_OUTER_BUILD_OAC_DATA,
+	E_OUTER_DONE_OCV
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

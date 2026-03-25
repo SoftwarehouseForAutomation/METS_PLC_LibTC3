@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="gProcess" Id="{2f5deeb9-0afd-4718-a499-e92775efdbdb}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+(**************************************************************************************************************)
+(* Global structures or variables, releted to general METS proces form perspectiv of TPD unit.	 						*)
+(* Pack to outer aggregation proccess																	*)
+(**************************************************************************************************************)
+(* *********************************************************** *)
+(************   Core TPD pack aggregation structures 	************)
+(* *********************************************************** *)
+
+	ePackAggregationMode				: E_SYSTEM_PackAggregationMode;
+	eOuterAggregationMode				: E_SYSTEM_OuterAggregationMode;
+
+	aPackSecondaryMasterListQueue		: ARRAY[1..cMAX_PACK_INFEED_QUEUE] OF ST_PACK_Data; (* Refeed queue *)
+	aPackPrimaryMasterListQueue			: ARRAY[1..cMAX_PACK_INFEED_QUEUE] OF ST_PACK_Data; (* Refeed queue *)
+
+	(*aPackTracingQueue					: ARRAY[1..cMAX_TRACE_UNIT_QUEUE] OF ST_PACK_Data;
+	aPackRejectedQueue					: ARRAY[1..cMAX_PACK_REJECTED_QUEUE] OF ST_PACK_Data;*)
+	(*stPackInTransferQueue					: ST_PACK_InfeedQueue; (*Stacker queu*)*)
+
+	stPackInfeedQueue					: ST_PACK_InfeedQueue; (* Infeed queue *)
+	aMultiPackInfeedQueue				: ARRAY[1..cMAX_CAMERA_PROG_NUMBER] OF ST_PACK_InfeedQueue;
+
+	aStackerQueue							: ARRAY[1..cMAX_PACK_INFEED_QUEUE] OF ST_PACK_Data;
+
+	aLastFilledCodes						: ARRAY[1..cMAX_PACK_INFEED_QUEUE] OF ST_PACK_LastFilledCodes;
+
+	aInterimCodeQueue					: ARRAY[1..cMAX_INTERMEDIATE_CODE_QUEUE] OF T_MaxString;
+
+	aOCVPackStatus						: ARRAY[1..cMAX_OUTER_STATUS_QUEUE] OF ST_OUTER_Status;	(* Outer status register - would be nice to call it PACK Status and remove unnecesary stuff*)
+	stLastOCVStatus						: ST_OUTER_Status;
+	aErrorOCVPack							: ARRAY[1..cMAX_OUTER_STATUS_QUEUE] OF ST_OUTER_Status;
+	stErrorOCVPack						: ST_OUTER_Status;
+
+	stCurrentOuterStatus					: ST_OUTER_Status;	(* Outer status *)
+	aOuterStatus							: ARRAY[1..cMAX_OUTER_STATUS_QUEUE] OF ST_OUTER_Status;	(* Outer status register *)
+	stLastOuterStatus						: ST_OUTER_Status;
+	aErrorOuters							: ARRAY[1..cMAX_OUTER_STATUS_QUEUE] OF ST_OUTER_Status;
+	stErrorOuter							: ST_OUTER_Status;
+
+
+
+(* *********************************************************** *)
+(* *********      LARS  - evaluation  ************************)
+(* *********************************************************** *)
+
+	(*bRejectNotConfirmed	: BOOL;*)
+
+(* *********************************************************** *)
+(* *********      Side Flex  - evaluation  ************************)
+(* *********************************************************** *)
+
+	bSideFlexInitRun					: BOOL;
+	bSideFlexPackToOuterProcessing	: BOOL;
+
+	stSideFlexProcessData					: ST_SIDEFLEX_ProcessData;
+
+	(*bSideFlexAggCameraTrigger	: BOOL;
+
+	bSideFlexTwoOuterInAggregationArea	: BOOL;
+	bSideFlexRejectNotConfirmed	: BOOL;
+	bSideFlexTransferNotConfirmed	: BOOL;
+	bSideFlexOuterAtChuteExitNotConfirmed	: BOOL;*)
+
+
+	(*bInputSensor					: BOOL;
+	aProcessData					: ARRAY[1..cMAX_SIDEFLEX_QUEUE] OF ST_SIDEFLEX_ProcessData;
+	aConvrStatusUpdate			: ARRAY[1..cMAX_SIDEFLEX_QUEUE] OF FB_SIDEFLEX_ConvStatusUpdate;
+	stSideFlexOffset				: ST_SIDEFLEX_Offset;
+	nValidationIndexPointer		: INT;
+	bSideFlexApplyLabel			: BOOL;
+	bSideFlexOuterValidationTrig	: BOOL;*)
+
+
+(* *********************************************************** *)
+(* ******************       DB 	 **************************)
+(* *********************************************************** *)
+
+	aOCVDataDB	: ARRAY[0..7] OF	ST_DB_OCVDataCtrl;
+	aOACDataDB	: ARRAY[0..6] OF	ST_DB_OACDataCtrl;
+	aCACDataDB	: ARRAY[0..5] OF	ST_DB_CACDataCtrl;
+
+(* *********************************************************** *)
+(* *********       Log  ************************)
+(* *********************************************************** *)
+	aLogHandler				: ARRAY[0..255] OF FB_LOG_Handler;
+
+	stEventDataPT				: ST_LOG_EventData;
+	stEventDataML				: ST_LOG_EventData;
+	stEventDataOT				: ST_LOG_EventData;
+	stEventDataCT				: ST_LOG_EventData;
+
+	stWriteImageData			: ST_LOG_WriteImageData;
+
+(* *********************************************************** *)
+(* *********      File write error  ************************)
+(* *********************************************************** *)
+	aLogOCVFileWriteError		: ARRAY[1..10] OF ST_LOG_FileWriteError;
+	aLogOACFileWriteError		: ARRAY[1..10] OF ST_LOG_FileWriteError;
+	aLogCACFileWriteError		: ARRAY[1..10] OF ST_LOG_FileWriteError;
+	aLogCHMFileWriteError		: ARRAY[1..10] OF ST_LOG_FileWriteError;
+
+(* *********************************************************** *)
+(* *********        Core Structures for EUCA ************************)
+(* *********************************************************** *)
+
+	aOuterMasterListQueue					: ARRAY[0..cMAX_OUTER_STATUS_QUEUE] OF T_MaxString;
+	stOrcaData							: ST_ORCA_Data;
+	stInfeedConvQueue						: ST_CASE_InfeedQueue;
+
+	aPackerQueue							: ARRAY [0..1] OF ST_CASE_InfeedQueue;
+	stCaseQueue							: ST_CASE_CaseQueue;
+
+	bManualCaseScan						: BOOL;
+	aFailedCACData						: ARRAY[1..cMAX_FAILED_CASE_QUEUE] OF ST_CAC_Data;	(* array of failed CAC data *)
+	aVerifiedCACData						: ARRAY[1..cMAX_VERIFIED_CASE_QUEUE] OF ST_CAC_Data;	(* array of verified CAC data *)
+
+
+(* *********************************************************** *)
+(* ***************       Clear queue by door section	 ************************)
+(* *********************************************************** *)
+
+	stDoorOpenClearData					: ST_SYSTEM_Door;
+	bClearConveyorQueue					: BOOL;
+	bClearPackerQueue						: BOOL;
+	bClearCaseQueue						: BOOL;
+
+(* *********************************************************** *)
+(* ***************        MasterList section	 ************************)
+(* *********************************************************** *)
+
+	bMasterListBarcodeAdded				: BOOL;
+	bMasterListCheckComplete				: BOOL;
+	nMasterListRestoreCounter				: INT;			(*number of restored Outers in one case*)
+
+(* *********************************************************** *)
+(* ***************        Validation section	 ************************)
+(* *********************************************************** *)
+
+	
+
+	stPackRejectReasons					: ST_RejectReasonsForPack;
+	stOuterRejectReasons					: ST_RejectReasonsForOuter;
+	stCaseRejectReasons					: ST_RejectReasonsForCase;
+
+	aRejectCountersID						: ARRAY[0..cMAX_REJECT_REASON] OF UINT;
+
+	(*bSetOuterValidationOK				: BOOL;
+	bSetOuterValidationNOK				: BOOL;*)
+	bSetEarlyCaseValidationOK			: BOOL;
+	bSetEarlyCaseValidationNOK			: BOOL;
+	bSetCaseValidationOK					: BOOL;
+	bSetCaseValidationNOK				: BOOL;
+	bInhibitPulseAlarmOK					: BOOL;
+	bSetPulseAlarmNOK					: BOOL;
+
+
+(* *********************************************************** *)
+(* ***************     Pack aggregation  **************************)
+(* *********************************************************** *)
+
+	bPackInfeedConveyerIsRuning				: BOOL;
+	bRunSeparationDrive					: BOOL;
+	bOuterInsideLighBox					: BOOL;
+	bOuterInsideRotartyPosition				: BOOL;
+	bCamerasOutOfSync						: BOOL;
+	bInhibitPackSeparator_CameraBufferHigh	: BOOL;
+
+	bIncrementAggregationFIFO				: BOOL;
+	bFillInAggregationFIFO					: BOOL;
+
+(*	bTPDCutOutFromConv					: BOOL;
+	bTPDCutOutFromSeparator				: BOOL;*)
+
+	nPackNoReadCounter					: INT;
+
+	bAddToPackMLQueueDone				: BOOL;
+	bAddToPackQueueDone					: BOOL;
+	bAddToStackerQueueDone				: BOOL;
+	bAddToInterimQueueDone					: BOOL;
+
+(* *********************************************************** *)
+(* ***************     Outer aggregation  **************************)
+(* *********************************************************** *)
+
+	bSearchCode							: BOOL;
+	sNewPackCodeRefeed					: T_PACK_Barcode;
+
+	nOuterNoReadCounter					: INT;
+
+	(*bManualInterimCodeTrigger				: BOOL;*)
+	stManualInterimImageData				: ST_SCANNER_ImageData;					(*f.ex can by used F21_HandScanner.strCaseBarcode*)
+
+	nOuterCounterValue					: UINT;
+
+	bValidateForRejectDone				: BOOL;
+	bValidateForRejectBusy				: BOOL;
+	bValidateForRejectError				: BOOL;
+	nValidateForRejectErrorID				: UDINT;
+
+	bRejectCurrentOuter					: BOOL := TRUE;
+	sCurrentOuterRejectCode				: STRING(255);
+
+	(*bManualOuterLabelEnable				: BOOL;*)
+	bManualOuterLableTrigger				: BOOL;
+	sManualOuterLabelBarcode			: T_OUTER_Barcode;					(*f.ex can by used F21_HandScanner.strCaseBarcode*)
+
+	stCurrentPackerData					: ST_CASE_OperationData;
+
+	(*bManualRowLabelEnable					: BOOL;*)
+	bManualRowLableTrigger					: BOOL;
+	sManualRowLabelBarcode					: T_OUTER_Barcode;					(*f.ex can by used F21_HandScanner.strCaseBarcode*)
+
+	stOuterPrintStationStruct					: ST_OuterPrintStationStruct;
+
+(* *********************************************************** *)
+(* ***************        Case aggregation	 ************************)
+(* *********************************************************** *)
+	bOuterRemovedFromInfeedQueue			: BOOL;
+	bWaitingCaseContentRead				: BOOL;
+	bWaitngCaseDischarge					: BOOL;
+	bCaseDischargeExecution					: BOOL;
+	bWaitingToScanLabel					: BOOL;
+	bResetForWaitingScanCaseLable			: BOOL;
+	bCaseRejectedBeforeScanLabelSignal 		: BOOL;
+
+	(*bManualCaseLabelEnable					: BOOL;*)
+	bManualCaseLableTrigger					: BOOL;
+	sManualCaseLabelBarcode				: T_CASE_Barcode;					(*f.ex can by used F21_HandScanner.strCaseBarcode*)
+
+	bORCADataReady						: BOOL;
+
+	sLastCaseLabelBarcode					: T_CASE_Barcode;
+
+	bCaseContetntValidationComplete		: BOOL;
+	bCaseValidationOK						: BOOL;					(*Output signal to IO Card - validation OK for casepacker*)
+	bCaseValidationNOK						: BOOL;					(*Output signal to IO Card - validation Not OK for casepacker*)
+
+	bCaseValid							: BOOL;
+	bCaseInvalid							: BOOL;
+
+(********From Pack Trace variable************************)
+
+	bManualDeleteAllOACFiles				: BOOL;
+	bManualDeleteAllOCVFiles				: BOOL;
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

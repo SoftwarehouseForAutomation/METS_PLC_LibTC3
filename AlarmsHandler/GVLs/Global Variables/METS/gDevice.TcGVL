@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="gDevice" Id="{6fbd9458-3f49-47dd-8409-51f3d12d32e8}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+	
+(**************************************************************************************************************)
+(* Global structures or variables, releted to general METS proces form perspectiv of EUCA unit. 						*)
+(* Outer to case aggregation proccess																	*)
+(**************************************************************************************************************)
+
+(* *********************************************************** *)
+(**********Core METS  state and configuration structures************)
+(* *********************************************************** *)
+	eMachineState						: E_SYSTEM_MachineState;
+	stMachineState						: ST_SYSTEM_MachineState;
+	sActiveMachineState					: STRING; 
+	
+	bForceMachineState					: BOOL := FALSE;
+	nForcedMachineState					: INT;
+	
+	stMetsStatus						: ST_SYSTEM_MachineStatus;
+	stMachineConfig						: ST_SYSTEM_Config;
+	stMachineSafety						: ST_SYSTEM_SafetyStatus;
+	stMachineDevices					: ST_SYSTEM_DeviceState;
+	
+	eAutomationMode						: E_SYSTEM_AutomationMode;
+	
+(* *********************************************************** *)
+(* ***************        Genreal PLC section	 ************************)
+(* *********************************************************** *)
+
+	stEtherCATStatus					: ST_EtherCATStatus;
+	
+	fbXFastTaskkInfo					: FB_SYSTEM_TaskInfo;
+	stXFastTaskSys						: PlcTaskSystemInfo;
+	bXFastTask1stCycle					: BOOL;
+	tXFastTaskCycleTime					: TIME;
+	
+	fbFastTaskkInfo						: FB_SYSTEM_TaskInfo;
+	stFastTaskSys						: PlcTaskSystemInfo;
+	bFastTask1stCycle					: BOOL;
+	tFastTaskCycleTime					: TIME;
+	
+	fbControlTaskInfo					: FB_SYSTEM_TaskInfo;
+	stControlTaskSys					: PlcTaskSystemInfo;
+	bControlTask1stCycle				: BOOL;
+	tControlCycleTime					: TIME;
+
+	fbAuxTaskInfo						: FB_SYSTEM_TaskInfo;
+	stAuxTaskSys						: PlcTaskSystemInfo;
+	bAuxTask1stCycle					: BOOL;
+	tAuxCycleTime						: TIME;
+	
+	stPLCAppSys							:	PlcAppSystemInfo;
+
+	bProductInstructionValid			: BOOL;
+	
+	
+(* *********************************************************** *)
+(* ****************        DB section	 ******************************)
+(* *********************************************************** *)
+
+	(*stCACCheck						: ST_DB_CACCheckCtrl;*)
+	stDBReport							: ST_DB_ReportDBCtrl;
+	
+(* *********************************************************** *)
+(* ****************       Pulse signal	 **************************)
+(* *********************************************************** *)
+
+	bPulse05s							: BOOL;
+	bPulse1s							: BOOL;
+	bPulse2s							: BOOL;
+	bPulse5s							: BOOL;	
+	bPulse10s							: BOOL;
+	
+(* ************************************************************)
+(* ******************       Bridge 	 *************************)
+(* ************************************************************)
+
+	stBridge							: ST_SYSTEM_BridgeStatus;
+	nWatchdogToBridge					: DINT;
+	nWatchdogFromBridge					: DINT;
+
+
+(* *********************************************************** *)
+(* ******************       Logger 	 **************************)
+(* *********************************************************** *)
+
+	stProcessLogger						: ST_SYSTEM_LoggerStatus;
+	nWatchdogToLogger					: DINT;
+	nWatchdogFromLogger					: DINT;
+	
+
+(* *********************************************************** *)
+(* ******************       DB 	 **************************)
+(* *********************************************************** *)
+
+	stArchiveDB							: ST_SYSTEM_ArchiveDBStatus	;
+	nWatchdogToArchiveDB				: DINT;
+	nWatchdogFromArchiveDB				: DINT;
+
+(* *********************************************************** *)
+(* ***************     Reporting  KPI	 ***********************)
+(* *********************************************************** *)
+
+	stReportingDB						: ST_SYSTEM_ReportingDBStatus	;
+	nWatchdogToReportingDB				: DINT;
+	nWatchdogFromReportingDB			: DINT;
+
+(* *********************************************************** *)
+(* ****************       Cameras  ******************************)
+(* *********************************************************** *)
+
+	aCameraControl						: ARRAY[1..cMAX_CAMERA_NUMBER] OF ST_SCANNER_CameraMap;
+	aCameraLightingIntensity			: ARRAY[1..cMAX_CAMERA_NUMBER] OF INT;
+
+	nLightboxLightingIntensityTop		: INT;	(*use as all*)
+	nLightboxLightingIntensityBottom	: INT; (*ue in METS ONE*)
+
+	(*nPackAggregationLightingIntensity		: INT;
+	nPackConfirmationLightingIntensity		: INT;
+	nMasterlistCameraLightingIntensity		:INT;*)
+
+(* *********************************************************** *)
+(* ****************       Profinet	 ******************************)
+(* *********************************************************** *)
+
+	aG120Control						: ARRAY[1..cMAX_PROFINET_DRIVES] OF ST_G120_Control;
+
+(* *********************************************************** *)
+(* ****************       Cylinders	 ******************************)
+(* *********************************************************** *)
+
+	aCylinderControl					: ARRAY[1..cMAX_CYLINDERS] OF ST_CYLINDER_Control;
+
+(* *********************************************************** *)
+(* ****************      Axis	 ******************************)
+(* *********************************************************** *)
+
+
+	aAxisControl						: ARRAY[1..cMAX_MC2_DRIVES] OF ST_AXIS_Control;
+	aAxisParamSet						: ARRAY[1..cMAX_MC2_DRIVES] OF ST_AxisParameterSet;
+
+(* *********************************************************** *)
+(* ****************       Printers	 ******************************)
+(* *********************************************************** *)
+
+	aSecquentionalCounter				: ARRAY[1..cMAX_PRINTER_NUMBER] OF UDINT;
+	nDummySecquentionalCounter			: UDINT;
+
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

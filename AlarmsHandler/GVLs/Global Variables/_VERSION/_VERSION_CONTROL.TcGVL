@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="_VERSION_CONTROL" Id="{623711b1-5420-4d95-8622-fab3fd340922}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+	(*cRELEASE_DATE		: STRING[10] := '25.03.2025';*)
+
+	cHARDWARE_CONFIG_VERSION	: STRING[20] := 'IND-METS-NCW_v007';
+	(*cVERSION_INFO		: T_MaxString := '26/07/23 - 07.00.41 - SD - UPS management';*)
+END_VAR
+
+(*
+Version history:
+
+Date		|	Version/Author 		|	Remark
+----------------------------------------------------------------------------------------------------
+26/07/23	|	07.00.41	SD		|	UPS management and power related Alarm and Warnings
+25/07/23	|	07.00.40	SD		|	UPS management draft
+19/07/23	|	07.00.39	SD		|	PLAS sequence placeholder
+18/07/23	|	07.00.38	TW SD	|	Hand scsnner selection mod
+09/05/23	|	07.00.02	PP		|	Add remaining HotFixes form Korea (according Jira tasks)
+			|						|	
+09/11/22	|	06.37.05	PP		|	Add Log system for case level (EventCT) and VERSION_CONTROL
+05/11/22	|	06.37.03	PP		|	Original PLC-METS-6.37.03_Inline.pro from Piotr
+15/09/22	|	06.37.01	PP		|	Lateste hardware design implemented HC METS-INLINE v2.10
+*)
+
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

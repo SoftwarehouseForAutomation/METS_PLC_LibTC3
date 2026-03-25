@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_CAC_Data" Id="{a710d8dc-3c59-43f9-80cd-bb13bd63f085}">
+    <Declaration><![CDATA[TYPE ST_HMI_CAC_Data :
+STRUCT
+	sBarcode 					: T_CASE_Barcode;
+	(*sCaseIDCode				: STRING(10);
+	sProductionDate			: STRING(10);
+	sProductionTime			: STRING(8);
+	sCaseRejectCode			: T_MaxString;		(* blank and not included in CAC files for valid cases *)*)
+	nNumberOfOuters			: INT;
+	nNumberOfPacks			: INT;
+	aOuter						: ARRAY[1..cMAX_HMI_OUTERS_PER_CASE] OF ST_HMI_OAC_Data;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

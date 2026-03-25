@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_CASE_CaseQueue" Id="{1ad0491c-ba96-4738-b620-9bf9e080c500}">
+    <Declaration><![CDATA[TYPE ST_HMI_CASE_CaseQueue :
+STRUCT
+	aCACData		: ARRAY[1..cMAX_CASE_QUEUE] OF ST_HMI_CAC_Data;	(* array of CAC data *)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

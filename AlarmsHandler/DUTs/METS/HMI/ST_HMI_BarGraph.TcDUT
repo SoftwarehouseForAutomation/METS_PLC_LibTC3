@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_BarGraph" Id="{57b0ae3a-9c7c-464d-811a-2df91870ccd3}">
+    <Declaration><![CDATA[TYPE ST_HMI_BarGraph :
+STRUCT
+	sPackBarGraphEfficiency		: ARRAY[0..5] OF REAL;
+	sOuterBarGraphEfficiency	: ARRAY[0..5] OF REAL;
+	sCaseBarGraphEfficiency		: ARRAY[0..5] OF REAL;
+
+	nPackTotal					: UDINT;
+	nPackOK						: UDINT;
+	nOuterTotal					: UDINT;
+	nOuterOK					: UDINT;
+	nCaseTotal					: UDINT;
+	nCaseOK						: UDINT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PCMMessageHeader" Id="{c291e88c-0fa4-4414-9604-264a556b5372}">
+    <Declaration><![CDATA[//{attribute 'pack_mode' := '8'}
+TYPE ST_PCMMessageHeader :
+STRUCT
+
+	CreationDate 				: STRING(10);
+	CreationTime 				: STRING(25);
+	MessageType	 			: STRING(25);
+	TestIndicator				: STRING(5);
+	SenderSystem				: STRING(5);
+	ReceiverSystem			: STRING(5);
+	ReferenceID				: STRING(255);
+	SourceID					: STRING(50);
+
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

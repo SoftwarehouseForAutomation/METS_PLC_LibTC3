@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_DBResult" Id="{2ba63629-c2c1-40ba-9a0d-12fb56a5b11e}">
+    <Declaration><![CDATA[TYPE ST_DBResult :
+STRUCT
+	strCode : STRING(150);
+	nExpiryStatus : DINT;
+	(*nNumberOfchildren : INT;*)
+
+(* nExpiryStatus:
+0 - Expired
+1 - Unknown - probaly due to reanimation. should still be successful
+2 - Not Expired - OK*)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CaseContent" Id="{30c4b803-a43e-425a-a86d-97fb2fabacf6}">
+    <Declaration><![CDATA[TYPE ST_CaseContent :
+STRUCT
+	DefaultIdentity 		: ST_DefaultIdentity;
+	ExpectedItemCount	: STRING(3);
+	ItemReadRate			: STRING(3);
+	arrOuterItem			: ARRAY[1..cMAX_OUTERS_PER_CASE] OF ST_OuterItem;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

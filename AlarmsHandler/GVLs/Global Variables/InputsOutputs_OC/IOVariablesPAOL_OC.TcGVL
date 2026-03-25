@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="IOVariablesPAOL_OC" Id="{a42a30f7-9835-425c-9591-8a418336a8bd}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+(*TERMINAL XXXKF1 - EK1100 ******************************************************)
+
+(*TERMINAL 647KF1 - EL4002 ******************************************************)
+	qn647KF1_1_LightingIntensity							AT %Q* : INT;
+	qn647KF1_2_Spare									AT %Q* : INT;
+
+(*TERMINAL 660KF1 - EL1008 ******************************************************)
+	ib660KF1_1_PackAggregationCameraRigTrigger			AT %I* : BOOL;
+	ib660KF1_5_PackAggregationCamera1Trigger				AT %I* : BOOL;
+	ib660KF1_2_PackAggregationCamera2Trigger				AT %I* : BOOL;
+	ib660KF1_6_PackAggregationCamera3Trigger				AT %I* : BOOL;
+	ib660KF1_3_PreMachineBuildBack						AT %I* : BOOL;
+	ib660KF1_7_TPDExitBlock								AT %I* : BOOL;
+	ib660KF1_4_PackAggregationCamera4Trigger				AT %I* : BOOL;	(* Option *)
+	ib660KF1_8_PackIsolatorDrive							AT %I* : BOOL;
+
+(*TERMINAL 680KF1 - EL2008 ******************************************************)
+	qb680KF1_1_PackAggregationCamera1Enable				AT %Q* : BOOL;
+	qb680KF1_5_PackAggregationCamera2Enable				AT %Q* : BOOL;
+	qb680KF1_2_PackAggregationCamera3Enable				AT %Q* : BOOL;
+	qb680KF1_6_PackAggregationCamera1Power				AT %Q* : BOOL;
+	qb680KF1_3_PackAggregationCamera2Power				AT %Q* : BOOL;
+	qb680KF1_7_PackAggregationCamera3Power				AT %Q* : BOOL;
+	qb680KF1_4_PackAggregationCamera4Enable				AT %Q* : BOOL;
+	qb680KF1_8_PackCamerasLenseAir						AT %Q* : BOOL;
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

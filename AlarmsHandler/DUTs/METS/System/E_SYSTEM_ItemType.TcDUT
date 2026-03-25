@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SYSTEM_ItemType" Id="{1c2ac9b3-de2c-4a8a-8ad0-c5efa30faf14}">
+    <Declaration><![CDATA[TYPE E_SYSTEM_ItemType :
+(
+	ePack  	:= 0,
+	eOuter	:= 1,
+	eCase	:= 2,
+	eInterim	:= 3
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

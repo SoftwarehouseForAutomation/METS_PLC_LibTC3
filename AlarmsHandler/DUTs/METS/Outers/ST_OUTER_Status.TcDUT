@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_OUTER_Status" Id="{fef63e62-a8ee-4c58-9f0b-339ea646070d}">
+    <Declaration><![CDATA[TYPE ST_OUTER_Status :
+STRUCT
+	bOuterPresent		: BOOL;		(* TRUE = Outer present *)
+	bLabelApplied		: BOOL;		(* TRUE = label has been printed and applied to Outer *)
+	nTriggerID			: UDINT;	(* TriggerID value for scanners *)
+	bOuterCodeValid		: BOOL;		(* TRUE = Outer code valid *)
+	bPackCodesValid		: BOOL;		(* TRUE = Pack codes valid *)
+	bQAReject			: BOOL;		(* TRUE = QA reject requested *)
+	nStatus				: DWORD;
+	sDataSourceTracker		: STRING(10);
+	stOACData			: ST_OAC_Data;			(* OAC data for pack *)
+	(*sOHMData		: ST_OHM_Data;		(*New OHM data structure*)*)
+	aOACPackStatus		: ARRAY[1..cMAX_PACKS_PER_OUTER] OF BYTE;	(* OAC pack code status *)
+	aPackSUPIResult		: ARRAY[1..cMAX_PACKS_PER_OUTER] OF DINT;	(* OAC pack code status *)
+	aPackCodeFilledIn		: ARRAY[1..cMAX_PACKS_PER_OUTER] OF E_PACK_FilledInStatus;
+	(*strAggregationCodes	: ARRAY[1..2] OF T_PACK_Barcode; 		(* pack aggregation codes for CML *)*)
+	aPackCodes			: ARRAY[1..cMAX_PACKS_PER_OUTER] OF ST_PACK_CodeBuffer; 	(* primary and secondary buffers for pack codes *)
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

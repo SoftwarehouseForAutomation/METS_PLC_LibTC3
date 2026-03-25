@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_CX_NVXMLState" Id="{b20690d5-fb52-4d95-98d5-54c551d197b4}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_CX_NVXMLState : (
+	IDLE,
+	READXML,
+	RESTORE,
+	MONITOR,
+	WRITEXML,
+	BACKUP,
+	RETRY
+);
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

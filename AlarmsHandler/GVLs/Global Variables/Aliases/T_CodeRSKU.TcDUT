@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_CodeRSKU" Id="{91780bfa-c3d8-4563-ad05-a5565361cf58}">
+    <Declaration><![CDATA[ TYPE T_CodeRSKU : STRING[9];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

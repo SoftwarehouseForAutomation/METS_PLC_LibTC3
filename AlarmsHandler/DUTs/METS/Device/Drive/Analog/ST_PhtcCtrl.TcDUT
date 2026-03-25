@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PhtcCtrl" Id="{f01ae20b-dda9-422c-82b5-c017f17d27fd}">
+    <Declaration><![CDATA[TYPE ST_PhtcCtrl :
+STRUCT
+	bStopInfeedConveyor:BOOL;
+	bStopSeparator:BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

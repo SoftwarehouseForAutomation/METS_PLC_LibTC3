@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_NOVRAM_METS_EventCounters" Id="{24ee74a8-a383-446b-882d-1385ffd78e78}">
+    <Declaration><![CDATA[TYPE ST_NOVRAM_METS_EventCounters :
+STRUCT
+	nShiftID						: T_PositiveINT;
+	sProductionOrder				: T_CodePO;
+	sRSKU							: T_CodeRSKU;
+	stEventStartDT					: TIMESTRUCT;
+	stMachineStateStatistic		: ST_LOG_MachineState;
+	aGeneralKPIStatistic			: ARRAY[0..2] OF  ST_KPI_ItemsProduced;
+	aAlarmsStatistic				: ARRAY[0..cMAX_MESSAGE_NUMBER] OF ST_LOG_Alarms;
+	aRejectCounters				: ARRAY[0..cMAX_REJECT_REASON] OF ST_LOG_RejectReasons;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

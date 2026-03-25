@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <GVL Name="IOVariablesEUCA_CML" Id="{2407b0da-0478-488e-85cb-446d83647108}">
+    <Declaration><![CDATA[{attribute 'Tc2GvlVarNames'}
+VAR_GLOBAL
+
+(*****************************Input/Output Cards***********************************)
+
+(*METS EUCA (CML)*)
+	(*TERMINAL 646KF2 (EK1200-5000 EtherCAT Power supply (2A E-Bus)) *****************************************)
+
+	ib650KF1_EL6001PortNo								AT%I*: UINT;
+	ist650KF1_HandScannerCOMPortDataIn					AT%I*: EL6InData22B;
+	qst650KF1_HandScannerCOMPortDataOut				AT%Q*: EL6OutData22B;
+
+(*TERMINAL 651KF1 - EL4002 ******************************************************)
+	qn651KF1_1_LightingIntensityOuterValidCamera			AT %Q* : INT;
+	qn651KF1_2_LightingIntensityOuterAggCamera			AT %Q* : INT;
+
+(*TERMINAL 652KF1 - EL4002 ******************************************************)
+	qn652KF1_1_LightingIntensityCaseContentCamera		AT %Q* : INT;
+	qn652KF1_2_Spare											AT %Q* : INT;
+
+(*TERMINAL 660KF1 (EL1008 **************************************************************)
+	ib660KF1_1_IntermediatePushSensor 					AT %I*: BOOL;(* 660KF1_1 *)
+	ib660KF1_5_RowCompleteSensor 						AT %I*: BOOL;(* 660KF1_1 *)
+	ib660KF1_2_LayerCompleteSensor 						AT %I*: BOOL;(* 660KF1_1 *)
+	ib660KF1_6_CaseCompleteSensor 						AT %I*: BOOL;(* 660KF1_1 *)
+	ib660KF1_3_CaseDischargedSensor 						AT %I*: BOOL;(* 660KF1_1 *)
+	ib660KF1_7_Spare  									AT %I*: BOOL;(* 660KF1_1 *)
+	ib660KF1_4_CaseLabelValidationTrigSensor				AT %I*: BOOL;(* 660KF1_1 *)
+	ib660KF1_8_CaseLabelValidationTrig_SFCP 				AT %I*: BOOL;(* 660KF1_1 *)
+
+(*TERMINAL 661KF1 (EL1008  **************************************************************)
+	ib661KF1_1_DoorOpenZone1 							AT %I*: BOOL;(* 661KF1_1 *)
+	ib661KF1_5_DoorOpenZone2 							AT %I*: BOOL;(* 661KF1_1 *)
+	ib661KF1_2_CasePackerAutoRun_SFCP					AT %I*: BOOL;(* 661KF1_1 *)
+	ib661KF1_6_CaseRejectet_SFCP 						AT %I*: BOOL;(* 661KF1_1 *)
+	ib661KF1_3_RowComplete_SFCP 						AT %I*: BOOL;(* 661KF1_1 *)
+	ib661KF1_7_LayerComplete_SFCP 						AT %I*: BOOL;(* 661KF1_1 *)
+	ib661KF1_4_CaseComplete_SFCP 						AT %I*: BOOL;(* 661KF1_1 *)
+	ib661KF1_8_CaseDischarged_SFCP 						AT %I*: BOOL;(* 661KF1_1 *)
+
+(*TERMINAL 662KF1 (EL1008 **************************************************************)
+	ib662KF1_1_24VSupplyOkay 							AT %I*: BOOL;(* 662KF1_1 *)
+	ib662KF1_5_24VSupplyOkayAdditionalSupplySpare 			AT %I*: BOOL;(* 662KF1_1 *)
+	ib662KF1_2_Spare 									AT %I*: BOOL;(* 662KF1_1 *)
+	ib662KF1_6_Spare 									AT %I*: BOOL;(* 662KF1_1 *)
+	ib662KF1_3_IntermediatePush_SFCP 					AT %I*: BOOL;(* 662KF1_1 *)
+	ib662KF1_7_AdditionalPreMachineAutorun 				AT %I*: BOOL;(* 662KF1_1 *)					(*not used on C922 and C925 *)
+	ib662KF1_4_Spare 									AT %I*: BOOL;(* 662KF1_1 *)
+	ib662KF1_8_Spare			 						AT %I*: BOOL;(* 662KF1_1 *)
+
+(*TERMINAL 680KF1 (EL2008  **************************************************************)
+	qb680KF1_1_OuterMasterListCamTrig 					AT %Q*: BOOL;(* 680KF1_1 *)					(*not used on C922 and C925 *)		(*rejectCamera instead*)
+	qb680KF1_5_OuterAggregationCamTrig 					AT %Q*: BOOL;(* 680KF1_1 *)
+	qb680KF1_2_CaseContentValidationCamTrig   				AT %Q*: BOOL;(* 680KF1_1 *)
+	qb680KF1_6_CaseLabelValidationCamTrig 				AT %Q*: BOOL;(* 680KF1_1 *)
+	qb680KF1_3_OuterMasterListCameraPower  				AT %Q*: BOOL;(* 680KF1_1 *)					(*not used on C922 and C925 *)		(*rejectCamera instead*)	(*qb482KF1_1_RejectCameraPower*)
+	qb680KF1_7_OuterAggregationCamPower  				AT %Q*: BOOL;(* 680KF1_1 *)
+	qb680KF1_4_CaseContentValidationCamPower  			AT %Q*: BOOL;(* 680KF1_1 *)
+	qb680KF1_8_CaseLabelValidationCamPower  				AT %Q*: BOOL;(* 680KF1_1 *)
+
+(*TERMINAL 681KF1 (EL2008  **************************************************************)
+	qb681KF1_1_Cutout_STCP  							AT %Q*: BOOL;(* 681KF1_1 *)
+	qb681KF1_5_CaseValidationOK_STCP  					AT %Q*: BOOL;(* 681KF1_1 *)
+	qb681KF1_2_OuterValidationOK_STCP  					AT %Q*: BOOL;(* 681KF1_1 *)
+	qb681KF1_6_CaseContentOK_STCP						AT %Q*: BOOL;(* 681KF1_1 *)					(*not used on C922 and C925 *)
+	qb681KF1_3_HandScannerLightPoleGreen 				AT %Q*: BOOL;(* 681KF1_1 *)
+	qb681KF1_7_HandScannerLightPoleRed  					AT %Q*: BOOL;(* 681KF1_1 *)
+	qb681KF1_4_Spare  									AT %Q*: BOOL;(* 681KF1_1 *)
+	qb681KF1_8_CMLConvoyerRun   						AT %Q*: BOOL;(* 681KF1_1 *)(*OuterRejetcSignal*)	(*not used on C922 and C925 *)
+
+(*TERMINAL 682KF1 (EL2008  **************************************************************)
+	qb682KF1_1_Spare 										AT %Q*: BOOL;(* 682KF1_1 *)
+	qb682KF1_5_Spare  										AT %Q*: BOOL;(* 682KF1_1 *)
+	qb682KF1_2_Spare  										AT %Q*: BOOL;(* 682KF1_1 *)
+	qb682KF1_6_Spare											AT %Q*: BOOL;(* 682KF1_1 *)
+	qb682KF1_3_PLCControlledOuterValidCamLightning		AT %Q*: BOOL;(* 682KF1_1 *)
+	qb682KF1_7_PLCControlledOuterAggCamLightning		AT %Q*: BOOL;(* 682KF1_1 *)
+	qb682KF1_4_PLCControlledCaseContentCamLightning  	AT %Q*: BOOL;(* 682KF1_1 *)
+	qb682KF1_8_Spare   										AT %Q*: BOOL;(* 682KF1_1 *)
+
+(*TERMINAL 690KF1 (EL9505 Power supply terminal 5V) ***************5V Power Supplay***********************)
+
+	ib690KF1_PowerStatusOK								AT%I* : BOOL;
+	ib690KF1_PowerOverloaded							AT%I* : BOOL;
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SCANNER_IN" Id="{cfbfb277-6114-4e03-9941-c3d926af33b0}">
+    <Declaration><![CDATA[TYPE ST_SCANNER_IN :
+STRUCT
+	stTriggerID				: ST_SCANNER_TriggerID;	(* trigger ID data, will be returned in sImageData to allow trigger and response to be aligned *)
+	stManualStatus			: ST_SCANNER_ManualStatus;
+	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

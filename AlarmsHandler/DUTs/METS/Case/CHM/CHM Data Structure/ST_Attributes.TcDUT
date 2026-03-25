@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_Attributes" Id="{8172c20c-d2e1-49f4-bf04-b8ff11dd23a9}">
+    <Declaration><![CDATA[TYPE ST_Attributes :
+STRUCT
+
+	ProduceDateMC			: STRING(14);
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

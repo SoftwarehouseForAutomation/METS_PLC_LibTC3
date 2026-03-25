@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AlarmDB" Id="{28a70e88-40fb-471f-abad-82af6dfbc80d}">
+    <Declaration><![CDATA[TYPE ST_AlarmDB :
+STRUCT
+	eEventID			: E_MessageID;
+	eRootEventID		: E_MessageID;
+	nEventCat			: INT;
+	nEventTypeNo		: INT;
+	sEventTypeID		: STRING(1);
+	sEquipmentName		: STRING;
+	bIsActive			: BOOL;
+	sEventStart			: STRING;
+	sEventEnd			: STRING;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

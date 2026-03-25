@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_NC_EncDataOut" Id="{0fc69788-8329-4ae5-84bc-fb47d86a0beb}">
+    <Declaration><![CDATA[TYPE ST_NC_EncDataOut :
+STRUCT
+	nOutData1	: ARRAY[0..1] OF UINT;
+	nOutData2	: ARRAY[0..1] OF UINT;
+	nCtrl1		: BYTE;
+	nCtrl2		: BYTE;
+	nCtrl3		: BYTE;
+	nCtrl4		: BYTE;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

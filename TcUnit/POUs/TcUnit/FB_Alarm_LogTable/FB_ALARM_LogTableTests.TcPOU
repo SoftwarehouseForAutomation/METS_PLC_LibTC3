@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_ALARM_LogTableTests" Id="{750434a9-9021-4dec-a624-43efc4fc2a12}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ALARM_LogTableTests EXTENDS TcUnit.FB_TestSuite
+
+VAR
+	
+	fbALARM_LogTable		: FB_ALARM_LogTable;	
+	
+	bResetActive			: BOOL;
+	//IN_OUT variables
+
+	stAlarmTable			:	ST_AlarmsTable;
+	aAlarms 				: 	ARRAY [0..cMAX_ALARM_GROUP] OF ST_Alarms;
+	aAlarmsSettings 		: 	ARRAY [0..cMAX_ALARM_GROUP] OF ST_AlarmSettings;
+	stCTDateTime			: 	ST_SYSTEM_DateTime;
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+//==============================================================
+//01.ActiveAlarms
+//==============================================================
+ActiveAlarms01_aAlarmsActiveSetTrue();
+ActiveAlarms02_aAlarmsActiveSetTrue();
+
+//==============================================================
+//02.AlarmLogs
+//==============================================================
+AlarmLogs01_ProperOrder();
+AlarmLogs02_ProperOrder();]]></ST>
+    </Implementation>
+    <Folder Name="01.ActiveAlarms" Id="{812bf754-e3c5-408f-9c73-395d15b4ce6f}" />
+    <Folder Name="02.AlarmLogs" Id="{247db996-b49b-40b6-aabe-629a32334c40}" />
+    <Method Name="ActiveAlarms01_aAlarmsActiveSetTrue" Id="{5fb34123-d7cd-4077-b67f-fe12db59e6d2}" FolderPath="01.ActiveAlarms\">
+      <Declaration><![CDATA[METHOD INTERNAL ActiveAlarms01_aAlarmsActiveSetTrue
+VAR	
+	
+// 	bResetActive			: BOOL;
+// 	//IN_OUT variables
+// 
+// 	stAlarmTable			:	ST_AlarmsTable;
+// 	aAlarms 				: 	ARRAY [0..cMAX_ALARM_GROUP] OF ST_Alarms;
+// 	aAlarmsSettings 		: 	ARRAY [0..cMAX_ALARM_GROUP] OF ST_AlarmSettings;
+// 	stCTDateTime			: 	ST_SYSTEM_DateTime;
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init clear
+TestInit(aAlarms:= aAlarms, stAlarmTable:= stAlarmTable);
+//Change some data for test scenario below
+aAlarms[0].nMessage := 16#00000001;
+
+fbALARM_LogTable(
+	bResetActive:= bResetActive, 
+	stAlarmTable:= stAlarmTable, 
+	aAlarms:= aAlarms, 
+	aAlarmsSettings:= aAlarmsSettings, 
+	stCTDateTime:= stCTDateTime
+);
+
+	
+IF TcUnit.TEST_ORDERED('ActiveAlarms01_aAlarmsActiveSetTrue') THEN
+			
+	AssertTrue(	Condition:= (stAlarmTable.aActiveID[0] = TRUE), 
+				Message:= 'Active alarm not set'
+	);
+	AssertTrue(	Condition:= (stAlarmTable.aActiveID[1] = FALSE), 
+				Message:= 'No Active alarm set'
+	);AssertTrue(	Condition:= (stAlarmTable.aActiveID[33] = FALSE), 
+				Message:= 'No Active alarm set'
+	);
+	AssertTrue(	Condition:= (stAlarmTable.aActiveID[127] = FALSE), 
+				Message:= 'No Active alarm set'
+	);
+	AssertTrue(	Condition:= (stAlarmTable.aActiveID[224] = FALSE), 
+				Message:= 'No Active alarm set'
+	);
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ActiveAlarms02_aAlarmsActiveSetTrue" Id="{8b6abe60-881f-4dd4-ba59-b51ca7e17684}" FolderPath="01.ActiveAlarms\">
+      <Declaration><![CDATA[METHOD INTERNAL ActiveAlarms02_aAlarmsActiveSetTrue
+VAR	
+	
+// 	bResetActive			: BOOL;
+// 	//IN_OUT variables
+// 
+// 	stAlarmTable			:	ST_AlarmsTable;
+// 	aAlarms 				: 	ARRAY [0..cMAX_ALARM_GROUP] OF ST_Alarms;
+// 	aAlarmsSettings 		: 	ARRAY [0..cMAX_ALARM_GROUP] OF ST_AlarmSettings;
+// 	stCTDateTime			: 	ST_SYSTEM_DateTime;
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// Data init clear
+TestInit(aAlarms:= aAlarms, stAlarmTable:= stAlarmTable);
+//Change some data for test scenario below
+aAlarms[1].nMessage := 16#00000001;
+
+fbALARM_LogTable(
+	bResetActive:= bResetActive, 
+	stAlarmTable:= stAlarmTable, 
+	aAlarms:= aAlarms, 
+	aAlarmsSettings:= aAlarmsSettings, 
+	stCTDateTime:= stCTDateTime
+);
+
+	
+IF TcUnit.TEST_ORDERED('ActiveAlarms02_aAlarmsActiveSetTrue') THEN
+			
+	AssertTrue(	Condition:= (stAlarmTable.aActiveID[32] = TRUE), 
+				Message:= 'Active alarm not set'
+	);
+	AssertTrue(	Condition:= (stAlarmTable.aActiveID[0] = FALSE), 
+				Message:= 'No Active alarm set'
+	);
+	AssertTrue(	Condition:= (stAlarmTable.aActiveID[33] = FALSE), 
+				Message:= 'No Active alarm set'
+	);
+	AssertTrue(	Condition:= (stAlarmTable.aActiveID[127] = FALSE), 
+				Message:= 'No Active alarm set'
+	);
+	AssertTrue(	Condition:= (stAlarmTable.aActiveID[224] = FALSE), 
+				Message:= 'No Active alarm set'
+	);
+
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="AlarmLogs01_ProperOrder" Id="{deeda8d0-ffce-4902-9944-c30bc2f5a081}" FolderPath="02.AlarmLogs\">
+      <Declaration><![CDATA[METHOD INTERNAL AlarmLogs01_ProperOrder
+VAR	
+	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+	
+IF TcUnit.TEST_ORDERED('AlarmLogs01_ProperOrder') THEN
+	
+	// Data init clear
+	TestInit(aAlarms:= aAlarms, stAlarmTable:= stAlarmTable);
+	//Change some data for test scenario below
+	
+	aAlarms[0].nMessage := 16#00000001; //alarm no 0
+	aAlarms[2].nMessage := 16#00000001; //alarm no 64
+	aAlarms[4].nMessage := 16#00000001; //alarm no 128
+	
+	fbALARM_LogTable(
+		bResetActive:= bResetActive, 
+		stAlarmTable:= stAlarmTable, 
+		aAlarms:= aAlarms, 
+		aAlarmsSettings:= aAlarmsSettings, 
+		stCTDateTime:= stCTDateTime
+	);
+			
+	AssertEquals_STRING(Actual		:= stAlarmTable.aLogMessages[1],
+						Expected	:= 'Alarm No. 128',
+						Message		:= 'Alarms not logged properly');
+
+	AssertEquals_STRING(Actual		:= stAlarmTable.aLogMessages[2],
+						Expected	:= 'Alarm No. 64',
+						Message		:= 'Alarms not logged properly');	
+
+	AssertEquals_STRING(Actual		:= stAlarmTable.aLogMessages[3],
+				 		Expected	:= 'Alarm No. 0',
+				 		Message		:= 'Alarms not logged properly');	
+		 
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="AlarmLogs02_ProperOrder" Id="{58ab54b2-7f01-4deb-9dcd-44753ec40bfc}" FolderPath="02.AlarmLogs\">
+      <Declaration><![CDATA[METHOD INTERNAL AlarmLogs02_ProperOrder
+VAR	
+
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+	
+IF TcUnit.TEST_ORDERED('AlarmLogs02_ProperOrder') THEN
+	
+
+	// Data init clear
+	TestInit(aAlarms:= aAlarms, stAlarmTable:= stAlarmTable);
+	//Change some data for test scenario below
+	
+	aAlarms[1].nMessage := 16#00000001; //alarm no 32
+	aAlarms[3].nMessage := 16#00000001; //alarm no 96
+	aAlarms[5].nMessage := 16#00000001; //alarm no 160
+	
+	fbALARM_LogTable(
+		bResetActive	:= bResetActive, 
+		stAlarmTable	:= stAlarmTable, 
+		aAlarms			:= aAlarms, 
+		aAlarmsSettings	:= aAlarmsSettings, 
+		stCTDateTime	:= stCTDateTime
+	);
+
+
+			
+	AssertEquals_STRING(Actual		:= stAlarmTable.aLogMessages[1],
+						Expected	:= 'Alarm No. 160',
+						Message		:= 'Alarms not logged properly');
+
+	AssertEquals_STRING(Actual		:= stAlarmTable.aLogMessages[2],
+						Expected	:= 'Alarm No. 96',
+						Message		:= 'Alarms not logged properly');	
+
+	AssertEquals_STRING(Actual		:= stAlarmTable.aLogMessages[3],
+				 		Expected	:= 'Alarm No. 32',
+				 		Message		:= 'Alarms not logged properly');	
+		 
+TEST_FINISHED();
+
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="TestInit" Id="{dfd8b0e3-554c-4bb1-accb-7f0188c9e60c}">
+      <Declaration><![CDATA[METHOD PRIVATE TestInit
+VAR_IN_OUT
+	aAlarms			: ARRAY [0..cMAX_ALARM_GROUP] OF ST_Alarms;
+	stAlarmTable	: ST_AlarmsTable;
+END_VAR
+
+VAR	
+	nI				: INT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+MEMSET(ADR(aAlarms), 16#00, SIZEOF(aAlarms));
+MEMSET(ADR(stAlarmTable), 16#00, SIZEOF(stAlarmTable));
+stCTDateTime.strHMIDateTime := 'Alarm No.';
+
+FOR nI := 0 TO 255 DO	
+	stAlarmTable.aMsgAux[nI].sTextMessage := TO_STRING(nI);		
+END_FOR
+]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_NOVRAM_METS_Inspection" Id="{538ce3b0-fc33-44a9-8cee-2f2f5474645f}">
+    <Declaration><![CDATA[TYPE ST_NOVRAM_METS_Inspection :
+STRUCT
+	MachineID					: ST_SYSTEM_MachineID;
+	StartDateTime					: T_ISO8601Time;
+	CodingAndTrackingMode			: INT;
+	AcceptanceLevel				: INT;
+	PacksPerOuter					: INT;
+	OutersProcessing				: ST_KPI_OutersProcessing;
+	OCVFileEfficiency				: ST_KPI_OCVFile;
+
+	PacksRead					: ARRAY[0..cMAX_PACKS_PER_OUTER] OF UDINT;
+	PackPosEfficiency				: ARRAY[1..cMAX_PACKS_PER_OUTER] OF ST_KPI_CodePos;
+
+	PackAggregationEfficiency		: ST_KPI_InspectionEfficency;
+	PackProduced					: ST_KPI_ItemsProduced;
+
+	aConfirmCodeEfficiency			: ARRAY[1..2] OF ST_KPI_CodePos;
+	PackConfirmationEfficiency		: ST_KPI_InspectionEfficency;
+	aValidCodeEfficiency			: ARRAY[1..2] OF ST_KPI_CodePos;
+	OuterValidationEfficiency			: ST_KPI_InspectionEfficency;
+
+	OuterAggregationEfficiency		: ST_KPI_InspectionEfficency;
+	OutersProduced				: ST_KPI_ItemsProduced;
+
+	(*CaseContentValidEfficiency		: ST_KPI_InspectionEfficency;
+	CaseLableValidEfficiency			: ST_KPI_InspectionEfficency;*)
+
+	CaseAggregationEfficiency		: ST_KPI_InspectionEfficency;
+	CaseProduced					: ST_KPI_ItemsProduced;
+
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

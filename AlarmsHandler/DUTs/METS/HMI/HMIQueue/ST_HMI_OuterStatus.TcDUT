@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_OuterStatus" Id="{1c06252f-dd73-4fca-bda1-f5377609746b}">
+    <Declaration><![CDATA[TYPE ST_HMI_OuterStatus :
+STRUCT
+	sBarcode						: T_OUTER_Barcode;
+
+	sOuterRejectCode				:  T_RejectCode;
+	nOuterRejectID					:  UINT;
+
+	aAggregationCodes			: ARRAY[1..2] OF T_PACK_Barcode;
+	aAggregationCodesPosition	: ARRAY[1..2] OF INT;
+
+	aPackRejectCode				: ARRAY[1..cMAX_HMI_PACKS_PER_OUTER] OF T_RejectCode;
+	aPackRejectID					: ARRAY[1..cMAX_HMI_PACKS_PER_OUTER] OF INT;
+
+	sProductionDate				: STRING(10);
+	sProductionTime				: STRING(8);
+
+	aPackCode						: ARRAY[1..cMAX_HMI_PACKS_PER_OUTER] OF T_PACK_Barcode;
+	aOACPackStatus				: ARRAY[1..cMAX_HMI_PACKS_PER_OUTER] OF BYTE;	(* OAC pack code status *)
+
+	nNumberOfPacks				: INT;
+	nAcceptanceLevel				: INT;
+	nNumberOfLinkedPacks		: INT;
+	nMaxOuterStatusQueue		: INT;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

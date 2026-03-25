@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_CONCAT6" Id="{9709c4ce-057d-4a8a-abaf-5907551c2670}" SpecialFunc="None">
+    <Declaration><![CDATA[(* concatenate 6 strings *)
+FUNCTION F_CONCAT6 : T_MaxString
+VAR_INPUT
+	strString1		: T_MaxString;
+	strString2		: T_MaxString;
+	strString3		: T_MaxString;
+	strString4		: T_MaxString;
+	strString5		: T_MaxString;
+	strString6		: T_MaxString;
+END_VAR
+VAR
+END_VAR
+(*
+-------------------------------------------------------------------------------------------------
+Date		Version	Author	Comments
+-------------------------------------------------------------------------------------------------
+30/01/2015	3.00.00	PB		No change
+
+-------------------------------------------------------------------------------------------------
+05/02/2010	1.00.00	PB		Initial release
+
+-------------------------------------------------------------------------------------------------
+*)]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[F_CONCAT6 := CONCAT(strString1, strString2);
+F_CONCAT6 := CONCAT(F_CONCAT6, strString3);
+F_CONCAT6 := CONCAT(F_CONCAT6, strString4);
+F_CONCAT6 := CONCAT(F_CONCAT6, strString5);
+F_CONCAT6 := CONCAT(F_CONCAT6, strString6);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

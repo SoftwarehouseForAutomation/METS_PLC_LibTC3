@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_ProfinetMasterConfig" Id="{6de4214a-eb9c-49b5-84c7-d67a3026d335}">
+    <Declaration><![CDATA[TYPE ST_ProfinetMasterConfig :
+(* EL6631 *)
+STRUCT
+	strTAMSNETID_ProfinetMasterEthercatAmsNetId			: T_AmsNetId:=''; (* string(23) *)
+	strIPAddress										: STRING(15) := ''; (* currently display only not linked *)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

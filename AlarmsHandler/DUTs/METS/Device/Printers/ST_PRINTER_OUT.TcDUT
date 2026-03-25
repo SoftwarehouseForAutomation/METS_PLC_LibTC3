@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_PRINTER_OUT" Id="{3f7f83f2-ff58-43b7-9ed3-7a9202b1207d}">
+    <Declaration><![CDATA[TYPE ST_PRINTER_OUT :
+STRUCT
+
+	bPrinterReady		: BOOL;			(* TRUE = printer comms OK *)
+	bSystemResetOK		: BOOL;			(* TRUE = system reset command sent to printer *)
+	nStatusCode			: INT;			(* printer status code *)
+	sResponse			: STRING(255);	(* command response string *)
+	sCurrentCode					: STRING(255);
+	(*aLast10CodesPrinted				: ARRAY[1..10] OF STRING(255);*)
+	eSocketState		: E_SocketConnectionState;	(* TCP socket connection state *)
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

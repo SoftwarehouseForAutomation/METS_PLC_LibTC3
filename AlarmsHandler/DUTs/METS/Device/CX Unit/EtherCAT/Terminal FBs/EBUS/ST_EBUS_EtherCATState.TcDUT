@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_EBUS_EtherCATState" Id="{5b0c06f0-a875-4eef-ba2e-4352d9eb470a}">
+    <Declaration><![CDATA[TYPE ST_EBUS_EtherCATState :
+STRUCT
+	nState		: UINT;
+	bWCState	: BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

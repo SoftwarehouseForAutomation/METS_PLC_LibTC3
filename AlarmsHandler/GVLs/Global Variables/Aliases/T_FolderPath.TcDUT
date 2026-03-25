@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="T_FolderPath" Id="{7cbd837c-3240-4cd8-bb89-5cf2d0a63a8e}">
+    <Declaration><![CDATA[TYPE T_FolderPath : STRING[100];
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

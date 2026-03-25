@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_HMI_CylinderStatus" Id="{df01b0d3-6008-4e88-b606-fbddd4e3ff28}">
+    <Declaration><![CDATA[TYPE ST_HMI_CylinderStatus :
+STRUCT
+
+(* read only *)
+	bDeviceDisable			: BOOL;
+	bMoveNotAllowed			: BOOL;
+
+	bErrorPosition				: BOOL;
+	bInPosition				: BOOL;
+	bHomePosition				: BOOL;
+
+	bCylinderInRetractedPosition	: BOOL;
+	bCylinderInExtendedPosition	: BOOL;
+	bCylinderIsRetracting		: BOOL;
+	bCylinderIsExtending		: BOOL;
+
+	stTagID					: ST_CYLINDER_TagID;
+
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

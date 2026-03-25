@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_AX5000_TouchProbe" Id="{005d4b8f-638c-4743-b332-29ea1404642e}">
+    <Declaration><![CDATA[TYPE ST_AX5000_TouchProbe :
+STRUCT
+	nStatusWord		: UINT;
+	nHardCounts		: DINT;
+	nPosEdge		: DINT;
+	nNegEdge		: DINT;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>
