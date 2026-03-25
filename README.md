@@ -1,6 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
-# wygeneruj w formacie .md dla dokumentacji redme.md opis wykonywanych testow jednostkowych tcunit w twincat3 dla function block FB_ALARM_LogTable, na podstawie przesłanego pliku testów jednostkowych
 
 ```markdown
 # Testy Jednostkowe TcUnit - FB_ALARM_LogTable
