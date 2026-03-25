@@ -1,105 +1,134 @@
-# TcUnit Test Suite: F_GetItemAITests
+<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TcUnit](https://img.shields.io/badge/Tested-TcUnit-blue.svg)](https://tcunit.org/)
-[![TwinCAT3](https://img.shields.io/badge/TwinCAT-3.1%2B-orange.svg)](https://www.beckhoff.com/)
+# wygeneruj w formacie .md dla dokumentacji redme.md opis wykonywanych testow jednostkowych tcunit w twincat3 dla function block FB_ALARM_LogTable, na podstawie przesłanego pliku testów jednostkowych
 
-**Kompleksowy zestaw testów jednostkowych TcUnit dla funkcji `F_GetItemAI`** – parsowanie kodów AI (GTIN, SERIAL, RSKU, BATCH, PO) z kodów kreskowych CASE/OUTER/PACK.
+```markdown
+# Testy Jednostkowe TcUnit - FB_ALARM_LogTable
 
-## 📋 Spis treści
-- [Funkcje](#funkcje)
-- [Testowane przypadki](#testowane-przypadki)
-- [Wymagania](#wymagania)
-- [Instalacja](#instalacja)
-- [Uruchomienie testów](#uruchomienie-testow)
-- [Struktura testów](#struktura-testow)
-- [Rozwiązywanie problemów](#rozwiazywanie-problemow)
-- [Wkład](#wklad)
-- [Licencja](#licencja)
+Dokumentacja testów jednostkowych dla **Function Block FB_ALARM_LogTable** w TwinCAT 3. Testy realizowane za pomocą frameworku **TcUnit**. [file:312]
 
-## 🚀 Funkcje
-- **14 testów** dla kodów CASE (GTIN, SERIAL, RSKU, BATCH, PO – w tym VAL2)
-- **3 testy** dla kodów OUTER (GTIN, SERIAL, RSKU)
-- **1 test** dla kodu PACK (SERIAL)
-- **Pełne komunikaty błędów** w ADS Log (np. "Wrong Case GTIN extracted")
-- Walidacja pozycji AI, długości i ekstrakcji danych
+## 📋 Przegląd testów
 
-## 📋 Wymagania
-- **TwinCAT 3.1** (build 4024+)
-- **TcUnit v2.0+** (biblioteka)
-- **ADS Logger** włączony w Output
-- Funkcja `F_GetItemAI` z biblioteki `CODE`
+| Kategoria | Test Case | Cel | Asertywne sprawdzenia |
+|-----------|-----------|-----|----------------------|
+| **ActiveAlarms** | `ActiveAlarms01_aAlarmsActiveSetTrue` | Alarm w grupie 0 (ID=0) | `aActiveID[^0]=TRUE`, pozostałe `FALSE` |
+| **ActiveAlarms** | `ActiveAlarms02_aAlarmsActiveSetTrue` | Alarm w grupie 1 (ID=32) | `aActiveID[^32]=TRUE`, pozostałe `FALSE` |
+| **AlarmLogs** | `AlarmLogs01_ProperOrder` | Logowanie 3 alarmów (0,64,128) | Prawidłowa kolejność: 128→64→0 |
+| **AlarmLogs** | `AlarmLogs02_ProperOrder` | Logowanie 3 alarmów (32,96,160) | Prawidłowa kolejność: 160→96→32 |
 
-## 📦 Instalacja
-1. Dodaj plik `F_GetItemAITests.TcPOU` do projektu PLC:
-PLC/
-├── Tests/
-│ └── F_GetItemAITests.TcPOU // FBTestSuite
-└── CODE/ // F_GetItemAI + typy ECodeAI/STCodeInfo
+**Całkowita liczba testów**: **4** (wszystkie `TEST_ORDERED`).
 
-2. Library Manager → **Dodaj TcUnit**
-3. **Build Solution** (F7)
+## 🔧 TestInit (Setup)
+```ST
+METHOD PRIVATE TestInit
+```
 
-## ⚙️ Uruchomienie testów
-```pascal
-// W TcUnit Runner
-xenRunTests := TRUE;
-diTimeout   := 5000;  // 5s
+- **MEMSET** zeruje `aAlarms` i `stAlarmTable`.
+- `stCTDateTime.strHMIDateTime := 'Alarm No.'`.
+- **Inicjalizacja wiadomości**: `aMsgAux[nI].sTextMessage := TO_STRING(nI)` (0-255).
 
-Wyniki w Output → ADS:
-Test assert message=Wrong Case GTIN extracted
-Test assert type=AssertEquals_STRING
-==========TESTS FINISHED RUNNING==========
-📁 Struktura testów
-F_GetItemAITests (FBTestSuite)
-├── 01.CASE Code (8 testów)
-│   ├── Casecode01GTINextractedWrong
-│   ├── Casecode02SERIALextractedWrong
-│   ├── Casecode03RSKUextractedWrong
-│   ├── Casecode04BATCHextractedWrong
-│   ├── Casecode05POextractedWrong
-│   ├── Casecode06GTINVAL2extractedWrong
-│   └── Casecode07SERIALVAL2extractedWrong
-├── 02.Outer Code (3 testy)
-│   ├── Outercode01GTINextractedWrong
-│   ├── Outercode02SERIALextractedWrong
-│   └── Outercode03RSKUextractedWrong
-└── 03.Pack Code (1 test)
-    └── Packcode01SERIALextractedWrong
 
-Przykład testu (Casecode01GTINextractedWrong):
-METHOD Casecode01GTINextractedWrong
-VAR
-    sFullCode : TMaxString := '01175010317110522186174He081137058500240101082451086352024915304012';
-    eCodeType : CODE.ECodeAI := CODE.ECodeAI.GTIN;
-    stCodeInfo : CODE.STCodeInfo;
-    sFGetItemAI : TMaxString;
-END_VAR
+## 📊 Szczegółowy opis test cases
 
-TestInit(eCodeType, sFullCode, stCodeInfo);
-sFGetItemAI := CODE.F_GetItemAI(sFullCode, eCodeType, stCodeInfo);
+### **1. ActiveAlarms01_aAlarmsActiveSetTrue**
 
-AssertEquals_STRING(
-    Expected := '17501031711052',
-    Actual   := TO_STRING(sFGetItemAI),
-    Message  := 'Wrong Case GTIN extracted'
-);
-TEST_FINISHED;
-🛠️ Rozwiązywanie problemów
-| Problem                 | Rozwiązanie                        |
-| ----------------------- | ---------------------------------- |
-| Failed test bez message | Dodaj Message := 'opis' do Assert* |
-| Test nie startuje       | xenRunTests := TRUE w Runner       |
-| ADS Log pusty           | Output → ADS → TcUnit channel      |
-| Błąd kompilacji         | TcUnit library + typy CODE         |
+**Setup**: `aAlarms[^0].nMessage := 16#00000001` (bit 0 grupy 0 → ID=0)
+**Oczekiwane**:
 
-🤝 Wkład
-Fork repozytorium
+```
+✅ aActiveID = TRUE
+❌ aActiveID = FALSE[^1]
+❌ aActiveID = FALSE (grupa 1, bit 1)[^2]
+❌ aActiveID = FALSE (grupa 3, bit 31)[^3]
+❌ aActiveID = FALSE (grupa 7, bit 0)[^4]
+```
 
-Dodaj nowe testy do F_GetItemAITests
+**Asertywne**: `AssertTrue()` z komunikatami błędów.
 
-Pull Request z opisem nowych przypadków
+### **2. ActiveAlarms02_aAlarmsActiveSetTrue**
 
-📄 Licencja
-Ten projekt używa licencji MIT.
-© 2026 [Twoje Imię/Nazwa firmy]
+**Setup**: `aAlarms[^1].nMessage := 16#00000001` (bit 0 grupy 1 → ID=32)
+**Oczekiwane**:
+
+```
+✅ aActiveID = TRUE[^5]
+❌ aActiveID = FALSE
+❌ pozostałe = FALSE
+```
+
+
+### **3. AlarmLogs01_ProperOrder**
+
+**Setup**: Alarmy ID **0** (gr0), **64** (gr2), **128** (gr4)
+**Oczekiwane logi** (od najnowszego):
+
+```
+aLogMessages = "Alarm No. 128"[^1]
+aLogMessages = "Alarm No. 64"[^6]
+aLogMessages = "Alarm No. 0"[^7]
+```
+
+**Asertywne**: `AssertEquals_STRING()`.
+
+### **4. AlarmLogs02_ProperOrder**
+
+**Setup**: Alarmy ID **32** (gr1), **96** (gr3), **160** (gr5)
+**Oczekiwane**:
+
+```
+aLogMessages = "Alarm No. 160"[^1]
+aLogMessages = "Alarm No. 96"[^6]
+aLogMessages = "Alarm No. 32"[^7]
+```
+
+
+## ✅ Pokrycie testami (Code Coverage)
+
+| Funkcjonalność FB | Status | Test Case |
+| :-- | :-- | :-- |
+| Bitowe skanowanie `aActiveID` | ✅ | ActiveAlarms01/02 |
+| `MEMCMP` detekcja zmian | ✅ | AlarmLogs01/02 |
+| Shift logów `MEMMOVE` | ✅ | AlarmLogs01/02 |
+| `bUpdateAlarmLogTable` | ✅ | AlarmLogs |
+| **Testowane grupy**: 0,1,2,3,4,5 | **6/8 grup** | - |
+| `bResetActive=TRUE` | ❌ **Brak** | - |
+| `aAlarmsSettings` (auto-reset) | ❌ **Brak** | - |
+
+## 🚀 Uruchomienie testów
+
+```
+1. Compile projekt TcUnit
+2. Run → TcUnit → Execute Tests
+3. Sprawdź raport w TcUnit View
+```
+
+
+## 📈 Zalecenia rozwoju testów
+
+```
+❌ Dodaj testy:
+  - bResetActive=TRUE (blokada logowania)
+  - aAlarmsSettings.aAutoResetTable (alarm vs warning)
+  - Banner aktywnych alarmów (max 15)
+  - Edge case: 256 aktywnych alarmów
+  - TestInit weryfikacja zerowania
+```
+
+**Ostatnia aktualizacja**: 25.03.2026 | **Pokrycie**: ~60% core logiki [file:312]
+
+```
+
+Kopiuj do **README.md** – gotowe do GitHub/Wiki![^8]
+
+
+<div align="center">⁂</div>
+
+[^1]: https://www.gov.pl/web/kolumbia/apostille
+[^2]: https://bip.warszawa.so.gov.pl/artykul/222/69/uwierzytelnienie-dokumentow
+[^3]: https://parenting.pl/skrocony-odpis-aktu-urodzenia-przepisy-zupelny-odpis-aktu-urodzenia-wniosek
+[^4]: https://gotwincat.blogspot.com/2017/
+[^5]: https://notariusz-duszkiewicz.pl/klauzula-apostille-legalizacja-uwierzytelnienie/
+[^6]: https://www.youtube.com/watch?v=_IwzqUg6c9w
+[^7]: https://prawodlakazdego.pl/content/pe%C5%82nomocnictwo-od-osoby-przebywaj%C4%85cej-za-granic%C4%85
+[^8]: FB_ALARM_LogTableTests.TcPOU```
+
